@@ -10,7 +10,7 @@ import java.util.InputMismatchException;
 public class ArtikelDialog
 {
     private              Artikel        artikel;
-    private              UserInput        userInput;
+    private              UserInput      userInput;
     private              int            funktion;
     
     private static final int            FUNKTION_ANLEGEN_MIT_BESTAND    = 1;
