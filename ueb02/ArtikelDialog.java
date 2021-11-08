@@ -56,7 +56,7 @@ public class ArtikelDialog
             } catch(InputMismatchException error) {
                 System.out.println(error);
                 userInput.next();
-                
+
             } catch(Exception error) {
                 System.out.println(error);
                 error.printStackTrace(System.out); 
@@ -72,16 +72,19 @@ public class ArtikelDialog
     public void einlesenFunktion() {
         
         System.out.print(
+            "\n\n" +
             FUNKTION_ANLEGEN_MIT_BESTAND    + ": Artikel mit Bestand anlegen;\n"  + 
             FUNKTION_ANLEGEN_OHNE_BESTAND   + ": Artikel ohne Bestand anlegen;\n" + 
             FUNKTION_BESTAND_ZUBUCHEN       + ": Menge zum Bestand dazubuchen;\n" +
             FUNKTION_BESTAND_ABBUCHEN       + ": Menge vom Bestand abbuchen;\n"   + 
             FUNKTION_ARTIKELART_AENDERN     + ": Artikelart aendern;\n"           +
             FUNKTION_ARTIKEL_AUSGEBEN       + ": Artikel ausgeben;\n"             + 
-            FUNKTION_ENDE                   + ": beenden -> \n"
+            FUNKTION_ENDE                   + ": beenden -> \n\n"
         );
+
         
         this.funktion = userInput.getInt("Ausgewählte Funktion: ");
+        System.out.println();
     }
     
     /**

@@ -48,17 +48,16 @@ public class Validierung {
     }
 
     private static boolean checkeFuerSpezielleCharaktere(String string, boolean sollLeertasteErlauben) {
-        String regex;
 
         if (sollLeertasteErlauben) {
-            regex = "[\b([äöüÄÖÜßa-zA-Z\\s]+)\b]";
-        } else {
-            regex = "[\b([äöüÄÖÜßa-zA-Z]+)\b]";
-        }
-        
-        boolean istName = !string.matches(regex);
+            string = string.replaceAll("\\s+","");
+        } 
 
-        return istName;
+        String regex = "^[a-zA-ZäöüÄÖÜßa]+$";
+        
+        boolean hasSpezielleCharaktere = !string.matches(regex);
+
+        return hasSpezielleCharaktere;
     }
 
     /**
