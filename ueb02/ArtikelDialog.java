@@ -49,11 +49,14 @@ public class ArtikelDialog
             try {
                 einlesenFunktion();
                 ausfuehrenFunktion();
-
-            } catch(IllegalArgumentException | InputMismatchException error) {
+                
+            } catch(IllegalArgumentException error) {
                 System.out.println(error);
-                userInput.nextLine(); // warum?
 
+            } catch(InputMismatchException error) {
+                System.out.println(error);
+                userInput.next();
+                
             } catch(Exception error) {
                 System.out.println(error);
                 error.printStackTrace(System.out); 
@@ -79,7 +82,6 @@ public class ArtikelDialog
         );
         
         this.funktion = userInput.getInt("Ausgewählte Funktion: ");
-        userInput.nextLine();
     }
     
     /**
@@ -133,8 +135,13 @@ public class ArtikelDialog
             
         } else {
             int artikelNr = userInput.getInt("Artikelnummer: ");
+            Validierung.validiereArtikelNr(artikelNr);
+
             String art = userInput.getString("Artikelart: ");
+            Validierung.validiereArtikelArt(art);
+
             int bestand = beabeiteBestand(sollNachBestandFragen);
+            Validierung.validiereBestand(bestand);
 
             artikel = new Artikel(artikelNr , art , bestand);
         }

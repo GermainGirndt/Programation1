@@ -26,5 +26,9 @@ public class UserInput {
         String string = input.nextLine();
         return string;
     }
+
+    public void next() {
+        input.next();
+    }
     
 }

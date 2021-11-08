@@ -56,7 +56,7 @@ public class Validierung {
             regex = "[\b([äöüÄÖÜßa-zA-Z]+)\b]";
         }
         
-        boolean istName = string.matches(regex);
+        boolean istName = !string.matches(regex);
 
         return istName;
     }
