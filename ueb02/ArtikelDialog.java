@@ -39,15 +39,15 @@ public class ArtikelDialog
             try {
                 funktion = einlesenFunktion();
                 ausfuehrenFunktion(funktion);
-            }catch(IllegalArgumentException e){
-                System.out.println(e);
+            } catch(IllegalArgumentException error){
+                System.out.println(error);
                 input.nextLine(); 
-            }catch(InputMismatchException e){
-                System.out.println(e);
+            } catch(InputMismatchException error){
+                System.out.println(error);
                 input.nextLine();   
-            }catch(Exception e){
-                System.out.println(e);
-                e.printStackTrace(System.out);   
+            } catch(Exception error){
+                System.out.println(error);
+                error.printStackTrace(System.out);   
             }
         }
     }
@@ -59,13 +59,15 @@ public class ArtikelDialog
     public int einlesenFunktion(){
         int funktion;
         
-        System.out.print(ANLEGEN_MIT_BESTAND    + ": Artikel mit Bestand anlegen;\n"  + 
-                         ANLEGEN_OHNE_BESTAND   + ": Artikel ohne Bestand anlegen;\n" + 
-                         BESTAND_ZUBUCHEN       + ": Menge zum Bestand dazubuchen;\n" +
-                         BESTAND_ABBUCHEN       + ": Menge vom Bestand abbuchen;\n"   + 
-                         ARTIKELART_AENDERN     + ": Artikelart aendern;\n"           +
-                         ARTIKEL_AUSGEBEN       + ": Artikel ausgeben;\n"             + 
-                         ENDE                   + ": beenden -> ");
+        System.out.print(
+            ANLEGEN_MIT_BESTAND    + ": Artikel mit Bestand anlegen;\n"  + 
+            ANLEGEN_OHNE_BESTAND   + ": Artikel ohne Bestand anlegen;\n" + 
+            BESTAND_ZUBUCHEN       + ": Menge zum Bestand dazubuchen;\n" +
+            BESTAND_ABBUCHEN       + ": Menge vom Bestand abbuchen;\n"   + 
+            ARTIKELART_AENDERN     + ": Artikelart aendern;\n"           +
+            ARTIKEL_AUSGEBEN       + ": Artikel ausgeben;\n"             + 
+            ENDE                   + ": beenden -> "
+        );
         
         funktion = input.nextInt();
         input.nextLine();
@@ -80,29 +82,29 @@ public class ArtikelDialog
     public void ausfuehrenFunktion(int funktion){
         switch(funktion){
             case ANLEGEN_MIT_BESTAND:    
-                                        artikelMitBestandAnlegen();
-                                        break;
+                artikelMitBestandAnlegen();
+                break;
             case ANLEGEN_OHNE_BESTAND:
-                                        artikelOhneBestandAnlegen();
-                                        break;
+                artikelOhneBestandAnlegen();
+                break;
             case BESTAND_ZUBUCHEN:      
-                                        bestandZubuchen();
-                                        break;
+                bestandZubuchen();
+                break;
             case BESTAND_ABBUCHEN:
-                                        bestandAbbuchen();
-                                        break;
+                bestandAbbuchen();
+                break;
             case ARTIKELART_AENDERN:
-                                        artikelartAendern();
-                                        break;
+                artikelartAendern();
+                break;
             case ARTIKEL_AUSGEBEN:  
-                                        artikelAusgeben();
-                                        break;
+                artikelAusgeben();
+                break;
             case ENDE:  
-                                        System.out.println("Das Programm ist zu Ende");
-                                        break;
+                System.out.println("Das Programm ist zu Ende");
+                break;
             default:
-                                        System.out.println("Keine gueltige Eingabe");
-                                        break;
+                System.out.println("Keine gueltige Eingabe");
+                break;
         }
         if(artikel!=null){
             System.out.println(artikel);
