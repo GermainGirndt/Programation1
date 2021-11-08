@@ -9,45 +9,55 @@ import java.util.InputMismatchException;
  */
 public class ArtikelDialog
 {
-    private Artikel     artikel;
-    private Scanner     input;
+    private              Artikel        artikel;
+    private              UserInput        userInput;
+    private              int            funktion;
     
-    private static final int    ANLEGEN_MIT_BESTAND    = 1;
-    private static final int    ANLEGEN_OHNE_BESTAND   = 2;
-    private static final int    BESTAND_ZUBUCHEN       = 3;
-    private static final int    BESTAND_ABBUCHEN       = 4;
-    private static final int    ARTIKELART_AENDERN     = 5;
-    private static final int    ARTIKEL_AUSGEBEN       = 6;
-    private static final int    ENDE                   = 0;
+    private static final int            FUNKTION_ANLEGEN_MIT_BESTAND    = 1;
+    private static final int            FUNKTION_ANLEGEN_OHNE_BESTAND   = 2;
+    private static final int            FUNKTION_BESTAND_ZUBUCHEN       = 3;
+    private static final int            FUNKTION_BESTAND_ABBUCHEN       = 4;
+    private static final int            FUNKTION_ARTIKELART_AENDERN     = 5;
+    private static final int            FUNKTION_ARTIKEL_AUSGEBEN       = 6;
+    private static final int            FUNKTION_ENDE                   = 0;
+
+    private static final int            BESTAND_AKTION_ABBUCHEN         = 0;
+    private static final int            BESTAND_AKTION_ZUBUCHEN         = 1;
     
     
      /**
     * Konstruktor
     */
-    public ArtikelDialog(){
-        input = new Scanner(System.in);
+    public ArtikelDialog() {
+        userInput = new UserInput();
     }
     
+    public static void main(String[] args) {
+        ArtikelDialog artikeldialog = new ArtikelDialog();
+        artikeldialog.start();
+        
+    }
+
     /**
     * Hauptschleife der Artikeldialog Klasse
     */
-    public void start(){
-        artikel      = null;
-        int funktion = -1;
+    public void start() {
+        this.artikel         = null;
+        this.funktion        = -1;
         
-        while(funktion != 0){
+        while(this.funktion != FUNKTION_ENDE) {
             try {
-                funktion = einlesenFunktion();
-                ausfuehrenFunktion(funktion);
-            }catch(IllegalArgumentException e){
-                System.out.println(e);
-                input.nextLine(); 
-            }catch(InputMismatchException e){
-                System.out.println(e);
-                input.nextLine();   
-            }catch(Exception e){
-                System.out.println(e);
-                e.printStackTrace(System.out);   
+                einlesenFunktion();
+                ausfuehrenFunktion();
+
+            } catch(IllegalArgumentException | InputMismatchException error) {
+                System.out.println(error);
+                userInput.nextLine(); // warum?
+
+            } catch(Exception error) {
+                System.out.println(error);
+                error.printStackTrace(System.out); 
+
             }
         }
     }
@@ -56,137 +66,143 @@ public class ArtikelDialog
     * Diese Funktion liest ein welche Funktion ausgefuehrt werden soll
     * @return funktion die ausgewaehlt wurde
     */
-    public int einlesenFunktion(){
-        int funktion;
+    public void einlesenFunktion() {
         
-        System.out.print(ANLEGEN_MIT_BESTAND    + ": Artikel mit Bestand anlegen;\n"  + 
-                         ANLEGEN_OHNE_BESTAND   + ": Artikel ohne Bestand anlegen;\n" + 
-                         BESTAND_ZUBUCHEN       + ": Menge zum Bestand dazubuchen;\n" +
-                         BESTAND_ABBUCHEN       + ": Menge vom Bestand abbuchen;\n"   + 
-                         ARTIKELART_AENDERN     + ": Artikelart aendern;\n"           +
-                         ARTIKEL_AUSGEBEN       + ": Artikel ausgeben;\n"             + 
-                         ENDE                   + ": beenden -> ");
+        System.out.print(
+            FUNKTION_ANLEGEN_MIT_BESTAND    + ": Artikel mit Bestand anlegen;\n"  + 
+            FUNKTION_ANLEGEN_OHNE_BESTAND   + ": Artikel ohne Bestand anlegen;\n" + 
+            FUNKTION_BESTAND_ZUBUCHEN       + ": Menge zum Bestand dazubuchen;\n" +
+            FUNKTION_BESTAND_ABBUCHEN       + ": Menge vom Bestand abbuchen;\n"   + 
+            FUNKTION_ARTIKELART_AENDERN     + ": Artikelart aendern;\n"           +
+            FUNKTION_ARTIKEL_AUSGEBEN       + ": Artikel ausgeben;\n"             + 
+            FUNKTION_ENDE                   + ": beenden -> "
+        );
         
-        funktion = input.nextInt();
-        input.nextLine();
-        
-        return funktion;
+        this.funktion = userInput.getInt("");
+        userInput.nextLine();
     }
     
     /**
     * Diese Funktion führt je nach Parameter die dazugehoerige Funktion aus
     * @param funktion die ausgeführt werden soll
     */
-    public void ausfuehrenFunktion(int funktion){
-        switch(funktion){
-            case ANLEGEN_MIT_BESTAND:    
-                                        artikelMitBestandAnlegen();
-                                        break;
-            case ANLEGEN_OHNE_BESTAND:
-                                        artikelOhneBestandAnlegen();
-                                        break;
-            case BESTAND_ZUBUCHEN:      
-                                        bestandZubuchen();
-                                        break;
-            case BESTAND_ABBUCHEN:
-                                        bestandAbbuchen();
-                                        break;
-            case ARTIKELART_AENDERN:
-                                        artikelartAendern();
-                                        break;
-            case ARTIKEL_AUSGEBEN:  
-                                        artikelAusgeben();
-                                        break;
-            case ENDE:  
-                                        System.out.println("Das Programm ist zu Ende");
-                                        break;
+    public void ausfuehrenFunktion() {
+        boolean sollNachBestandFragen;
+
+        switch(this.funktion) {
+            case FUNKTION_ANLEGEN_MIT_BESTAND:
+                sollNachBestandFragen = true; 
+                artikelAnlegen(sollNachBestandFragen);
+                break;
+            case FUNKTION_ANLEGEN_OHNE_BESTAND:
+                sollNachBestandFragen = false; 
+                artikelAnlegen(sollNachBestandFragen);
+                break;
+            case FUNKTION_BESTAND_ZUBUCHEN:      
+                bestandZubuchen();
+                break;
+            case FUNKTION_BESTAND_ABBUCHEN:
+                bestandAbbuchen();
+                break;
+            case FUNKTION_ARTIKELART_AENDERN:
+                artikelartAendern();
+                break;
+            case FUNKTION_ARTIKEL_AUSGEBEN:  
+                artikelAusgeben();
+                break;
+            case FUNKTION_ENDE:  
+                System.out.println("Das Programm ist zu Ende");
+                break;
             default:
-                                        System.out.println("Keine gueltige Eingabe");
-                                        break;
+                System.out.println("Keine gueltige Eingabe");
+                break;
         }
-        if(artikel!=null){
+
+        if (checkeObArtikelExistiert()) {
             System.out.println(artikel);
         }
     }
-    
+
     /**
     * Legt einen Artikel mit Bestand an und erfragt alle nötigen Parameter
     */
-    public void artikelMitBestandAnlegen(){
-        if(artikel != null) {
+    public void artikelAnlegen(boolean sollNachBestandFragen) {
+        
+        if (checkeObArtikelExistiert()) {
             System.out.println("Der Artikel existiert schon.");
+            
         } else {
-            System.out.print("Artikelnummer: ");
-            int artikelNr = input.nextInt();
-            input.nextLine();
-            
-            System.out.print("Artikelart: ");
-            String art = input.nextLine();
-            
-            System.out.print("Bestand: ");
-            int bestand = input.nextInt();
-            
+            int artikelNr = userInput.getInt("Artikelnummer: ");
+            String art = userInput.getString("Artikelart: ");
+            int bestand = beabeiteBestand(sollNachBestandFragen);
+
             artikel = new Artikel(artikelNr , art , bestand);
         }
     }
-    
-    /**
-    * Legt einen Artikel ohne Bestand an und erfragt alle nötigen Parameter
-    */
-    public void artikelOhneBestandAnlegen(){
-        if(artikel != null) {
-            System.out.println("Der Artikel existiert schon.");
+
+    private int beabeiteBestand(boolean sollNachBestandFragen) {
+        int bestand;
+
+        if (sollNachBestandFragen) {
+            bestand = this.userInput.getInt("Bestand: ");
         } else {
-            System.out.print("Artikelnummer: ");
-            int artikelNr = input.nextInt();
-            input.nextLine();
-            
-            System.out.print("Artikelart: ");
-            String art = input.nextLine();
-            
-            artikel = new Artikel(artikelNr , art);
+            bestand = 0;
         }
+
+        return bestand;
     }
-    
+
     /**
     * Fragt nach einer Menge und bucht diese dann dem Bestand des Artikels zu
     */
-    public void bestandZubuchen(){
-        if(artikel == null) {
-            System.out.println("Noch existiert kein Artikel");
-        }else{
-            System.out.println("Welche Menge soll dazugebucht werden? ");
-            int menge = input.nextInt();
-            artikel.bucheZugang(menge);
-            System.out.println("Der neue Bestand des Artikels: " + artikel.getBestand());
-        }    
-    }
-    
-     /**
-    * Fragt nach einer Menge und bucht diese dann dem Bestand des Artikels ab
-    */
-     public void bestandAbbuchen(){
-        if(artikel == null) {
-            System.out.println("Noch existiert kein Artikel");
-        }else{
-            System.out.println("Welche Menge soll abgebucht werden? ");
-            int menge = input.nextInt();
-            artikel.bucheAbgang(menge);
-            System.out.println("Der neue Bestand des Artikels: " + artikel.getBestand());
-        }    
+    public void bestandZubuchen() {
+        bestandAendern(BESTAND_AKTION_ZUBUCHEN);
     }
     
     /**
+     * Fragt nach einer Menge und bucht diese dann dem Bestand des Artikels ab
+     */
+    public void bestandAbbuchen() {
+        bestandAendern(BESTAND_AKTION_ABBUCHEN);
+    }
+
+    private void bestandAendern(int BESTAND_AKTION) {
+
+        int menge;
+
+        if (!checkeObArtikelExistiert()) {
+            System.out.println("Es existiert noch kein Artikel");
+            return;
+        }
+
+        switch (BESTAND_AKTION) {
+
+            case BESTAND_AKTION_ZUBUCHEN:
+                menge = this.userInput.getInt("Welche Menge soll dazugebucht werden? ");
+                artikel.bucheZugang(menge);
+                break;
+            case BESTAND_AKTION_ABBUCHEN:
+                menge = this.userInput.getInt("Welche Menge soll abgebucht werden? ");
+                artikel.bucheAbgang(menge);
+                break;
+
+        } 
+
+        System.out.println("Der neue Bestand des Artikels: " + artikel.getBestand());
+    }
+
+    /**
     * Fragt nach der neuen Artikelart und überschreibt damit die alte Artikelart
     */
-    public void artikelartAendern(){
-        if(artikel == null) {
-            System.out.println("Noch existiert kein Artikel");
-        }else{
-            System.out.println("Neue Artikelart? ");
-            String art = input.nextLine();
+    public void artikelartAendern() {
+        if (!checkeObArtikelExistiert()) {
+            System.out.println("Es existiert noch kein Artikel");
+
+        } else {
+            String art = this.userInput.getString("Neue Artikelart? ");
             artikel.setArt(art);
             System.out.println("Die neue Artikelart ist: " + artikel.getArt());
+
         }        
         
     }
@@ -194,18 +210,17 @@ public class ArtikelDialog
     /**
     * Gibt den Artikel aus
     */
-    public void artikelAusgeben(){
-        if(artikel == null) {
-            System.out.println("Noch existiert kein Artikel");
-        }else{
+    public void artikelAusgeben() {
+        if (!checkeObArtikelExistiert()) {
+            System.out.println("Es existiert noch kein Artikel");
+
+        } else {
             System.out.println(artikel);
+
         }          
     }
 
-     
-    public static void main(String[] args){
-        ArtikelDialog artikeldialog = new ArtikelDialog();
-        artikeldialog.start();
-        
+    private boolean checkeObArtikelExistiert() {
+        return this.artikel != null;
     }
 }
