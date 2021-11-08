@@ -25,7 +25,7 @@ public class ArtikelDialog
     private static final int            BESTAND_AKTION_ZUBUCHEN         = 1;
     
     
-     /**
+    /**
     * Konstruktor
     */
     public ArtikelDialog() {
@@ -123,9 +123,15 @@ public class ArtikelDialog
                 break;
         }
 
-        if (checkeObArtikelExistiert()) {
+        if (checkeObArtikelExistiert() && !checkeObArtikelSchonAusgegebenWurde()) {
             System.out.println(artikel);
         }
+    }
+    
+    private boolean checkeObArtikelSchonAusgegebenWurde() {
+        boolean wurdeArtikelSchonAusgegeben = this.funktion == FUNKTION_ARTIKEL_AUSGEBEN;
+        
+        return wurdeArtikelSchonAusgegeben;
     }
 
     /**
