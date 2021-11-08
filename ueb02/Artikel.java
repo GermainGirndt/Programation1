@@ -20,11 +20,9 @@ public class Artikel
     */
     public Artikel(int artikelNr, String art, int bestand)
     {
-        validiereArtikelNr(artikelNr);
-        
-        validiereArtikelArt(art);
-        
-        validiereBestand(bestand);
+        Validierung.validiereArtikelNr(artikelNr);
+        Validierung.validiereArtikelArt(art);
+        Validierung.validiereBestand(bestand);
         
         this.artikelNr  = artikelNr;
         this.art        = art;
@@ -47,7 +45,7 @@ public class Artikel
     */
     public void bucheZugang(int menge)
     {
-        validiereMenge(menge);
+        Validierung.validiereMenge(menge);
         
         this.bestand += menge;
     }
@@ -58,89 +56,9 @@ public class Artikel
     */
     public void bucheAbgang(int menge)
     {
-        validiereAbgangsMenge(menge);
+        Validierung.validiereAbgangsMenge(this.bestand, menge);
         
         this.bestand -= menge;
-    }
-
-    /**
-    * Die Methode prüft ob die Menge fürs Buchen positiv ist, falls nicht gibt es eine Exception
-    * @param menge ist die Menge 
-    */
-    public void validiereMenge(int menge) {
-        if (menge <= 0) {
-            throw new IllegalArgumentException("Die Menge muss eine natürliche positive Zahl sein");
-        }
-    }
-
-    /**
-    * Die Methode prüft, ob die Menge positiv und kleiner als der Bestand ist, falls nicht gibt es eine Exception
-    * @param menge ist die Menge 
-    */
-    public void validiereAbgangsMenge(int menge) {
-        validiereMenge(menge);
-        
-        if (this.bestand < menge) {
-            throw new IllegalArgumentException("Die abgebuchte Menge darf nicht groesser als der Bestand sein");
-        }
-    }
-
-    /**
-    * Die Methode prüft ob die Artikelart nicht leer ist, falls doch gibt es eine Exception
-    * @param art ist die ArtikelArt
-    */
-    public void validiereArtikelArt(String art) {
-        boolean sollLeertasteErlauben = true;
-
-        if (checkeFuerNurLeertasten(art)) {
-            throw new IllegalArgumentException("Artikelart darf nicht leer sein");
-        }
-
-        if (checkeFuerSpezielleCharaktere(art, sollLeertasteErlauben)) {
-            throw new IllegalArgumentException("Artikelart darf keine speziellen Charakteren außer Leertaste enthalten");
-        }
-    }
-
-    private boolean checkeFuerNurLeertasten(String string) {
-        String stringOhneLeertasten = art.strip();
-
-        boolean istLeer = stringOhneLeertasten.isEmpty();
-
-        return istLeer;
-    }
-
-    private boolean checkeFuerSpezielleCharaktere(String string, boolean sollLeertasteErlauben) {
-        String regex;
-
-        if (sollLeertasteErlauben) {
-            regex = "[\b([äöüÄÖÜßa-zA-Z\\s]+)\b";
-        } else {
-            regex = "[\b([äöüÄÖÜßa-zA-Z]+)\b";
-        }
-        
-        boolean istName = string.matches(regex);
-
-        return istName;
-    }
-
-    /**
-    * Die Methode prüft ob der Artikelnummer größer als 0 ist, falls nicht gibt es eine Exception
-    * @param artikelNr ist die Artikelnummer
-    */
-    public void validiereArtikelNr(int artikelNr) {
-        if (artikelNr <= 0) {
-            throw new IllegalArgumentException("Ungültige Artikelnummer");
-        }
-    }
-
-    /**
-    * Die Methode prüft ob der Bestand größer als 0 ist, falls nicht gibt es eine Exception
-    * @param bestand ist der Bestand
-    */
-    public void validiereBestand(int bestand) {
-        if (bestand < 0) {
-            throw new IllegalArgumentException("Bestand darf nicht negativ sein");
-        }
     }
 
     /**
@@ -155,7 +73,6 @@ public class Artikel
 
     }
 
-    //Getter
     /**
     * Die Methode gibt die Artikelnummer zurueck
     * @return die Artikelnummer
@@ -183,14 +100,13 @@ public class Artikel
         return this.bestand;
     }
 
-    //Setter
     /**
     * Die Methode setzt die Artikelart neu
     * @param neue Artikelart
     */
     public void setArt(String art)
     {
-        validiereArtikelArt(art);
+        Validierung.validiereArtikelArt(art);
         
         this.art = art;
     }
