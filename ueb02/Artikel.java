@@ -67,9 +67,9 @@ public class Artikel
     * Die Methode prüft ob die Menge fürs Buchen positiv ist, falls nicht gibt es eine Exception
     * @param menge ist die Menge 
     */
-    public void validiereMenge(int menge){
-        if(menge < 0){
-            throw new IllegalArgumentException("Die Menge muss positiv sein");
+    public void validiereMenge(int menge) {
+        if (menge <= 0) {
+            throw new IllegalArgumentException("Die Menge muss eine natürliche positive Zahl sein");
         }
     }
 
@@ -77,10 +77,10 @@ public class Artikel
     * Die Methode prüft, ob die Menge positiv und kleiner als der Bestand ist, falls nicht gibt es eine Exception
     * @param menge ist die Menge 
     */
-    public void validiereAbgangsMenge(int menge){
+    public void validiereAbgangsMenge(int menge) {
         validiereMenge(menge);
         
-        if(bestand<menge){
+        if (this.bestand < menge) {
             throw new IllegalArgumentException("Die abgebuchte Menge darf nicht groesser als der Bestand sein");
         }
     }
@@ -89,10 +89,10 @@ public class Artikel
     * Die Methode prüft ob die Artikelart nicht leer ist, falls doch gibt es eine Exception
     * @param art ist die ArtikelArt
     */
-    public void validiereArtikelArt(String art){
+    public void validiereArtikelArt(String art) {
         boolean sollLeertasteErlauben = true;
 
-        if (checkeFuerNurLeertasten(art)){
+        if (checkeFuerNurLeertasten(art)) {
             throw new IllegalArgumentException("Artikelart darf nicht leer sein");
         }
 
@@ -127,8 +127,8 @@ public class Artikel
     * Die Methode prüft ob der Artikelnummer größer als 0 ist, falls nicht gibt es eine Exception
     * @param artikelNr ist die Artikelnummer
     */
-    public void validiereArtikelNr(int artikelNr){
-        if(artikelNr <= 0){
+    public void validiereArtikelNr(int artikelNr) {
+        if (artikelNr <= 0) {
             throw new IllegalArgumentException("Ungültige Artikelnummer");
         }
     }
@@ -137,8 +137,8 @@ public class Artikel
     * Die Methode prüft ob der Bestand größer als 0 ist, falls nicht gibt es eine Exception
     * @param bestand ist der Bestand
     */
-    public void validiereBestand(int bestand){
-        if(bestand < 0){
+    public void validiereBestand(int bestand) {
+        if (bestand < 0) {
             throw new IllegalArgumentException("Bestand darf nicht negativ sein");
         }
     }
@@ -149,9 +149,9 @@ public class Artikel
     */
     public String toString()
     {
-        return   "ArtikeNr: "+ artikelNr +
-                "\nArt: " + art +
-                "\nBestand: "+bestand;
+        return  "ArtikeNr: "    + artikelNr     + "\n" +
+                "Art: "         + art           + "\n" +
+                "Bestand: "     + bestand;
 
     }
 
@@ -162,7 +162,7 @@ public class Artikel
     */
     public int getArtikelNr()
     {
-        return artikelNr;
+        return this.artikelNr;
     }
 
     /**
@@ -171,7 +171,7 @@ public class Artikel
     */
     public String getArt()
     {
-        return art;
+        return this.art;
     }
 
     /**
@@ -180,7 +180,7 @@ public class Artikel
     */
     public int getBestand()
     {
-        return bestand;
+        return this.bestand;
     }
 
     //Setter
