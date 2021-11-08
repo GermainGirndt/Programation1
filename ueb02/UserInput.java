@@ -13,6 +13,7 @@ public class UserInput {
     public int getInt(String message) {
         System.out.print(message);
         int integer = input.nextInt();
+        input.nextLine();
         return integer;
     }
 
@@ -24,6 +25,10 @@ public class UserInput {
         System.out.print(message);
         String string = input.nextLine();
         return string;
+    }
+
+    public void next() {
+        input.next();
     }
     
 }

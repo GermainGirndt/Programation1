@@ -10,7 +10,7 @@ import java.util.InputMismatchException;
 public class ArtikelDialog
 {
     private              Artikel        artikel;
-    private              UserInput        userInput;
+    private              UserInput      userInput;
     private              int            funktion;
     
     private static final int            FUNKTION_ANLEGEN_MIT_BESTAND    = 1;
@@ -49,10 +49,13 @@ public class ArtikelDialog
             try {
                 einlesenFunktion();
                 ausfuehrenFunktion();
-
-            } catch(IllegalArgumentException | InputMismatchException error) {
+                
+            } catch(IllegalArgumentException error) {
                 System.out.println(error);
-                userInput.nextLine(); // warum?
+
+            } catch(InputMismatchException error) {
+                System.out.println(error);
+                userInput.next();
 
             } catch(Exception error) {
                 System.out.println(error);
@@ -69,17 +72,19 @@ public class ArtikelDialog
     public void einlesenFunktion() {
         
         System.out.print(
+            "\n\n" +
             FUNKTION_ANLEGEN_MIT_BESTAND    + ": Artikel mit Bestand anlegen;\n"  + 
             FUNKTION_ANLEGEN_OHNE_BESTAND   + ": Artikel ohne Bestand anlegen;\n" + 
             FUNKTION_BESTAND_ZUBUCHEN       + ": Menge zum Bestand dazubuchen;\n" +
             FUNKTION_BESTAND_ABBUCHEN       + ": Menge vom Bestand abbuchen;\n"   + 
             FUNKTION_ARTIKELART_AENDERN     + ": Artikelart aendern;\n"           +
             FUNKTION_ARTIKEL_AUSGEBEN       + ": Artikel ausgeben;\n"             + 
-            FUNKTION_ENDE                   + ": beenden -> "
+            FUNKTION_ENDE                   + ": beenden -> \n\n"
         );
+
         
-        this.funktion = userInput.getInt("");
-        userInput.nextLine();
+        this.funktion = userInput.getInt("Ausgewählte Funktion: ");
+        System.out.println();
     }
     
     /**
@@ -133,8 +138,13 @@ public class ArtikelDialog
             
         } else {
             int artikelNr = userInput.getInt("Artikelnummer: ");
+            Validierung.validiereArtikelNr(artikelNr);
+
             String art = userInput.getString("Artikelart: ");
+            Validierung.validiereArtikelArt(art);
+
             int bestand = beabeiteBestand(sollNachBestandFragen);
+            Validierung.validiereBestand(bestand);
 
             artikel = new Artikel(artikelNr , art , bestand);
         }
