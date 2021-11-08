@@ -75,10 +75,10 @@ public class ArtikelDialog
             FUNKTION_BESTAND_ABBUCHEN       + ": Menge vom Bestand abbuchen;\n"   + 
             FUNKTION_ARTIKELART_AENDERN     + ": Artikelart aendern;\n"           +
             FUNKTION_ARTIKEL_AUSGEBEN       + ": Artikel ausgeben;\n"             + 
-            FUNKTION_ENDE                   + ": beenden -> "
+            FUNKTION_ENDE                   + ": beenden -> \n"
         );
         
-        this.funktion = userInput.getInt("");
+        this.funktion = userInput.getInt("Ausgewählte Funktion: ");
         userInput.nextLine();
     }
     

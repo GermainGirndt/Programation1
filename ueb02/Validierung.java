@@ -51,9 +51,9 @@ public class Validierung {
         String regex;
 
         if (sollLeertasteErlauben) {
-            regex = "[\b([äöüÄÖÜßa-zA-Z\\s]+)\b";
+            regex = "[\b([äöüÄÖÜßa-zA-Z\\s]+)\b]";
         } else {
-            regex = "[\b([äöüÄÖÜßa-zA-Z]+)\b";
+            regex = "[\b([äöüÄÖÜßa-zA-Z]+)\b]";
         }
         
         boolean istName = string.matches(regex);
