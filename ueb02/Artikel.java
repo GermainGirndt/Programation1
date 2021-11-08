@@ -48,7 +48,7 @@ public void bucheZugang(int menge)
 {
     validiereMenge(menge);
     
-    bestand += menge;
+    this.bestand += menge;
 }
 
 /**
@@ -59,7 +59,7 @@ public void bucheAbgang(int menge)
 {
     validiereAbgangsMenge(menge);
     
-    bestand -= menge;
+    this.bestand -= menge;
 }
 
 /**
@@ -67,7 +67,7 @@ public void bucheAbgang(int menge)
 * @param menge ist die Menge 
 */
 public void validiereMenge(int menge){
-    if(menge<0){
+    if(menge < 0){
         throw new IllegalArgumentException("Die Menge muss positiv sein");
     }
 }
@@ -99,7 +99,7 @@ public void validiereArtikelArt(String art){
 * @param artikelNr ist die Artikelnummer
 */
 public void validiereArtikelNr(int artikelNr){
-    if(artikelNr<=0){
+    if(artikelNr <= 0){
         throw new IllegalArgumentException("Ungültige Artikelnummer");
     }
 }
@@ -109,7 +109,7 @@ public void validiereArtikelNr(int artikelNr){
 * @param bestand ist der Bestand
 */
 public void validiereBestand(int bestand){
-    if(bestand<0){
+    if(bestand < 0){
         throw new IllegalArgumentException("Bestand darf nicht negativ sein");
     }
 }
@@ -120,9 +120,9 @@ public void validiereBestand(int bestand){
 */
 public String toString()
 {
-    return   "ArtikeNr: "+artikelNr
-             +"\nArt: " + art
-             + "\nBestand: "+bestand;
+    return   "ArtikeNr: "+ artikelNr +
+             "\nArt: " + art +
+             "\nBestand: "+bestand;
 
 }
 
