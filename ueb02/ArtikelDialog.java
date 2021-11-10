@@ -23,6 +23,8 @@ public class ArtikelDialog
 
     private static final int            BESTAND_AKTION_ABBUCHEN         = 0;
     private static final int            BESTAND_AKTION_ZUBUCHEN         = 1;
+
+    private static final int            STANDARD_BESTAND                = 0;
     
     
     /**
@@ -51,14 +53,14 @@ public class ArtikelDialog
                 ausfuehrenFunktion();
                 
             } catch(IllegalArgumentException error) {
-                System.out.println(error);
+                System.err.println(error);
 
             } catch(InputMismatchException error) {
-                System.out.println(error);
+                System.err.println(error);
                 userInput.next();
 
             } catch(Exception error) {
-                System.out.println(error);
+                System.err.println(error);
                 error.printStackTrace(System.out); 
 
             }
@@ -162,7 +164,7 @@ public class ArtikelDialog
         if (sollNachBestandFragen) {
             bestand = this.userInput.getInt("Bestand: ");
         } else {
-            bestand = 0;
+            bestand = STANDARD_BESTAND;
         }
 
         return bestand;

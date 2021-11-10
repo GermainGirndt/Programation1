@@ -1,30 +1,41 @@
  
 
+/**
+* Die Klasse Validierung ist eine Werkzeugklasse für die Artikel- und ArtikelDialogklassen
+*
+* @author Girndt & Krier
+* @version 1.0
+*/
 public class Validierung {
-        /**
-    * Die Methode prüft ob die Menge fürs Buchen positiv ist, falls nicht gibt es eine Exception
+
+    private static final int ARTIKELMINDESTNUMMER = 1;
+    private static final int BESTANDMINDESTNUMMER = 0;
+    private static final int MINDESTMENGEANDERUNGSANZAHL = 0;
+
+    /**
+    * Die Methode prüft ob die Menge fürs Buchen positiv ist, falls nicht, wirft sie eine Exception
     * @param menge ist die Menge 
     */
-    public static void validiereMenge(int menge) {
-        if (menge <= 0) {
+    public static void validiereMengeanderung(int mengeArtikelaenderung) {
+        if (mengeArtikelaenderung <= MINDESTMENGEANDERUNGSANZAHL) {
             throw new IllegalArgumentException("Die Menge muss eine natürliche positive Zahl sein");
         }
     }
 
     /**
-    * Die Methode prüft, ob die Menge positiv und kleiner als der Bestand ist, falls nicht gibt es eine Exception
-    * @param menge ist die Menge 
+    * Die Methode prüft, ob die Menge positiv und kleiner als der Bestand ist, falls nicht wirft sie eine Exception
+    * @param mengeArtikelabgang ist die Menge 
     */
-    public static void validiereAbgangsMenge(int bestand, int menge) {
-        validiereMenge(menge);
+    public static void validiereAbgangsMenge(int bestand, int mengeArtikelabgang) {
+        validiereMengeanderung(mengeArtikelabgang);
         
-        if (bestand < menge) {
+        if (bestand < mengeArtikelabgang) {
             throw new IllegalArgumentException("Die abgebuchte Menge darf nicht groesser als der Bestand sein");
         }
     }
 
     /**
-    * Die Methode prüft ob die Artikelart nicht leer ist, falls doch gibt es eine Exception
+    * Die Methode prüft ob die Artikelart nicht leer ist, falls doch wirft sie eine Exception
     * @param art ist die ArtikelArt
     */
     public static void validiereArtikelArt(String art) {
@@ -34,11 +45,16 @@ public class Validierung {
             throw new IllegalArgumentException("Artikelart darf nicht leer sein");
         }
 
-        if (checkeFuerSpezielleCharaktere(art, sollLeertasteErlauben)) {
+        if (!checkeFuerNurAlphabetischeCharaktere(art, sollLeertasteErlauben)) {
             throw new IllegalArgumentException("Artikelart darf keine speziellen Charakteren außer Leertaste enthalten");
         }
     }
 
+    /**
+    * Die Methode prüft ob der String ist Leer oder ob der nur Leertasten enthält
+    * @param string ist der zu überprüfende String
+    * @return ist das Ergebnis: true (enthält nur Leertasten/nichts) oder false (enthält auch andere Charaktere)
+    */
     private static boolean checkeFuerNurLeertasten(String string) {
         String stringOhneLeertasten = string.strip();
 
@@ -47,7 +63,13 @@ public class Validierung {
         return istLeer;
     }
 
-    private static boolean checkeFuerSpezielleCharaktere(String string, boolean sollLeertasteErlauben) {
+    /**
+    * Die Methode prüft ob der eingegebene String nur alphabestische Zeichen enthält
+    * @param string ist der zu überprüfende String
+    * @param sollLeertasteErlauben steuert, ob Leertasten auch erlaubt werden sollen
+    * @return ist das Ergebnis: true (nur alphabestische Zeichen) oder false (enthält auch andere Charaktere)
+    */
+    private static boolean checkeFuerNurAlphabetischeCharaktere(String string, boolean sollLeertasteErlauben) {
 
         if (sollLeertasteErlauben) {
             string = string.replaceAll("\\s+","");
@@ -55,9 +77,9 @@ public class Validierung {
 
         String regex = "^[a-zA-ZäöüÄÖÜßa]+$";
         
-        boolean hasSpezielleCharaktere = !string.matches(regex);
+        boolean hatNurAlphabetischeCharaktere = string.matches(regex);
 
-        return hasSpezielleCharaktere;
+        return hatNurAlphabetischeCharaktere;
     }
 
     /**
@@ -65,7 +87,7 @@ public class Validierung {
     * @param artikelNr ist die Artikelnummer
     */
     public static void validiereArtikelNr(int artikelNr) {
-        if (artikelNr <= 0) {
+        if (artikelNr < ARTIKELMINDESTNUMMER) {
             throw new IllegalArgumentException("Ungültige Artikelnummer");
         }
     }
@@ -75,7 +97,7 @@ public class Validierung {
     * @param bestand ist der Bestand
     */
     public static void validiereBestand(int bestand) {
-        if (bestand < 0) {
+        if (bestand < BESTANDMINDESTNUMMER) {
             throw new IllegalArgumentException("Bestand darf nicht negativ sein");
         }
     }
