@@ -13,18 +13,19 @@ public class ArtikelDialog
     private              UserInput      userInput;
     private              int            funktion;
     
-    private static final int            FUNKTION_ANLEGEN_MIT_BESTAND    = 1;
-    private static final int            FUNKTION_ANLEGEN_OHNE_BESTAND   = 2;
-    private static final int            FUNKTION_BESTAND_ZUBUCHEN       = 3;
-    private static final int            FUNKTION_BESTAND_ABBUCHEN       = 4;
-    private static final int            FUNKTION_ARTIKELART_AENDERN     = 5;
-    private static final int            FUNKTION_ARTIKEL_AUSGEBEN       = 6;
-    private static final int            FUNKTION_ENDE                   = 0;
+    private static final int            FUNKTION_NICHT_DEFINIERT       = -1;
+    private static final int            FUNKTION_ENDE                  =  0;
+    private static final int            FUNKTION_ANLEGEN_MIT_BESTAND   =  1;
+    private static final int            FUNKTION_ANLEGEN_OHNE_BESTAND  =  2;
+    private static final int            FUNKTION_BESTAND_ZUBUCHEN      =  3;
+    private static final int            FUNKTION_BESTAND_ABBUCHEN      =  4;
+    private static final int            FUNKTION_ARTIKELART_AENDERN    =  5;
+    private static final int            FUNKTION_ARTIKEL_AUSGEBEN      =  6;
 
-    private static final int            BESTAND_AKTION_ABBUCHEN         = 0;
-    private static final int            BESTAND_AKTION_ZUBUCHEN         = 1;
+    private static final int            BESTAND_AKTION_ABBUCHEN        =  0;
+    private static final int            BESTAND_AKTION_ZUBUCHEN        =  1;
 
-    private static final int            STANDARD_BESTAND                = 0;
+    private static final int            STANDARD_BESTAND               =  0;
     
     
     /**
@@ -45,7 +46,7 @@ public class ArtikelDialog
     */
     public void start() {
         this.artikel         = null;
-        this.funktion        = -1;
+        this.funktion        = FUNKTION_NICHT_DEFINIERT;
         
         while(this.funktion != FUNKTION_ENDE) {
             try {
@@ -83,7 +84,6 @@ public class ArtikelDialog
             FUNKTION_ARTIKEL_AUSGEBEN       + ": Artikel ausgeben;\n"             + 
             FUNKTION_ENDE                   + ": beenden -> \n\n"
         );
-
         
         this.funktion = userInput.getInt("Ausgewählte Funktion: ");
         System.out.println();
