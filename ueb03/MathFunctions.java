@@ -15,15 +15,8 @@ public class MathFunctions
        long teiler        = KLEINSTER_TEILER;
        long spiegelteiler = zahl;
        long haelfteZahl;
-       ArrayList<Long> vorgekommeneSpiegelteiler;
-       if(zahl % 2 == 0){
-           haelfteZahl = zahl / 2;    
-           vorgekommeneSpiegelteiler = new ArrayList<Long>();
-       }
-       else{
-           haelfteZahl = (zahl + 1) / 2;
-           vorgekommeneSpiegelteiler = new ArrayList<Long>();
-       }
+       ArrayList<Long> vorgekommeneSpiegelteiler  = new ArrayList<Long>();
+       
        
       while(!pruefeObInLIiste(vorgekommeneSpiegelteiler , teiler)){
            if(zahl % teiler == 0){
