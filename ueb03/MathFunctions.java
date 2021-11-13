@@ -34,11 +34,8 @@ public class MathFunctions
        for(int i = START_WERT_ISBN; i > END_WERT_ISBN; i--)
        {
            pruefziffer = pruefziffer + i * (isbn % BASIS);  
-           System.out.println(i);
-           System.out.println(isbn);
            isbn         = isbn / BASIS;
        }
-       System.out.println(pruefziffer);
        pruefziffer = pruefziffer % END_MODULO_ISBN;
        return "" +pruefziffer;
    }
