@@ -64,10 +64,10 @@ public class MathFunctions
        double halbesP          = p/2;
        double halbesPimQuadrat = Math.pow(halbesP , SQUARE);
        
-       if(halbesPimQuadrat < 0){
+       if(halbesPimQuadrat - q < 0){
            return "Komplexe Nullstellen";
        }
-       else if(halbesPimQuadrat == 0){
+       else if(halbesPimQuadrat - q == 0){
            x1 = -1 * halbesP;
            return "Doppelte Nullstelle: " + x1;
        }
