@@ -44,8 +44,10 @@ public class MathFunctions
 
    /**
    * Die Methode berechnet die Checksumme einer ISBN
-   * @param  isbn ist die ISBN deren Checksumme berechnet werden soll
+   * @param  isbn ist die 9-stellige ISBN deren Checksumme berechnet werden soll
    * @return checksumme ist das Ergebnis der Checksumme
+   * 
+   * Nicht belegte Stellen werden als null interpretiert (zB. 1 = 000000001) 
    */
    public static String berechneChecksummeIsbn(long isbn){
        long checksumme = START_WERT_SUMME;

@@ -6,7 +6,7 @@
  */
 
 public class Validierung {
-    private static final byte  KLEINSTE_ISBN  = 111;
+    private static final byte  KLEINSTE_ISBN  = 0;
     private static final long  GROESSTE_ISBN   = 999999999;
 
     /**
