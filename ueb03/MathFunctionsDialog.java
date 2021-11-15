@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.InputMismatchException;
 
 /**
@@ -81,8 +80,6 @@ public class MathFunctionsDialog
     * @param funktion die ausgeführt werden soll
     */
     public void ausfuehrenFunktion() {
-        boolean sollNachBestandFragen;
-
         switch(this.funktion) {
             case BERECHNE_TEILER_SUMME :
                 berechneTeilersumme();
