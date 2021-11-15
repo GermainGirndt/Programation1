@@ -66,7 +66,7 @@ public class MathFunctionsDialog
             "\n\n" +
             BERECHNE_TEILER_SUMME      + ": Berechne die Teilersumme einer Zahl;\n"  + 
             BERECHNE_CHECKSUMME_ISBN   + ": Berechne die Checksumme einer ISBN-Nummer;\n" + 
-            BERECHNE_NULLSTELLEN       + ": Berchne die Nullstellen einer quadratischen funktion;\n" +
+            BERECHNE_NULLSTELLEN       + ": Berechne die Nullstellen einer quadratischen funktion;\n" +
             FUNKTION_ENDE              + ": beenden -> \n\n"
         );
 
@@ -94,8 +94,7 @@ public class MathFunctionsDialog
                 System.out.println("Das Programm ist zu Ende");
                 break;
             default:
-                System.out.println("Keine gueltige Eingabe");
-                break;
+                throw new InputMismatchException("Keine gueltige Eingabe");
         }
     }
 
@@ -113,7 +112,7 @@ public class MathFunctionsDialog
     */    
     public void berechneChecksummeIsbn(){
             long isbn = userInput.getLong("ISBN: ");
-            System.out.println("Pruefziffer: " + MathFunctions.berechneChecksummeIsbn(isbn));
+            System.out.println("Checksumme: " + MathFunctions.berechneChecksummeIsbn(isbn));
     }
     
     /**

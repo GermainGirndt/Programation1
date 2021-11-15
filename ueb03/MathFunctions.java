@@ -18,8 +18,8 @@ public class MathFunctions
    private static final int  ISBN_END_STELLE_WERT                        = 0;
    
    
-   private static final int  ISBN_SPEZIELLER_PRUEFZIFFER                 = 10;
-   private static final String  ISBN_ZEICHEN_FUER_SPEZIELLER_ZIFFER      = "X";
+   private static final int  ISBN_SPEZIELLE_CHECKSUMME                  = 10;
+   private static final String  ISBN_ZEICHEN_FUER_SPEZIELLE_CHECKSUMME  = "X";
 
    private static final int  BASIS                                       = 10; //Besserer Name überlegen
    private static final int  END_MODULO_ISBN                             = 11;
@@ -45,23 +45,23 @@ public class MathFunctions
    /**
    * Die Methode berechnet die Checksumme einer ISBN
    * @param  isbn ist die ISBN deren Checksumme berechnet werden soll
-   * @return pruefziffer ist das Ergebnis der Checksumme
+   * @return checksumme ist das Ergebnis der Checksumme
    */
    public static String berechneChecksummeIsbn(long isbn){
-       long pruefziffer = START_WERT_SUMME;
+       long checksumme = START_WERT_SUMME;
        Validierung.validiereIsbn(isbn);
 
        for(int i = ISBN_START_STELLE; i > ISBN_END_STELLE_WERT; i--) {
-           pruefziffer +=  i * (isbn % BASIS);  
+           checksumme +=  i * (isbn % BASIS);  
            isbn         /=  BASIS;
        }
-       pruefziffer = pruefziffer % END_MODULO_ISBN;
+       checksumme = checksumme % END_MODULO_ISBN;
 
-       if (pruefziffer == ISBN_SPEZIELLER_PRUEFZIFFER) {
-           return ISBN_ZEICHEN_FUER_SPEZIELLER_ZIFFER;
+       if (checksumme == ISBN_SPEZIELLE_CHECKSUMME) {
+           return ISBN_ZEICHEN_FUER_SPEZIELLE_CHECKSUMME;
        }
 
-       return String.valueOf(pruefziffer);
+       return String.valueOf(checksumme);
    }
    
    /**
