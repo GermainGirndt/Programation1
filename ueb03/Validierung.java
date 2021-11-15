@@ -31,10 +31,10 @@ public class Validierung {
     */    
     public static void validiereIsbn(long isbn){
         if(isbn < KLEINSTE_ISBN ){
-             throw new IllegalArgumentException("Die ISBN kann nicht negativ sein");      
+             throw new IllegalArgumentException("Die ISBN darf nicht negativ sein");      
         }
         else if(isbn > GROESSTE_ISBN) {
-             throw new IllegalArgumentException("Die ISBN dessen Pruefsumme berechnet werden soll muss 9 Ziffern haben");               
+             throw new IllegalArgumentException("Die ISBN, deren Checksumme berechnet werden soll, muss 9 Ziffern haben");               
         }
     }
 
