@@ -8,54 +8,69 @@ import java.lang.Math;
  */
 public class MathFunctions
 {
-   private static final long KLEINSTER_TEILER = 1;
-   private static final long START_WERT_SUMME = 0;
+   private static final long KLEINSTER_TEILER                            = 1;
+   private static final long START_WERT_SUMME                            = 0;
    
-   private static final int  OHNEREST         = 0;
-   private static final int  END_WERT_ISBN    = 0;
-   private static final int  SQUARE           = 2;
-   private static final int  START_WERT_ISBN  = 9;
-   private static final int  BASIS            = 10; //Besserer Name überlegen
-   private static final int  END_MODULO_ISBN  = 11;
+   private static final int  OHNEREST                                    = 0;
+   private static final int  SQUARE                                      = 2;
+
+   private static final int  ISBN_START_STELLE                           = 9;
+   private static final int  ISBN_END_STELLE_WERT                        = 0;
    
-   private static final double INITIALWERT    = 0;
+   
+   private static final int  ISBN_SPEZIELLE_CHECKSUMME                  = 10;
+   private static final String  ISBN_ZEICHEN_FUER_SPEZIELLE_CHECKSUMME  = "X";
+
+   private static final int  BASIS                                       = 10; //Besserer Name überlegen
+   private static final int  END_MODULO_ISBN                             = 11;
+   
+   private static final double INITIALWERT                               = 0;
    
    /**
    * Die Methode berechnet die Teilersumme einer natuerlichen Zahl
    * @param  zahl die Zahl dessen Teilersumme berechnet wird
    * @return teilersumme ist die Teilersumme der Zahl
    */
-   static public long berechneTeilersumme (long zahl){
+  public static long berechneTeilersumme (long zahl){
        long teilersumme   = START_WERT_SUMME;
        Validierung.validiereZahlTeilersumme(zahl);
        for(long teiler = KLEINSTER_TEILER; teiler <= zahl ;teiler++)
            if(zahl % teiler == OHNEREST){
                teilersumme    += teiler;       
            }
+
        return teilersumme;
    }
 
    /**
    * Die Methode berechnet die Checksumme einer ISBN
-   * @param  isbn ist die ISBN deren Checksumme berechnet werden soll
-   * @return pruefziffer ist das Ergebnis der Checksumme
+   * @param  isbn ist die 9-stellige ISBN deren Checksumme berechnet werden soll
+   * @return checksumme ist das Ergebnis der Checksumme
+   * 
+   * Nicht belegte Stellen werden als null interpretiert (zB. 1 = 000000001) 
    */
-   static String berechneChecksummeIsbn(long isbn){
-       long pruefziffer = START_WERT_SUMME;
+   public static String berechneChecksummeIsbn(long isbn){
+       long checksumme = START_WERT_SUMME;
        Validierung.validiereIsbn(isbn);
-       for(int i = START_WERT_ISBN; i > END_WERT_ISBN; i--)
-       {
-           pruefziffer = pruefziffer + i * (isbn % BASIS);  
-           isbn         = isbn / BASIS;
+
+       for(int i = ISBN_START_STELLE; i > ISBN_END_STELLE_WERT; i--) {
+           checksumme +=  i * (isbn % BASIS);  
+           isbn         /=  BASIS;
        }
-       pruefziffer = pruefziffer % END_MODULO_ISBN;
-       return "" +pruefziffer;
+       checksumme = checksumme % END_MODULO_ISBN;
+
+       if (checksumme == ISBN_SPEZIELLE_CHECKSUMME) {
+           return ISBN_ZEICHEN_FUER_SPEZIELLE_CHECKSUMME;
+       }
+
+       return String.valueOf(checksumme);
    }
    
    /**
    * Die Methode berechnet Nullstellen einer quadratischen Funktion in der Form 
    * 
-   * @param p und q in dem Term a^2 + p * x + q
+   * @param p ist die Summe zweier Nullstellen (zB. in dem Term a^2 + p * x + q)
+   * @param q in das Produkt zweier Nullstellen (zB. in dem Term a^2 + p * x + q)
    * @return Die Art der Nullstellen und die Werte der Nullstellen
    */
    static String berechneNullstellen (double p, double q){
