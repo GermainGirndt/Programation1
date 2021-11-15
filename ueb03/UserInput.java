@@ -1,10 +1,20 @@
 
 import java.util.Scanner;
 
+/**
+ * Die Klasse UserInput enthaelt Methoden zum Einlesen von Zahlen und Zeichenketten
+ * 
+ * @author Girndt & Krier
+ * @version 1.0
+ */
+
 public class UserInput {
 
     private Scanner input;
     
+    /**
+    * Konstruktor
+    */
     public UserInput() {
         input = new Scanner(System.in);
     }
@@ -30,9 +40,6 @@ public class UserInput {
         return doublenumber;
     }
 
-    public void nextLine() {
-        input.nextLine();
-    }
 
     public String getString(String message) {
         System.out.print(message);
@@ -44,4 +51,7 @@ public class UserInput {
         input.next();
     }
     
+    public void nextLine() {
+        input.nextLine();
+    }
 }

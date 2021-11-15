@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 /**
- * Die Klasse ArtikelDialog ist eine Dialogklasse zum Testen der Klasse Artikel
+ * Die Klasse MathFunctionsDialog ist eine Dialogklasse zum Testen der Klasse MathFunctions
  * 
  * @author Girndt & Krier 
  * @version 1.0
@@ -18,7 +18,7 @@ public class MathFunctionsDialog
     private static final int            FUNKTION_ENDE              = 0;
     
     
-     /**
+    /**
     * Konstruktor
     */
     public MathFunctionsDialog() {
@@ -32,7 +32,7 @@ public class MathFunctionsDialog
     }
 
     /**
-    * Hauptschleife der Artikeldialog Klasse
+    * Hauptschleife der MathFunctionsDialog Klasse
     */
     public void start() {
         this.funktion        = -1;
@@ -43,14 +43,14 @@ public class MathFunctionsDialog
                 ausfuehrenFunktion();
                 
             } catch(IllegalArgumentException error) {
-                System.out.println(error);
+                System.err.println(error);
 
             } catch(InputMismatchException error) {
-                System.out.println(error);
+                System.err.println(error);
                 userInput.next();
 
             } catch(Exception error) {
-                System.out.println(error);
+                System.err.println(error);
                 error.printStackTrace(System.out); 
 
             }
@@ -103,7 +103,7 @@ public class MathFunctionsDialog
     }
 
     /**
-    * Legt einen Artikel mit Bestand an und erfragt alle nötigen Parameter
+    *  Erfragt eine Zahl und bildet dann deren Teilersumme
     */
     public void berechneTeilersumme() {
         
@@ -111,12 +111,17 @@ public class MathFunctionsDialog
             System.out.println("Teilersumme: " + MathFunctions.berechneTeilersumme(zahl));
         }
     
-
+    /**
+    *  Erfragt eine ISBN und bildet dann die Checksumme
+    */    
     public void berechneChecksummeIsbn(){
             long isbn = userInput.getLong("ISBN: ");
             System.out.println("Pruefziffer: " + MathFunctions.berechneChecksummeIsbn(isbn));
     }
     
+    /**
+    * Berechnet die Nullstellen einer quadratischen Funktion in der Form x^2 + p*x + q
+    */
        public void berechneNullstellen(){
             double p = userInput.getDouble("p: ");
             double q = userInput.getDouble("q: ");

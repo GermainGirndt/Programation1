@@ -1,9 +1,10 @@
 import java.lang.Math;
 /**
- * Beschreiben Sie hier die Klasse MathFunctions.
+ * Die Klasse MathFunctions enthaelt verschiedene Methoden zu Teilersummenberechnung, 
+ * ISBN-Pruefsummenberechnung und zur berechnung von Nullstellen einer quadratischen Funktion
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt & Krier
+ * @version 1.0
  */
 public class MathFunctions
 {
@@ -19,9 +20,14 @@ public class MathFunctions
    
    private static final double INITIALWERT    = 0;
    
+   /**
+   * Die Methode berechnet die Teilersumme einer natuerlichen Zahl
+   * @param  zahl die Zahl dessen Teilersumme berechnet wird
+   * @return teilersumme ist die Teilersumme der Zahl
+   */
    static public long berechneTeilersumme (long zahl){
        long teilersumme   = START_WERT_SUMME;
-      
+       Validierung.validiereZahlTeilersumme(zahl);
        for(long teiler = KLEINSTER_TEILER; teiler <= zahl ;teiler++)
            if(zahl % teiler == OHNEREST){
                teilersumme    += teiler;       
@@ -29,8 +35,14 @@ public class MathFunctions
        return teilersumme;
    }
 
+   /**
+   * Die Methode berechnet die Checksumme einer ISBN
+   * @param  isbn ist die ISBN deren Checksumme berechnet werden soll
+   * @return pruefziffer ist das Ergebnis der Checksumme
+   */
    static String berechneChecksummeIsbn(long isbn){
        long pruefziffer = START_WERT_SUMME;
+       Validierung.validiereIsbn(isbn);
        for(int i = START_WERT_ISBN; i > END_WERT_ISBN; i--)
        {
            pruefziffer = pruefziffer + i * (isbn % BASIS);  
@@ -40,6 +52,12 @@ public class MathFunctions
        return "" +pruefziffer;
    }
    
+   /**
+   * Die Methode berechnet Nullstellen einer quadratischen Funktion in der Form 
+   * 
+   * @param p und q in dem Term a^2 + p * x + q
+   * @return Die Art der Nullstellen und die Werte der Nullstellen
+   */
    static String berechneNullstellen (double p, double q){
        double x1               = INITIALWERT;
        double x2               = INITIALWERT;
