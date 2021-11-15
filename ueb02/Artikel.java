@@ -4,13 +4,15 @@ import java.util.regex.Pattern;
 * Die Klasse Artikel ist für eine einfache Bestandsprüfung
 *
 * @author Girndt & Krier
-* @version 1.1
+* @version 1.2
 */
 public class Artikel
 {
-    private int     artikelNr;
-    private String  art;
-    private int     bestand;
+    private              int        artikelNr;
+    private              String     art;
+    private              int        bestand;
+    
+    private static final int        MINIMUM_BESTAND = 0;
 
     /**
     * Konstruktor für Artikel mit bekannten Bestand
@@ -36,18 +38,18 @@ public class Artikel
     */
     public Artikel(int artikelNr, String art)
     {
-        this(artikelNr, art, 0);
+        this(artikelNr, art, MINIMUM_BESTAND);
     }
 
     /**
     * Die Methode bucht eine übergebene Menge dem Bestand hinzu
-    * @param menge ist die Menge, die dazugebucht wird
+    * @param mengeArtikelzugang ist die Menge neuer Artikel, die dazugebucht wird
     */
-    public void bucheZugang(int menge)
+    public void bucheZugang(int mengeArtikelzugang)
     {
-        Validierung.validiereMenge(menge);
+        Validierung.validiereMengeanderung(mengeArtikelzugang);
         
-        this.bestand += menge;
+        this.bestand += mengeArtikelzugang;
     }
 
     /**
