@@ -6,11 +6,16 @@
 * @author Girndt & Krier
 * @version 1.0
 */
-public class Validierung {
+public final class Validierung {
 
     private static final int ARTIKELMINDESTNUMMER = 1;
     private static final int BESTANDMINDESTNUMMER = 0;
     private static final int MINDESTMENGEANDERUNGSANZAHL = 0;
+
+    /**
+    * Die Werkzeugklasse soll statisch sein bzw. darf nicht instantiert werden
+    */
+    private Validierung() {}
 
     /**
     * Die Methode prüft ob die Menge fürs Buchen positiv ist, falls nicht, wirft sie eine Exception
