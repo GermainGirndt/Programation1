@@ -111,8 +111,9 @@ public class MathFunctionsDialog
     *  Erfragt eine ISBN und bildet dann die Checksumme
     */    
     public void berechneChecksummeIsbn(){
-            long isbn = userInput.getLong("ISBN: ");
-            System.out.println("Checksumme: " + MathFunctions.berechneChecksummeIsbn(isbn));
+            String isbn = userInput.getString("ISBN: ");
+            Validierung.validiereZeichenAnzahl(isbn);
+            System.out.println("Checksumme: " + MathFunctions.berechneChecksummeIsbn(Long.parseLong(isbn)));
     }
     
     /**
