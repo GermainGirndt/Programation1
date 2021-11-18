@@ -86,6 +86,7 @@ public class MathFunctions
        double halbesP          = p/2;
        double halbesPimQuadrat = Math.pow(halbesP , SQUARE);
        
+       
        if(halbesPimQuadrat - q < 0){
            return "Komplexe Nullstellen";
        }
