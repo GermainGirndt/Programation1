@@ -27,6 +27,13 @@ public class MathFunctions
    private static final double INITIALWERT                               = 0;
    
    /**
+    * Verhindert die Instanzialisierung von der Klasse
+    * Wir brauchen keine Instanzen, denn wir haben nur statische bzw. Klassenmethoden
+    */
+   private MathFunctions () {}
+
+
+   /**
    * Die Methode berechnet die Teilersumme einer natuerlichen Zahl
    * @param  zahl die Zahl dessen Teilersumme berechnet wird
    * @return teilersumme ist die Teilersumme der Zahl
@@ -86,7 +93,7 @@ public class MathFunctions
            x1 = -1 * halbesP;
            return "Doppelte Nullstelle: " + x1;
        }
-       else{
+       else {
            x1 = -1 * halbesP + Math.sqrt(halbesPimQuadrat - q);
            x2 = -1 * halbesP - Math.sqrt(halbesPimQuadrat - q);
            return "Zwei Nullstellen: " + x1 + "|" + x2;

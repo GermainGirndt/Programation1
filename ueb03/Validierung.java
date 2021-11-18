@@ -6,8 +6,9 @@
  */
 
 public class Validierung {
-    private static final byte  KLEINSTE_ISBN  = 0;
-    private static final long  GROESSTE_ISBN   = 999999999;
+    private static final byte  KLEINSTE_ISBN        = 0;
+    private static final long  GROESSTE_ISBN        = 999999999;
+    private static final int   ISBN_ZEICHEN_ANZAHL  = 9;
 
     /**
     * Der Konstruktor wurde als "private" geklariert, sodass
@@ -35,7 +36,13 @@ public class Validierung {
         }
         else if(isbn > GROESSTE_ISBN) {
              throw new IllegalArgumentException("Die ISBN, deren Checksumme berechnet werden soll, darf nicht mehr als 9 Ziffern haben");               
+            }
         }
+        
+        public static void validiereZeichenAnzahl(String string) {
+            if (string.length() != ISBN_ZEICHEN_ANZAHL) {
+                throw new IllegalArgumentException(String.format("Die ISBN muss genau %s Ziffern haben", ISBN_ZEICHEN_ANZAHL));
+        } 
     }
 
     private static boolean checkeObNatuerlicheZahl(long zuCheckendeZahl) {
