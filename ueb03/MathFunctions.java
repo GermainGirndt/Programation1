@@ -27,6 +27,13 @@ public class MathFunctions
    private static final double INITIALWERT                               = 0;
    
    /**
+    * Verhindert die Instanzialisierung von der Klasse
+    * Wir brauchen keine Instanzen, denn wir haben nur statische bzw. Klassenmethoden
+    */
+   private MathFunctions () {}
+
+
+   /**
    * Die Methode berechnet die Teilersumme einer natuerlichen Zahl
    * @param  zahl die Zahl dessen Teilersumme berechnet wird
    * @return teilersumme ist die Teilersumme der Zahl
@@ -81,7 +88,6 @@ public class MathFunctions
        double x2               = INITIALWERT;
        double halbesP          = p/2;
        double halbesPimQuadrat = Math.pow(halbesP , SQUARE);
-       System.out.println(2 * Double.MIN_VALUE);
       
        if(halbesPimQuadrat - q < 2 * Double.MIN_VALUE && halbesPimQuadrat - q > - 2 * Double.MIN_VALUE){
            x1 = -1 * halbesP;

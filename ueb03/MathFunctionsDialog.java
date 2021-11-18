@@ -11,10 +11,11 @@ public class MathFunctionsDialog
     private              UserInput      userInput;
     private              int            funktion;
     
+    private static final int            FUNKTION_NICHT_DEFINIERT    = -1;
+    private static final int            FUNKTION_ENDE              = 0;
     private static final int            BERECHNE_TEILER_SUMME      = 1;
     private static final int            BERECHNE_CHECKSUMME_ISBN   = 2;
     private static final int            BERECHNE_NULLSTELLEN       = 3;
-    private static final int            FUNKTION_ENDE              = 0;
     
     
     /**
@@ -26,15 +27,14 @@ public class MathFunctionsDialog
     
     public static void main(String[] args) {
         MathFunctionsDialog mathfunctiondialog = new MathFunctionsDialog();
-        mathfunctiondialog.start();
-        
+        mathfunctiondialog.start();   
     }
 
     /**
     * Hauptschleife der MathFunctionsDialog Klasse
     */
     public void start() {
-        this.funktion        = -1;
+        this.funktion        = FUNKTION_NICHT_DEFINIERT;
         
         while(this.funktion != FUNKTION_ENDE) {
             try {
@@ -111,8 +111,9 @@ public class MathFunctionsDialog
     *  Erfragt eine ISBN und bildet dann die Checksumme
     */    
     public void berechneChecksummeIsbn(){
-            long isbn = userInput.getLong("ISBN: ");
-            System.out.println("Checksumme: " + MathFunctions.berechneChecksummeIsbn(isbn));
+            String isbn = userInput.getString("ISBN: ");
+            Validierung.validiereZeichenAnzahl(isbn);
+            System.out.println("Checksumme: " + MathFunctions.berechneChecksummeIsbn(Long.parseLong(isbn)));
     }
     
     /**
