@@ -21,7 +21,7 @@ public class MathFunctions
    private static final int  ISBN_SPEZIELLE_CHECKSUMME                  = 10;
    private static final String  ISBN_ZEICHEN_FUER_SPEZIELLE_CHECKSUMME  = "X";
 
-   private static final int  BASIS                                       = 10; //Besserer Name überlegen
+   private static final int  BASIS                                       = 10; 
    private static final int  END_MODULO_ISBN                             = 11;
    
    private static final double INITIALWERT                               = 0;
@@ -33,10 +33,13 @@ public class MathFunctions
    */
   public static long berechneTeilersumme (long zahl){
        long teilersumme   = START_WERT_SUMME;
+       long spiegelteiler;
        Validierung.validiereZahlTeilersumme(zahl);
-       for(long teiler = KLEINSTER_TEILER; teiler <= zahl ;teiler++)
+       for(long teiler = KLEINSTER_TEILER; teiler <= Math.sqrt(zahl) ;teiler++)
            if(zahl % teiler == OHNEREST){
-               teilersumme    += teiler;       
+               spiegelteiler   = zahl / teiler;
+               teilersumme    += teiler;    
+               teilersumme    += spiegelteiler;
            }
 
        return teilersumme;
@@ -78,13 +81,14 @@ public class MathFunctions
        double x2               = INITIALWERT;
        double halbesP          = p/2;
        double halbesPimQuadrat = Math.pow(halbesP , SQUARE);
-       
-       if(halbesPimQuadrat - q < 0){
-           return "Komplexe Nullstellen";
-       }
-       else if(halbesPimQuadrat - q == 0){
+       System.out.println(2 * Double.MIN_VALUE);
+      
+       if(halbesPimQuadrat - q < 2 * Double.MIN_VALUE && halbesPimQuadrat - q > - 2 * Double.MIN_VALUE){
            x1 = -1 * halbesP;
            return "Doppelte Nullstelle: " + x1;
+       }
+       else if(halbesPimQuadrat - q < 2 * Double.MIN_VALUE){
+           return "Komplexe Nullstellen";
        }
        else{
            x1 = -1 * halbesP + Math.sqrt(halbesPimQuadrat - q);
