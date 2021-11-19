@@ -115,9 +115,9 @@ public class MathFunctions
         basis4 = 1;
         while(Math.pow(basis3 , 3) < temp){
             temp = temp - Math.pow(basis3 , 3);
-            basis4 = 1;
-            while(Math.pow(basis4, 4) - temp <  10 * Double.MIN_VALUE){ 
-                if(Math.pow(basis4, 4) - temp <  10 * Double.MIN_VALUE && Math.pow(basis4, 4) -temp > -10* Double.MIN_VALUE){
+            while(Math.pow(basis4, 4) - temp <   Double.MIN_VALUE){ 
+                if(Math.pow(basis4, 4) - temp <  Double.MIN_VALUE && Math.pow(basis4, 4) - temp > -  Double.MIN_VALUE){
+                   System.out.println("a: " + basis2 + "b: " +basis3 + "c: " +basis4 + " temp" +temp );
                     return true;
                 }
                 basis4++;
