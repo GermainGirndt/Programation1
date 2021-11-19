@@ -83,7 +83,7 @@ public class MathFunctions
    * @param q in das Produkt zweier Nullstellen (zB. in dem Term a^2 + p * x + q)
    * @return Die Art der Nullstellen und die Werte der Nullstellen
    */
-   static String berechneNullstellen (double p, double q){
+   public static String berechneNullstellen (double p, double q){
        double x1               = INITIALWERT;
        double x2               = INITIALWERT;
        double halbesP          = p/2;
@@ -103,4 +103,30 @@ public class MathFunctions
        }
   
    }
-}
+   
+   public static boolean istSummeVonPotenzen(long zahl){
+    long basis2 = 1;
+    long basis3 = 1;
+    long basis4 = 1;
+    double temp   = zahl;
+    while(Math.pow(basis2 , SQUARE) < zahl){
+        temp = zahl - Math.pow(basis2 , 2);
+        basis3 = 1;
+        basis4 = 1;
+        while(Math.pow(basis3 , 3) < temp){
+            temp = temp - Math.pow(basis3 , 3);
+            basis4 = 1;
+            while(Math.pow(basis4, 4) <= temp +  2 * Double.MIN_VALUE){ 
+                if(Math.pow(basis4, 4) - temp <  2 * Double.MIN_VALUE){
+                    return true;
+                }
+                basis4++;
+            }
+            basis3++;
+        }        
+        basis2++;
+    }
+    
+    return false;
+    }
+}   
