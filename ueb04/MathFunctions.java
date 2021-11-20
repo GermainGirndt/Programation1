@@ -136,8 +136,10 @@ public class MathFunctions
   * @return Die ausgerechnete Reihensumme
   */
   public static double berechneReihensumme(int anzahl, double x){
-   double ergebnis = 0.0;
-   
+    Validierung.validiereIndex(anzahl);
+    
+    double ergebnis = 0.0;
+      
    for (int summenindex = 1; summenindex <= anzahl; summenindex++) {
         double teilergebnis = berechneTeilsumme(summenindex, x);
 
@@ -159,8 +161,8 @@ public class MathFunctions
 private static double berechneTeilsumme(int i, double x) {
     double dividend = Math.pow((x - 1), i);
     double divisor = i * Math.pow(x, i);
-
-    // Validierung.validiereNichtNull(divisor);
+    
+    Validierung.validiereDivisor(divisor);
     
     double ergebnis = dividend / divisor; 
     

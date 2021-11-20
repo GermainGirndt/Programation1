@@ -59,6 +59,29 @@ public class Validierung {
 
         if(!Validierung.checkeObNatuerlicheZahl(zahl, sollNullErlaubtWerden)){
              throw new IllegalArgumentException("Für die Fakultätbildung muss die Zahl natürlich sein. Eingegebene Zahl: " + zahl);      
+            }
+        }
+        
+        
+    /**
+    * Die Methode prueft, ob der Index Element der natürlichen Zahlen ist
+    * Wenn nicht, wird ein Fehler geworfen
+    * @param zuCheckenderIndex ist der Index, der ueberprueft werden soll
+    */    
+    public static void validiereIndex(int zuCheckenderIndex) {
+        if (!Validierung.checkeObNatuerlicheZahl(zuCheckenderIndex)) {
+            throw new IllegalArgumentException("Der Indexzahl muss eine natürliche Zahl sein. Eingegebene Zahl: " + zuCheckenderIndex);      
+        }
+    }
+
+    /**
+    * Die Methode prueft, ob ein Double-Wert ein Divisor sein kann
+    * Wenn nicht, wird ein Fehler geworfen
+    * @param zuCheckenderDouble ist der Double-Wert, der ueberprueft werden soll
+    */    
+    public static void validiereDivisor(double zuCheckenderDouble) {
+        if (zuCheckenderDouble == 0.0) {
+            throw new IllegalArgumentException("Fehler! Man darf nicht durch Null dividieren");      
         }
     }
 

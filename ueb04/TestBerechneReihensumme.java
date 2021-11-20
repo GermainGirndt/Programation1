@@ -145,17 +145,50 @@ public class TestBerechneReihensumme{
         assertEquals(erwartetesErgebnis, MathFunctions.berechneReihensumme(anzahl, x));
     }
 
-    // @Test
-    // void TestWirftFehlerBeiEinUndZwanzig() { 
+    @Test
+    void TestDreiSummenMitDrei() { 
+        double erwartetesErgebnis = 2.0/3.0 + 2.0/9.0 + 8.0/81.0;
 
-    //     int ungueltigerWert = 21; // Ausgabe zu groß
+        int anzahl = 3;
+        double x = 3.0;
+        
+        assertEquals(erwartetesErgebnis, MathFunctions.berechneReihensumme(anzahl, x));
+    }
 
-    //     assertThrows(
-    //         IllegalArgumentException.class,
-    //         () -> MathFunctions.berechneFakultaet(ungueltigerWert),
-    //        "Expected doThing() to throw, but it didn't"
-    //     );
-    // }
+    @Test
+    void TestWirftFehlerBeiUngültigerAnzahlNull() { 
+
+        int ungueltigerAnzahl = 0; // Ausgabe zu groß
+
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> MathFunctions.berechneReihensumme(ungueltigerAnzahl, 1),
+           "Expected doThing() to throw, but it didn't"
+        );
+    }
+
+    @Test
+    void TestWirftFehlerBeiUngültigerAnzahlMinusEins() { 
+
+        int ungueltigerAnzahl = -1; // Ausgabe zu groß
+
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> MathFunctions.berechneReihensumme(ungueltigerAnzahl, 1),
+           "Expected doThing() to throw, but it didn't"
+        );
+    }
+
+    void TestWirftFehlerBeiUngültigemXNull() { 
+
+        int ungueltigesX = 0; // Ausgabe zu groß
+
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> MathFunctions.berechneReihensumme(1, ungueltigesX),
+           "Expected doThing() to throw, but it didn't"
+        );
+    }
 
     @Test
     public void a()
