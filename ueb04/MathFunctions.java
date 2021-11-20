@@ -18,14 +18,16 @@ public class MathFunctions
    private static final int  ISBN_END_STELLE_WERT                        = 0;
    
    
-   private static final int  ISBN_SPEZIELLE_CHECKSUMME                  = 10;
-   private static final String  ISBN_ZEICHEN_FUER_SPEZIELLE_CHECKSUMME  = "X";
+   private static final int  ISBN_SPEZIELLE_CHECKSUMME                   = 10;
+   private static final String  ISBN_ZEICHEN_FUER_SPEZIELLE_CHECKSUMME   = "X";
 
    private static final int  BASIS                                       = 10; 
    private static final int  END_MODULO_ISBN                             = 11;
    
    private static final double INITIALWERT                               = 0;
    
+   private static final int OBERE_GRENZE_LONG                            = 20;
+
    /**
     * Verhindert die Instanzialisierung von der Klasse
     * Wir brauchen keine Instanzen, denn wir haben nur statische bzw. Klassenmethoden
@@ -105,19 +107,17 @@ public class MathFunctions
    }
 
    /**
-   * Die Methode berechneFakultaet(int zahl) berechnet von einer natuerlichen Zahl die Fakultaet.
-   * Die Fakultaet ist definiert als:
-   * zahl! = 1 * 2 * 3 * . . . * zahl
+    * Die Methode berechneFakultaet(int zahl) berechnet von einer natuerlichen Zahl die Fakultaet.
+    * Die Fakultaet ist definiert als:
+    * zahl! = 1 * 2 * 3 * . . . * zahl
    * 
    * @param zahl ist die Zahl, deren Fakultaet zu berechnen ist
    * @return Die ausgerechnete Fakultaet
    */
-  static long berechneFakultaet(int zahl){
+  public static long berechneFakultaet(int zahl){
 
-    Validierung.validiereZahlZurFakultaetberechnung(zahl);
+    Validierung.validiereZahlZurFakultaetberechnung(zahl, OBERE_GRENZE_LONG);
 
-    // todo: validate > 21
-    
     long fakultaet = 1;
     for (long naechsteFakultaet = (long) zahl; naechsteFakultaet >= 2; naechsteFakultaet--) {
         fakultaet *= naechsteFakultaet;
@@ -125,5 +125,53 @@ public class MathFunctions
 
     return fakultaet;
   }
+  
+  /**
+  * Die Methode berechneReihensumme(int anzahl, double x)
+  * berechnet die Reihensumme nach der Funktion
+  *  Sn(anzahl, x) = Σ von i=1 bis n = anzahl von ((x - 1)^i)/i*x^i
+  * 
+  * @param anzahl ist die Anzahl an Reihensummen
+  * @param x ist der Wert von "x" in der Funktion
+  * @return Die ausgerechnete Reihensumme
+  */
+  public static double berechneReihensumme(int anzahl, double x){
+   double ergebnis = 0.0;
+   
+   for (int summenindex = 1; summenindex <= anzahl; summenindex++) {
+        double teilergebnis = berechneTeilsumme(summenindex, x);
 
+        ergebnis += teilergebnis;
+   }
+   
+   return ergebnis;
+}
+
+  /**
+  * Die Methode berechneTeilsumme(int anzahl, double x)
+  * berechnet die Teilsumme einer Reihensumme nach der Funktion
+  *  f(i, x) = ((x - 1)^i)/i*x^i
+  * 
+  * @param i ist die i an Reihensummen
+  * @param x ist der Wert von "x" in der Funktion
+  * @return Die ausgerechnete Reihensumme
+  */
+private static double berechneTeilsumme(int i, double x) {
+    double dividend = Math.pow((x - 1), i);
+    double divisor = i * Math.pow(x, i);
+
+    // Validierung.validiereNichtNull(divisor);
+    
+    double ergebnis = dividend / divisor; 
+    
+    System.out.println("Dividend: " + dividend);
+    System.out.println("Divisor: " + divisor);
+    System.out.println("Ergebnis: " + ergebnis);
+
+    return ergebnis;
+    
+    
+
+    
+  }
 }

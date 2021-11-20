@@ -44,9 +44,21 @@ public class TestBerechneFakultaet
     }
 
     @Test
-    void TestWirftFehlerBeiNegativenWerten() { 
+    void TestWirftFehlerBeiMinusEins() { 
 
-        int ungueltigerWert = -1;
+        int ungueltigerWert = -1; // negative Werte
+
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> MathFunctions.berechneFakultaet(ungueltigerWert),
+           "Expected doThing() to throw, but it didn't"
+        );
+    }
+
+    @Test
+    void TestWirftFehlerBeiEinUndZwanzig() { 
+
+        int ungueltigerWert = 21; // Ausgabe zu groß
 
         assertThrows(
             IllegalArgumentException.class,

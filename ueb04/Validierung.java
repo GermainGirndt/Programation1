@@ -48,11 +48,32 @@ public class Validierung {
     /**
     * Die Methode prueft, ob die Fakultaet von der eigegebenen Zahl mit 'long' berechnet werden kann.
     * @param zahl die ueberprueft werden soll
+    * @param obereGrenze ist die Zahl in der oberen Grenze. Sie legt fest, bis welche Zahlen hat der Rechner genügenden Speicherplatz, um die Fakultaet zu berechnen.
     */    
-    public static void validiereZahlZurFakultaetberechnung(int zahl){
-        if(!Validierung.checkeObNatuerlicheZahl(zahl)){
-             throw new IllegalArgumentException("Für die Fakultätbildung muss die Zahl natürlich sein.");      
+    public static void validiereZahlZurFakultaetberechnung(int zahl, int obereGrenze){
+        boolean sollNullErlaubtWerden = true;
+
+        if (zahl > obereGrenze) {
+            throw new IllegalArgumentException("Für die korrekte Fakultätbildung darf die Zahl nicht größer als " + obereGrenze + " sein");      
         }
+
+        if(!Validierung.checkeObNatuerlicheZahl(zahl, sollNullErlaubtWerden)){
+             throw new IllegalArgumentException("Für die Fakultätbildung muss die Zahl natürlich sein. Eingegebene Zahl: " + zahl);      
+        }
+    }
+
+    /**
+    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natürlichen Zahl ist.
+    * @param zuCheckendeZahl die ueberprueft werden soll
+    * @param sollNullErlaubtWerden muss true sein, wenn die Null erlaubt werden soll
+    */
+    private static boolean checkeObNatuerlicheZahl(long zuCheckendeZahl, boolean sollNullErlaubtWerden) {
+
+        if (sollNullErlaubtWerden) {
+            return zuCheckendeZahl >= 0;
+        }
+
+        return zuCheckendeZahl > 0;
     }
 
     /**
