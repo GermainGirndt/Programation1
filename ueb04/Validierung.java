@@ -81,7 +81,7 @@ public class Validierung {
     */    
     public static void validiereDivisor(double zuCheckenderDouble) {
         if (zuCheckenderDouble == 0.0) {
-            throw new IllegalArgumentException("Fehler! Man darf nicht durch Null dividieren");      
+            throw new ArithmeticException("Fehler! Man darf nicht durch Null dividieren");      
         }
     }
 

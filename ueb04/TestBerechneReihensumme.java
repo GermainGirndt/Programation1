@@ -184,7 +184,7 @@ public class TestBerechneReihensumme{
         int ungueltigesX = 0; // Ausgabe zu groß
 
         assertThrows(
-            IllegalArgumentException.class,
+            ArithmeticException.class,
             () -> MathFunctions.berechneReihensumme(1, ungueltigesX),
            "Expected doThing() to throw, but it didn't"
         );
