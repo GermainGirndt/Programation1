@@ -139,27 +139,28 @@ public class MathFunctions
     return false;
     }
   /**
-  * Die Methode bestimmt den groesste gemeinsamen Teiler zweier Zahlen
+  * Die Methode bestimmt den groessten gemeinsamen Teiler zweier Zahlen
   * 
   * @param zahl1 ist die erste Zahl
   * @param zahl2 ist die zweite Zahl
   * @return ist der groesste gemeinsame Teiler
   */
-    
   public static int berechneGgt(int zahl1, int zahl2){
       int divisor;
-      int divident;
-      if(zahl1<=zahl2){
+      int dividend;
+
+      if(zahl1 <= zahl2){
           divisor   = zahl1; 
-          divident = zahl2;
-      }
-      else{
+          dividend  = zahl2;
+      } else {
           divisor  = zahl2;   
-          divident = zahl1;
+          dividend = zahl1;
       }
-      while(divident % divisor !=0){
-          divisor = divident % divisor;   
+
+      while(dividend % divisor != 0){
+          divisor = dividend % divisor;   
       }
+
       return divisor;
   }
   /**
