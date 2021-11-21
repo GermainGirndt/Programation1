@@ -35,11 +35,11 @@ public class MathFunctions
    private MathFunctions () {}
 
 
-   /**
-   * Die Methode berechnet die Teilersumme einer natuerlichen Zahl
-   * @param  zahl die Zahl dessen Teilersumme berechnet wird
-   * @return teilersumme ist die Teilersumme der Zahl
-   */
+  /**
+  * Die Methode berechnet die Teilersumme einer natuerlichen Zahl
+  * @param  zahl die Zahl dessen Teilersumme berechnet wird
+  * @return teilersumme ist die Teilersumme der Zahl
+  */
   public static long berechneTeilersumme (long zahl){
        long teilersumme   = START_WERT_SUMME;
        long spiegelteiler;
