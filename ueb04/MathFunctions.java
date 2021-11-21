@@ -106,14 +106,47 @@ public class MathFunctions
   
    }
 
-   /**
-    * Die Methode berechneFakultaet(int zahl) berechnet von einer natuerlichen Zahl die Fakultaet.
-    * Die Fakultaet ist definiert als:
-    * zahl! = 1 * 2 * 3 * . . . * zahl
-   * 
-   * @param zahl ist die Zahl, deren Fakultaet zu berechnen ist
-   * @return Die ausgerechnete Fakultaet
-   */
+  /**
+  * Die Methode istSummeVonPotenzen(long zahl) uerberprueft
+  * ob eine Zahl eine Summe von Potenzen sein kann
+  * 
+  * @param zahl ist die Zahl, die ueberprueft werden soll
+  * @return das Ergebnis von der Pruefung
+  */
+   public static boolean istSummeVonPotenzen(long zahl){
+    long basis2 = 1;
+    long basis3 = 1;
+    long basis4 = 1;
+    double temp   = zahl;
+    while(Math.pow(basis2 , SQUARE) < zahl){
+        temp = zahl - Math.pow(basis2 , 2);
+        basis3 = 1;
+        basis4 = 1;
+        while(Math.pow(basis3 , 3) < temp){
+            temp -= Math.pow(basis3 , 3);
+            while(Math.pow(basis4, 4) - temp < 1.2 *  Double.MIN_VALUE){ 
+                if(Math.pow(basis4, 4) - temp < 1.2 * Double.MIN_VALUE && Math.pow(basis4, 4) - temp > - 1.2 * Double.MIN_VALUE){
+                   System.out.println("a: " + basis2 + "b: " +basis3 + "c: " + basis4 + " temp" + temp );
+                    return true;
+                }
+                basis4++;
+            }
+            basis3++;
+        }        
+        basis2++;
+    }
+    
+    return false;
+    }
+
+  /**
+   * Die Methode berechneFakultaet(int zahl) berechnet von einer natuerlichen Zahl die Fakultaet.
+   * Die Fakultaet ist definiert als:
+   * zahl! = 1 * 2 * 3 * . . . * zahl
+  * 
+  * @param zahl ist die Zahl, deren Fakultaet zu berechnen ist
+  * @return Die ausgerechnete Fakultaet
+  */
   public static long berechneFakultaet(int zahl){
 
     Validierung.validiereZahlZurFakultaetberechnung(zahl, OBERE_GRENZE_LONG);
@@ -171,9 +204,7 @@ private static double berechneTeilsumme(int i, double x) {
     System.out.println("Ergebnis: " + ergebnis);
 
     return ergebnis;
-    
-    
-
-    
   }
+
+
 }
