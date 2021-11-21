@@ -35,11 +35,11 @@ public class MathFunctions
    private MathFunctions () {}
 
 
-   /**
-   * Die Methode berechnet die Teilersumme einer natuerlichen Zahl
-   * @param  zahl die Zahl dessen Teilersumme berechnet wird
-   * @return teilersumme ist die Teilersumme der Zahl
-   */
+  /**
+  * Die Methode berechnet die Teilersumme einer natuerlichen Zahl
+  * @param  zahl die Zahl dessen Teilersumme berechnet wird
+  * @return teilersumme ist die Teilersumme der Zahl
+  */
   public static long berechneTeilersumme (long zahl){
        long teilersumme   = START_WERT_SUMME;
        long spiegelteiler;
@@ -199,9 +199,14 @@ private static double berechneTeilsumme(int i, double x) {
     
     double ergebnis = dividend / divisor; 
     
-    System.out.println("Dividend: " + dividend);
-    System.out.println("Divisor: " + divisor);
-    System.out.println("Ergebnis: " + ergebnis);
+    if (Double.isNaN(ergebnis)) {
+        throw new ArithmeticException(
+            String.format(
+                "Speicherplatzverbrauch zu groß beim Berechnen der Teilsumme mit Indexs %s.\n" +
+                "Bitte geben Sie eine kleinere Wiederholungsanzahl bzw. einen kleineren oder X-Wert ein.", i
+            )
+        );
+    }
 
     return ergebnis;
   }
