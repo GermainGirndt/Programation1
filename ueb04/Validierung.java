@@ -27,6 +27,26 @@ public class Validierung {
     }
     
     /**
+    * Die Methode prueft ob die Zahl, deren GGT gebildet wird, ob diese eine natürliche Zahl ist
+    * @param zahlGgt ist die Zahl die validiert wird
+    */
+    public static void validiereZahlGgt(int zahlGgt){
+        if(!Validierung.checkeObNatuerlicheZahlInt(zahlGgt)){
+             throw new IllegalArgumentException("Der GGT wird nur bei natürlichen Zahlen gebildet");    
+        }   
+    }
+    
+    /**
+    * Die Methode prueft ob die Zahl, die geprueft wird bei der Potenzsumme, eine natürliche Zahl ist
+    * @param zahlPotenzsumme ist die Zahl die validiert wird
+    */
+    public static void validiereZahlPotenzsumme(long zahlPotenzsumme){
+        if(!Validierung.checkeObNatuerlicheZahl(zahlPotenzsumme)){
+             throw new IllegalArgumentException("Ob eine Zahl durch Potenzen dargestellt werden kann, wird nur bei natuerlichen Zahlen geprueft");    
+        }   
+    }
+    
+    /**
     * Die Methode prueft, ob die ISBN positiv ist und nicht zu viele Ziffern hat
     * @param isbn die ueberprueft werden soll
     */    
@@ -39,7 +59,7 @@ public class Validierung {
             }
         }
         
-        public static void validiereZeichenAnzahl(String string) {
+    public static void validiereZeichenAnzahl(String string) {
             if (string.length() != ISBN_ZEICHEN_ANZAHL) {
                 throw new IllegalArgumentException(String.format("Die ISBN muss genau %s Ziffern haben", ISBN_ZEICHEN_ANZAHL));
         } 
@@ -98,12 +118,21 @@ public class Validierung {
 
         return zuCheckendeZahl > 0;
     }
+    
 
     /**
     * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natürlichen Zahl ist.
     * @param zuCheckendeZahl die ueberprueft werden soll
     */    
     private static boolean checkeObNatuerlicheZahl(long zuCheckendeZahl) {
+        return zuCheckendeZahl > 0;
+    }
+    
+    /**
+    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natürlichen Zahl ist.
+    * @param zuCheckendeZahl die ueberprueft werden soll
+    */
+     private static boolean checkeObNatuerlicheZahlInt(long zuCheckendeZahl) {
         return zuCheckendeZahl > 0;
     }
 }
