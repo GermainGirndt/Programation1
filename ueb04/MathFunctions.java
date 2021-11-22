@@ -192,7 +192,13 @@ public class MathFunctions
   private static int getKleinsteZahl(int zahl1, int zahl2) {
     return zahl1 < zahl2 ? zahl2 : zahl1;
   }
-
+  /**
+  * Die Methode fuehrt den euklidischen Algorithmus zur Ermittlung des GGT durch
+  * 
+  * @param divident ist der Divident oder die groessere Zahl
+  * @param divisor ist der Divisor oder die kleinere Zahl
+  * @return Das Ergebnis des Algorithmus
+  */
   private static int euklidischerAlgorithmus(int dividend, int divisor){
       while(dividend % divisor != 0){
           divisor = dividend % divisor;   
