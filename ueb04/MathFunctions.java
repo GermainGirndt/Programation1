@@ -12,7 +12,11 @@ public class MathFunctions
    private static final long START_WERT_SUMME                            = 0;
    
    private static final int  OHNEREST                                    = 0;
+   private static final int  KLEINSTER_TEILER_GGT                        = 1;
+   private static final int  START_WERT_BASIS                            = 1;
    private static final int  SQUARE                                      = 2;
+   private static final int  KUBUS                                       = 3;
+   private static final int  EXPONENT_VIER                               = 4;
 
    private static final int  ISBN_START_STELLE                           = 9;
    private static final int  ISBN_END_STELLE_WERT                        = 0;
@@ -25,6 +29,7 @@ public class MathFunctions
    private static final int  END_MODULO_ISBN                             = 11;
    
    private static final double INITIALWERT                               = 0;
+   private static final double FEHLER_MULTIPLIKATOR                      = 1.2;
    
    private static final int OBERE_GRENZE_LONG                            = 20;
 
@@ -113,29 +118,39 @@ public class MathFunctions
   * @param zahl ist die Zahl, die ueberprueft werden soll
   * @return das Ergebnis von der Pruefung
   */
-   public static boolean istSummeVonPotenzen(long zahl){
-    long basis2 = 1;
-    long basis3 = 1;
-    long basis4 = 1;
+   public static boolean istSummeVonPotenzen(long zahl){  
+    long basis2 =  START_WERT_BASIS;
+    long basis3 =  START_WERT_BASIS;
+    long basis4 =  START_WERT_BASIS;
+    
+    Validierung.validiereZahlPotenzsumme(zahl);  
+    
     double temp   = zahl;
+    
     while(Math.pow(basis2 , SQUARE) < zahl){
-        temp   = zahl - Math.pow(basis2 , 2);
-        basis3 = 1;
-        basis4 = 1;
-        while(Math.pow(basis3 , 3) < temp){           
-            temp   = zahl - Math.pow(basis2 , 2) - Math.pow(basis3 , 3);
-            basis4 = 1;
-            while(Math.pow(basis4, 4) - temp < 1.2 *  Double.MIN_VALUE){ 
-                if(Math.pow(basis4, 4) - temp < 1.2 * Double.MIN_VALUE && Math.pow(basis4, 4) - temp > - 1.2 * Double.MIN_VALUE){
+        
+        temp   =  zahl - Math.pow(basis2 , SQUARE);
+        basis3 =  START_WERT_BASIS;
+        basis4 =  START_WERT_BASIS;
+        
+        while(Math.pow(basis3 , KUBUS) < temp){ 
+            
+            temp   = zahl - Math.pow(basis2 , SQUARE) - Math.pow(basis3 , KUBUS);
+            basis4 = START_WERT_BASIS;
+            
+            while(Math.pow(basis4 , EXPONENT_VIER) - temp < FEHLER_MULTIPLIKATOR  *  Double.MIN_VALUE){ 
+                
+                if(Math.pow(basis4, EXPONENT_VIER) - temp < FEHLER_MULTIPLIKATOR  * Double.MIN_VALUE  &&
+                   Math.pow(basis4, EXPONENT_VIER) - temp > - FEHLER_MULTIPLIKATOR  * Double.MIN_VALUE){
+                       
                     return true;
                 }
                 basis4++;
-            }
+            } 
             basis3++;
-        }        
+        }  
         basis2++;
     }
-   
     return false;
     }
     
@@ -149,7 +164,9 @@ public class MathFunctions
   public static int berechneGgt(int zahl1, int zahl2){
       int divisor;
       int dividend;
-
+      Validierung.validiereZahlGgt(zahl1);
+      Validierung.validiereZahlGgt(zahl2);
+      
       if (zahl1 == zahl2) {
           return zahl1;
       }
@@ -162,8 +179,8 @@ public class MathFunctions
       
       divisor  = euklidischerAlgorithmus(dividend , divisor);
       
-      if (kleinereZahl % divisor != 0){
-          divisor = 1;
+      if (kleinereZahl % divisor != OHNEREST){
+          divisor = KLEINSTER_TEILER_GGT;
         }
         
         return divisor;
@@ -171,26 +188,38 @@ public class MathFunctions
     
     /**
      * Die Methode vergleicht zwei Zahlen und gibt die groesste zurueck.
-     * Wenn die Zahlen gleich sind, gibt eine von Ihnen zurueck
+     * Wenn die Zahlen gleich sind, wird zahl1 zurueck gegeben
      * 
      * @param zahl1 ist die erste beliebige Zahl
      * @param zahl2 ist die zweite beliebige Zahl
      * @return die groesste Zahl
      */
     private static int getGroessteZahl(int zahl1, int zahl2) {
-        return zahl1 < zahl2 ? zahl1 : zahl2;
+        if(zahl1 < zahl2){
+            return zahl2;
+        }
+        else{
+            return zahl1;
+        }
+        
   }
   
   /**
   * Die Methode vergleicht zwei Zahlen und gibt die kleinste zurueck.
-  * Wenn die Zahlen gleich sind, gibt eine von Ihnen zurueck
+  * Wenn die Zahlen gleich sind, wird zahl1 zurueck gegeben
   * 
   * @param zahl1 ist die erste beliebige Zahl
   * @param zahl2 ist die zweite beliebige Zahl
   * @return die groesste Zahl
   */
   private static int getKleinsteZahl(int zahl1, int zahl2) {
-    return zahl1 < zahl2 ? zahl2 : zahl1;
+     if(zahl1 > zahl2){
+            return zahl2;
+        }
+     else{
+            return zahl1;
+        }
+        
   }
   /**
   * Die Methode fuehrt den euklidischen Algorithmus zur Ermittlung des GGT durch

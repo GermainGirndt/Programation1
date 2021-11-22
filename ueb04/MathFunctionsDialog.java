@@ -104,7 +104,7 @@ public class MathFunctionsDialog
                 System.out.println("Das Programm ist zu Ende");
                 break;
             default:
-                throw new InputMismatchException("Keine gueltige Eingabe");
+                throw new IllegalArgumentException("Keine gueltige Eingabe");
         }
     }
 
