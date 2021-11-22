@@ -149,29 +149,50 @@ public class MathFunctions
   public static int berechneGgt(int zahl1, int zahl2){
       int divisor;
       int dividend;
-      if(zahl1 <= zahl2){
-          divisor   = zahl1; 
-          dividend  = zahl2;
-          
-          divisor  = euklidischerAlgorithmus(dividend , divisor);
-          
-          if(zahl1 % divisor != 0){
-              divisor = 1;
-          }
-      } else {
-          divisor  = zahl2;  
-          dividend = zahl1;
-          
-          divisor  = euklidischerAlgorithmus(dividend , divisor);
-          
-          if(zahl2 % divisor != 0){
-              divisor = 1;
-          }
+
+      if (zahl1 == zahl2) {
+          return zahl1;
       }
- 
-      return divisor;
+      
+      int groessereZahl = getGroessteZahl(zahl1, zahl2); 
+      int kleinereZahl  = getKleinsteZahl(zahl1, zahl2);
+      
+      dividend  = groessereZahl;
+      divisor   = kleinereZahl; 
+      
+      divisor  = euklidischerAlgorithmus(dividend , divisor);
+      
+      if (kleinereZahl % divisor != 0){
+          divisor = 1;
+        }
+        
+        return divisor;
+    }
+    
+    /**
+     * Die Methode vergleicht zwei Zahlen und gibt die groesste zurueck.
+     * Wenn die Zahlen gleich sind, gibt eine von Ihnen zurueck
+     * 
+     * @param zahl1 ist die erste beliebige Zahl
+     * @param zahl2 ist die zweite beliebige Zahl
+     * @return die groesste Zahl
+     */
+    private static int getGroessteZahl(int zahl1, int zahl2) {
+        return zahl1 < zahl2 ? zahl1 : zahl2;
   }
   
+  /**
+  * Die Methode vergleicht zwei Zahlen und gibt die kleinste zurueck.
+  * Wenn die Zahlen gleich sind, gibt eine von Ihnen zurueck
+  * 
+  * @param zahl1 ist die erste beliebige Zahl
+  * @param zahl2 ist die zweite beliebige Zahl
+  * @return die groesste Zahl
+  */
+  private static int getKleinsteZahl(int zahl1, int zahl2) {
+    return zahl1 < zahl2 ? zahl2 : zahl1;
+  }
+
   private static int euklidischerAlgorithmus(int dividend, int divisor){
       while(dividend % divisor != 0){
           divisor = dividend % divisor;   

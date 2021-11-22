@@ -11,7 +11,7 @@ public class MathFunctionsDialog
     private              UserInput      userInput;
     private              int            funktion;
     
-    private static final int            FUNKTION_NICHT_DEFINIERT    = -1;
+    private static final int            FUNKTION_NICHT_DEFINIERT   = -1;
     private static final int            FUNKTION_ENDE              = 0;
     private static final int            BERECHNE_TEILER_SUMME      = 1;
     private static final int            BERECHNE_CHECKSUMME_ISBN   = 2;
