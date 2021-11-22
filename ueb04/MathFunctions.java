@@ -119,11 +119,12 @@ public class MathFunctions
     long basis4 = 1;
     double temp   = zahl;
     while(Math.pow(basis2 , SQUARE) < zahl){
-        temp = zahl - Math.pow(basis2 , 2);
+        temp   = zahl - Math.pow(basis2 , 2);
         basis3 = 1;
         basis4 = 1;
-        while(Math.pow(basis3 , 3) < temp){
-            temp -= Math.pow(basis3 , 3);
+        while(Math.pow(basis3 , 3) < temp){           
+            temp   = zahl - Math.pow(basis2 , 2) - Math.pow(basis3 , 3);
+            basis4 = 1;
             while(Math.pow(basis4, 4) - temp < 1.2 *  Double.MIN_VALUE){ 
                 if(Math.pow(basis4, 4) - temp < 1.2 * Double.MIN_VALUE && Math.pow(basis4, 4) - temp > - 1.2 * Double.MIN_VALUE){
                     return true;
@@ -134,7 +135,7 @@ public class MathFunctions
         }        
         basis2++;
     }
-    
+   
     return false;
     }
     
