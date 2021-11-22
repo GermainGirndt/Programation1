@@ -222,7 +222,7 @@ public class MathFunctions
   /**
   * Die Methode berechneReihensumme(int anzahl, double x)
   * berechnet die Reihensumme nach der Funktion
-  *  Sn(anzahl, x) = Σ von i=1 bis n = anzahl von ((x - 1)^i)/i*x^i
+  * Sn(anzahl, x), Σ von i=1 bis n = anzahl von ((x - 1)^i)/i*x^i
   * 
   * @param anzahl ist die Anzahl an Reihensummen
   * @param x ist der Wert von "x" in der Funktion

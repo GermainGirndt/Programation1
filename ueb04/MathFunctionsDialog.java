@@ -12,12 +12,14 @@ public class MathFunctionsDialog
     private              int            funktion;
     
     private static final int            FUNKTION_NICHT_DEFINIERT   = -1;
-    private static final int            FUNKTION_ENDE              = 0;
-    private static final int            BERECHNE_TEILER_SUMME      = 1;
-    private static final int            BERECHNE_CHECKSUMME_ISBN   = 2;
-    private static final int            BERECHNE_NULLSTELLEN       = 3;
-    private static final int            PRUEFE_OB_POTENZSUMME      = 4;
-    private static final int            BERECHNE_GGT               = 5;
+    private static final int            FUNKTION_ENDE              =  0;
+    private static final int            BERECHNE_TEILER_SUMME      =  1;
+    private static final int            BERECHNE_CHECKSUMME_ISBN   =  2;
+    private static final int            BERECHNE_NULLSTELLEN       =  3;
+    private static final int            PRUEFE_OB_POTENZSUMME      =  4;
+    private static final int            BERECHNE_GGT               =  5;
+    private static final int            BERECHNE_REIHENSUMME       =  6;
+    private static final int            BERECHNE_FAKULTAET         =  7;
     
     
     /**
@@ -28,8 +30,8 @@ public class MathFunctionsDialog
     }
     
     public static void main(String[] args) {
-        MathFunctionsDialog mathfunctiondialog = new MathFunctionsDialog();
-        mathfunctiondialog.start();   
+        MathFunctionsDialog mathfunctionDialog = new MathFunctionsDialog();
+        mathfunctionDialog.start();   
     }
 
     /**
@@ -71,6 +73,8 @@ public class MathFunctionsDialog
             BERECHNE_NULLSTELLEN       + ": Berechne die Nullstellen einer quadratischen funktion;\n" +
             PRUEFE_OB_POTENZSUMME      + ": Prueft ob eine Zahl als Summe von Potenzen geschrieben werden kann;\n" +
             BERECHNE_GGT               + ": Berechne den groessten gemeinsamen Teiler zweier Zahlen;\n" +
+            BERECHNE_REIHENSUMME       + ": Berechne die Reihensumme von der Funktion Sn(anzahl, x), Σ von i=1 bis n = anzahl von ((x - 1)^i)/i*x^i;\n" +
+            BERECHNE_FAKULTAET         + ": Berechne die Fakultaet von einer beliebigen ganzen Zahl von 0 bis 20;\n" +
             FUNKTION_ENDE              + ": beenden -> \n\n"
         );
 
@@ -85,20 +89,26 @@ public class MathFunctionsDialog
     */
     public void ausfuehrenFunktion() {
         switch(this.funktion) {
-            case BERECHNE_TEILER_SUMME :
+            case BERECHNE_TEILER_SUMME:
                 berechneTeilersumme();
                 break;
             case  BERECHNE_CHECKSUMME_ISBN:
                 berechneChecksummeIsbn();
                 break;
-            case BERECHNE_NULLSTELLEN :      
+            case BERECHNE_NULLSTELLEN:      
                 berechneNullstellen();
                 break;
-            case PRUEFE_OB_POTENZSUMME :      
+            case PRUEFE_OB_POTENZSUMME:      
                 pruefeObPotenzsumme();
                 break;
-            case BERECHNE_GGT :
+            case BERECHNE_GGT:
                 berechneGgt();
+                break;
+            case BERECHNE_REIHENSUMME:
+                berechneReihensumme();
+                break;
+            case BERECHNE_FAKULTAET:
+                berechneFakultaet();
                 break;
             case FUNKTION_ENDE:  
                 System.out.println("Das Programm ist zu Ende");
@@ -112,7 +122,6 @@ public class MathFunctionsDialog
     *  Erfragt eine Zahl und bildet dann deren Teilersumme
     */
     public void berechneTeilersumme() {
-        
             long zahl = userInput.getLong("Zahl: ");
             System.out.println("Teilersumme: " + MathFunctions.berechneTeilersumme(zahl));
         }
@@ -152,8 +161,25 @@ public class MathFunctionsDialog
     * Berechnet den groessten gemeinsamen Teiler zweier Zahlen
     */
     public void berechneGgt(){
-            int zahl1 = userInput.getInt("Erste Zahl: ");
-            int zahl2 = userInput.getInt("Zweite Zahl: ");
-            System.out.println("Groesster gemeinsamer Teiler: " + MathFunctions.berechneGgt(zahl1 , zahl2));
+        int zahl1 = userInput.getInt("Erste Zahl: ");
+        int zahl2 = userInput.getInt("Zweite Zahl: ");
+        System.out.println("Groesster gemeinsamer Teiler: " + MathFunctions.berechneGgt(zahl1 , zahl2));
+    }
+    
+    /**
+    * Berechnet die Reihensumme mit den von den Benutzer eingegebenen Werten
+    */
+    public void berechneReihensumme(){
+        int anzahl = userInput.getInt("Anzahl an Teilsummen: ");
+        double x = userInput.getDouble("X-Wert: ");
+        System.out.println("Ergebnis der Reihensumme: " + MathFunctions.berechneReihensumme(anzahl , x));
+    }
+    
+    /**
+    * Berechnet die Fakultaet von dem von Benutzer eingegebenen Werten
+    */
+    public void berechneFakultaet(){
+            int zahl1 = userInput.getInt("Zahl zur Fakultaetsberechnung: ");
+            System.out.println("Fakultaet der gewaehlten Zahl: " + MathFunctions.berechneFakultaet(zahl1));
     }
 }
