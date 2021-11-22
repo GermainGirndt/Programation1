@@ -126,7 +126,6 @@ public class MathFunctions
             temp -= Math.pow(basis3 , 3);
             while(Math.pow(basis4, 4) - temp < 1.2 *  Double.MIN_VALUE){ 
                 if(Math.pow(basis4, 4) - temp < 1.2 * Double.MIN_VALUE && Math.pow(basis4, 4) - temp > - 1.2 * Double.MIN_VALUE){
-                   System.out.println("a: " + basis2 + "b: " +basis3 + "c: " + basis4 + " temp" + temp );
                     return true;
                 }
                 basis4++;
@@ -138,6 +137,7 @@ public class MathFunctions
     
     return false;
     }
+    
   /**
   * Die Methode bestimmt den groessten gemeinsamen Teiler zweier Zahlen
   * 
@@ -148,21 +148,36 @@ public class MathFunctions
   public static int berechneGgt(int zahl1, int zahl2){
       int divisor;
       int dividend;
-
       if(zahl1 <= zahl2){
           divisor   = zahl1; 
           dividend  = zahl2;
+          
+          divisor  = euklidischerAlgorithmus(dividend , divisor);
+          
+          if(zahl1 % divisor != 0){
+              divisor = 1;
+          }
       } else {
-          divisor  = zahl2;   
+          divisor  = zahl2;  
           dividend = zahl1;
+          
+          divisor  = euklidischerAlgorithmus(dividend , divisor);
+          
+          if(zahl2 % divisor != 0){
+              divisor = 1;
+          }
       }
-
+ 
+      return divisor;
+  }
+  
+  private static int euklidischerAlgorithmus(int dividend, int divisor){
       while(dividend % divisor != 0){
           divisor = dividend % divisor;   
       }
-
       return divisor;
   }
+  
   /**
    * Die Methode berechneFakultaet(int zahl) berechnet von einer natuerlichen Zahl die Fakultaet.
    * Die Fakultaet ist definiert als:

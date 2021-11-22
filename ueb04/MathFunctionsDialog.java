@@ -16,6 +16,8 @@ public class MathFunctionsDialog
     private static final int            BERECHNE_TEILER_SUMME      = 1;
     private static final int            BERECHNE_CHECKSUMME_ISBN   = 2;
     private static final int            BERECHNE_NULLSTELLEN       = 3;
+    private static final int            PRUEFE_OB_POTENZSUMME      = 4;
+    private static final int            BERECHNE_GGT               = 5;
     
     
     /**
@@ -67,6 +69,8 @@ public class MathFunctionsDialog
             BERECHNE_TEILER_SUMME      + ": Berechne die Teilersumme einer Zahl;\n"  + 
             BERECHNE_CHECKSUMME_ISBN   + ": Berechne die Checksumme einer ISBN-Nummer;\n" + 
             BERECHNE_NULLSTELLEN       + ": Berechne die Nullstellen einer quadratischen funktion;\n" +
+            PRUEFE_OB_POTENZSUMME      + ": Prueft ob eine Zahl als Summe von Potenzen geschrieben werden kann;\n" +
+            BERECHNE_GGT               + ": Berechne den groessten gemeinsamen Teiler zweier Zahlen;\n" +
             FUNKTION_ENDE              + ": beenden -> \n\n"
         );
 
@@ -89,6 +93,12 @@ public class MathFunctionsDialog
                 break;
             case BERECHNE_NULLSTELLEN :      
                 berechneNullstellen();
+                break;
+            case PRUEFE_OB_POTENZSUMME :      
+                pruefeObPotenzsumme();
+                break;
+            case BERECHNE_GGT :
+                berechneGgt();
                 break;
             case FUNKTION_ENDE:  
                 System.out.println("Das Programm ist zu Ende");
@@ -125,4 +135,25 @@ public class MathFunctionsDialog
             System.out.println(MathFunctions.berechneNullstellen(p , q));
     }
     
+    /**
+    * Prueft ob eine Zahl als Summe von Potenzen geschrieben werden kann
+    */
+    public void pruefeObPotenzsumme(){
+            long zahl = userInput.getLong("Zahl zum Testen: ");
+            if(MathFunctions.istSummeVonPotenzen(zahl)){
+                System.out.println(zahl + " ist eine Summe von Potenzen");
+            }
+            else{
+                System.out.println(zahl + " ist keine Summer von Potenzen");
+            }
+    }
+    
+    /**
+    * Berechnet den groessten gemeinsamen Teiler zweier Zahlen
+    */
+    public void berechneGgt(){
+            int zahl1 = userInput.getInt("Erste Zahl: ");
+            int zahl2 = userInput.getInt("Zweite Zahl: ");
+            System.out.println("Groesster gemeinsamer Teiler: " + MathFunctions.berechneGgt(zahl1 , zahl2));
+    }
 }
