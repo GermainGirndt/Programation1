@@ -126,7 +126,6 @@ public class MathFunctions
             temp -= Math.pow(basis3 , 3);
             while(Math.pow(basis4, 4) - temp < 1.2 *  Double.MIN_VALUE){ 
                 if(Math.pow(basis4, 4) - temp < 1.2 * Double.MIN_VALUE && Math.pow(basis4, 4) - temp > - 1.2 * Double.MIN_VALUE){
-                   System.out.println("a: " + basis2 + "b: " +basis3 + "c: " + basis4 + " temp" + temp );
                     return true;
                 }
                 basis4++;
@@ -138,7 +137,68 @@ public class MathFunctions
     
     return false;
     }
+    
+  /**
+  * Die Methode bestimmt den groessten gemeinsamen Teiler zweier Zahlen
+  * 
+  * @param zahl1 ist die erste Zahl
+  * @param zahl2 ist die zweite Zahl
+  * @return ist der groesste gemeinsame Teiler
+  */
+  public static int berechneGgt(int zahl1, int zahl2){
+      int divisor;
+      int dividend;
 
+      if (zahl1 == zahl2) {
+          return zahl1;
+      }
+      
+      int groessereZahl = getGroessteZahl(zahl1, zahl2); 
+      int kleinereZahl  = getKleinsteZahl(zahl1, zahl2);
+      
+      dividend  = groessereZahl;
+      divisor   = kleinereZahl; 
+      
+      divisor  = euklidischerAlgorithmus(dividend , divisor);
+      
+      if (kleinereZahl % divisor != 0){
+          divisor = 1;
+        }
+        
+        return divisor;
+    }
+    
+    /**
+     * Die Methode vergleicht zwei Zahlen und gibt die groesste zurueck.
+     * Wenn die Zahlen gleich sind, gibt eine von Ihnen zurueck
+     * 
+     * @param zahl1 ist die erste beliebige Zahl
+     * @param zahl2 ist die zweite beliebige Zahl
+     * @return die groesste Zahl
+     */
+    private static int getGroessteZahl(int zahl1, int zahl2) {
+        return zahl1 < zahl2 ? zahl1 : zahl2;
+  }
+  
+  /**
+  * Die Methode vergleicht zwei Zahlen und gibt die kleinste zurueck.
+  * Wenn die Zahlen gleich sind, gibt eine von Ihnen zurueck
+  * 
+  * @param zahl1 ist die erste beliebige Zahl
+  * @param zahl2 ist die zweite beliebige Zahl
+  * @return die groesste Zahl
+  */
+  private static int getKleinsteZahl(int zahl1, int zahl2) {
+    return zahl1 < zahl2 ? zahl2 : zahl1;
+  }
+
+  private static int euklidischerAlgorithmus(int dividend, int divisor){
+      while(dividend % divisor != 0){
+          divisor = dividend % divisor;   
+      }
+      return divisor;
+  }
+  
   /**
    * Die Methode berechneFakultaet(int zahl) berechnet von einer natuerlichen Zahl die Fakultaet.
    * Die Fakultaet ist definiert als:
