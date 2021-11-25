@@ -107,4 +107,10 @@ public final class Validierung {
         }
     }
     
+    
+    public static void validierePreis(double preis) {
+        if(preis < 0.0){
+             throw new IllegalArgumentException("Preis darf nicht negativ sein");
+        }
+    }
 }

@@ -12,23 +12,54 @@ public class Artikel
     private              String     art;
     private              int        bestand;
     
+    private              double     preis;
+    
     private static final int        MINIMUM_BESTAND = 0;
+    private static final double     INITIAL_PREIS   = 0;
 
+    
+    
     /**
-    * Konstruktor für Artikel mit bekannten Bestand
+    * Konstruktor für Artikel mit bekannten Bestand und bekanntem preis
     * @param artikelNr ist die ArtikelNr
     * @param art ist die Artikelart
-    * @param bestand steht für den initalen Bestand
+    * @param bestand steht für den Bestand
+    * @param preis steht für den Preis
     */
-    public Artikel(int artikelNr, String art, int bestand)
+    public Artikel(int artikelNr, String art, int bestand, double preis)
     {
         Validierung.validiereArtikelNr(artikelNr);
         Validierung.validiereArtikelArt(art);
         Validierung.validiereBestand(bestand);
+        Validierung.validierePreis(preis);
         
         this.artikelNr  = artikelNr;
         this.art        = art;
         this.bestand    = bestand;
+        this.preis      = preis;
+    }
+    
+      /**
+    * Konstruktor für Artikel mit bekannten Preis
+    * @param artikelNr ist die ArtikelNr
+    * @param art ist die Artikelart
+    * @param bestand steht für den initalen Bestand
+    */
+    public Artikel(int artikelNr, String art, double preis)
+    {
+         this(artikelNr, art, MINIMUM_BESTAND, INITIAL_PREIS);
+
+    }
+    
+    /**
+    * Konstruktor für Artikel mit bekannten Bestand
+    * @param artikelNr ist die ArtikelNr
+    * @param art ist die Artikelart
+    * @param bestand steht für den Bestand
+    */
+    public Artikel(int artikelNr, String art, int bestand)
+    {
+        this(artikelNr, art, bestand, INITIAL_PREIS);
     }
 
     /**
@@ -38,7 +69,7 @@ public class Artikel
     */
     public Artikel(int artikelNr, String art)
     {
-        this(artikelNr, art, MINIMUM_BESTAND);
+        this(artikelNr, art, MINIMUM_BESTAND, INITIAL_PREIS);
     }
 
     /**
