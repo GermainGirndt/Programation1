@@ -88,10 +88,28 @@ public class Artikel
     * @param menge ist die Menge, die abgebucht wird
     */
     public void bucheAbgang(int menge)
+    
+    }
+    
+    /**
+     * Die Methode aendert den Preis eines Artikels
+    * @param prozent ist der Prozensatz an Preisabweichung
+    */
+    public void aenderePreis(double prozent)
     {
-        Validierung.validiereAbgangsMenge(this.bestand, menge);
+        Validierung.validierePreisaenderung(prozent);
         
-        this.bestand -= menge;
+        double preisfaktor = berechnePreisfaktor(prozent);
+        
+        this.preis *= preisfaktor;
+    }
+    
+    /**
+     * Die Methode berechnet die Preisabweichung des Artikelpreises
+    * @param prozent ist der Prozensatz an Preisabweichung
+    */
+    private double berechnePreisfaktor(double prozent) {
+        return (prozent + 100.0) / 100.0;
     }
 
     /**
@@ -131,6 +149,15 @@ public class Artikel
     public int getBestand()
     {
         return this.bestand;
+    }
+
+    /**
+    * Die Methode gibt den Preis zurueck
+    * @return den Preis
+    */
+    public double getPreis()
+    {
+        return this.preis;
     }
 
     /**

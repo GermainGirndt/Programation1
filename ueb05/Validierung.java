@@ -8,9 +8,12 @@
 */
 public final class Validierung {
 
-    private static final int ARTIKELMINDESTNUMMER = 1;
-    private static final int BESTANDMINDESTNUMMER = 0;
-    private static final int MINDESTMENGEANDERUNGSANZAHL = 0;
+    private static final int            MINDESTARTIKELNUMMER                        = 1;
+    private static final int            HOECHSTARTIKELNUMMER                        = 9999;
+    private static final int            MINDESTBESTANDNUMMER                        = 0;
+    private static final int            MINDEST_ANZAHL_AN_MENGEANDERUNG             = 0;
+    private static final double         MINDESTPREIS                                = 0.0;
+    private static final double         GROESSTE_NEGATIVE_PREISAENDERUNG            = -100.0;
 
     /**
     * Die Werkzeugklasse soll statisch sein bzw. darf nicht instantiert werden
@@ -22,7 +25,7 @@ public final class Validierung {
     * @param menge ist die Menge 
     */
     public static void validiereMengeanderung(int mengeArtikelaenderung) {
-        if (mengeArtikelaenderung <= MINDESTMENGEANDERUNGSANZAHL) {
+        if (mengeArtikelaenderung <= MINDEST_ANZAHL_AN_MENGEANDERUNG) {
             throw new IllegalArgumentException("Die Menge muss eine natürliche positive Zahl sein");
         }
     }
@@ -92,8 +95,8 @@ public final class Validierung {
     * @param artikelNr ist die Artikelnummer
     */
     public static void validiereArtikelNr(int artikelNr) {
-        if (artikelNr < ARTIKELMINDESTNUMMER) {
-            throw new IllegalArgumentException("Ungültige Artikelnummer");
+        if (artikelNr < MINDESTARTIKELNUMMER || artikelNr > HOECHSTARTIKELNUMMER) {
+            throw new IllegalArgumentException("Ungültige Artikelnummer. Die Artikelnummer muss zwischen 1 und 9999 sein.");
         }
     }
 
@@ -102,15 +105,32 @@ public final class Validierung {
     * @param bestand ist der Bestand
     */
     public static void validiereBestand(int bestand) {
-        if (bestand < BESTANDMINDESTNUMMER) {
+        if (bestand < MINDESTBESTANDNUMMER) {
             throw new IllegalArgumentException("Bestand darf nicht negativ sein");
         }
     }
     
     
+
+    /**
+    * Die Methode prüft, ob der Preis gleich/größer der Mindestpreis ist, falls nicht, gibt es eine Exception
+    * @param preis ist der zu überprüfende Preis
+    */
     public static void validierePreis(double preis) {
-        if(preis < 0.0){
-             throw new IllegalArgumentException("Preis darf nicht negativ sein");
+        if (preis < MINDESTPREIS){
+            throw new IllegalArgumentException("Preis darf nicht negativ sein");
+        }
+    }
+    
+    
+    /**
+    * Die Methode prüft, ob der Prozentsatz an Preisänderung die groesste negative Preisaenderung nicht uebersteigt, falls doch, gibt es eine Exception
+    * @param preis ist der zu überprüfende Preis
+    */
+    public static void validierePreisaenderung(double prozent) {
+        if (prozent < GROESSTE_NEGATIVE_PREISAENDERUNG) {
+            throw new IllegalArgumentException("Negative Preisabweichung kann nicht groesser als -100% sein");
+
         }
     }
 }
