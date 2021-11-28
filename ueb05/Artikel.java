@@ -20,7 +20,7 @@ public class Artikel
     
     
     /**
-    * Konstruktor für Artikel mit bekannten Bestand und bekanntem preis
+    * Konstruktor für Artikel mit Angaben
     * @param artikelNr ist die ArtikelNr
     * @param art ist die Artikelart
     * @param bestand steht für den Bestand
@@ -39,8 +39,8 @@ public class Artikel
         this.preis      = preis;
     }
     
-      /**
-    * Konstruktor für Artikel mit bekannten Preis
+    /**
+    * Konstruktor für Artikel ohne Preis- und Bestandsangabe
     * @param artikelNr ist die ArtikelNr
     * @param art ist die Artikelart
     * @param bestand steht für den initalen Bestand
@@ -52,7 +52,7 @@ public class Artikel
     }
     
     /**
-    * Konstruktor für Artikel mit bekannten Bestand
+    * Konstruktor für Artikel ohne Preisangabe
     * @param artikelNr ist die ArtikelNr
     * @param art ist die Artikelart
     * @param bestand steht für den Bestand
@@ -107,7 +107,7 @@ public class Artikel
     }
     
     /**
-     * Die Methode berechnet die Preisabweichung des Artikelpreises
+    * Die Methode berechnet die Preisabweichung des Artikelpreises
     * @param prozent ist der Prozensatz an Preisabweichung
     */
     private double berechnePreisfaktor(double prozent) {
@@ -120,9 +120,10 @@ public class Artikel
     */
     public String toString()
     {
-        return  "ArtikeNr: "    + artikelNr     + "\n" +
-                "Art: "         + art           + "\n" +
-                "Bestand: "     + bestand;
+        return  "ArtikeNr: "    + this.artikelNr     + "\n" +
+                "Art: "         + this.art           + "\n" +
+                "Bestand: "     + this.bestand       + "\n" +
+                "Preis: "       + this.preis;
 
     }
 
@@ -135,10 +136,6 @@ public class Artikel
         return this.artikelNr;
     }
     
-    public double getPreis(){
-        return preis;
-    }
-
     /**
     * Die Methode gibt die Artikelart zurueck
     * @return die Artikelart
