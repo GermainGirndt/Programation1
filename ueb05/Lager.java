@@ -1,3 +1,4 @@
+import java.lang.StringBuilder;
 
 /**
  * Beschreiben Sie hier die Klasse Lager.
@@ -138,16 +139,29 @@ public class Lager
     }
  
     public Artikel getArtikel(int index) { 
+
+        if (index > this.anzahlArtikel -1) {
+            throw new Error("Es gibt keinen Artikel im gewählten Index.");
+        }
+
         return this.artikelLager[index];
     }
 
    public String toString() {
-       StringBuilder builder = new StringBuilder();
-       
-       builder.append("Lager enthält folgende Artikel: \n");
-       for(Artikel artikel : this.artikelLager) {
-           builder.append(artikel.toString() + "\n");
+
+       if (checkeObLagerLeerIst()) {
+           return "Das Lager ist leer.";
        }
+
+       StringBuilder builder = new StringBuilder("Lager enthält folgende Artikel: \n");
+       
+
+       for (int index = 0; index <= this.anzahlArtikel -1; index++) {
+        Artikel artikel = artikelLager[index];
+        String artikelBeschreibung = artikel.toString() + "\n\n";
+        builder.append(artikelBeschreibung);
+       }    
+
        return builder.toString();
    }
 

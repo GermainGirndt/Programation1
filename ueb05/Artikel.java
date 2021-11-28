@@ -120,9 +120,10 @@ public class Artikel
     */
     public String toString()
     {
-        return  "ArtikeNr: "    + artikelNr     + "\n" +
-                "Art: "         + art           + "\n" +
-                "Bestand: "     + bestand;
+        return  "ArtikeNr: "    + this.artikelNr     + "\n" +
+                "Art: "         + this.art           + "\n" +
+                "Bestand: "     + this.bestand       + "\n" +
+                "Preis: "       + this.preis;
 
     }
 
@@ -135,10 +136,6 @@ public class Artikel
         return this.artikelNr;
     }
     
-    public double getPreis(){
-        return preis;
-    }
-
     /**
     * Die Methode gibt die Artikelart zurueck
     * @return die Artikelart
