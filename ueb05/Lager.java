@@ -50,7 +50,24 @@ public class Lager
        return kopie;    
    }
    
+   public Artikel getArtikel(int index){
+       return lager[index];
+   }
    
+   public String toString(){
+       String rueckgabe = "";
+       for(Artikel artikel : lager){
+           rueckgabe += artikel.toString() + "\n";
+       }
+       return rueckgabe;
+   }
+   public int getArtikelAnzahl(){
+       return anzahlArtikel;
+   }
+   
+   public int getLagerGroesse(){
+       return lager.length;
+   }
    //Nur fuer Testzwecke, denke dran das zu löschen
    public static void main(String[] strg){
        Artikel a = new Artikel(1 , "kuh");
