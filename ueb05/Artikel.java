@@ -134,6 +134,10 @@ public class Artikel
     {
         return this.artikelNr;
     }
+    
+    public double getPreis(){
+        return preis;
+    }
 
     /**
     * Die Methode gibt die Artikelart zurueck

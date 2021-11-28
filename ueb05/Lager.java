@@ -137,8 +137,6 @@ public class Lager
         return false;
     }
  
- 
-
     public Artikel getArtikel(int index) { 
         return this.artikelLager[index];
     }
@@ -159,18 +157,5 @@ public class Lager
    
    public int getLagerGroesse() {
        return this.artikelLager.length;
-   }
-
-   //Nur fuer Testzwecke, denke dran das zu löschen
-   public static void main(String[] strg) {
-       Artikel a = new Artikel(1 , "kuh");
-       Artikel b = new Artikel(2 , "Pferd");
-       Lager   lager = new Lager();
-       lager.legeAnArtikel(a);
-       lager.legeAnArtikel(a);
-       lager.legeAnArtikel(b);
-       lager.legeAnArtikel(a);
-       lager.legeAnArtikel(b);
-       lager.entferneArtikel(2);
    }
 }
