@@ -27,13 +27,15 @@ public class Lager
    }
    
    public void entferneArtikel(int artikelNr){
-       Artikel[] kopieLager = new Artikel[lager.length];
-       for(int i = 0; i < lager.length; i++){
-           if(lager[i] != null && lager[i].getArtikelNr() == artikelNr){
-               lager = loescheArtikel(lager, i);   
+       boolean gefunden = false;
+       int index        = 0;
+       while(!gefunden){
+           if(lager[index] != null && lager[index].getArtikelNr() == artikelNr){
+               lager    = loescheArtikel(lager, index);   
                anzahlArtikel--;
-               i--;
+               gefunden = true;
            }
+           index++;
        }    
    }
    
@@ -50,6 +52,50 @@ public class Lager
        return kopie;    
    }
    
+   public void bucheZugang(int artikelNr, int zugang){
+       boolean gefunden = false;
+       int index        = 0;
+       while(!gefunden){
+           if(lager[index] != null && lager[index].getArtikelNr() == artikelNr){
+               lager[index].bucheZugang(zugang); 
+               gefunden = true;
+           }
+           index++;
+       }      
+   }
+   
+   public void bucheAbgang(int artikelNr, int abgang){
+       boolean gefunden = false;
+       int index        = 0;
+       while(!gefunden){
+           if(lager[index] != null && lager[index].getArtikelNr() == artikelNr){
+               lager[index].bucheAbgang(abgang); 
+               gefunden = true;
+           }
+           index++;
+       }         
+   }
+   
+   public void aenderePreisEinesArtikels(int artikelNr, double prozent){
+    boolean gefunden = false;
+       int index        = 0;
+       while(!gefunden){
+           if(lager[index] != null && lager[index].getArtikelNr() == artikelNr){
+               lager[index].aenderePreis(prozent); 
+               gefunden = true;
+           }
+           index++;
+       }        
+   }
+   
+   public void aenderePreisAllerArtikel(double prozent){
+       for(Artikel artikel : lager){
+           if(artikel != null){
+               artikel.aenderePreis(prozent);
+           }
+       }
+   }
+   
    public Artikel getArtikel(int index){
        return lager[index];
    }
@@ -57,7 +103,9 @@ public class Lager
    public String toString(){
        String rueckgabe = "";
        for(Artikel artikel : lager){
-           rueckgabe += artikel.toString() + "\n";
+           if(artikel != null){
+               rueckgabe += artikel.toString() + "\n";
+           }
        }
        return rueckgabe;
    }
@@ -67,17 +115,5 @@ public class Lager
    
    public int getLagerGroesse(){
        return lager.length;
-   }
-   //Nur fuer Testzwecke, denke dran das zu löschen
-   public static void main(String[] strg){
-       Artikel a = new Artikel(1 , "kuh");
-       Artikel b = new Artikel(2 , "Pferd");
-       Lager   lager = new Lager();
-       lager.legeAnArtikel(a);
-       lager.legeAnArtikel(a);
-       lager.legeAnArtikel(b);
-       lager.legeAnArtikel(a);
-       lager.legeAnArtikel(b);
-       lager.entferneArtikel(2);
    }
 }

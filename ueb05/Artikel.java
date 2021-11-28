@@ -93,6 +93,10 @@ public class Artikel
         
         this.bestand -= menge;
     }
+    
+    public void aenderePreis(double prozent){
+        preis = preis * prozent;    
+    }
 
     /**
     * Die Methode gibt das Objekt aufbereitet als String zurueck
@@ -113,6 +117,10 @@ public class Artikel
     public int getArtikelNr()
     {
         return this.artikelNr;
+    }
+    
+    public double getPreis(){
+        return preis;
     }
 
     /**
