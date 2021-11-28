@@ -21,7 +21,7 @@ public class LagerDialog
     private static final int            FUNKTION_ABBUCHEN                       =  5;
     private static final int            FUNKTION_PREIS_AENDERN_EINZELN          =  6;
     private static final int            FUNKTION_PREIS_AENDERN_ALLE             =  7;
-    private static final int            ARTIKEL_ANLEGEN_MIT_BESTAND_OHNE_PREIS  =  8; // brauchen wir diese?
+    private static final int            ARTIKEL_ANLEGEN_MIT_BESTAND_OHNE_PREIS  =  8;
     private static final int            ARTIKEL_ANLEGEN_OHNE_BESTAND_OHNE_PREIS =  9;
     private static final int            ARTIKEL_ANLEGEN_OHNE_BESTAND_MIT_PREIS  = 10;
     private static final int            ARTIKEL_ANLEGEN_MIT_BESTAND_MIT_PREIS   = 11;
@@ -51,14 +51,14 @@ public class LagerDialog
                 einlesenFunktion();
                 ausfuehrenFunktion();
                 
-            } catch(IllegalArgumentException error) {
+            } catch (IllegalArgumentException error) {
                 System.err.println(error);
 
-            } catch(InputMismatchException error) {
+            } catch (InputMismatchException error) {
                 System.err.println(error);
                 userInput.next();
 
-            } catch(Exception error) {
+            } catch (Exception error) {
                 System.err.println(error);
                 error.printStackTrace(System.out); 
 
@@ -111,10 +111,10 @@ public class LagerDialog
                 bestandAbbuchen();
                 break;
             case FUNKTION_PREIS_AENDERN_EINZELN:
-                preisAendernEinzeln();
+                einzelnpreisAendern();
                 break;
             case FUNKTION_PREIS_AENDERN_ALLE:  
-                preisAendernAlle();
+                allePreiseAendern();
                 break;
             case FUNKTION_ENDE:  
                 System.out.println("Das Programm ist zu Ende");
@@ -140,18 +140,49 @@ public class LagerDialog
 
     public void bestandZubuchen() {
 
+        if (this.lager == null) throw new IllegalArgumentException("Der Befehlt setzt voraus, dass ein Lager angelegt ist!");
+        
+        int artikelNr = this.userInput.getInt("Zu welcher Artikelnummer? ");
+        Validierung.validiereArtikelNr(artikelNr);
+        
+        int zugang = this.userInput.getInt("Welche Menge soll dazugebucht werden? ");
+        Validierung.validiereMengeanderung(zugang);
+        
+        this.lager.bucheZugang(artikelNr, zugang);
+
     }
     
     public void bestandAbbuchen() {
-    
+        if (this.lager == null) throw new IllegalArgumentException("Der Befehlt setzt voraus, dass ein Lager angelegt ist!");
+        
+        int artikelNr = this.userInput.getInt("Zu welcher Artikelnummer? ");
+        Validierung.validiereArtikelNr(artikelNr);
+        
+        int abgang = this.userInput.getInt("Welche Menge soll abgebucht werden? ");
+        Validierung.validiereMengeanderung(abgang);
+        
+        this.lager.bucheAbgang(artikelNr, abgang);
     }
+    
+    public void einzelnpreisAendern(){
+        if (this.lager == null) throw new IllegalArgumentException("Der Befehlt setzt voraus, dass ein Lager angelegt ist!");
+        
+        int artikelNr = this.userInput.getInt("Zu welcher Artikelnummer? ");
+        Validierung.validiereArtikelNr(artikelNr);
+        
+        int prozent = this.userInput.getInt("Um wie viel Prozent handelt es sich? ");
+        Validierung.validierePreisaenderung(prozent);
+        
+        this.lager.aenderePreisEinesArtikels(artikelNr, prozent);
+    }
+    
+    public void allePreiseAendern(){
+        if (this.lager == null) throw new IllegalArgumentException("Der Befehlt setzt voraus, dass ein Lager angelegt ist!");
 
-    public void preisAendernEinzeln(){
-        
-    }
-    
-    public void preisAendernAlle(){
-        
+        int prozent = this.userInput.getInt("Um wie viel Prozent handelt es sich? ");
+        Validierung.validierePreisaenderung(prozent);
+
+        this.lager.aenderePreisAllerArtikel(prozent);
     }
   
     
