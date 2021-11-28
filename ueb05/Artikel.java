@@ -87,8 +87,10 @@ public class Artikel
     * Die Methode bucht eine übergebene Menge dem Bestand ab
     * @param menge ist die Menge, die abgebucht wird
     */
-    public void bucheAbgang(int menge)
-    
+    public void bucheAbgang(int menge) {
+        Validierung.validiereAbgangsMenge(this.bestand, menge);
+        
+        this.bestand -= menge;
     }
     
     /**

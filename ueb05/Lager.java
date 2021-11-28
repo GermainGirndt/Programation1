@@ -68,6 +68,11 @@ public class Lager
     }
     
     public void aenderePreisAllerArtikel(double prozent) {
+        
+        if (this.checkeObLagerLeerIst()) {
+            throw new IllegalArgumentException("Der Artikelpreis kann nicht verändert werden, wenn das Lager leer ist.");
+        }
+
         for (int index = 0; index <= this.anzahlArtikel -1; index++) {
             Artikel artikel = this.artikelLager[index];
 
