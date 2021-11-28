@@ -7,12 +7,11 @@ import java.util.InputMismatchException;
  * @author Girndt & Krier 
  * @version 1.0
  */
-public class Lagerdialog
+public class LagerDialog
 {
     private              Lager          lager;
     private              UserInput      userInput;
     private              int            funktion;
-    private              int            artikelfunktion;
     
     private static final int            FUNKTION_NICHT_DEFINIERT                = -1;
     private static final int            FUNKTION_ENDE                           =  0;
@@ -23,23 +22,22 @@ public class Lagerdialog
     private static final int            FUNKTION_ABBUCHEN                       =  5;
     private static final int            FUNKTION_PREIS_AENDERN_EINZELN          =  6;
     private static final int            FUNKTION_PREIS_AENDERN_ALLE             =  7;
-    private static final int            ARTIKEL_ANLEGEN_MIT_BESTAND_OHNE_PREIS  =  8;
+    private static final int            ARTIKEL_ANLEGEN_MIT_BESTAND_OHNE_PREIS  =  8; // brauchen wir diese?
     private static final int            ARTIKEL_ANLEGEN_OHNE_BESTAND_OHNE_PREIS =  9;
     private static final int            ARTIKEL_ANLEGEN_OHNE_BESTAND_MIT_PREIS  = 10;
     private static final int            ARTIKEL_ANLEGEN_MIT_BESTAND_MIT_PREIS   = 11;
-
     
     
     /**
     * Konstruktor
     */
-    public Lagerdialog() {
+    public LagerDialog() {
         userInput = new UserInput();
     }
     
     public static void main(String[] args) {
-        Lagerdialog lagerdialog = new Lagerdialog();
-        lagerdialog.start();  
+        LagerDialog lagerDialog = new LagerDialog();
+        lagerDialog.start();  
     }
 
     /**
