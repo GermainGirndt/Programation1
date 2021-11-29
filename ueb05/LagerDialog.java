@@ -21,10 +21,7 @@ public class LagerDialog
     private static final int            FUNKTION_ABBUCHEN                       =  5;
     private static final int            FUNKTION_PREIS_AENDERN_EINZELN          =  6;
     private static final int            FUNKTION_PREIS_AENDERN_ALLE             =  7;
-    private static final int            ARTIKEL_ANLEGEN_MIT_BESTAND_OHNE_PREIS  =  8;
-    private static final int            ARTIKEL_ANLEGEN_OHNE_BESTAND_OHNE_PREIS =  9;
-    private static final int            ARTIKEL_ANLEGEN_OHNE_BESTAND_MIT_PREIS  = 10;
-    private static final int            ARTIKEL_ANLEGEN_MIT_BESTAND_MIT_PREIS   = 11;
+    private static final int            LAGER_AUSGEBEN                          =  8;
     
     
     /**
@@ -81,7 +78,8 @@ public class LagerDialog
             FUNKTION_ABBUCHEN               + ": Menge vom Bestand eines Artikels abbuchen;\n"   + 
             FUNKTION_PREIS_AENDERN_EINZELN  + ": Preis eines Artikels aendern;\n"                +
             FUNKTION_PREIS_AENDERN_ALLE     + ": Preis aller Artikel aendern;\n"                 + 
-            FUNKTION_ENDE                   + ": beenden -> \n\n"
+            LAGER_AUSGEBEN                  + ": Lager ausgeben;\n"                              +
+            FUNKTION_ENDE                   + ": beenden -> \n\n"   
         );
         
         this.funktion = userInput.getInt("Ausgewählte Funktion: ");
@@ -116,6 +114,9 @@ public class LagerDialog
             case FUNKTION_PREIS_AENDERN_ALLE:  
                 allePreiseAendern();
                 break;
+            case LAGER_AUSGEBEN:
+                lagerAusgeben();
+                break;
             case FUNKTION_ENDE:  
                 System.out.println("Das Programm ist zu Ende");
                 break;
@@ -126,15 +127,30 @@ public class LagerDialog
     }
     
     public void lagerErstellen(){
+        if (this.lager != null) throw new IllegalArgumentException("Ein Lager existiert schon!");    
         
+        int lagergroesse = this.userInput.getInt("Welche Lagergroesse?: ");
+        
+        this.lager = new Lager(lagergroesse);
     }
     
     public void artikelAnLegen(){
+        if (this.lager == null) throw new IllegalArgumentException("Der Befehlt setzt voraus, dass ein Lager angelegt ist!");
+         
+        int artikelNr     = this.userInput.getInt("Artikelnummer?: ");
+        String artikelArt = this.userInput.getString("Artikelart?: ");
+        int bestand       = this.userInput.getInt("Bestand? 0 falls Initialbestand: ");
+        double preis      = this.userInput.getDouble("Preis? 0 falls Initialpreis: ");
         
+        Artikel artikel   = new Artikel(artikelNr, artikelArt, bestand, preis);
+        lager.legeAnArtikel(artikel);
     }
     
     public void artikelEntfernen() {
-    
+        if (this.lager == null) throw new IllegalArgumentException("Der Befehlt setzt voraus, dass ein Lager angelegt ist!");
+         
+        int artikelNr = this.userInput.getInt("Geben Sie die Artikelnummer des zu entfernenden Artikels ein: ");
+        this.lager.entferneArtikel(artikelNr);
     }
 
 
@@ -185,5 +201,7 @@ public class LagerDialog
         this.lager.aenderePreisAllerArtikel(prozent);
     }
   
-    
+    public void lagerAusgeben(){
+        System.out.println(lager.toString());
+    }
 }
