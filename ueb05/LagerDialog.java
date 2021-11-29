@@ -126,6 +126,9 @@ public class LagerDialog
         }
     }
     
+    /**
+    * Diese Funktion fragt nach einer Lagergroesse und erzeugt dann ein Lager
+    */
     public void lagerErstellen(){
         if (this.lager != null) throw new IllegalArgumentException("Ein Lager existiert schon!");    
         
@@ -134,22 +137,34 @@ public class LagerDialog
         this.lager = new Lager(lagergroesse);
     }
     
+    /**
+    * Diese Funktion fragt nach Artikeldaten, legt einen Artikel an und macht diesen dann ins Lager
+    */
     public void artikelAnLegen(){
         if (this.lager == null) throw new IllegalArgumentException("Der Befehlt setzt voraus, dass ein Lager angelegt ist!");
          
         int artikelNr     = this.userInput.getInt("Artikelnummer?: ");
+        Validierung.validiereArtikelNr(artikelNr);
         String artikelArt = this.userInput.getString("Artikelart?: ");
+        Validierung.validiereArtikelArt(artikelArt);
         int bestand       = this.userInput.getInt("Bestand? 0 falls Initialbestand: ");
+        Validierung.validiereBestand(bestand);
         double preis      = this.userInput.getDouble("Preis? 0 falls Initialpreis: ");
-        
+        Validierung.validierePreis(preis);
+
         Artikel artikel   = new Artikel(artikelNr, artikelArt, bestand, preis);
         lager.legeAnArtikel(artikel);
     }
     
+    /**
+    * Diese Funktion fragt nach dem zu entfernenden Artikel und entfernt diesen dann
+    */
     public void artikelEntfernen() {
         if (this.lager == null) throw new IllegalArgumentException("Der Befehlt setzt voraus, dass ein Lager angelegt ist!");
          
         int artikelNr = this.userInput.getInt("Geben Sie die Artikelnummer des zu entfernenden Artikels ein: ");
+        Validierung.validiereArtikelNr(artikelNr);
+        
         this.lager.entferneArtikel(artikelNr);
     }
 
@@ -193,7 +208,7 @@ public class LagerDialog
     }
     
     public void allePreiseAendern(){
-        if (this.lager == null) throw new IllegalArgumentException("Der Befehlt setzt voraus, dass ein Lager angelegt ist!");
+        if (this.lager == null) throw new IllegalArgumentException("Der Befehl setzt voraus, dass ein Lager angelegt ist!");
 
         int prozent = this.userInput.getInt("Um wie viel Prozent handelt es sich? ");
         Validierung.validierePreisaenderung(prozent);
@@ -202,6 +217,8 @@ public class LagerDialog
     }
   
     public void lagerAusgeben(){
+        if (this.lager == null) throw new IllegalArgumentException("Der Befehl setzt voraus, dass ein Lager angelegt ist!");
+
         System.out.println(lager.toString());
     }
 }
