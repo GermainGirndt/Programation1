@@ -31,10 +31,24 @@ public final class Validierung {
     }
 
     /**
+    * Die Methode prüft, ob die Menge positiv ist und den höchsten Wert von dem Datentyp Long nicht übersteigt.
+    * Falls diese Bedingungen nicht eingehalten werden, wird eine eine Exception geworfen
+    * @param mengeArtikelabgang ist die Menge 
+    */
+    public static void validiereZugangsmenge(long bestand, int mengeArtikelzugang) {
+        validiereMengeanderung(mengeArtikelzugang);
+        
+        if (bestand + mengeArtikelzugang < 0) {
+            throw new IllegalArgumentException("Der Bestand darf " + Long.MAX_VALUE + " Stueck nicht uebersteigen");
+        }
+    }
+
+
+    /**
     * Die Methode prüft, ob die Menge positiv und kleiner als der Bestand ist, falls nicht wirft sie eine Exception
     * @param mengeArtikelabgang ist die Menge 
     */
-    public static void validiereAbgangsMenge(int bestand, int mengeArtikelabgang) {
+    public static void validiereAbgangsmenge(long bestand, int mengeArtikelabgang) {
         validiereMengeanderung(mengeArtikelabgang);
         
         if (bestand < mengeArtikelabgang) {

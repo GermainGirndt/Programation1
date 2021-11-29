@@ -10,7 +10,7 @@ public class Artikel
 {
     private              int        artikelNr;
     private              String     art;
-    private              int        bestand;
+    private              long       bestand;
     
     private              double     preis;
     
@@ -78,17 +78,17 @@ public class Artikel
     */
     public void bucheZugang(int mengeArtikelzugang)
     {
-        Validierung.validiereMengeanderung(mengeArtikelzugang);
+        Validierung.validiereZugangsmenge(this.bestand, mengeArtikelzugang);
         
         this.bestand += mengeArtikelzugang;
     }
-
+    
     /**
     * Die Methode bucht eine übergebene Menge dem Bestand ab
     * @param menge ist die Menge, die abgebucht wird
     */
     public void bucheAbgang(int menge) {
-        Validierung.validiereAbgangsMenge(this.bestand, menge);
+        Validierung.validiereAbgangsmenge(this.bestand, menge);
         
         this.bestand -= menge;
     }
@@ -149,7 +149,7 @@ public class Artikel
     * Die Methode gibt den Bestand zurueck
     * @return den Bestand
     */
-    public int getBestand()
+    public long getBestand()
     {
         return this.bestand;
     }
