@@ -147,4 +147,10 @@ public final class Validierung {
 
         }
     }
+    
+    public static void validiereLagergroesse(int groesse){
+        if(groesse < 1){
+            throw new IllegalArgumentException("Lagergroessen die kleiner sind als 1 sind nicht erlaubt");
+        }
+    }
 }

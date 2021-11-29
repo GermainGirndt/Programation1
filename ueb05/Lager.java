@@ -17,6 +17,7 @@ public class Lager
    * @param lagerplatzanzahl ist die Anzahl an verfügbaren Plätze im Lager
    */
    public Lager(int lagerplatzanzahl) {
+       Validierung.validiereLagergroesse(lagerplatzanzahl);
        this.artikelLager = new Artikel[lagerplatzanzahl];   
     }
     

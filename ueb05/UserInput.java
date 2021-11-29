@@ -32,6 +32,14 @@ public class UserInput {
         return integer;
     }
 
+    
+     public double getDouble(String message) {
+        System.out.print(message);
+        double doub = input.nextDouble();
+        input.nextLine();
+        return doub;
+    }
+    
     /**
     * Die Methode zeigt eine Message an und fragt erwartet einein Stringinput von dem Nutzer
     * Außerdem sorgt die Methode dafür, dass der Scanner nicht gesperrt bleibt, indem sie "input.nextLine()" aufruft.
