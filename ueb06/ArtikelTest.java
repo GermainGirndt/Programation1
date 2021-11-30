@@ -12,39 +12,11 @@ import org.junit.Test;
 */
 public class ArtikelTest
     {
-        
-        
-    /**
-    * Konstruktor fuer die Test-Klasse ArtikelTest
-    */
-    public ArtikelTest()
-    {
-    }
-    
-        /**
-         *  Setzt das Testgerüst fuer den Test.
-         *
-         * Wird vor jeder Testfall-Methode aufgerufen.
-         */
-        @Before
-    public void setUp()
-    {
-    }
 
-    /**
-     * Gibt das Testgerüst wieder frei.
-     *
-     * Wird nach jeder Testfall-Methode aufgerufen.
-     */
-    @After
-    public void tearDown()
-    {
-    }
-    
     
     //KonstruktorTests 
     
-    //Korrekte Fälle
+    //Korrekte Fälle 
     @Test
     public void test_Artikel_Konstruktor_Artikelnr_1()
     {
@@ -108,6 +80,19 @@ public class ArtikelTest
     {
         Artikel artikel            = new Artikel(0, "Test");
     }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void test_Artikel_Konstruktor_Bestand_minus_1()
+    {
+        Artikel artikel            = new Artikel(0, "Test", -1);
+    }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void test_Artikel_Konstruktor_preis_minus_1_komma_5()
+    {
+        Artikel artikel            = new Artikel(0, "Test", 0, -1.5);
+    }
+    
     //MethodenTest
     
     //Korrekte Fälle
@@ -142,6 +127,21 @@ public class ArtikelTest
     }
     
     //Fehlerfälle
+    @Test (expected = IllegalArgumentException.class)
+     public void test_buche_Zugang_uebergeben_minus_5()
+    {
+        Artikel artikel             = new Artikel(1234, "Test", 5);
+        artikel.bucheZugang(-5);
+       
+    }
+    
+     @Test (expected = IllegalArgumentException.class)
+     public void test_buche_Abgang_uebergeben_10_bestand_5()
+    {
+        Artikel artikel             = new Artikel(1234, "Test", 5);
+        artikel.bucheAbgang(10);
+       
+    }
 }
 
 
