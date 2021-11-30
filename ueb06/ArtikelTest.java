@@ -42,7 +42,9 @@ public class ArtikelTest
     }
     
     
-    //KonstruktorTests
+    //KonstruktorTests 
+    
+    //Korrekte Fälle
     @Test
     public void test_Artikel_Konstruktor_Artikelnr_1()
     {
@@ -88,8 +90,16 @@ public class ArtikelTest
         assertEquals(erwarteterPreis , tatsaechlicherPreis , 2* Double.MIN_VALUE);
     }
     
+    //Fehlerfälle
+    @Test (expected = IllegalArgumentException.class)
+    public void test_Artikel_Konstruktor_ArtikelNr_99999()
+    {
+        Artikel artikel            = new Artikel(99999, "Test");
+    }
     
     //MethodenTest
+    
+    //Korrekte Fälle
     @Test
     public void test_buche_Abgang_erwartet_10_uebergeben_10()
     {
@@ -119,6 +129,8 @@ public class ArtikelTest
         long tatsaechlicherBestand  = artikel.getBestand();
         assertEquals(erwarteterBestand , tatsaechlicherBestand);
     }
+    
+    //Fehlerfälle
 }
 
 
