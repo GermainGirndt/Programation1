@@ -97,6 +97,17 @@ public class ArtikelTest
         Artikel artikel            = new Artikel(99999, "Test");
     }
     
+    @Test (expected = IllegalArgumentException.class)
+    public void test_Artikel_Konstruktor_ArtikelNr_negative_3()
+    {
+        Artikel artikel            = new Artikel(-3, "Test");
+    }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void test_Artikel_Konstruktor_ArtikelNr_0()
+    {
+        Artikel artikel            = new Artikel(0, "Test");
+    }
     //MethodenTest
     
     //Korrekte Fälle
