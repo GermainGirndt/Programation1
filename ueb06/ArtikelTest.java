@@ -96,6 +96,7 @@ public class ArtikelTest
     //MethodenTest
     
     //Korrekte Fälle
+    //abgang
     @Test
     public void test_buche_Abgang_erwartet_10_uebergeben_10()
     {
@@ -106,6 +107,7 @@ public class ArtikelTest
         assertEquals(erwarteterBestand , tatsaechlicherBestand);
     }
     
+    //zugang
     @Test
     public void test_buche_Zugang_erwartet_10_uebergeben_10()
     {
@@ -127,6 +129,7 @@ public class ArtikelTest
     }
     
     //Fehlerfälle
+    //zugang
     @Test (expected = IllegalArgumentException.class)
      public void test_buche_Zugang_uebergeben_minus_5()
     {
@@ -135,6 +138,7 @@ public class ArtikelTest
        
     }
     
+    //abgang
      @Test (expected = IllegalArgumentException.class)
      public void test_buche_Abgang_uebergeben_10_bestand_5()
     {
