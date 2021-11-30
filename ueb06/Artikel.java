@@ -15,7 +15,7 @@ public class Artikel
     private              double     preis;
     
     private static final int        MINIMUM_BESTAND = 0;
-    private static final double     INITIAL_PREIS   = 0;
+    private static final double     INITIAL_PREIS   = 0.0;
 
     
     
