@@ -138,12 +138,12 @@ public final class Validierung {
     
     
     /**
-    * Die Methode prüft, ob der Prozentsatz an Preisänderung die groesste negative Preisaenderung nicht uebersteigt, falls doch, gibt es eine Exception
+    * Die Methode prüft, ob der Prozentsatz an Preisaenderung die groesste negative Preisaenderung nicht uebersteigt, falls doch, gibt es eine Exception
     * @param preis ist der zu überprüfende Preis
     */
     public static void validierePreisaenderung(double prozent) {
         if (prozent < GROESSTE_NEGATIVE_PREISAENDERUNG) {
-            throw new IllegalArgumentException("Negative Preisabweichung kann nicht groesser als -100% sein");
+            throw new IllegalArgumentException("Negative Preisabweichung kann nur groesser als -100% sein");
 
         }
     }

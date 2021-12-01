@@ -34,14 +34,18 @@ public class Lager
     * @param artikel der im Lager angelegt werden soll
     */
     public void legeAnArtikel(Artikel artikel) {
-       if (!this.checkeObNeuerArtikelAngelegtWerdenKann()) {
+        if (!this.lagerVoll()) {
            throw new IllegalArgumentException("Der Artikel passt nicht im Lager. Entferne einen Artikel, um einen neuen anzulegen.");
         }
 
-        if (this.checkeObArtikelNummerImLagerIst(artikel.getArtikelNr())) {
+        if(artikel == null){
+            throw new IllegalArgumentException("Der Artikel ist null");
+        }
+        
+        if (this.getArtikelNachNummer(artikel.getArtikelNr()) != -1) {
             throw new IllegalArgumentException("Die eingegebene Artikelnummer ist bereits im Lager!");
         }
-
+        
         this.artikelLager[anzahlArtikel] = artikel;
         this.anzahlArtikel++;
         
@@ -52,16 +56,18 @@ public class Lager
     * @param artikelNr von dem zu entfernenden Artikel
     */
     public void entferneArtikel(int artikelNr) {
-        if (this.checkeObLagerLeerIst()) {
+        if (this.lagerLeer()) {
             throw new IllegalArgumentException("Lager ist leer!");
         }
         
         for (int index = 0; index <= this.anzahlArtikel -1; index++) {
             Artikel artikelZuChecken = this.artikelLager[index];
             
-            if (artikelZuChecken.getArtikelNr() == artikelNr) {
-                loescheArtikelNachIndex(index);
-                return;
+            if(artikelZuChecken != null){
+                if (artikelZuChecken.getArtikelNr() == artikelNr) {
+                    loescheArtikelNachIndex(index);
+                    return;
+                }
             }
         }    
         
@@ -73,8 +79,10 @@ public class Lager
     * @param zugang ist die Menge neuer Artikel, die dazugebucht wird
     */
     public void bucheZugang(int artikelNr, int zugang) {
-        Artikel artikel = this.getArtikelNachNummer(artikelNr);
-        artikel.bucheZugang(zugang);
+        Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
+        if(artikel != null){
+            artikel.bucheZugang(zugang);   
+        }
     }
     
     /**
@@ -82,8 +90,10 @@ public class Lager
     * @param abgang ist die Menge vom Artikel, die abgebucht wird
     */
     public void bucheAbgang(int artikelNr, int abgang) {
-        Artikel artikel = this.getArtikelNachNummer(artikelNr);
-        artikel.bucheZugang(abgang);
+        Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
+        if(artikel != null){
+            artikel.bucheZugang(abgang);    
+        }
     }
     
     /**
@@ -92,8 +102,10 @@ public class Lager
     * @param prozent ist der Prozentsatz von der Änderung
     */
     public void aenderePreisEinesArtikels(int artikelNr, double prozent) {
-        Artikel artikel = this.getArtikelNachNummer(artikelNr);
-        artikel.aenderePreis(prozent);
+        Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
+        if(artikel != null){
+            artikel.aenderePreis(prozent);  
+        }
     }
 
     /**
@@ -102,14 +114,16 @@ public class Lager
     */
     public void aenderePreisAllerArtikel(double prozent) {
         
-        if (this.checkeObLagerLeerIst()) {
+        if (this.lagerLeer()) {
             throw new IllegalArgumentException("Der Artikelpreis kann nicht verändert werden, wenn das Lager leer ist.");
         }
 
         for (int index = 0; index <= this.anzahlArtikel -1; index++) {
             Artikel artikel = this.artikelLager[index];
-
-            artikel.aenderePreis(prozent);
+            
+            if(artikel != null){
+                artikel.aenderePreis(prozent);  
+            }
         }   
     }
     
@@ -118,7 +132,7 @@ public class Lager
     * dh. ob das Lager ueber genuegenden Platz verfuegt
     * @return true, wenn ja; false, wenn nein
     */
-    private boolean checkeObNeuerArtikelAngelegtWerdenKann() {
+    private boolean lagerVoll() {
         return this.anzahlArtikel + 1 <= this.artikelLager.length;
         
     }
@@ -128,7 +142,7 @@ public class Lager
      * dh. kein Artikel da ist
      * @return true, wenn ja; false, wenn nein
     */
-    private boolean checkeObLagerLeerIst() {
+    private boolean lagerLeer() {
         return this.anzahlArtikel == 0;
     }
 
@@ -143,7 +157,10 @@ public class Lager
         if (this.anzahlArtikel - 1 < indexZuLoeschen) {
             throw new IllegalArgumentException("Der gewählte Index übertrifft die Anzahl an Artikeln.");
         }
-
+        if(indexZuLoeschen < 0){
+            throw new IllegalArgumentException("Der gewählte Index muss positiv sein.");
+        }
+        
         artikelLager[indexZuLoeschen] = null;
         
         for (int indexZuVerschieben = indexZuLoeschen + 1; indexZuVerschieben <= this.anzahlArtikel - 1; indexZuVerschieben++) {
@@ -166,34 +183,19 @@ public class Lager
     * @param artikelNr ist die Artikelnummer vom gewuenschten Artikel
     * @return der gewuenschte Artikel
     */    
-    private Artikel getArtikelNachNummer(int artikelNr) {
+    public int getArtikelNachNummer(int artikelNr) {
         for (int index = 0; index <= this.anzahlArtikel -1; index++) {
             Artikel artikelZuChecken = this.artikelLager[index];
 
             if (artikelZuChecken.getArtikelNr() == artikelNr) {
-                return artikelZuChecken;
+                return index;
             }
         }    
         
-        throw new IllegalArgumentException("Artikel ist nicht im Lager.");
+        return -1;
     }
 
-    /**
-     * Die Methode checkt, ob es einen Artikel mit der eingegebenen Artikelnummer im Lager gibt
-     * @param artikelNr ist die Artikelnummer vom gewuenschten Artikel
-    * @return true wenn ja, false wenn nein
-    */  
-    private boolean checkeObArtikelNummerImLagerIst(int artikelNr) {
-        for (int index = 0; index <= this.anzahlArtikel -1; index++) {
-            Artikel artikelZuChecken = this.artikelLager[index];
-            
-            if (artikelZuChecken.getArtikelNr() == artikelNr) {
-                return true;
-            }
-        }    
-        
-        return false;
-    }
+
     
     /**
     * Die Methode gibt den Artikel im gewuenschten Index zurueck 
@@ -204,6 +206,9 @@ public class Lager
 
         if (index > this.anzahlArtikel -1) {
             throw new Error("Es gibt keinen Artikel im gewählten Index.");
+        }
+        if (index <0){
+            throw new Error("Bitte positiven Index angeben.");
         }
 
         return this.artikelLager[index];
@@ -216,7 +221,7 @@ public class Lager
    */
    public String toString() {
 
-       if (checkeObLagerLeerIst()) {
+       if (lagerLeer()) {
            return "Das Lager ist leer.";
        }
 
