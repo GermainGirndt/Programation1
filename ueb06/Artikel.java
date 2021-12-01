@@ -43,7 +43,7 @@ public class Artikel
     * Konstruktor für Artikel ohne Preis- und Bestandsangabe
     * @param artikelNr ist die ArtikelNr
     * @param art ist die Artikelart
-    * @param bestand steht für den initalen Bestand
+    * @param preis steht für den initalen Preis
     */
     public Artikel(int artikelNr, String art, double preis)
     {
