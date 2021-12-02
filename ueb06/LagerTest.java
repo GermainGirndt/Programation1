@@ -15,48 +15,19 @@ import org.junit.jupiter.api.Test;
  */
 public class LagerTest
 {       
-    public static       Map<String, Object> ARTIKEL_EINS_KONSTANTS;
-    public static final int                 ARTIKEL_EINS_NUMMER                =  1111;
-    public static final String              ARTIKEL_EINS_ART                   = "Playstation";
-    public static final int                 ARTIKEL_EINS_BESTAND               =  1;
-    public static final double              ARTIKEL_EINS_PREIS                 =  10.0;
-    
-    
-    public static final String              ARTIKEL_KONSTANTE_NUMMER           =  "NUMMER";
-    public static final String              ARTIKEL_KONSTANTE_ART              =  "ART";
-    public static final String              ARTIKEL_KONSTANTE_PREIS            =  "PREIS";
-    public static final String              ARTIKEL_KONSTANTE_BESTAND          =  "BESTAND";
+    private Lager                                   lager;
+    private ArtikelFactory                          artikelFactory;
 
-    Lager                                   lager;
-    Artikel                                 artikelEins;
-
-
-    @BeforeAll
-    public static void setUpClass() {
-        ARTIKEL_EINS_KONSTANTS = new HashMap<String, Object>()
-        {{
-            put(ARTIKEL_KONSTANTE_NUMMER, ARTIKEL_EINS_NUMMER);
-            put(ARTIKEL_KONSTANTE_ART, ARTIKEL_EINS_ART);
-            put(ARTIKEL_KONSTANTE_PREIS, ARTIKEL_EINS_PREIS);
-            put(ARTIKEL_KONSTANTE_BESTAND, ARTIKEL_EINS_BESTAND);
-        }};
-    }
-
-
+    public static int                       INDEX_ARTIKEL_EINS = 0;
 
     @BeforeEach
     public void setUp() {
         this.lager = new Lager();
-        this.artikelEins = new Artikel(
-            (int)    ARTIKEL_EINS_KONSTANTS.get(ARTIKEL_KONSTANTE_NUMMER), 
-            (String) ARTIKEL_EINS_KONSTANTS.get(ARTIKEL_KONSTANTE_ART), 
-            (int)    ARTIKEL_EINS_KONSTANTS.get(ARTIKEL_KONSTANTE_BESTAND), 
-            (double) ARTIKEL_EINS_KONSTANTS.get(ARTIKEL_KONSTANTE_PREIS)
-        );
+        this.artikelFactory = new ArtikelFactory();
     }
 
     @Test
-    public void neuesLagerHatNullArtikel()
+    public void neues_lager_hat_null_Artikel()
     {
         int erwarteteArtikelanzahl = 0;
 
@@ -66,47 +37,80 @@ public class LagerTest
     }
 
     @Test
-    public void kannEinenArtikelAnlegen()
+    public void kann_einen_Artikel_anlegen()
     {
         int erwarteteArtikelAnzahl = 1;
 
-        this.lager.legeAnArtikel(this.artikelEins);
-
-        int artikelAnzahl = this.lager.getArtikelAnzahl();
-        assertEquals(erwarteteArtikelAnzahl, artikelAnzahl);
-
-        Artikel artikel = this.lager.getArtikel(0);
-        assertEquals(this.artikelEins, artikel);
+        Artikel artikelEins = this.anlege_Artikel_eins_ins_Lager();
+        Artikel angelegterArtikel = this.lager.getArtikel(INDEX_ARTIKEL_EINS);
+        assertEquals(artikelEins, angelegterArtikel);
     }
 
+    
     @Test
-    public void neuesLagerHatGenauZehnPlaetze()
+    public void die_Artikelanzahl_wird_um_eins_erhoert_bei_dem_Anlegen()
     {
+        int erwarteteArtikelAnzahl = 1;
+        
+        anlege_Artikel_eins_ins_Lager();
+        int artikelanzahl = this.lager.getArtikelAnzahl();
 
-        HashMap[] artikeldateien = new HashMap[] {
-            new HashMap<String, Object>()
-            {{
-                put(ARTIKEL_KONSTANTE_NUMMER, 1111);
-                put(ARTIKEL_KONSTANTE_ART, "Computerspiel");
-                put(ARTIKEL_KONSTANTE_BESTAND, 10);
-                put(ARTIKEL_KONSTANTE_PREIS, 50.10);
-            }}
-        };
+        assertEquals(erwarteteArtikelAnzahl, artikelanzahl);
+    }
+    
+    private Artikel anlege_Artikel_eins_ins_Lager() {
+        
+        Artikel[] artikelArray = this.artikelFactory.getArtikel(1);
+        if (true == true ) {
+            throw new ArithmeticException("oben2");
+        }
+        Artikel artikelEins = artikelArray[INDEX_ARTIKEL_EINS];
+        
+        // if (artikelEins == null) {
+        //     throw new ArithmeticException("hi");
+        // }
 
-        for ( HashMap artikeldatei : artikeldateien) {
+        //System.out.print("hi");
 
-            int artikelnummer = (int) artikeldatei.get(ARTIKEL_KONSTANTE_NUMMER);
-            String artikelart = (String) artikeldatei.get(ARTIKEL_KONSTANTE_ART);
-            int artikelbestand = (int) artikeldatei.get(ARTIKEL_KONSTANTE_BESTAND);
-            double artikelpreis = (double) artikeldatei.get(ARTIKEL_KONSTANTE_PREIS);
+        //this.lager.legeAnArtikel(artikelEins);
 
-            Artikel artikel = new Artikel(artikelnummer, artikelart, artikelbestand, artikelpreis);
+        return artikelEins;
+    }
 
+    // @Test
+    // public void kann_zwei_Artikel_anlegen()
+    // {
+    //     int erwarteteArtikelAnzahl = 1;
+
+    //     Artikel artikelEins = this.anlege_Artikel_eins_ins_Lager();
+    //     Artikel angelegterArtikel = this.lager.getArtikel(INDEX_ARTIKEL_EINS);
+    //     assertEquals(artikelEins, angelegterArtikel);
+    // }
+
+
+
+
+    @Test
+    public void neues_lager_kann_zehn_Artikel_halten()
+    {
+        Artikel[] artikelArray = this.artikelFactory.getArtikel(10);
+
+        for ( Artikel artikel : artikelArray) {
             this.lager.legeAnArtikel(artikel);
         }
     }
 
+    @Test
+    public void neues_lager_kann_nicht_elf_Artikel_halten()
+    {
+        Artikel[] artikelArray = this.artikelFactory.getArtikel(11);
 
+        for ( Artikel artikel : artikelArray) {
+            this.lager.legeAnArtikel(artikel);
+        }
+    }
+
+////////////////////////
     @Test
     public void test_Lager_Konstruktor_Groesse_20()
     {

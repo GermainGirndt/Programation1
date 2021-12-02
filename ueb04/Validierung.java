@@ -119,7 +119,6 @@ public class Validierung {
         return zuCheckendeZahl > 0;
     }
     
-
     /**
     * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natürlichen Zahl ist.
     * @param zuCheckendeZahl die ueberprueft werden soll

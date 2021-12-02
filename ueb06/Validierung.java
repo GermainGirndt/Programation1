@@ -31,6 +31,15 @@ public final class Validierung {
     }
 
     /**
+    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natürlichen Zahl ist.
+    * @param zuCheckendeZahl die ueberprueft werden soll
+    * @return true fuer ja; false fuer nein
+    */    
+    public static boolean checkeObNatuerlicheZahl(long zuCheckendeZahl) {
+        return zuCheckendeZahl > 0;
+    }
+
+    /**
     * Die Methode prüft, ob die Menge positiv ist und den höchsten Wert von dem Datentyp Long nicht übersteigt.
     * Falls diese Bedingungen nicht eingehalten werden, wird eine eine Exception geworfen
     * @param mengeArtikelabgang ist die Menge 
