@@ -83,22 +83,27 @@ public class LagerTest
     public void neuesLagerHatGenauZehnPlaetze()
     {
 
-        //Object[] array = new Object[] {"teste"}; 
+        HashMap[] artikeldateien = new HashMap[] {
+            new HashMap<String, Object>()
+            {{
+                put(ARTIKEL_KONSTANTE_NUMMER, 1111);
+                put(ARTIKEL_KONSTANTE_ART, "Computerspiel");
+                put(ARTIKEL_KONSTANTE_BESTAND, 10);
+                put(ARTIKEL_KONSTANTE_PREIS, 50.10);
+            }}
+        };
 
-        ARTIKEL_EINS_KONSTANTS = new HashMap<String, Object>()
-        {{
-            put(ARTIKEL_KONSTANTE_NUMMER, ARTIKEL_EINS_NUMMER);
-            put(ARTIKEL_KONSTANTE_ART, ARTIKEL_EINS_ART);
-            put(ARTIKEL_KONSTANTE_PREIS, ARTIKEL_EINS_PREIS);
-            put(ARTIKEL_KONSTANTE_BESTAND, ARTIKEL_EINS_BESTAND);
-        }};
+        for ( HashMap artikeldatei : artikeldateien) {
 
-        this.lager.append()
-        int erwarteteArtikelanzahl = 0;
+            int artikelnummer = (int) artikeldatei.get(ARTIKEL_KONSTANTE_NUMMER);
+            String artikelart = (String) artikeldatei.get(ARTIKEL_KONSTANTE_ART);
+            int artikelbestand = (int) artikeldatei.get(ARTIKEL_KONSTANTE_BESTAND);
+            double artikelpreis = (double) artikeldatei.get(ARTIKEL_KONSTANTE_PREIS);
 
-        int artikelAnzahl = this.lager.getArtikelAnzahl();
+            Artikel artikel = new Artikel(artikelnummer, artikelart, artikelbestand, artikelpreis);
 
-        assertEquals(erwarteteArtikelanzahl, artikelAnzahl);
+            this.lager.legeAnArtikel(artikel);
+        }
     }
 
 
