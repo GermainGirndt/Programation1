@@ -1,8 +1,8 @@
-import static org.junit.Assert.*;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-    
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 /**
 * Die Test-Klasse ArtikelTest.
 *
@@ -10,9 +10,9 @@ import org.junit.Test;
 * @version (eine Versionsnummer oder ein Datum)
 */
 public class ArtikelTest
-    {
-
+{
     
+
     //KonstruktorTests 
     
     //Korrekte Fälle 
@@ -62,34 +62,34 @@ public class ArtikelTest
     }
     
     //Fehlerfälle
-    @Test (expected = IllegalArgumentException.class)
+    @Test 
     public void test_Artikel_Konstruktor_ArtikelNr_99999()
     {
-        Artikel artikel            = new Artikel(99999, "Test");
+        assertThrows(IllegalArgumentException.class, () -> {  new Artikel(99999, "Test");}); 
     }
     
-    @Test (expected = IllegalArgumentException.class)
+    @Test 
     public void test_Artikel_Konstruktor_ArtikelNr_negative_3()
     {
-        Artikel artikel            = new Artikel(-3, "Test");
+        assertThrows(IllegalArgumentException.class, () -> { new Artikel(-3, "Test");}); 
     }
     
-    @Test (expected = IllegalArgumentException.class)
+    @Test
     public void test_Artikel_Konstruktor_ArtikelNr_0()
     {
-        Artikel artikel            = new Artikel(0, "Test");
+        assertThrows(IllegalArgumentException.class, () -> { new Artikel(0, "Test");}); 
     }
     
-    @Test (expected = IllegalArgumentException.class)
+    @Test
     public void test_Artikel_Konstruktor_Bestand_minus_1()
     {
-        Artikel artikel            = new Artikel(0, "Test", -1);
+        assertThrows(IllegalArgumentException.class, () -> { new Artikel(0, "Test", -1);}); 
     }
     
-    @Test (expected = IllegalArgumentException.class)
+    @Test 
     public void test_Artikel_Konstruktor_preis_minus_1_komma_5()
     {
-        Artikel artikel            = new Artikel(0, "Test", 0, -1.5);
+        assertThrows(IllegalArgumentException.class, () -> { new Artikel(0, "Test", 0, -1.5);}); 
     }
     
     //MethodenTest
@@ -129,20 +129,22 @@ public class ArtikelTest
     
     //Fehlerfälle
     //zugang
-    @Test (expected = IllegalArgumentException.class)
+    @Test 
      public void test_buche_Zugang_uebergeben_minus_5()
     {
         Artikel artikel             = new Artikel(1234, "Test", 5);
-        artikel.bucheZugang(-5);
+        assertThrows(IllegalArgumentException.class, () -> {artikel.bucheZugang(-5);});
+        
        
     }
     
     //abgang
-     @Test (expected = IllegalArgumentException.class)
+     @Test 
      public void test_buche_Abgang_uebergeben_10_bestand_5()
     {
         Artikel artikel             = new Artikel(1234, "Test", 5);
-        artikel.bucheAbgang(10);
+        assertThrows(IllegalArgumentException.class, () -> {artikel.bucheAbgang(10);});
+        
        
     }
 }
