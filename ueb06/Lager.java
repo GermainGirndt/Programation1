@@ -92,7 +92,7 @@ public class Lager
     public void bucheAbgang(int artikelNr, int abgang) {
         Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
         if(artikel != null){
-            artikel.bucheZugang(abgang);    
+            artikel.bucheAbgang(abgang);    
         }
     }
     

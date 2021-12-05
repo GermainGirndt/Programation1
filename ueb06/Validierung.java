@@ -31,6 +31,30 @@ public final class Validierung {
     }
 
     /**
+    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natürlichen Zahl ist.
+    * @param zuCheckendeZahl die ueberprueft werden soll
+    * @return true fuer ja; false fuer nein
+    */    
+    public static boolean checkeObNatuerlicheZahl(long zuCheckendeZahl) {
+        return zuCheckendeZahl > 0;
+    }
+
+    /**
+    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natürlichen Zahl ist.
+    * @param zuCheckendeZahl die ueberprueft werden soll
+    * @param istNullErlaubt bestimmt, ob die Zahl null akzeptiert werden soll
+    * @return true fuer ja; false fuer nein
+    */    
+    public static boolean checkeObNatuerlicheZahl(long zuCheckendeZahl, boolean istNullErlaubt) {
+
+        if (istNullErlaubt) {
+            return zuCheckendeZahl >= 0;
+        }
+        
+        return zuCheckendeZahl > 0;
+    }
+
+    /**
     * Die Methode prüft, ob die Menge positiv ist und den höchsten Wert von dem Datentyp Long nicht übersteigt.
     * Falls diese Bedingungen nicht eingehalten werden, wird eine eine Exception geworfen
     * @param mengeArtikelabgang ist die Menge 
@@ -63,12 +87,16 @@ public final class Validierung {
     public static void validiereArtikelArt(String art) {
         boolean sollLeertasteErlauben = true;
 
+        if (art == null) {
+            throw new IllegalArgumentException("Artikelart darf nicht null sein");
+        }
+
         if (checkeFuerNurLeertasten(art)) {
             throw new IllegalArgumentException("Artikelart darf nicht leer sein");
         }
 
         if (!checkeFuerNurAlphabetischeCharaktere(art, sollLeertasteErlauben)) {
-            throw new IllegalArgumentException("Artikelart darf keine speziellen Charakteren außer Leertaste enthalten");
+            throw new IllegalArgumentException("Artikelart darf keine speziellen Charakteren außer Leertaste enthalten. Erhalten: " + art);
         }
     }
 
@@ -97,7 +125,7 @@ public final class Validierung {
             string = string.replaceAll("\\s+","");
         } 
 
-        String regex = "^[a-zA-ZäöüÄÖÜßa]+$";
+        String regex = "^[a-zA-Z0-9\\-äöüÄÖÜßa]+$";
         
         boolean hatNurAlphabetischeCharaktere = string.matches(regex);
 
