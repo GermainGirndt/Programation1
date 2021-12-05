@@ -87,6 +87,10 @@ public final class Validierung {
     public static void validiereArtikelArt(String art) {
         boolean sollLeertasteErlauben = true;
 
+        if (art == null) {
+            throw new IllegalArgumentException("Artikelart darf nicht null sein");
+        }
+
         if (checkeFuerNurLeertasten(art)) {
             throw new IllegalArgumentException("Artikelart darf nicht leer sein");
         }
