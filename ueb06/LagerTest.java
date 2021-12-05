@@ -61,9 +61,6 @@ public class LagerTest
     private Artikel anlege_Artikel_eins_ins_Lager() {
         
         Artikel[] artikelArray = this.artikelFactory.getArtikel(1);
-        if (true == true ) {
-            throw new ArithmeticException("oben2");
-        }
         Artikel artikelEins = artikelArray[INDEX_ARTIKEL_EINS];
         
         // if (artikelEins == null) {
