@@ -6,15 +6,12 @@ import org.junit.jupiter.api.Test;
 /**
 * Die Test-Klasse ArtikelTest.
 *
-* @author  (Ihr Name)
-* @version (eine Versionsnummer oder ein Datum)
+ * @author  Girndt, Germain; Krier, Katharina
+ * @version 1.0
 */
 public class ArtikelTest
 {
-    
-
-    //KonstruktorTests 
-    
+    //KonstruktorTests    
     //Korrekte Fälle 
     @Test
     public void test_Artikel_Konstruktor_Artikelnr_1()
@@ -93,11 +90,10 @@ public class ArtikelTest
     }
     
     //MethodenTest
-    
     //Korrekte Fälle
-    //abgang
+    //Abgang
     @Test
-    public void test_buche_Abgang_erwartet_10_uebergeben_10()
+    public void test_buche_Abgang_erwartet_10_uebergeben_10_davor_20()
     {
         long erwarteterBestand      = 10;
         Artikel artikel             = new Artikel(1234, "Test", 20);
@@ -108,7 +104,7 @@ public class ArtikelTest
     
     //zugang
     @Test
-    public void test_buche_Zugang_erwartet_10_uebergeben_10()
+    public void test_buche_Zugang_erwartet_10_uebergeben_10_davor_0()
     {
         long erwarteterBestand      = 10;
         Artikel artikel             = new Artikel(1234, "Test", 0);
@@ -118,7 +114,7 @@ public class ArtikelTest
     }
     
     @Test
-    public void test_buche_Zugang_erwartet_15_uebergeben_10()
+    public void test_buche_Zugang_erwartet_15_uebergeben_10_davor_5()
     {
         long erwarteterBestand      = 15;
         Artikel artikel             = new Artikel(1234, "Test", 5);
