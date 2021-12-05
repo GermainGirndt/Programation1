@@ -1,6 +1,12 @@
 import java.util.Arrays;
 import java.util.HashMap;
-
+/**
+ * Die Klasse ArtikelFactory bietet ein gutes Werkzeug,
+ * um Artikel-Objekte fuer automatisierte Tests zu generieren
+ * 
+ * @author Girndt & Krier 
+ * @version 1.0
+ */
 public class ArtikelFactory {
 
     private             HashMap<String, Object>[] artikelWerte;
@@ -12,6 +18,11 @@ public class ArtikelFactory {
         this.erstelleArtikelarray();
     }
 
+    /**
+     * Gibt ein Artikel-Objekt zurueck je nach Instanznummer
+     * @param artikelInstanznummer ist die Artikelnummer nach dem Seed (s. erstelleArtikelArray-Methode)
+     * @return den wählten Artikel
+     */
     public Artikel getEinenArtikel (int artikelInstanznummer) {
 
         Validierung.checkeObNatuerlicheZahl(artikelInstanznummer);
@@ -24,6 +35,12 @@ public class ArtikelFactory {
         return artikel;
     }
     
+     /**
+     * Gibt die eingegebene Anzahl an Artikel zurueck.
+     * Die Artikel befolgen die Reihenfolgen im Seed
+     * @param artikelAnzahl die zurueckgegeben werden soll
+     * @return eine Artikel-Array
+     */
     public Artikel[] getVieleArtikel (int artikelAnzahl) {
         this.erstelleArtikelarray(); // warum brauche ich das hier? habe ich die Methode vorher nicht aufgerufen?
 
@@ -43,6 +60,9 @@ public class ArtikelFactory {
         return Arrays.copyOfRange(this.artikelArray, startIndex, endIndex);
     }
 
+     /**
+     * Erstellt einen Artikel-Array gueltiger Artikel durch das Seed
+     */
     private void erstelleArtikelarray() {
 
         Object[][] seed = {
@@ -81,6 +101,13 @@ public class ArtikelFactory {
 
     }
 
+     /**
+     * Diese Methode weist ein HashMap einem HashMap-Array zu.
+     * 
+     * In dem zugewiesenen HashMap sind die Daten, die im Artikel-Konstruktor verwenden werden soll.
+     * 
+     * Das dient zur Code-Organisation.
+     */
     private void werteAnlegen( int indexZumHinzufuegen, Object[] werteZumHinzufuegen ) {
 
         HashMap<String, Object> werte = new HashMap<String, Object>()

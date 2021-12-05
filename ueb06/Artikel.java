@@ -1,7 +1,7 @@
 import java.util.regex.Pattern;
 
 /**
-* Die Klasse Artikel ist für eine einfache Bestandsprüfung
+* Die Klasse Artikel ist fuer eine einfache Bestandspruefung
 *
 * @author Girndt & Krier
 * @version 1.2
@@ -20,11 +20,11 @@ public class Artikel
     
     
     /**
-    * Konstruktor für Artikel mit Angaben
+    * Konstruktor fuer Artikel mit Angaben
     * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
     * @param art ist die Artikelart die nur Buchstaben und Zahlen enthalten darf
-    * @param bestand steht für den Bestand der nicht negativ sein muss
-    * @param preis steht für den Preis der nicht negativ sein muss
+    * @param bestand steht fuer den Bestand der nicht negativ sein muss
+    * @param preis steht fuer den Preis der nicht negativ sein muss
     */
     public Artikel(int artikelNr, String art, int bestand, double preis)
     {
@@ -40,10 +40,10 @@ public class Artikel
     }
     
     /**
-    * Konstruktor für Artikel ohne Preis- und Bestandsangabe
+    * Konstruktor fuer Artikel ohne Preis- und Bestandsangabe
     * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
     * @param art ist die Artikelart die nur Buchstaben und Zahlen enthalten darf
-    * @param preis steht für den initalen Preis
+    * @param preis steht fuer den initalen Preis
     */
     public Artikel(int artikelNr, String art, double preis)
     {
@@ -52,10 +52,10 @@ public class Artikel
     }
     
     /**
-    * Konstruktor für Artikel ohne Preisangabe
+    * Konstruktor fuer Artikel ohne Preisangabe
     * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
     * @param art ist die Artikelart die nur Buchstaben und Zahlen enthalten darf
-    * @param bestand steht für den Bestand
+    * @param bestand steht fuer den Bestand
     */
     public Artikel(int artikelNr, String art, int bestand)
     {
@@ -63,7 +63,7 @@ public class Artikel
     }
 
     /**
-    * Konstruktor für Artikel ohne Bestandsangabe
+    * Konstruktor fuer Artikel ohne Bestandsangabe
     * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
     * @param art ist die Artikelart die nur Buchstaben und Zahlen enthalten darf
     */
@@ -73,7 +73,7 @@ public class Artikel
     }
 
     /**
-    * Die Methode bucht eine übergebene Menge dem Bestand hinzu
+    * Die Methode bucht eine uebergebene Menge dem Bestand hinzu
     * @param mengeArtikelzugang ist die positive Menge neuer Artikel, die dazugebucht wird
     */
     public void bucheZugang(int mengeArtikelzugang)
@@ -84,7 +84,7 @@ public class Artikel
     }
     
     /**
-    * Die Methode bucht eine übergebene Menge dem Bestand ab
+    * Die Methode bucht eine uebergebene Menge dem Bestand ab
     * @param menge ist die positive Menge, die abgebucht wird
     */
     public void bucheAbgang(int menge) {

@@ -21,7 +21,7 @@ public class UserInput {
 
     /**
     * Die Methode zeigt eine Message an und fragt erwartet einein Integerinput von dem Nutzer
-    * Außerdem sorgt die Methode dafür, dass der Scanner nicht gesperrt bleibt, indem sie "input.nextLine()" aufruft.
+    * Außerdem sorgt die Methode dafuer, dass der Scanner nicht gesperrt bleibt, indem sie "input.nextLine()" aufruft.
     * @param message ist die anzuzeigende Nachricht 
     * @return ist die von Nutzer eingegebene Integer 
     */
@@ -42,7 +42,7 @@ public class UserInput {
     
     /**
     * Die Methode zeigt eine Message an und fragt erwartet einein Stringinput von dem Nutzer
-    * Außerdem sorgt die Methode dafür, dass der Scanner nicht gesperrt bleibt, indem sie "input.nextLine()" aufruft.
+    * Außerdem sorgt die Methode dafuer, dass der Scanner nicht gesperrt bleibt, indem sie "input.nextLine()" aufruft.
     * @param message ist die anzuzeigende Nachricht 
     * @return ist die von Nutzer eingegebene String 
     */

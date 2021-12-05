@@ -13,8 +13,8 @@ public class Lager
    private final static int STANDARD_LAGER_GROESSE      = 10;
    
    /**
-   * Konstruktor für Lager mit Angabe über die Lagerplatzanzahl
-   * @param lagerplatzanzahl ist die Anzahl an verfügbaren Plätze im Lager
+   * Konstruktor fuer Lager mit Angabe ueber die Lagerplatzanzahl
+   * @param lagerplatzanzahl ist die Anzahl an verfuegbaren Plätze im Lager
    */
    public Lager(int lagerplatzanzahl) {
        Validierung.validiereLagergroesse(lagerplatzanzahl);
@@ -22,7 +22,7 @@ public class Lager
     }
     
     /**
-    * Konstruktor für Lager ohne Angabe über die Lagerplatzanzahl
+    * Konstruktor fuer Lager ohne Angabe ueber die Lagerplatzanzahl
     */
     public Lager() {
         this(STANDARD_LAGER_GROESSE);
@@ -52,7 +52,7 @@ public class Lager
     }
     
     /**
-    * Entfernt einen Artikel über seine Nummer
+    * Entfernt einen Artikel ueber seine Nummer
     * @param artikelNr von dem zu entfernenden Artikel
     */
     public void entferneArtikel(int artikelNr) {
@@ -71,11 +71,11 @@ public class Lager
             }
         }    
         
-        throw new IllegalArgumentException("Nur Artikel im Lager können entfernt werden.");
+        throw new IllegalArgumentException("Nur Artikel im Lager koennen entfernt werden.");
     }
     
     /**
-    * Die Methode bucht eine übergebene Menge dem Bestand von einem Artikel im Lager hinzu
+    * Die Methode bucht eine uebergebene Menge dem Bestand von einem Artikel im Lager hinzu
     * @param zugang ist die Menge neuer Artikel, die dazugebucht wird
     */
     public void bucheZugang(int artikelNr, int zugang) {
@@ -86,7 +86,7 @@ public class Lager
     }
     
     /**
-    * Die Methode bucht eine übergebene Menge dem Bestand von einem Artikel im Lager ab
+    * Die Methode bucht eine uebergebene Menge dem Bestand von einem Artikel im Lager ab
     * @param abgang ist die Menge vom Artikel, die abgebucht wird
     */
     public void bucheAbgang(int artikelNr, int abgang) {
@@ -155,7 +155,7 @@ public class Lager
     private void loescheArtikelNachIndex(int indexZuLoeschen) {
         
         if (this.anzahlArtikel - 1 < indexZuLoeschen) {
-            throw new IllegalArgumentException("Der gewählte Index übertrifft die Anzahl an Artikeln.");
+            throw new IllegalArgumentException("Der gewählte Index uebertrifft die Anzahl an Artikeln.");
         }
         if(indexZuLoeschen < 0){
             throw new IllegalArgumentException("Der gewählte Index muss positiv sein.");

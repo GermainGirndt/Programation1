@@ -1,7 +1,7 @@
  
 
 /**
-* Die Klasse Validierung ist eine Werkzeugklasse für die Artikel- und ArtikelDialogklassen
+* Die Klasse Validierung ist eine Werkzeugklasse fuer die Artikel- und ArtikelDialogklassen
 *
 * @author Girndt & Krier
 * @version 1.0
@@ -21,17 +21,17 @@ public final class Validierung {
     private Validierung() {}
 
     /**
-    * Die Methode prüft ob die Menge fürs Buchen positiv ist, falls nicht, wirft sie eine Exception
+    * Die Methode prueft ob die Menge fuers Buchen positiv ist, falls nicht, wirft sie eine Exception
     * @param menge ist die Menge 
     */
     public static void validiereMengeanderung(int mengeArtikelaenderung) {
         if (mengeArtikelaenderung <= MINDEST_ANZAHL_AN_MENGEANDERUNG) {
-            throw new IllegalArgumentException("Die Menge muss eine natürliche positive Zahl sein");
+            throw new IllegalArgumentException("Die Menge muss eine natuerliche positive Zahl sein");
         }
     }
 
     /**
-    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natürlichen Zahl ist.
+    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natuerlichen Zahl ist.
     * @param zuCheckendeZahl die ueberprueft werden soll
     * @return true fuer ja; false fuer nein
     */    
@@ -40,7 +40,7 @@ public final class Validierung {
     }
 
     /**
-    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natürlichen Zahl ist.
+    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natuerlichen Zahl ist.
     * @param zuCheckendeZahl die ueberprueft werden soll
     * @param istNullErlaubt bestimmt, ob die Zahl null akzeptiert werden soll
     * @return true fuer ja; false fuer nein
@@ -55,7 +55,7 @@ public final class Validierung {
     }
 
     /**
-    * Die Methode prüft, ob die Menge positiv ist und den höchsten Wert von dem Datentyp Long nicht übersteigt.
+    * Die Methode prueft, ob die Menge positiv ist und den hoechsten Wert von dem Datentyp Long nicht uebersteigt.
     * Falls diese Bedingungen nicht eingehalten werden, wird eine eine Exception geworfen
     * @param mengeArtikelabgang ist die Menge 
     */
@@ -69,7 +69,7 @@ public final class Validierung {
 
 
     /**
-    * Die Methode prüft, ob die Menge positiv und kleiner als der Bestand ist, falls nicht wirft sie eine Exception
+    * Die Methode prueft, ob die Menge positiv und kleiner als der Bestand ist, falls nicht wirft sie eine Exception
     * @param mengeArtikelabgang ist die Menge 
     */
     public static void validiereAbgangsmenge(long bestand, int mengeArtikelabgang) {
@@ -81,7 +81,7 @@ public final class Validierung {
     }
 
     /**
-    * Die Methode prüft ob die Artikelart nicht leer ist, falls doch wirft sie eine Exception
+    * Die Methode prueft ob die Artikelart nicht leer ist, falls doch wirft sie eine Exception
     * @param art ist die ArtikelArt
     */
     public static void validiereArtikelArt(String art) {
@@ -101,8 +101,8 @@ public final class Validierung {
     }
 
     /**
-    * Die Methode prüft ob der String ist Leer oder ob der nur Leertasten enthält
-    * @param string ist der zu überprüfende String
+    * Die Methode prueft ob der String ist Leer oder ob der nur Leertasten enthält
+    * @param string ist der zu ueberpruefende String
     * @return ist das Ergebnis: true (enthält nur Leertasten/nichts) oder false (enthält auch andere Charaktere)
     */
     private static boolean checkeFuerNurLeertasten(String string) {
@@ -114,8 +114,8 @@ public final class Validierung {
     }
 
     /**
-    * Die Methode prüft ob der eingegebene String nur alphabestische Zeichen enthält
-    * @param string ist der zu überprüfende String
+    * Die Methode prueft ob der eingegebene String nur alphabestische Zeichen enthält
+    * @param string ist der zu ueberpruefende String
     * @param sollLeertasteErlauben steuert, ob Leertasten auch erlaubt werden sollen
     * @return ist das Ergebnis: true (nur alphabestische Zeichen) oder false (enthält auch andere Charaktere)
     */
@@ -125,7 +125,7 @@ public final class Validierung {
             string = string.replaceAll("\\s+","");
         } 
 
-        String regex = "^[a-zA-Z0-9\\-äöüÄÖÜßa]+$";
+        String regex = "^[a-zA-Z0-9\\-äoeueÄoeueßa]+$";
         
         boolean hatNurAlphabetischeCharaktere = string.matches(regex);
 
@@ -133,17 +133,17 @@ public final class Validierung {
     }
 
     /**
-    * Die Methode prüft ob der Artikelnummer größer als 0 ist, falls nicht gibt es eine Exception
+    * Die Methode prueft ob der Artikelnummer groeßer als 0 ist, falls nicht gibt es eine Exception
     * @param artikelNr ist die Artikelnummer
     */
     public static void validiereArtikelNr(int artikelNr) {
         if (artikelNr < MINDESTARTIKELNUMMER || artikelNr > HOECHSTARTIKELNUMMER) {
-            throw new IllegalArgumentException("Ungültige Artikelnummer. Die Artikelnummer muss zwischen 1 und 9999 sein.");
+            throw new IllegalArgumentException("Ungueltige Artikelnummer. Die Artikelnummer muss zwischen 1 und 9999 sein.");
         }
     }
 
     /**
-    * Die Methode prüft ob der Bestand größer als 0 ist, falls nicht gibt es eine Exception
+    * Die Methode prueft ob der Bestand groeßer als 0 ist, falls nicht gibt es eine Exception
     * @param bestand ist der Bestand
     */
     public static void validiereBestand(int bestand) {
@@ -155,8 +155,8 @@ public final class Validierung {
     
 
     /**
-    * Die Methode prüft, ob der Preis gleich/größer der Mindestpreis ist, falls nicht, gibt es eine Exception
-    * @param preis ist der zu überprüfende Preis
+    * Die Methode prueft, ob der Preis gleich/groeßer der Mindestpreis ist, falls nicht, gibt es eine Exception
+    * @param preis ist der zu ueberpruefende Preis
     */
     public static void validierePreis(double preis) {
         if (preis < MINDESTPREIS){
@@ -166,8 +166,8 @@ public final class Validierung {
     
     
     /**
-    * Die Methode prüft, ob der Prozentsatz an Preisaenderung die groesste negative Preisaenderung nicht uebersteigt, falls doch, gibt es eine Exception
-    * @param preis ist der zu überprüfende Preis
+    * Die Methode prueft, ob der Prozentsatz an Preisaenderung die groesste negative Preisaenderung nicht uebersteigt, falls doch, gibt es eine Exception
+    * @param preis ist der zu ueberpruefende Preis
     */
     public static void validierePreisaenderung(double prozent) {
         if (prozent < GROESSTE_NEGATIVE_PREISAENDERUNG) {

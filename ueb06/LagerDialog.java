@@ -103,8 +103,8 @@ public class LagerDialog
     }
     
     /**
-    * Diese Funktion führt je nach Parameter die dazugehoerige Funktion aus
-    * @param funktion die ausgeführt werden soll
+    * Diese Funktion fuehrt je nach Parameter die dazugehoerige Funktion aus
+    * @param funktion die ausgefuehrt werden soll
     */
     public void ausfuehrenFunktion() {
 
