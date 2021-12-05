@@ -21,10 +21,10 @@ public class Artikel
     
     /**
     * Konstruktor für Artikel mit Angaben
-    * @param artikelNr ist die ArtikelNr
-    * @param art ist die Artikelart
-    * @param bestand steht für den Bestand
-    * @param preis steht für den Preis
+    * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
+    * @param art ist die Artikelart die nur Buchstaben und Zahlen enthalten darf
+    * @param bestand steht für den Bestand der nicht negativ sein muss
+    * @param preis steht für den Preis der nicht negativ sein muss
     */
     public Artikel(int artikelNr, String art, int bestand, double preis)
     {
@@ -41,8 +41,8 @@ public class Artikel
     
     /**
     * Konstruktor für Artikel ohne Preis- und Bestandsangabe
-    * @param artikelNr ist die ArtikelNr
-    * @param art ist die Artikelart
+    * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
+    * @param art ist die Artikelart die nur Buchstaben und Zahlen enthalten darf
     * @param preis steht für den initalen Preis
     */
     public Artikel(int artikelNr, String art, double preis)
@@ -53,8 +53,8 @@ public class Artikel
     
     /**
     * Konstruktor für Artikel ohne Preisangabe
-    * @param artikelNr ist die ArtikelNr
-    * @param art ist die Artikelart
+    * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
+    * @param art ist die Artikelart die nur Buchstaben und Zahlen enthalten darf
     * @param bestand steht für den Bestand
     */
     public Artikel(int artikelNr, String art, int bestand)
@@ -64,8 +64,8 @@ public class Artikel
 
     /**
     * Konstruktor für Artikel ohne Bestandsangabe
-    * @param artikelNr ist die ArtikelNr
-    * @param art ist die Artikelart
+    * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
+    * @param art ist die Artikelart die nur Buchstaben und Zahlen enthalten darf
     */
     public Artikel(int artikelNr, String art)
     {
@@ -74,7 +74,7 @@ public class Artikel
 
     /**
     * Die Methode bucht eine übergebene Menge dem Bestand hinzu
-    * @param mengeArtikelzugang ist die Menge neuer Artikel, die dazugebucht wird
+    * @param mengeArtikelzugang ist die positive Menge neuer Artikel, die dazugebucht wird
     */
     public void bucheZugang(int mengeArtikelzugang)
     {
@@ -85,7 +85,7 @@ public class Artikel
     
     /**
     * Die Methode bucht eine übergebene Menge dem Bestand ab
-    * @param menge ist die Menge, die abgebucht wird
+    * @param menge ist die positive Menge, die abgebucht wird
     */
     public void bucheAbgang(int menge) {
         Validierung.validiereAbgangsmenge(this.bestand, menge);
@@ -165,7 +165,7 @@ public class Artikel
 
     /**
     * Die Methode setzt die Artikelart neu
-    * @param neue Artikelart
+    * @param neue Artikelart die nur Buchstaben und Zahlen und Leerzeichen enthalten darf
     */
     public void setArt(String art)
     {
