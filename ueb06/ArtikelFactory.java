@@ -1,144 +1,97 @@
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 
 public class ArtikelFactory {
 
-    public static       Map<String, Object> ARTIKEL_EINS_WERTE;
-    public static       Map<String, Object> ARTIKEL_ZWEI_WERTE;
-    public static       Map<String, Object> ARTIKEL_DREI_WERTE;
-    public static       Map<String, Object> ARTIKEL_VIER_WERTE;
-    public static       Map<String, Object> ARTIKEL_FUENF_WERTE;
-    public static       Map<String, Object> ARTIKEL_SECHS_WERTE;
-    public static       Map<String, Object> ARTIKEL_SIEBEN_WERTE;
-    public static       Map<String, Object> ARTIKEL_ACHT_WERTE;
-    public static       Map<String, Object> ARTIKEL_NEUN_WERTE;
-    public static       Map<String, Object> ARTIKEL_ZEHN_WERTE;
+    private             HashMap<String, Object>[] artikelWerte;
+    private             Artikel[] artikelArray;
+
+    private             int                 MAX_ARTIKEL_ANZAHL;
     
     public void ArtikelFactory() {
-        this.instanziereArtikelwerte();
+        this.erstelleArtikelarray();
     }
-    
-    public Artikel[] getArtikel (int artikelAnzahl) {
-        
-        Validierung.checkeObNatuerlicheZahl(artikelAnzahl);
-        this.instanziereArtikelwerte(); // warum brauche ich das hier? habe ich die Methode vorher nicht aufgerufen?
 
-        Artikel[] artikel = new Artikel[artikelAnzahl];
-        
-        for (int zaehler = 0; zaehler < artikelAnzahl; zaehler++) {
-            System.out.println("antes");
-            
-            System.out.println("Tudo:");
-            System.out.println(ARTIKEL_EINS_WERTE);
-            System.out.println("Constante:");
-            System.out.println(ArtikelKonstanten.NUMMER);
-            System.out.println("Imprimindo valor:");
-            System.out.println(ARTIKEL_EINS_WERTE.get(ArtikelKonstanten.NUMMER));
+    public Artikel getEinenArtikel (int artikelInstanznummer) {
 
-            int artikelnummer = (int) ARTIKEL_EINS_WERTE.get(ArtikelKonstanten.NUMMER);
-            System.out.println("passou");
+        Validierung.checkeObNatuerlicheZahl(artikelInstanznummer);
+        this.erstelleArtikelarray(); // warum brauche ich das hier? habe ich die Methode vorher nicht aufgerufen?
 
-            String artikelart = (String) ARTIKEL_EINS_WERTE.get(ArtikelKonstanten.ART);
-            int bestand = (int) ARTIKEL_EINS_WERTE.get(ArtikelKonstanten.BESTAND);
-            double artikelpreis = (double) ARTIKEL_EINS_WERTE.get(ArtikelKonstanten.PREIS);
+        int artikelInstanzindex = artikelInstanznummer - 1;
 
-
-            artikel[zaehler] = new Artikel(artikelnummer, artikelart, bestand, artikelpreis);
-        }
+        Artikel artikel = this.artikelArray[artikelInstanzindex];
 
         return artikel;
+    }
+    
+    public Artikel[] getVieleArtikel (int artikelAnzahl) {
+        this.erstelleArtikelarray(); // warum brauche ich das hier? habe ich die Methode vorher nicht aufgerufen?
+
+        if (artikelAnzahl > MAX_ARTIKEL_ANZAHL) {
+            throw new IndexOutOfBoundsException(String.format(
+                "Es werden bis %s Artikel unterstuezt. Anfragt: %s",
+                MAX_ARTIKEL_ANZAHL,
+                artikelAnzahl
+            ));  
+        }
+        
+        Validierung.checkeObNatuerlicheZahl(artikelAnzahl);
+
+        int startIndex = 0;
+        int endIndex = artikelAnzahl;
+
+        return Arrays.copyOfRange(this.artikelArray, startIndex, endIndex);
+    }
+
+    private void erstelleArtikelarray() {
+
+        Object[][] seed = {
+            new Object[] { 1111, "Playstation", 500, 750.00},
+            new Object[] { 1234, "Nintendo Wii", 10, 500.00},
+            new Object[] { 9999, "X-Box", 0, 600.00},
+            new Object[] { 9998, "iPhone 12", 5, 1000.00},
+            new Object[] { 5682, "Galaxy Note 8", 8, 888.88},
+            new Object[] { 4567, "Redmi Note 7", 50, 300.25},
+            new Object[] { 1000, "Tesla", 1, 99999.99},
+            new Object[] { 9979, "Raumschiff", 0, 1250015498.3674},
+            new Object[] { 7698, "Kaugummi", 1, 0.999999},
+            new Object[] { 4000, "Hantel", 20, 42.99},
+            new Object[] { 3000, "Fitness Raum", 1, 42000.99}
+        };
+
+        MAX_ARTIKEL_ANZAHL = seed.length;
+        
+        this.artikelWerte = (HashMap<String, Object>[]) new HashMap[MAX_ARTIKEL_ANZAHL];
+
+        for (int index = 0; index < MAX_ARTIKEL_ANZAHL; index++) {
+            this.werteAnlegen(index, seed[index]);
+        }
+
+        this.artikelArray = new Artikel[MAX_ARTIKEL_ANZAHL];
+        
+        for (int index = 0; index < MAX_ARTIKEL_ANZAHL; index++) {
+            
+            int artikelnummer = (int) artikelWerte[index].get(ArtikelKonstanten.NUMMER);
+            String artikelart = (String) artikelWerte[index].get(ArtikelKonstanten.ART);
+            int bestand = (int) artikelWerte[index].get(ArtikelKonstanten.BESTAND);
+            double artikelpreis = (double) artikelWerte[index].get(ArtikelKonstanten.PREIS);
+
+            this.artikelArray[index] = new Artikel(artikelnummer, artikelart, bestand, artikelpreis);
+        }
 
     }
 
-    private void instanziereArtikelwerte() {
-        ARTIKEL_EINS_WERTE = new HashMap<String, Object>()
-        {{
-            put(ArtikelKonstanten.NUMMER, (int) 1111);
-            put(ArtikelKonstanten.ART, (String) "Playstation");
-            put(ArtikelKonstanten.BESTAND, (int) 5);
-            put(ArtikelKonstanten.PREIS, (double) 750.00);
-        }};
+    private void werteAnlegen( int indexZumHinzufuegen, Object[] werteZumHinzufuegen ) {
 
-        ARTIKEL_ZWEI_WERTE = new HashMap<String, Object>()
+        HashMap<String, Object> werte = new HashMap<String, Object>()
         {{
-            put(ArtikelKonstanten.NUMMER, (int) 1234);
-            put(ArtikelKonstanten.ART, (String) "Nintendo Wii");
-            put(ArtikelKonstanten.BESTAND, (int) 10);
-            put(ArtikelKonstanten.PREIS, (double) 500.00);
+            put(ArtikelKonstanten.NUMMER, (int) werteZumHinzufuegen[0]);
+            put(ArtikelKonstanten.ART, (String) werteZumHinzufuegen[1]);
+            put(ArtikelKonstanten.BESTAND, werteZumHinzufuegen[2]);
+            put(ArtikelKonstanten.PREIS, werteZumHinzufuegen[3]);
         }};
         
-        ARTIKEL_DREI_WERTE = new HashMap<String, Object>()
-        {{
-            put(ArtikelKonstanten.NUMMER, (int) 9999);
-            put(ArtikelKonstanten.ART, (String) "X-Box");
-            put(ArtikelKonstanten.BESTAND, (int) 0);
-            put(ArtikelKonstanten.PREIS, (double) 600.00);
-        }};
+        this.artikelWerte[indexZumHinzufuegen] = werte;
 
-        ARTIKEL_VIER_WERTE = new HashMap<String, Object>()
-        {{
-            put(ArtikelKonstanten.NUMMER, (int) 9998);
-            put(ArtikelKonstanten.ART, (String) "iPhone 12");
-            put(ArtikelKonstanten.BESTAND, (int) 5);
-            put(ArtikelKonstanten.PREIS, (double) 1000.00);
-        }};
-
-
-        ARTIKEL_FUENF_WERTE = new HashMap<String, Object>()
-        {{
-            put(ArtikelKonstanten.NUMMER, (int) 4567);
-            put(ArtikelKonstanten.ART, (String) "Redmi Note 7");
-            put(ArtikelKonstanten.BESTAND, (int) 50);
-            put(ArtikelKonstanten.PREIS, (double) 300.25);
-        }};
-
-
-        ARTIKEL_SECHS_WERTE = new HashMap<String, Object>()
-        {{
-            put(ArtikelKonstanten.NUMMER, (int) 7946);
-            put(ArtikelKonstanten.ART, (String) "Audi");
-            put(ArtikelKonstanten.BESTAND, (int) 1);
-            put(ArtikelKonstanten.PREIS, (double) 25000.00);
-        }};
-
-
-
-        ARTIKEL_SIEBEN_WERTE = new HashMap<String, Object>()
-        {{
-            put(ArtikelKonstanten.NUMMER, (int) 1000);
-            put(ArtikelKonstanten.ART, (String) "Tesla");
-            put(ArtikelKonstanten.BESTAND, (int) 1);
-            put(ArtikelKonstanten.PREIS, (double) 99999.99);
-        }};
-
-
-
-        ARTIKEL_ACHT_WERTE = new HashMap<String, Object>()
-        {{
-            put(ArtikelKonstanten.NUMMER, (int) 9979);
-            put(ArtikelKonstanten.ART, (String) "Raumschiff");
-            put(ArtikelKonstanten.PREIS, (double) 1250015498.3674);
-            put(ArtikelKonstanten.BESTAND, (int) 0);
-        }};
-
-
-
-        ARTIKEL_NEUN_WERTE = new HashMap<String, Object>()
-        {{
-            put(ArtikelKonstanten.NUMMER, (int) 7698);
-            put(ArtikelKonstanten.ART, (String) "Kaugummi");
-            put(ArtikelKonstanten.PREIS, (double) 0.01);
-            put(ArtikelKonstanten.BESTAND, (int) 999999);
-        }};
-
-
-
-        ARTIKEL_ZEHN_WERTE = new HashMap<String, Object>()
-        {{
-            put(ArtikelKonstanten.NUMMER, (int) 4000);
-            put(ArtikelKonstanten.ART, (String) "Hantel");
-            put(ArtikelKonstanten.PREIS, (double) 20.99);
-            put(ArtikelKonstanten.BESTAND, (int) 42);
-        }};
     }
 }

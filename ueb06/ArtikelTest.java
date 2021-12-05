@@ -6,8 +6,8 @@ import org.junit.Test;
 /**
 * Die Test-Klasse ArtikelTest.
 *
-* @author  (Ihr Name)
-* @version (eine Versionsnummer oder ein Datum)
+* @author  Girndt, Germain; Krier, Katharina
+* @version 1.0
 */
 public class ArtikelTest
     {
