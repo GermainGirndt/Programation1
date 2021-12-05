@@ -89,8 +89,8 @@ public class ArtikelDialog
     }
     
     /**
-    * Diese Funktion führt je nach Parameter die dazugehoerige Funktion aus
-    * @param funktion die ausgeführt werden soll
+    * Diese Funktion fuehrt je nach Parameter die dazugehoerige Funktion aus
+    * @param funktion die ausgefuehrt werden soll
     */
     public void ausfuehrenFunktion() {
         boolean sollNachBestandFragen;
@@ -136,7 +136,7 @@ public class ArtikelDialog
     }
 
     /**
-    * Legt einen Artikel mit Bestand an und erfragt alle nötigen Parameter
+    * Legt einen Artikel mit Bestand an und erfragt alle noetigen Parameter
     */
     public void artikelAnlegen(boolean sollNachBestandFragen) {
         
@@ -209,7 +209,7 @@ public class ArtikelDialog
     }
 
     /**
-    * Fragt nach der neuen Artikelart und überschreibt damit die alte Artikelart
+    * Fragt nach der neuen Artikelart und ueberschreibt damit die alte Artikelart
     */
     public void artikelartAendern() {
         if (!checkeObArtikelExistiert()) {
