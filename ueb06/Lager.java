@@ -179,9 +179,9 @@ public class Lager
 
 
     /**
-    * Die Methode gibt den Artikel mit der gewunschten Artikelnummer zurueck 
+    * Die Methode gibt den Index der gewunschten Artikelnummer zurueck 
     * @param artikelNr ist die Artikelnummer vom gewuenschten Artikel
-    * @return der gewuenschte Artikel
+    * @return der Index des Artikels, -1 falls dieser Artikel nicht im Lager ist
     */    
     public int getArtikelNachNummer(int artikelNr) {
         for (int index = 0; index <= this.anzahlArtikel -1; index++) {
