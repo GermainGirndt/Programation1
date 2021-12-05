@@ -130,8 +130,6 @@ public class ArtikelTest
     {
         Artikel artikel             = new Artikel(1234, "Test", 5);
         assertThrows(IllegalArgumentException.class, () -> {artikel.bucheZugang(-5);});
-        
-       
     }
     
     //abgang
@@ -140,8 +138,6 @@ public class ArtikelTest
     {
         Artikel artikel             = new Artikel(1234, "Test", 5);
         assertThrows(IllegalArgumentException.class, () -> {artikel.bucheAbgang(10);});
-        
-       
     }
 }
 
