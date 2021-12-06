@@ -76,7 +76,7 @@ public class ArtikelFactory {
             new Object[] { 9979, "Raumschiff", 0, 1250015498.3674},
             new Object[] { 7698, "Kaugummi", 1, 0.999999},
             new Object[] { 4000, "Hantel", 20, 42.99},
-            new Object[] { 3000, "Fitness Raum", 1, 42000.99}
+            new Object[] { 3000, "Fitness Raum", 1, 42000.99},
         };
 
         MAX_ARTIKEL_ANZAHL = seed.length;

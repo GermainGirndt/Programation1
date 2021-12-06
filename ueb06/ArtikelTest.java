@@ -11,82 +11,130 @@ import org.junit.jupiter.api.Test;
 */
 public class ArtikelTest
 {
+    private Artikel artikel;
+
     //KonstruktorTests    
     //Korrekte Fälle 
     @Test
-    public void test_Artikel_Konstruktor_Artikelnr_1()
+    public void test_Artikel_Konstruktor_Artikelnr_sonst_0()
     {
-        int erwarteteNr     = 1;
-        Artikel artikel     = new Artikel(1, "Test");
-        int tatsaechlicheNr = artikel.getArtikelNr();
-        assertEquals(erwarteteNr , tatsaechlicheNr);
+        test_ArtikelNr_sonst_0(1);
+        test_ArtikelNr_sonst_0(9999);
+        test_ArtikelNr_sonst_0(1234);
+        test_ArtikelNr_sonst_0(397);
     }
     
     @Test
-    public void test_Artikel_Konstruktor_Artikelnr_9999()
+    public void test_Artikel_Konstruktor_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand()
     {
-        int erwarteteNr     = 9999;
-        Artikel artikel     = new Artikel(9999, "Test");
-        int tatsaechlicheNr = artikel.getArtikelNr();
-        assertEquals(erwarteteNr , tatsaechlicheNr);
+        test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(1);
+        test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(9999);
+        test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(1234);
+        test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(397);
     }
     
     @Test
-    public void test_Artikel_Konstruktor_Artikelnr_1234()
+    public void test_Artikel_Konstruktor_ArtikelNr_mit_Bestand_40_ohne_Preis()
     {
-        int erwarteteNr     = 1234;
-        Artikel artikel     = new Artikel(1234, "Test");
-        int tatsaechlicheNr = artikel.getArtikelNr();
-        assertEquals(erwarteteNr , tatsaechlicheNr);
+        test_ArtikelNr_mit_Bestand_40_ohne_Preis(1);
+        test_ArtikelNr_mit_Bestand_40_ohne_Preis(9999);
+        test_ArtikelNr_mit_Bestand_40_ohne_Preis(1234);
+        test_ArtikelNr_mit_Bestand_40_ohne_Preis(397);
     }
     
-    @Test
-    public void test_Artikel_Konstruktor_Ohne_Bestand()
+     @Test
+    public void test_Artikel_Konstruktor_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0()
     {
-        long erwarteterBestand     = 0;
-        Artikel artikel            = new Artikel(1234, "Test");
-        long tatsaechlicherBestand = artikel.getBestand();
-        assertEquals(erwarteterBestand , tatsaechlicherBestand);
+       test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(1);
+       test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(9999);
+       test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(1234);
+       test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(397);
     }
     
-    @Test
-    public void test_Artikel_Konstruktor_Ohne_Preis()
-    {
-        double erwarteterPreis     = 0.0;
-        Artikel artikel            = new Artikel(1234, "Test");
-        double tatsaechlicherPreis = artikel.getPreis();
-        assertEquals(erwarteterPreis , tatsaechlicherPreis , 2* Double.MIN_VALUE);
+    private void test_ArtikelNr_sonst_0(int artikelNr){
+        int erwarteteNr      = artikelNr;   
+        
+        artikel              = new Artikel(artikelNr, "Test");
+        
+        assertEquals(erwarteteNr , artikel.getArtikelNr());
+        ueberpruefeObPreisUndBestand0(artikel.getBestand(),artikel.getPreis());
     }
     
+    private void test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(int artikelNr){
+        double erwarteterPreis     = 3.5;
+        int   erwarteteNr          = artikelNr;   
+        
+        artikel                    = new Artikel(artikelNr, "Test", 0, 3.5);
+        
+        assertEquals(erwarteteNr , artikel.getArtikelNr());
+        assertEquals(erwarteterPreis , artikel.getPreis(), 2* Double.MIN_VALUE);
+        ueberpruefeObBestand0(artikel.getBestand());
+    }
+
+    private void test_ArtikelNr_mit_Bestand_40_ohne_Preis(int artikelNr){
+        long erwarteterBestand     = 40;
+        int   erwarteteNr          = artikelNr;   
+        
+        artikel                    = new Artikel(artikelNr, "Test", 40, 0);
+        
+        assertEquals(erwarteteNr , artikel.getArtikelNr());
+        assertEquals(erwarteterBestand , artikel.getBestand());
+        ueberpruefeObPreis0Komma0(artikel.getPreis());
+    }
+    
+    private void test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(int artikelNr){
+        long erwarteterBestand     = 40;
+        double erwarteterPreis     = 3.0;
+        int   erwarteteNr          = artikelNr;   
+        
+        artikel                    = new Artikel(artikelNr, "Test", 40, 3.0);
+        
+        assertEquals(erwarteteNr , artikel.getArtikelNr());
+        assertEquals(erwarteterBestand , artikel.getBestand());
+        assertEquals(erwarteterPreis , artikel.getPreis(), 2* Double.MIN_VALUE);
+    }
+ 
     //Fehlerfälle
     @Test 
-    public void test_Artikel_Konstruktor_ArtikelNr_99999()
+    public void test_ArtikelNr_darf_nicht_fuenfstellig_sein_Artikel_Konstruktor_ArtikelNr_99999()
     {
         assertThrows(IllegalArgumentException.class, () -> {  new Artikel(99999, "Test");}); 
     }
     
     @Test 
-    public void test_Artikel_Konstruktor_ArtikelNr_negative_3()
+    public void test_Art_darf_keine_besonderen_charaktere_enthalten_Artikel_Konstruktor_Artikelart_dollar()
+    {
+        assertThrows(IllegalArgumentException.class, () -> {  new Artikel(1234, "$");}); 
+    }
+    
+      @Test 
+    public void test_Art_darf_nicht_null_sein_Artikel_Konstruktor_Artikelart_dollar()
+    {
+        assertThrows(IllegalArgumentException.class, () -> {  new Artikel(1234, null);}); 
+    }
+    
+    @Test 
+    public void test_ArtikelNr_darf_nicht_negativ_sein_Artikel_Konstruktor_ArtikelNr_negative_3()
     {
         assertThrows(IllegalArgumentException.class, () -> { new Artikel(-3, "Test");}); 
     }
     
     @Test
-    public void test_Artikel_Konstruktor_ArtikelNr_0()
+    public void test_ArtikelNr_darf_nicht_0_sein_Artikel_Konstruktor_ArtikelNr_0()
     {
         assertThrows(IllegalArgumentException.class, () -> { new Artikel(0, "Test");}); 
     }
     
     @Test
-    public void test_Artikel_Konstruktor_Bestand_minus_1()
+    public void test_Bestand_darf_nicht_negativ_sein_Artikel_Konstruktor_Bestand_minus_1()
     {
-        assertThrows(IllegalArgumentException.class, () -> { new Artikel(0, "Test", -1);}); 
+        assertThrows(IllegalArgumentException.class, () -> { new Artikel(1, "Test", -1);}); 
     }
     
     @Test 
-    public void test_Artikel_Konstruktor_preis_minus_1_komma_5()
+    public void test_Preis_darf_nicht_negativ_sein_Artikel_Konstruktor_preis_minus_1_komma_5()
     {
-        assertThrows(IllegalArgumentException.class, () -> { new Artikel(0, "Test", 0, -1.5);}); 
+        assertThrows(IllegalArgumentException.class, () -> { new Artikel(1, "Test", 0, -1.5);}); 
     }
     
     //MethodenTest
@@ -126,18 +174,45 @@ public class ArtikelTest
     //Fehlerfälle
     //zugang
     @Test 
-     public void test_buche_Zugang_uebergeben_minus_5()
+    public void test_keine_negative_uebergabe_buche_Zugang_uebergeben_minus_5()
     {
         Artikel artikel             = new Artikel(1234, "Test", 5);
         assertThrows(IllegalArgumentException.class, () -> {artikel.bucheZugang(-5);});
     }
     
+    
     //abgang
-     @Test 
-     public void test_buche_Abgang_uebergeben_10_bestand_5()
+    @Test 
+    public void test_bestand_darf_nicht_negativ_werden_buche_Abgang_uebergeben_10_bestand_5()
     {
         Artikel artikel             = new Artikel(1234, "Test", 5);
         assertThrows(IllegalArgumentException.class, () -> {artikel.bucheAbgang(10);});
     }
+    
+    @Test 
+    public void test_keine_negative_uebergabe_buche_Abgang_uebergeben_minus_5()
+    {
+        Artikel artikel             = new Artikel(1234, "Test", 5);
+        assertThrows(IllegalArgumentException.class, () -> {artikel.bucheAbgang(-5);});
+    }
+    
+    
+    
+    
+    private void ueberpruefeObBestand0(long bestand){
+        assertEquals(0 , bestand);    
+    }
+    
+    
+    private void ueberpruefeObPreis0Komma0(double preis){
+       assertEquals(0.0 , preis , 2* Double.MIN_VALUE);  
+    }
+    
+    private void ueberpruefeObPreisUndBestand0(long bestand, double preis){
+       ueberpruefeObBestand0(bestand);
+       ueberpruefeObPreis0Komma0(preis);
+    }
+    
 }
+
 
