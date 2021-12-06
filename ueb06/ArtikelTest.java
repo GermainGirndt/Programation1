@@ -12,43 +12,42 @@ import org.junit.jupiter.api.Test;
 public class ArtikelTest
 {
     private Artikel artikel;
-
+    private int[] testArtikelNr = {1 , 9999, 1234, 397, 9863};
     //KonstruktorTests    
     //Korrekte Fälle 
     @Test
     public void test_Artikel_Konstruktor_Artikelnr_sonst_0()
     {
-        test_ArtikelNr_sonst_0(1);
-        test_ArtikelNr_sonst_0(9999);
-        test_ArtikelNr_sonst_0(1234);
-        test_ArtikelNr_sonst_0(397);
+        for (int zahl : testArtikelNr){
+            test_ArtikelNr_sonst_0(zahl);
+        }
     }
     
     @Test
     public void test_Artikel_Konstruktor_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand()
     {
-        test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(1);
-        test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(9999);
-        test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(1234);
-        test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(397);
+        for (int zahl : testArtikelNr){
+            test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(zahl);
+        }
     }
     
     @Test
     public void test_Artikel_Konstruktor_ArtikelNr_mit_Bestand_40_ohne_Preis()
     {
-        test_ArtikelNr_mit_Bestand_40_ohne_Preis(1);
-        test_ArtikelNr_mit_Bestand_40_ohne_Preis(9999);
-        test_ArtikelNr_mit_Bestand_40_ohne_Preis(1234);
-        test_ArtikelNr_mit_Bestand_40_ohne_Preis(397);
+        for (int zahl : testArtikelNr){
+            test_ArtikelNr_mit_Bestand_40_ohne_Preis(zahl);
+        }
+        
     }
     
      @Test
     public void test_Artikel_Konstruktor_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0()
     {
-       test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(1);
-       test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(9999);
-       test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(1234);
-       test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(397);
+        
+     for (int zahl : testArtikelNr){
+         test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(zahl);
+     }
+
     }
     
     private void test_ArtikelNr_sonst_0(int artikelNr){
