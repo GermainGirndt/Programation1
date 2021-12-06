@@ -13,84 +13,121 @@ public class ArtikelTest
 {
     private Artikel artikel;
     private int[] testArtikelNr = {1 , 9999, 1234, 397, 9863};
+    private String[] testArt    = {"Samsung Galaxy 7", "Kuhfutter", "4711", "Handyhuelle blau", "Test"};
+    
     //KonstruktorTests    
     //Korrekte Fälle 
+    /**
+    * Korrekter Konstruktor Test gueltige Artikelnummer und Art
+    * sonst Initialwerte
+    */
     @Test
     public void test_Artikel_Konstruktor_gueltige_Artikelnr_sonst_0()
     {
         for (int gueltigeArtikelnr : testArtikelNr){
-            test_gueltige_ArtikelNr_sonst_0(gueltigeArtikelnr);
+            for(String art : testArt){
+                test_gueltige_ArtikelNr_sonst_0(gueltigeArtikelnr, art); 
+            }
         }
     }
     
+    /**
+    * Korrekter Konstruktor Test gueltige Artikelnummer und Art und Preis
+    * sonst Initialbestand
+    */
     @Test
     public void test_Artikel_Konstruktor_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand()
     {
         for (int gueltigeArtikelnr : testArtikelNr){
-            test_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(gueltigeArtikelnr );
+            for(String art : testArt){
+                 test_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(gueltigeArtikelnr, art);
+            }
+           
         }
     }
     
+    /**
+    * Korrekter Konstruktor Test gueltige Artikelnummer und Art und Bestand
+    * sonst Initialpreis
+    */
     @Test
     public void test_Artikel_Konstruktor_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis()
     {
         for (int gueltigeArtikelnr : testArtikelNr){
-            test_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis(gueltigeArtikelnr );
+            for(String art : testArt){
+                 test_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis(gueltigeArtikelnr , art);
+            }
+            
         }
         
     }
     
+    /**
+    * Korrekter Konstruktor Test gueltige Artikelnummer und Art 
+    * und Bestand und Preis
+    */
      @Test
     public void test_Artikel_Konstruktor_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0()
     {
         
      for (int gueltigeArtikelnr  : testArtikelNr){
-         test_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(gueltigeArtikelnr );
+         for(String art : testArt){
+             test_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(gueltigeArtikelnr , art);
+         }
      }
 
     }
     
-    private void test_gueltige_ArtikelNr_sonst_0(int artikelNr){
+    private void test_gueltige_ArtikelNr_sonst_0(int artikelNr, String art){
         int erwarteteNr      = artikelNr;   
+        String erwarteteArt  = art;
         
-        artikel              = new Artikel(artikelNr, "Test");
+        artikel              = new Artikel(artikelNr, art);
         
         assertEquals(erwarteteNr , artikel.getArtikelNr());
         ueberpruefeObPreisUndBestand0(artikel.getBestand(),artikel.getPreis());
+        assertEquals(erwarteteArt, art);
+        
     }
     
-    private void test_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(int artikelNr){
+    private void test_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(int artikelNr, String art){
         double erwarteterPreis     = 3.5;
-        int   erwarteteNr          = artikelNr;   
+        int   erwarteteNr          = artikelNr;  
+        String erwarteteArt        = art;
         
-        artikel                    = new Artikel(artikelNr, "Test", 0, 3.5);
+        artikel                    = new Artikel(artikelNr, art, 0, 3.5);
         
         assertEquals(erwarteteNr , artikel.getArtikelNr());
         assertEquals(erwarteterPreis , artikel.getPreis(), 2* Double.MIN_VALUE);
         ueberpruefeObBestand0(artikel.getBestand());
+        assertEquals(erwarteteArt, art);
     }
 
-    private void test_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis(int artikelNr){
+    private void test_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis(int artikelNr, String art){
         long erwarteterBestand     = 40;
         int   erwarteteNr          = artikelNr;   
+        String erwarteteArt        = art;
         
-        artikel                    = new Artikel(artikelNr, "Test", 40, 0);
+        artikel                    = new Artikel(artikelNr, art, 40, 0);
         
         assertEquals(erwarteteNr , artikel.getArtikelNr());
         assertEquals(erwarteterBestand , artikel.getBestand());
         ueberpruefeObPreis0Komma0(artikel.getPreis());
+        assertEquals(erwarteteArt, art);
     }
     
-    private void test_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(int artikelNr){
+    private void test_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(int artikelNr, String art){
         long erwarteterBestand     = 40;
         double erwarteterPreis     = 3.0;
-        int   erwarteteNr          = artikelNr;   
+        int   erwarteteNr          = artikelNr;  
+        String erwarteteArt        = art;
         
-        artikel                    = new Artikel(artikelNr, "Test", 40, 3.0);
+        artikel                    = new Artikel(artikelNr, art, 40, 3.0);
         
         assertEquals(erwarteteNr , artikel.getArtikelNr());
         assertEquals(erwarteterBestand , artikel.getBestand());
         assertEquals(erwarteterPreis , artikel.getPreis(), 2* Double.MIN_VALUE);
+        assertEquals(erwarteteArt, art);
     }
  
     //Fehlerfälle
@@ -106,7 +143,7 @@ public class ArtikelTest
         assertThrows(IllegalArgumentException.class, () -> {  new Artikel(1234, "$");}); 
     }
     
-      @Test 
+    @Test 
     public void test_Art_darf_nicht_null_sein_Artikel_Konstruktor_Artikelart_null()
     {
         assertThrows(IllegalArgumentException.class, () -> {  new Artikel(1234, null);}); 
@@ -139,6 +176,11 @@ public class ArtikelTest
     //MethodenTest
     //Korrekte Fälle
     //Abgang
+    
+    /**
+    * Korrekter bucheAbgang Test 
+    * abgebucht wird 10 vom Bestand 20
+    */
     @Test
     public void test_buche_Abgang_10_von_bestand_20_erwartet_10()
     {
@@ -150,6 +192,10 @@ public class ArtikelTest
     }
     
     //zugang
+    /**
+    * Korrekter bucheZugang Test 
+    * bucht 10 zum Bestand 0
+    */
     @Test
     public void test_buche_Zugang_10_zu_bestand_0_erwartet_10()
     {
@@ -160,6 +206,10 @@ public class ArtikelTest
         assertEquals(erwarteterBestand , tatsaechlicherBestand);
     }
     
+    /**
+    * Korrekter bucheZugang Test 
+    * bucht 10 zum Bestand 5
+    */
     @Test
     public void test_buche_Zugang_10_zu_bestand_5_erwartet_15()
     {
