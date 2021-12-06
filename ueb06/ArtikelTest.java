@@ -16,41 +16,41 @@ public class ArtikelTest
     //KonstruktorTests    
     //Korrekte Fälle 
     @Test
-    public void test_Artikel_Konstruktor_Artikelnr_sonst_0()
+    public void test_Artikel_Konstruktor_gueltige_Artikelnr_sonst_0()
     {
-        for (int zahl : testArtikelNr){
-            test_ArtikelNr_sonst_0(zahl);
+        for (int gueltigeArtikelnr : testArtikelNr){
+            test_gueltige_ArtikelNr_sonst_0(gueltigeArtikelnr);
         }
     }
     
     @Test
-    public void test_Artikel_Konstruktor_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand()
+    public void test_Artikel_Konstruktor_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand()
     {
-        for (int zahl : testArtikelNr){
-            test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(zahl);
+        for (int gueltigeArtikelnr : testArtikelNr){
+            test_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(gueltigeArtikelnr );
         }
     }
     
     @Test
-    public void test_Artikel_Konstruktor_ArtikelNr_mit_Bestand_40_ohne_Preis()
+    public void test_Artikel_Konstruktor_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis()
     {
-        for (int zahl : testArtikelNr){
-            test_ArtikelNr_mit_Bestand_40_ohne_Preis(zahl);
+        for (int gueltigeArtikelnr : testArtikelNr){
+            test_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis(gueltigeArtikelnr );
         }
         
     }
     
      @Test
-    public void test_Artikel_Konstruktor_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0()
+    public void test_Artikel_Konstruktor_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0()
     {
         
-     for (int zahl : testArtikelNr){
-         test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(zahl);
+     for (int gueltigeArtikelnr  : testArtikelNr){
+         test_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(gueltigeArtikelnr );
      }
 
     }
     
-    private void test_ArtikelNr_sonst_0(int artikelNr){
+    private void test_gueltige_ArtikelNr_sonst_0(int artikelNr){
         int erwarteteNr      = artikelNr;   
         
         artikel              = new Artikel(artikelNr, "Test");
@@ -59,7 +59,7 @@ public class ArtikelTest
         ueberpruefeObPreisUndBestand0(artikel.getBestand(),artikel.getPreis());
     }
     
-    private void test_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(int artikelNr){
+    private void test_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(int artikelNr){
         double erwarteterPreis     = 3.5;
         int   erwarteteNr          = artikelNr;   
         
@@ -70,7 +70,7 @@ public class ArtikelTest
         ueberpruefeObBestand0(artikel.getBestand());
     }
 
-    private void test_ArtikelNr_mit_Bestand_40_ohne_Preis(int artikelNr){
+    private void test_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis(int artikelNr){
         long erwarteterBestand     = 40;
         int   erwarteteNr          = artikelNr;   
         
@@ -81,7 +81,7 @@ public class ArtikelTest
         ueberpruefeObPreis0Komma0(artikel.getPreis());
     }
     
-    private void test_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(int artikelNr){
+    private void test_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(int artikelNr){
         long erwarteterBestand     = 40;
         double erwarteterPreis     = 3.0;
         int   erwarteteNr          = artikelNr;   
@@ -107,7 +107,7 @@ public class ArtikelTest
     }
     
       @Test 
-    public void test_Art_darf_nicht_null_sein_Artikel_Konstruktor_Artikelart_dollar()
+    public void test_Art_darf_nicht_null_sein_Artikel_Konstruktor_Artikelart_null()
     {
         assertThrows(IllegalArgumentException.class, () -> {  new Artikel(1234, null);}); 
     }
@@ -140,7 +140,7 @@ public class ArtikelTest
     //Korrekte Fälle
     //Abgang
     @Test
-    public void test_buche_Abgang_erwartet_10_uebergeben_10_davor_20()
+    public void test_buche_Abgang_10_von_bestand_20_erwartet_10()
     {
         long erwarteterBestand      = 10;
         Artikel artikel             = new Artikel(1234, "Test", 20);
@@ -151,7 +151,7 @@ public class ArtikelTest
     
     //zugang
     @Test
-    public void test_buche_Zugang_erwartet_10_uebergeben_10_davor_0()
+    public void test_buche_Zugang_10_zu_bestand_0_erwartet_10()
     {
         long erwarteterBestand      = 10;
         Artikel artikel             = new Artikel(1234, "Test", 0);
@@ -161,7 +161,7 @@ public class ArtikelTest
     }
     
     @Test
-    public void test_buche_Zugang_erwartet_15_uebergeben_10_davor_5()
+    public void test_buche_Zugang_10_zu_bestand_5_erwartet_15()
     {
         long erwarteterBestand      = 15;
         Artikel artikel             = new Artikel(1234, "Test", 5);
@@ -179,10 +179,9 @@ public class ArtikelTest
         assertThrows(IllegalArgumentException.class, () -> {artikel.bucheZugang(-5);});
     }
     
-    
     //abgang
     @Test 
-    public void test_bestand_darf_nicht_negativ_werden_buche_Abgang_uebergeben_10_bestand_5()
+    public void test_bestand_darf_nicht_negativ_werden_buche_Abgang_10_von_bestand_5()
     {
         Artikel artikel             = new Artikel(1234, "Test", 5);
         assertThrows(IllegalArgumentException.class, () -> {artikel.bucheAbgang(10);});
@@ -194,9 +193,7 @@ public class ArtikelTest
         Artikel artikel             = new Artikel(1234, "Test", 5);
         assertThrows(IllegalArgumentException.class, () -> {artikel.bucheAbgang(-5);});
     }
-    
-    
-    
+
     
     private void ueberpruefeObBestand0(long bestand){
         assertEquals(0 , bestand);    
