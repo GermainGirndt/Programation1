@@ -11,6 +11,14 @@ import org.junit.jupiter.api.Test;
 */
 public class ArtikelTest
 {
+    // todo:
+    // Test schreiben für
+    //      mindestartikelnummer = 1000;
+    //      buchenzugang = 0;
+    //      buchenzugang = 1;
+    // Testnamen standardizieren
+    // Funktion {} standardizieren
+
     private Artikel artikel;
     private int[] testArtikelNr = {1 , 9999, 1234, 397, 9863};
     private String[] testArt    = {"Samsung Galaxy 7", "Kuhfutter", "4711", "Handyhuelle blau", "Test"};

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class LagerTest
 {       
     private Lager                                   lager;
-    private ArtikelFactory                          artikelFactory;
+    private ArtikelDummyFactory                     artikelDummyFactory;
 
     public static int                               ARTIKEL_EINS_NUMMER = 1;
     public static int                               ARTIKEL_ZWEI_NUMMER = 2;
@@ -26,7 +26,7 @@ public class LagerTest
     @BeforeEach
     public void setUp() {
         this.lager = new Lager();
-        this.artikelFactory = new ArtikelFactory();
+        this.artikelDummyFactory = new ArtikelDummyFactory();
     }
 
     /**
@@ -39,7 +39,7 @@ public class LagerTest
 
         int artikelAnzahl = this.lager.getArtikelAnzahl();
 
-        assertEquals(erwarteteArtikelanzahl, artikelAnzahl);
+        assertSame(erwarteteArtikelanzahl, artikelAnzahl);
     }
 
     /**
@@ -52,7 +52,7 @@ public class LagerTest
         
         Artikel artikelEins = this.anlege_einen_Artikel_ins_Lager(ARTIKEL_EINS_NUMMER);
         Artikel angelegterArtikel = this.lager.getArtikel(this.getIndexFromArtikel(ARTIKEL_EINS_NUMMER));
-        assertEquals(artikelEins, angelegterArtikel);
+        assertSame(artikelEins, angelegterArtikel);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class LagerTest
         
         Artikel artikelEins = this.anlege_einen_Artikel_ins_Lager(ARTIKEL_EINS_NUMMER);
         int artikelanzahl = this.lager.getArtikelAnzahl();
-        assertEquals(erwarteteArtikelAnzahl, artikelanzahl);
+        assertSame(erwarteteArtikelAnzahl, artikelanzahl);
         
     }
     
@@ -88,7 +88,7 @@ public class LagerTest
 
         for (int index = 0; index < erwarteteArtikelAnzahl; index++) {
             Artikel angelegterArtikel = this.lager.getArtikel(index);
-            assertEquals(artikel[index], angelegterArtikel);
+            assertSame(artikel[index], angelegterArtikel);
         }
     }
     
@@ -125,7 +125,7 @@ public class LagerTest
     public void lager_Konstruktor_Startgroesse_muss_10_sein() {
         int erwarteteGroesse     = 10;
         int tatsaechlicheGroesse = this.lager.getLagerGroesse();
-        assertEquals(erwarteteGroesse , tatsaechlicheGroesse);
+        assertSame(erwarteteGroesse , tatsaechlicheGroesse);
     }
 
     @Test
@@ -153,7 +153,7 @@ public class LagerTest
         this.lager = new Lager(erwarteteGroesse);
         int tatsaechlicheGroesse = this.lager.getLagerGroesse();
 
-        assertEquals(erwarteteGroesse , tatsaechlicheGroesse);
+        assertSame(erwarteteGroesse , tatsaechlicheGroesse);
     }
 
     @Test
@@ -228,7 +228,7 @@ public class LagerTest
 
         int eigentlicheArtikelanzahl = this.lager.getArtikelAnzahl();
 
-        assertEquals(erwarteteArtikelanzahl, eigentlicheArtikelanzahl);
+        assertSame(erwarteteArtikelanzahl, eigentlicheArtikelanzahl);
     }
 
     @Test
@@ -262,7 +262,7 @@ public class LagerTest
         this.lager.entferneArtikel(artikelArray[this.getIndexFromArtikel(ARTIKEL_EINS_NUMMER)].getArtikelNr());
         int eigentlicheArtikelanzahl = this.lager.getArtikelAnzahl();
 
-        assertEquals(erwarteteArtikelanzahl, eigentlicheArtikelanzahl);
+        assertSame(erwarteteArtikelanzahl, eigentlicheArtikelanzahl);
     }
 
     @Test
@@ -274,7 +274,7 @@ public class LagerTest
         this.lager.entferneArtikel(artikelArray[this.getIndexFromArtikel(ARTIKEL_ZWEI_NUMMER)].getArtikelNr());
         int eigentlicheArtikelanzahl = this.lager.getArtikelAnzahl();
 
-        assertEquals(erwarteteArtikelanzahl, eigentlicheArtikelanzahl);
+        assertSame(erwarteteArtikelanzahl, eigentlicheArtikelanzahl);
     }
 
 
@@ -291,7 +291,7 @@ public class LagerTest
 
         int eigentlicheArtikelanzahl = this.lager.getArtikelAnzahl();
 
-        assertEquals(erwarteteArtikelanzahl, eigentlicheArtikelanzahl);
+        assertSame(erwarteteArtikelanzahl, eigentlicheArtikelanzahl);
     }
 
     @Test
@@ -305,8 +305,8 @@ public class LagerTest
         Artikel artikelAnDerErstenStelle = this.lager.getArtikel(this.getIndexFromArtikel(ARTIKEL_EINS_NUMMER));
         Artikel artikelAnDerZweitenStelle = this.lager.getArtikel(this.getIndexFromArtikel(ARTIKEL_ZWEI_NUMMER));
 
-        assertEquals(artikelArray[this.getIndexFromArtikel(ARTIKEL_ZWEI_NUMMER)], artikelAnDerErstenStelle);
-        assertEquals(artikelArray[this.getIndexFromArtikel(ARTIKEL_DREI_NUMMER)], artikelAnDerZweitenStelle);
+        assertSame(artikelArray[this.getIndexFromArtikel(ARTIKEL_ZWEI_NUMMER)], artikelAnDerErstenStelle);
+        assertSame(artikelArray[this.getIndexFromArtikel(ARTIKEL_DREI_NUMMER)], artikelAnDerZweitenStelle);
 
         assertThrows(
             Error.class,
@@ -329,7 +329,7 @@ public class LagerTest
 
         this.lager.bucheZugang(artikel.getArtikelNr(), zugegangeneMenge);
 
-        assertEquals(startbestand + zugegangeneMenge, artikel.getBestand());
+        assertSame(startbestand + zugegangeneMenge, artikel.getBestand());
     }
 
     @Test
@@ -341,7 +341,7 @@ public class LagerTest
 
         this.lager.bucheAbgang(artikel.getArtikelNr(), abgegangeneMenge);
 
-        assertEquals(startbestand - abgegangeneMenge, artikel.getBestand());
+        assertSame(startbestand - abgegangeneMenge, artikel.getBestand());
     }
 
     
@@ -358,7 +358,7 @@ public class LagerTest
 
         this.lager.aenderePreisEinesArtikels(artikel.getArtikelNr(), hundert_prozent_inkrement);
 
-        assertEquals(startpreis * 2, artikel.getPreis());
+        assertSame(startpreis * 2.0, artikel.getPreis());
     }
 
     @Test
@@ -370,7 +370,7 @@ public class LagerTest
 
         this.lager.aenderePreisEinesArtikels(artikel.getArtikelNr(), hundert_prozent_inkrement);
 
-        assertEquals(startpreis * 1.5, artikel.getPreis());
+        assertSame(startpreis * 1.5, artikel.getPreis());
     }
 
     @Test
@@ -382,7 +382,7 @@ public class LagerTest
         
         this.lager.aenderePreisEinesArtikels(artikel.getArtikelNr(), null_prozent_aenderung);
         
-        assertEquals(startpreis, artikel.getPreis());
+        assertSame(startpreis, artikel.getPreis());
     }
     
     @Test
@@ -394,7 +394,7 @@ public class LagerTest
 
         this.lager.aenderePreisEinesArtikels(artikel.getArtikelNr(), hundert_prozent_inkrement);
 
-        assertEquals(startpreis / 2, artikel.getPreis());
+        assertSame(startpreis / 2, artikel.getPreis());
     }
 
     @Test
@@ -405,7 +405,7 @@ public class LagerTest
 
         this.lager.aenderePreisEinesArtikels(artikel.getArtikelNr(), hundert_prozent_dekrement);
 
-        assertEquals(0, artikel.getPreis());
+        assertSame(0, artikel.getPreis());
     }
 
     @Test
@@ -426,7 +426,7 @@ public class LagerTest
     */
 
     private Artikel anlege_einen_Artikel_ins_Lager(int artikelNummer) {
-        Artikel artikel = this.artikelFactory.getEinenArtikel(artikelNummer);
+        Artikel artikel = this.artikelDummyFactory.macheEinenArtikel(artikelNummer);
         
         this.lager.legeAnArtikel(artikel);
         
@@ -435,7 +435,7 @@ public class LagerTest
 
     private Artikel[] anlege_viele_Artikel_ins_Lager(int artikelanzahl) {
         
-        Artikel[] artikel = this.artikelFactory.getVieleArtikel(artikelanzahl);
+        Artikel[] artikel = this.artikelDummyFactory.macheVieleArtikel(artikelanzahl);
         
         for (int index = 0; index < artikelanzahl; index++) {
             this.lager.legeAnArtikel(artikel[index]);
