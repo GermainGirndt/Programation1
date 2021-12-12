@@ -1,3 +1,4 @@
+ 
 
 import java.util.Scanner;
 
@@ -55,8 +56,8 @@ public class UserInput {
     * Standardisierte nextLine Methode.
     * Dient als Schnittstelle mit dem Scanner Objekt
     */
-    public void nextLine() {
-        input.nextLine();
+    public String nextLine() {
+        return input.nextLine();
     }
 
     /**

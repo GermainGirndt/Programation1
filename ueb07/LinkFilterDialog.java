@@ -90,6 +90,15 @@ public class LinkFilterDialog
     }
     
     public void  ausHtmlLinksFiltern(){
+        String html ="";
+        while(!html.equals("0")){
+            //0 fuer abbruch
+            html = this.userInput.nextLine(); 
+            if(!html.equals("0")){
+                linkFilter.pruefeHtmlZeile(html);    
+            }
+            
+        }
         
     }
 }

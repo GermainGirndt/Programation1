@@ -15,7 +15,10 @@ public class LinkFilter
 
     private int anzahlZeilen = 0;
     
-    private String regex = ".*http?://.*";
+
+    //private String regex = "<a\s*(\w*=".*")*\s*href="((https?:\/\/)?(www\.)?[\w()@:%.\+~#=]{1,256}\.[\w\d]{1,6}\b([-\w()@:%\+.~#?&\/=]*))"\s*(\w*=".*")*\s*>.*<\/a>";
+    private String href = ".*http.*";
+
     
     /**
      * Konstruktor für Objekte der Klasse LinkFilter
@@ -27,13 +30,26 @@ public class LinkFilter
     
     }
 
+    public void pruefeHtmlZeile(String html){
+    
+        boolean matchFound = Pattern.matches(href, html);
+        if(matchFound) {
+                     //nur zum testen
+            System.out.println("Match found");
+        } else {
+                    //nur zum testen
+            System.out.println("Match not found");
+         }
+    }
+    
+    
     public void leseDateiEin(){
         String x = null;
         try{
              while( (x = reader.readLine()) != null )
              {
                 System.out.println(x);
-                boolean matchFound = Pattern.matches(regex, x);
+                boolean matchFound = Pattern.matches(href, x);
                  if(matchFound) {
                      //nur zum testen
                       System.out.println("Match found");
