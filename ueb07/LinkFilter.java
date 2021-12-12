@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  */
 public class LinkFilter {
     private BufferedReader reader;
-
+    
     private int geleseneZeilen;
     private int gefundeneLinks;
 
@@ -21,57 +21,83 @@ public class LinkFilter {
 
     private String anchorTagRegex;
 
+    private String KEIN_INHALT_MESSAGE = "KEIN INHALT";
+
+    private Pattern regexPattern;
+
     /**
      * Konstruktor für Objekte der Klasse LinkFilter
      */
     public LinkFilter() {
         this.reader = new BufferedReader(new InputStreamReader(System.in));
         this.bildeRegexFuerAnchorTag();
-
+        this.regexPattern = Pattern.compile(anchorTagRegex);
     }
 
-    public void pruefeHtmlZeile(String htmlLine) {
-
-        Pattern regexPattern = Pattern.compile(anchorTagRegex);
-        Matcher matcher = regexPattern.matcher(htmlLine);
-        boolean matchFound = matcher.find();
-
-        if (matchFound) {
-
-            String inhalt = matcher.group(INHALT_REGEX_GROUP_NUMMER);
-            String url = matcher.group(URL_REGEX_GROUP_NUMMER);
-            int anzahlZeichen = url.length();
-
-            System.out.println(String.format("%s:\t\t%s, Anzahl Zeichen: %d", inhalt, url, anzahlZeichen));
-            gefundeneLinks++;
-        }
+    /**
+     * Bildet den Regex String, der als Filter für den Anchortag verwendet wird
+     */
+    public static void main(String[] args) {
+        LinkFilter linkFilter = new LinkFilter();
+        linkFilter.zeigeAngabenAn();
     }
 
-    public void leseDateiEin() {
+    /**
+     * Sucht in einer HTML-Datei nach gueltige Links in Anchor-Tags
+     * Die Vorkommnisse werden dann angezeigt
+     */
+    public void zeigeAngabenAn() {
         try {
-            String htmlLine = this.reader.readLine();
-            while (htmlLine != null) {
-                pruefeHtmlZeile(htmlLine);
+            String htmlZeile = this.reader.readLine();
 
-                htmlLine = this.reader.readLine();
+            while (htmlZeile != null) {
+                String message = extrahiereLinkMessageVonDerHtmlZeile(htmlZeile);
+
+                LinkFilterOutput.gibAusZeilemessage(message);
+
                 geleseneZeilen++;
+                htmlZeile = this.reader.readLine();
             }
 
-            System.out.println(String.format("%d Links wurden in %d Zeilen gefunden.", gefundeneLinks, geleseneZeilen));
+            LinkFilterOutput.gibAusEndmessage(gefundeneLinks, geleseneZeilen);
 
         } catch (IOException e) {
             System.err.println(e);
         }
     }
+    
+    public String extrahiereLinkMessageVonDerHtmlZeile(String htmlZeile) {
+        String message = "";
+        Matcher matcher = this.regexPattern.matcher(htmlZeile);
+        boolean matchFound = matcher.find();
 
-    public static void main(String[] args) {
-        LinkFilter r = new LinkFilter();
-        r.leseDateiEin();
+        if (matchFound) {
+            message = this.bildeLinkMessage(matcher);
+
+            gefundeneLinks++;
+        }
+
+        return message;
     }
 
-    private void bildeRegexFuerAnchorTag() {
+    private String bildeLinkMessage(Matcher matcher) {
+        String inhalt = matcher.group(INHALT_REGEX_GROUP_NUMMER);
+        inhalt = inhalt != LinkFilterKonstante.LEER_STRING ? inhalt : this.KEIN_INHALT_MESSAGE; 
 
-        
+        String url = matcher.group(URL_REGEX_GROUP_NUMMER);
+        int anzahlZeichen = url.length();
+
+        String message = String.format("%s:\t%s, Anzahl Zeichen: %d", inhalt, url, anzahlZeichen);
+
+        return message;
+    }
+
+
+
+    /**
+     * Bildet den Regex String, der als Filter für den Anchortag verwendet wird
+     */
+    private void bildeRegexFuerAnchorTag() {
         /**
          * folgende optionale Bedindung werden akzeptiert:
          * beliebige Anzahl an Leertasten geben
@@ -81,7 +107,6 @@ public class LinkFilter {
          */
         String leerTastenMitAttributen = "\\s*(\\w*=\".*\")*\\s*";
 
-         
         /**
          * Der URL darf mit/ohne http(s) anfangen
          * Darf www. haben
@@ -94,12 +119,14 @@ public class LinkFilter {
          * https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
          */
         String sonderzeichen = "\\w()\\-@:%.\\+~#=";
-        String regexURL = "((https?:\\/\\/)?(www\\.)?[" + sonderzeichen + "]{1,256}\\.[\\w\\d]{1,6}\\b([" + sonderzeichen + "?&\\/]*))";
-        
-         /**
+        String regexURL = "((https?:\\/\\/)?(www\\.)?[" + sonderzeichen + "]{1,256}\\.[\\w\\d]{1,6}\\b(["
+                + sonderzeichen + "?&\\/]*))";
+
+        /**
          * Der URL wird zwischen die href Attribute gestellt
          */
-        String regexAnchorTagOeffnung = "<a" + leerTastenMitAttributen + "href=\"" + regexURL + "\"" + leerTastenMitAttributen + ">";
+        String regexAnchorTagOeffnung = "<a" + leerTastenMitAttributen + "href=\"" + regexURL + "\""
+                + leerTastenMitAttributen + ">";
         String regexURLInhalt = "(.*)";
         String regexAnchorTagSchluss = "<\\/a>";
 
