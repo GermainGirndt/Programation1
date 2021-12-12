@@ -15,7 +15,8 @@ public class LinkFilter
 
     private int anzahlZeilen = 0;
     
-    private String regex = ".*http://.*";
+    //private String regex = "<a\s*(\w*=".*")*\s*href="((https?:\/\/)?(www\.)?[\w()@:%.\+~#=]{1,256}\.[\w\d]{1,6}\b([-\w()@:%\+.~#?&\/=]*))"\s*(\w*=".*")*\s*>.*<\/a>";
+    private String href = "href=\"((https?:\/\/)?(www\.)?[\w()@:%.\+~#=]{1,256}\.[\w\d]{1,6}\b([-\w()@:%\+.~#?&\/=]*))";
     
     /**
      * Konstruktor für Objekte der Klasse LinkFilter
