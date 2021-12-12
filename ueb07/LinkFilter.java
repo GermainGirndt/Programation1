@@ -15,9 +15,9 @@ public class LinkFilter {
 
     private int anzahlZeilen = 0;
 
-    // private String regex =
-    // "<a\s*(\w*=".*")*\s*href="((https?:\/\/)?(www\.)?[\w()@:%.\+~#=]{1,256}\.[\w\d]{1,6}\b([-\w()@:%\+.~#?&\/=]*))"\s*(\w*=".*")*\s*>.*<\/a>";
-    private String regexAnchorTagStart = "<a\\s*(\\w*=\".*\")*\s*";
+    //private String regex = "<a\s*(\w*=".*")*\s*href="((https?:\/\/)?(www\.)?[\w()@:%.\+~#=]{1,256}\.[\w\d]{1,6}\b([-\w()@:%\+.~#?&\/=]*))"\s*(\w*=".*")*\s*>.*<\/a>";
+
+    private String regexAnchorTagStart = "<a\\s*(\\w*=\".*\")*\\s*";
 
     private String regexLink = "((https?:\\/\\/)?(www\\.)?[\\w()@:%.\\+~#=]{1,256}\\.[\\w\\d]{1,6}\\b([-\\w()@:%\\+.~#?&\\/=]*))";
 
@@ -33,6 +33,7 @@ public class LinkFilter {
     // regexLinkDescription + regexAnchorTagEnd;
     private String regex = regexAnchorTagStart;
 
+    
     /**
      * Konstruktor für Objekte der Klasse LinkFilter
      */
@@ -41,23 +42,29 @@ public class LinkFilter {
 
     }
 
+    public void pruefeHtmlZeile(String htmlLine){
+    
+        Pattern regexPattern = Pattern.compile(regex);
+        Matcher matcher = regexPattern.matcher(htmlLine);
+        boolean matchFound = matcher.find();
+        if(matchFound) {
+                     //nur zum testen
+            System.out.println("Match found");
+        } else {
+                    //nur zum testen
+            System.out.println("Match not found");
+         }
+    }
+
     public void leseDateiEin() {
         try {
-            Pattern regexPattern = Pattern.compile(regex);
-
             String htmlLine = reader.readLine();
             while (htmlLine != null) {
                 System.out.println(htmlLine);
-                Matcher matcher = regexPattern.matcher(htmlLine);
-                boolean matchFound = matcher.find();
 
-                if (matchFound) {
-                    System.out.println("Match found");
-                } else {
-                    System.out.println("Match not found");
-                }
-                anzahlZeilen++;
-                
+
+                pruefeHtmlZeile(htmlLine);
+
                 htmlLine = reader.readLine();
             }
 
