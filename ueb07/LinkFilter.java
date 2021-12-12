@@ -17,7 +17,21 @@ public class LinkFilter
     
 
     //private String regex = "<a\s*(\w*=".*")*\s*href="((https?:\/\/)?(www\.)?[\w()@:%.\+~#=]{1,256}\.[\w\d]{1,6}\b([-\w()@:%\+.~#?&\/=]*))"\s*(\w*=".*")*\s*>.*<\/a>";
-    private String href = ".*http.*";
+
+    private String regexAnchorTagStart = "<a\\s*(\\w*=\".*\")*\\s*";
+
+    private String regexLink = "((https?:\\/\\/)?(www\\.)?[\\w()@:%.\\+~#=]{1,256}\\.[\\w\\d]{1,6}\\b([-\\w()@:%\\+.~#?&\\/=]*))";
+
+    private String href = "href=\"" + regexLink + "\"";
+
+    private String regexAfterHref = "\\s*(\\w*=\".*\")*\\s*>";
+
+    private String regexLinkDescription = ".*";
+
+    private String regexAnchorTagEnd = "<\\/a>";
+
+    //private String regex = regexAnchorTagStart + href + regexAfterHref + regexLinkDescription + regexAnchorTagEnd;
+    private String regex = regexAnchorTagStart;
 
     
     /**
@@ -44,12 +58,15 @@ public class LinkFilter
     
     
     public void leseDateiEin(){
-        String x = null;
+        String htmlLine = null;
         try{
-             while( (x = reader.readLine()) != null )
+             while( (htmlLine = reader.readLine()) != null )
              {
-                System.out.println(x);
-                boolean matchFound = Pattern.matches(href, x);
+
+                System.out.println(regex);
+                System.out.println(htmlLine);
+                boolean matchFound = htmlLine.matches(regex);
+
                  if(matchFound) {
                      //nur zum testen
                       System.out.println("Match found");
