@@ -15,7 +15,7 @@ public class LinkFilter
 
     private int anzahlZeilen = 0;
     
-    private String regex = ".*http://.*";
+    private String regex = ".*http?://.*";
     
     /**
      * Konstruktor für Objekte der Klasse LinkFilter
@@ -35,8 +35,10 @@ public class LinkFilter
                 System.out.println(x);
                 boolean matchFound = Pattern.matches(regex, x);
                  if(matchFound) {
+                     //nur zum testen
                       System.out.println("Match found");
                 } else {
+                    //nur zum testen
                       System.out.println("Match not found");
                 }
                   anzahlZeilen++;
