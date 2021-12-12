@@ -7,13 +7,17 @@ import java.util.regex.Pattern;
 /**
  * Beschreiben Sie hier die Klasse LinkFilter.
  * 
- * @author (Ihr Name)
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class LinkFilter {
     private BufferedReader reader;
 
-    private int anzahlZeilen = 0;
+    private int geleseneZeilen;
+    private int gefundeneLinks;
+
+    private int URL_REGEX_GROUP_NUMMER = 2;
+    private int INHALT_REGEX_GROUP_NUMMER = 7;
 
     // "<a\s*(\w*=".*")*\s*href="((https?:\/\/)?(www\.)?[\w()@:%.\+~#=]{1,256}\.[\w\d]{1,6}\b([-\w()@:%\+.~#?&\/=]*))"\s*(\w*=".*")*\s*>.*<\/a>";
 
@@ -23,7 +27,7 @@ public class LinkFilter {
     private String regexNachHref = "\\s*(\\w*=\".*\")*\\s*>";
 
     private String regexAnchorTagOeffnung = regexAnchorTagStart + href + regexNachHref;
-    private String regexLinkDescription = ".*";
+    private String regexLinkDescription = "(.*)";
     private String regexAnchorTagSchluss = "<\\/a>";
 
     private String regex = regexAnchorTagOeffnung + regexLinkDescription + regexAnchorTagSchluss;
@@ -41,24 +45,26 @@ public class LinkFilter {
         Pattern regexPattern = Pattern.compile(regex);
         Matcher matcher = regexPattern.matcher(htmlLine);
         boolean matchFound = matcher.find();
+
         if (matchFound) {
-            // nur zum testen
-            System.out.println("Match found");
-        } else {
-            // nur zum testen
-            System.out.println("Match not found");
-        }
+
+            String inhalt = matcher.group(INHALT_REGEX_GROUP_NUMMER);
+            String url = matcher.group(URL_REGEX_GROUP_NUMMER);
+            int anzahlZeichen = url.length();
+
+            System.out.println(String.format("%s:\t%s, Anzahl Zeichen: %d", inhalt, url, anzahlZeichen));
+            gefundeneLinks++;
+        } 
     }
 
     public void leseDateiEin() {
         try {
             String htmlLine = reader.readLine();
             while (htmlLine != null) {
-                System.out.println(htmlLine);
-
                 pruefeHtmlZeile(htmlLine);
 
                 htmlLine = reader.readLine();
+                geleseneZeilen++;
             }
 
         } catch (IOException e) {
