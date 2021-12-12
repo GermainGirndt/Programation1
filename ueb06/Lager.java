@@ -34,16 +34,16 @@ public class Lager
     * @param artikel der im Lager angelegt werden soll
     */
     public void legeAnArtikel(Artikel artikel) {
-        if (!this.lagerVoll()) {
-           throw new IllegalArgumentException("Der Artikel passt nicht im Lager. Entferne einen Artikel, um einen neuen anzulegen.");
+        if (!this.istLagerVoll()) {
+           throw new IllegalArgumentException(LagerKonstanten.ERROR_LAGER_IST_VOLL);
         }
 
         if(artikel == null){
-            throw new IllegalArgumentException("Der Artikel ist null");
+            throw new IllegalArgumentException(LagerKonstanten.ERROR_NULL_ARTIKEL);
         }
         
         if (this.getArtikelNachNummer(artikel.getArtikelNr()) != -1) {
-            throw new IllegalArgumentException("Die eingegebene Artikelnummer ist bereits im Lager!");
+            throw new IllegalArgumentException(LagerKonstanten.ERROR_WIEDERHOLTE_ARTIKELNUMMER);
         }
         
         this.artikelLager[anzahlArtikel] = artikel;
@@ -57,7 +57,7 @@ public class Lager
     */
     public void entferneArtikel(int artikelNr) {
         if (this.lagerLeer()) {
-            throw new IllegalArgumentException("Lager ist leer!");
+            throw new IllegalArgumentException(LagerKonstanten.ERROR_LAGER_IST_LEER);
         }
         
         for (int index = 0; index <= this.anzahlArtikel -1; index++) {
@@ -71,7 +71,7 @@ public class Lager
             }
         }    
         
-        throw new IllegalArgumentException("Nur Artikel im Lager koennen entfernt werden.");
+        throw new IllegalArgumentException(LagerKonstanten.ERROR_ZU_ENTFERNENDER_ARTIKEL_NICHT_IM_LAGER);
     }
     
     /**
@@ -115,13 +115,13 @@ public class Lager
     public void aenderePreisAllerArtikel(double prozent) {
         
         if (this.lagerLeer()) {
-            throw new IllegalArgumentException("Der Artikelpreis kann nicht verändert werden, wenn das Lager leer ist.");
+            throw new IllegalArgumentException(LagerKonstanten.ERROR_LAGER_IST_LEER);
         }
 
         for (int index = 0; index <= this.anzahlArtikel -1; index++) {
             Artikel artikel = this.artikelLager[index];
             
-            if(artikel != null){
+            if (artikel != null) {
                 artikel.aenderePreis(prozent);  
             }
         }   
@@ -132,7 +132,7 @@ public class Lager
     * dh. ob das Lager ueber genuegenden Platz verfuegt
     * @return true, wenn ja; false, wenn nein
     */
-    private boolean lagerVoll() {
+    private boolean istLagerVoll() {
         return this.anzahlArtikel + 1 <= this.artikelLager.length;
         
     }
@@ -215,33 +215,33 @@ public class Lager
     }
 
 
-   /**
-   * Die Methode gibt das Objekt aufbereitet als String zurueck
-   * @return gibt die Attribute des Artikels als String zurueck
-   */
-   public String toString() {
+    /**
+    * Die Methode gibt das Objekt aufbereitet als String zurueck
+    * @return gibt die Attribute des Artikels als String zurueck
+    */
+    public String toString() {
 
-       if (lagerLeer()) {
-           return "Das Lager ist leer.";
-       }
-
-       StringBuilder builder = new StringBuilder("Lager enthält folgende Artikel: \n");
-       
-
-       for (int index = 0; index <= this.anzahlArtikel -1; index++) {
-        Artikel artikel = artikelLager[index];
-        String artikelBeschreibung = artikel.toString() + "\n\n";
-        builder.append(artikelBeschreibung);
-       }    
-
-       return builder.toString();
+        if (lagerLeer()) {
+            return "Das Lager ist leer.";
+        }
+ 
+        StringBuilder builder = new StringBuilder("Lager enthält folgende Artikel: \n");
+        
+ 
+        for (int index = 0; index <= this.anzahlArtikel -1; index++) {
+         Artikel artikel = artikelLager[index];
+         String artikelBeschreibung = artikel.toString() + "\n\n";
+         builder.append(artikelBeschreibung);
+        }    
+ 
+        return builder.toString();
    }
 
-   /**
-   * Die Methode gibt die Anzahl an Artikel im Lager zurueck 
-   * @return die Anzahl an Artikel im Lager
-   */ 
-  public int getArtikelAnzahl() {
+    /**
+    * Die Methode gibt die Anzahl an Artikel im Lager zurueck 
+    * @return die Anzahl an Artikel im Lager
+    */ 
+    public int getArtikelAnzahl() {
       return this.anzahlArtikel;
     }
     
@@ -249,7 +249,7 @@ public class Lager
     * Die Methode gibt die Gesamtanzahl an verfuegbaren Platzen im Lager zurueck 
     * @return die Gesamtanzahl an verfuegbaren Platzen im Lager
     */ 
-   public int getLagerGroesse() {
-       return this.artikelLager.length;
-   }
+    public int getLagerGroesse() {
+        return this.artikelLager.length;
+    }
 }

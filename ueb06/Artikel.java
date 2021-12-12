@@ -1,5 +1,3 @@
-import java.util.regex.Pattern;
-
 /**
 * Die Klasse Artikel ist fuer eine einfache Bestandspruefung
 *
@@ -120,11 +118,10 @@ public class Artikel
     */
     public String toString()
     {
-        return  "ArtikeNr: "    + this.artikelNr     + "\n" +
-                "Art: "         + this.art           + "\n" +
-                "Bestand: "     + this.bestand       + "\n" +
-                "Preis: "       + this.preis;
-
+        return  ArtikelKonstanten.NUMMER_VARIABLE + ": "    +    this.artikelNr     + "\n" +
+                ArtikelKonstanten.ART             + ": "     +   this.art           + "\n" +
+                ArtikelKonstanten.BESTAND         + ": "     +   this.bestand       + "\n" +
+                ArtikelKonstanten.PREIS           + ": "     +   this.preis;
     }
 
     /**

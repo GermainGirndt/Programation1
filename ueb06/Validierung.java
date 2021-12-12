@@ -8,11 +8,11 @@
 */
 public final class Validierung {
 
-    private static final int            MINDESTARTIKELNUMMER                        = 1;
+    private static final int            MINDESTARTIKELNUMMER                        = 1000;
     private static final int            HOECHSTARTIKELNUMMER                        = 9999;
-    private static final int            MINDESTBESTANDNUMMER                        = 0;
-    private static final int            MINDEST_ANZAHL_AN_MENGEANDERUNG             = 0;
-    private static final double         MINDESTPREIS                                = 0.0;
+    private static final int            MINDESTBESTANDNUMMER                        =    0;
+    private static final int            MINDEST_ANZAHL_AN_MENGEANDERUNG             =    0;
+    private static final double         MINDESTPREIS                                =    0.0;
     private static final double         GROESSTE_NEGATIVE_PREISAENDERUNG            = -100.0;
 
     /**
