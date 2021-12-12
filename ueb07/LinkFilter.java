@@ -46,7 +46,7 @@ public class LinkFilter
 
     public void pruefeHtmlZeile(String html){
     
-        boolean matchFound = Pattern.matches(href, html);
+        boolean matchFound =  html.matches(regex);
         if(matchFound) {
                      //nur zum testen
             System.out.println("Match found");
