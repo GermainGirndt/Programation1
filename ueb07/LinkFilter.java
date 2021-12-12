@@ -15,25 +15,19 @@ public class LinkFilter {
 
     private int anzahlZeilen = 0;
 
-    //private String regex = "<a\s*(\w*=".*")*\s*href="((https?:\/\/)?(www\.)?[\w()@:%.\+~#=]{1,256}\.[\w\d]{1,6}\b([-\w()@:%\+.~#?&\/=]*))"\s*(\w*=".*")*\s*>.*<\/a>";
+    // "<a\s*(\w*=".*")*\s*href="((https?:\/\/)?(www\.)?[\w()@:%.\+~#=]{1,256}\.[\w\d]{1,6}\b([-\w()@:%\+.~#?&\/=]*))"\s*(\w*=".*")*\s*>.*<\/a>";
 
     private String regexAnchorTagStart = "<a\\s*(\\w*=\".*\")*\\s*";
-
     private String regexLink = "((https?:\\/\\/)?(www\\.)?[\\w()@:%.\\+~#=]{1,256}\\.[\\w\\d]{1,6}\\b([-\\w()@:%\\+.~#?&\\/=]*))";
-
     private String href = "href=\"" + regexLink + "\"";
+    private String regexNachHref = "\\s*(\\w*=\".*\")*\\s*>";
 
-    private String regexAfterHref = "\\s*(\\w*=\".*\")*\\s*>";
-
+    private String regexAnchorTagOeffnung = regexAnchorTagStart + href + regexNachHref;
     private String regexLinkDescription = ".*";
+    private String regexAnchorTagSchluss = "<\\/a>";
 
-    private String regexAnchorTagEnd = "<\\/a>";
+    private String regex = regexAnchorTagOeffnung + regexLinkDescription + regexAnchorTagSchluss;
 
-    // private String regex = regexAnchorTagStart + href + regexAfterHref +
-    // regexLinkDescription + regexAnchorTagEnd;
-    private String regex = regexAnchorTagStart;
-
-    
     /**
      * Konstruktor für Objekte der Klasse LinkFilter
      */
@@ -42,18 +36,18 @@ public class LinkFilter {
 
     }
 
-    public void pruefeHtmlZeile(String htmlLine){
-    
+    public void pruefeHtmlZeile(String htmlLine) {
+
         Pattern regexPattern = Pattern.compile(regex);
         Matcher matcher = regexPattern.matcher(htmlLine);
         boolean matchFound = matcher.find();
-        if(matchFound) {
-                     //nur zum testen
+        if (matchFound) {
+            // nur zum testen
             System.out.println("Match found");
         } else {
-                    //nur zum testen
+            // nur zum testen
             System.out.println("Match not found");
-         }
+        }
     }
 
     public void leseDateiEin() {
@@ -61,7 +55,6 @@ public class LinkFilter {
             String htmlLine = reader.readLine();
             while (htmlLine != null) {
                 System.out.println(htmlLine);
-
 
                 pruefeHtmlZeile(htmlLine);
 
