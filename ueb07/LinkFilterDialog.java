@@ -11,6 +11,8 @@ public class LinkFilterDialog {
     private LinkFilter linkFilter;
     private int funktion;
     private UserInput userInput;
+    private int geleseneZeilen;
+    private int gefundeneLinks;
 
     private static final int FUNKTION_NICHT_DEFINIERT = -1;
     private static final int FUNKTION_ENDE = 0;
@@ -90,15 +92,21 @@ public class LinkFilterDialog {
     }
 
     public void ausHtmlLinksFiltern() {
+        geleseneZeilen = 0;
+        gefundeneLinks = 0;
         String html = "";
+        String ausgabe = "";
+        String message = "";
         while (!html.equals("0")) {
             // 0 fuer abbruch
             html = this.userInput.nextLine();
             if (!html.equals("0")) {
-                linkFilter.pruefeHtmlZeile(html);
+                message = linkFilter.extrahiereLinkMessageVonDerHtmlZeile(html);
+                geleseneZeilen++;
+                ausgabe+=message + "\n";
             }
-
+         
         }
-
+        System.out.println(ausgabe);
     }
 }
