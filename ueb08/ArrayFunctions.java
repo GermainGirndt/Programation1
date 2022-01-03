@@ -63,7 +63,6 @@ public class ArrayFunctions {
         double naechsterWert = array[0];
         double absoluteDifferenzZumWert = Math.abs(wert - array[0]);
 
-
         for (int index = 1; index < array.length; index++) {
 
             double absoluteDifferenz = Math.abs(wert - array[index]);
@@ -87,7 +86,6 @@ public class ArrayFunctions {
     private static double extrahiereEntfernstenWert(double[] array, double wert) {
         double entfernsterWert = array[0];
         double absoluteDifferenzZumWert = Math.abs(wert - array[0]);
-
 
         for (int index = 1; index < array.length; index++) {
 
@@ -125,22 +123,22 @@ public class ArrayFunctions {
                  if (i == 0){
                      istKlein = pruefeobKlein(s.charAt(i));    
                  } else{
-                     if (istKlein){
+                     if (istKlein) {
                          if(!pruefeobKlein(s.charAt(i))) {
                               trifftnichtzu = true;
                          }     
-                     } else{
+                     } else {
                          if (pruefeobKlein(s.charAt(i))) {
                              trifftnichtzu  = true;
                          } 
                      }
                  }
             }
-         }
-         else{
+         } else {
             trifftnichtzu = true;
          }
-         if (!trifftnichtzu ){
+
+         if (!trifftnichtzu ) {
             anzahl++;    
          }
       }
