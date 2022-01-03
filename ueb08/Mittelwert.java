@@ -28,4 +28,16 @@ public class Mittelwert {
 
     }
 
+    
+    public double getMittelwert(){
+        return mittelwert;    
+    }
+    
+    public double getNahesterwert(){
+        return nahesterWert;    
+    }
+    
+    public double getEntferntesterwert(){
+        return entferntesterWert;    
+    }
 }
