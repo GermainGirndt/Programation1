@@ -7,11 +7,17 @@
 public class ArrayFunctions {
 
     private static int MINDESTELEMENTENANZAHL = 1;
-    private static String ERROR_UNGUELTIGE_ELEMENETENANZAHL = "Der Array muss mindestens 2 Elemente enthalten."; 
+    private static String ERROR_UNGUELTIGE_ELEMENETENANZAHL = "Der Array muss mindestens 1 Elemente enthalten."; 
 
+    /**
+    * Berechnet Angaben zum Mittewert für einen beliebigen double-Array mit mindestens 1 Element
+    * 
+    * @param messwerte eine double-Array
+    * @return ein Mittelwert-Container Objekt, mit den Attributen "mittelwert", "nahesterWert" und "entfernsterWert" 
+    */
     public static Mittelwert berechneMittelwert(double[] messwerte) {
 
-        if (messwerte.length <= MINDESTELEMENTENANZAHL) {
+        if (messwerte.length < MINDESTELEMENTENANZAHL) {
             throw new IllegalArgumentException(ERROR_UNGUELTIGE_ELEMENETENANZAHL);
         }
 
@@ -26,6 +32,13 @@ public class ArrayFunctions {
         
     }
 
+    /**
+    * Extrahiert den Mittelwert von einem double-Array
+    * Um double-Overflows durch die Berechnung zu vermeiden, werden die Werte vor der Summe durch die Elementenanzahl geteilt
+    * Was als Nebenwirkung Ungenauigkeiten bei dem Ergebnis hervorrufen kann.
+    * 
+    * @param array dessen Mittelwert zu berechnen ist
+    */
     private static double extrahiereMittelwert(double[] array) {
 
         double mittelwert = 0;
@@ -38,19 +51,25 @@ public class ArrayFunctions {
         return mittelwert;
     }
 
-    private static double extrahiereNaechstenwert(double[] array, double mittelwert) {
+    /**
+    * Extrahiert den Wert in einem double-Array, der einem anderen Wert am nächsten liegt
+    * 
+    * @param array der double-Array mit den zu vergleichenden Elementen
+    * @param wert der Basiswert für die Rechnung
+    */
+    private static double extrahiereNaechstenwert(double[] array, double wert) {
 
         double naechsterWert = array[0];
-        double absoluteDifferenzZumMittelwert = Math.abs(mittelwert - array[0]);
+        double absoluteDifferenzZumWert = Math.abs(wert - array[0]);
 
 
         for (int index = 1; index < array.length; index++) {
 
-            double absoluteDifferenz = Math.abs(mittelwert - array[index]);
+            double absoluteDifferenz = Math.abs(wert - array[index]);
 
-            if (absoluteDifferenz < absoluteDifferenzZumMittelwert) {
+            if (absoluteDifferenz < absoluteDifferenzZumWert) {
                 naechsterWert = array[index];
-                absoluteDifferenzZumMittelwert = absoluteDifferenz;
+                absoluteDifferenzZumWert = absoluteDifferenz;
             }
             
         }
@@ -58,18 +77,24 @@ public class ArrayFunctions {
         return naechsterWert;
     }
 
-    private static double extrahiereEntfernstenWert(double[] array, double mittelwert) {
+    /**
+    * Extrahiert den Wert in einem double-Array, der einem anderen Wert am fernsten liegt
+    * 
+    * @param array der double-Array mit den zu vergleichenden Elementen
+    * @param wert der Basiswert für die Rechnung
+    */
+    private static double extrahiereEntfernstenWert(double[] array, double wert) {
         double entfernsterWert = array[0];
-        double absoluteDifferenzZumMittelwert = Math.abs(mittelwert - array[0]);
+        double absoluteDifferenzZumWert = Math.abs(wert - array[0]);
 
 
         for (int index = 1; index < array.length; index++) {
 
-            double absoluteDifferenz = Math.abs(mittelwert - array[index]);
+            double absoluteDifferenz = Math.abs(wert - array[index]);
 
-            if (absoluteDifferenz > absoluteDifferenzZumMittelwert) {
+            if (absoluteDifferenz > absoluteDifferenzZumWert) {
                 entfernsterWert = array[index];
-                absoluteDifferenzZumMittelwert = absoluteDifferenz;
+                absoluteDifferenzZumWert = absoluteDifferenz;
             }
             
         }
