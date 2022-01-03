@@ -192,6 +192,26 @@ public class ArrayFunctionsTest
         assertEquals(erwarteteRueckgabe , tatsaechlicheRueckgabe);
     }
     
+    @Test
+    public void stringsAuswerten2mitSonderzeichen()
+    {
+        int erwarteteRueckgabe       = 0;
+        String[] stringZumAuswerten  = {"H%TW", "(%J§" };
+        
+        int tatsaechlicheRueckgabe = ArrayFunctions.stringsAuswerten(stringZumAuswerten);
+        assertEquals(erwarteteRueckgabe , tatsaechlicheRueckgabe);
+    }
+    
+    @Test
+    public void stringsAuswerten2mitSonderzeichen1Klein1Gross()
+    {
+        int erwarteteRueckgabe       = 2;
+        String[] stringZumAuswerten  = {"H%TW", "(%J§" , "klein", "GROSS"};
+        
+        int tatsaechlicheRueckgabe = ArrayFunctions.stringsAuswerten(stringZumAuswerten);
+        assertEquals(erwarteteRueckgabe , tatsaechlicheRueckgabe);
+    }
+    
     private void assertEqualsMittelwert(Mittelwert erwarteterMittelwert , Mittelwert tatsachlicherMittelwert){
         assertEquals(erwarteterMittelwert.getMittelwert() , tatsachlicherMittelwert.getMittelwert(), 2* Double.MIN_VALUE);
         assertEquals(erwarteterMittelwert.getNahesterwert() , tatsachlicherMittelwert.getNahesterwert(), 2* Double.MIN_VALUE);

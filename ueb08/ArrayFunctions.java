@@ -120,7 +120,7 @@ public class ArrayFunctions {
       s              = s.trim();
       trifftnichtzu  = false;    
       istKlein       = false;
-         if(!pruefeobLeer(s)){      
+         if(!pruefeobLeer(s)&&enthaeltkeineSonderzeichen(s)){      
              for(int i = 0; i < s.length(); i++){
                  if(i == 0){
                      istKlein = pruefeobKlein(s.charAt(i));    
@@ -173,4 +173,13 @@ public class ArrayFunctions {
                 return true;
          }    
      }
+     
+     
+    private static boolean enthaeltkeineSonderzeichen(String s){
+        String regex = "^[a-zA-Z]+$"; 
+        boolean hatNurAlphabetischeCharaktere = s.matches(regex);
+
+        return hatNurAlphabetischeCharaktere;
+    }
+       
 }
