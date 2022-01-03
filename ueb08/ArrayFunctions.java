@@ -6,7 +6,6 @@
  */
 public class ArrayFunctions {
     
-    private static int ANZAHLLINKSANFANGS                   = 0;
     private static int MINDESTELEMENTENANZAHL               = 1;
     private static String ERROR_UNGUELTIGE_ELEMENETENANZAHL = "Der Array muss mindestens 1 Elemente enthalten."; 
     private static String REGEX_KLEINBUCHSTABE = "^[a-z]+$"; 
