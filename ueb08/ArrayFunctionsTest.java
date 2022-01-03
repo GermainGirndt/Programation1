@@ -206,7 +206,7 @@ public class ArrayFunctionsTest
     public void stringsAuswerten2mitSonderzeichen1Klein1Gross()
     {
         int erwarteteRueckgabe       = 2;
-        String[] stringZumAuswerten  = {"H%TW", "(%J§" , "klein", "GROSS"};
+        String[] stringZumAuswerten  = {"H%TW", "$" , "klein", "GROSS"};
         
         int tatsaechlicheRueckgabe = ArrayFunctions.stringsAuswerten(stringZumAuswerten);
         assertEquals(erwarteteRueckgabe , tatsaechlicheRueckgabe);
