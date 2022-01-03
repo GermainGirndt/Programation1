@@ -143,21 +143,5 @@ public class ArrayFunctions {
          return s.isEmpty();
      }
      
-    /**
-    * Prueft ob ein Buchstabe klein ist
-    * 
-    * @param c der zu pruefende Buchstabe
-    * @return true wenn er klein ist, falls er gross ist
-    */
-    private static boolean pruefeobKlein(Character c){
-        if (Character.isUpperCase(c)){
-                return false;
-         }   
-         else{
-                return true;
-         }    
-     }
-     
-    
-       
+
 }
