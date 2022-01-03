@@ -113,20 +113,18 @@ public class ArrayFunctions {
     */
      public static int stringsAuswerten(String[] strings){
          
-     int anzahl             = ANZAHLLINKSANFANGS;
+     int anzahl = ANZAHLLINKSANFANGS;
      
      
      for (String s : strings) {
-      s  = s.trim();  
-     
-         if(!pruefeobLeer(s)){      
-             if(s.matches(REGEXKLEIN)){
-                 anzahl++;
-             }
-             else if(s.matches(REGEXGROSS)){
-                 anzahl++;    
-             }
-         }
+    
+        if(s.matches(REGEXKLEIN)){
+             anzahl++;
+        }
+        else if(s.matches(REGEXGROSS)){
+             anzahl++;    
+        }
+         
       }
      return anzahl;
     }
