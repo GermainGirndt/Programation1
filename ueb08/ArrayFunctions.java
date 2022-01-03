@@ -114,12 +114,10 @@ public class ArrayFunctions {
      public static int stringsAuswerten(String[] strings){
          
      int anzahl             = ANZAHLLINKSANFANGS;
-     boolean trifftnichtzu ; 
      
      
      for (String s : strings) {
-      s              = s.trim();
-      trifftnichtzu  = false;    
+      s  = s.trim();  
      
          if(!pruefeobLeer(s)){      
              if(s.matches(REGEXKLEIN)){
