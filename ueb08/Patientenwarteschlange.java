@@ -86,7 +86,6 @@ public class Patientenwarteschlange
 
     /**
     * Ruft den naechsten Patienten auf und entfernt ihn von der Warteschlange
-    * @param patientenNummer von dem zu entfernenden Patient
     */
     public Patient derNaechsteBitte() {
         if (this.istPatientenwarteschlangeLeer()) {
