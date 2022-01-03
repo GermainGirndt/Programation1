@@ -106,7 +106,7 @@ public class ArrayFunctions {
     /**
     * Wertet aus wie viele Strings nur aus grossen oder kleinen Buchstaben besteht
     * 
-    * @param Ein Array von Strings
+    * @param strings ein Array von Strings
     * @return die Anzahl der Strings die nur aus grossen oder kleinen Buchstaben bestehen
     */
      public static int stringsAuswerten(String[] strings){
@@ -116,23 +116,22 @@ public class ArrayFunctions {
      boolean trifftnichtzu ; 
      
      
-     for(String s : strings){
+     for (String s : strings) {
       s              = s.trim();
       trifftnichtzu  = false;    
       istKlein       = false;
          if(!pruefeobLeer(s)&&enthaeltkeineSonderzeichen(s)){      
              for(int i = 0; i < s.length(); i++){
                  if(i == 0){
+
                      istKlein = pruefeobKlein(s.charAt(i));    
-                 }
-                 else{
-                     if(istKlein){
-                         if(!pruefeobKlein(s.charAt(i))){
+                 } else{
+                     if (istKlein){
+                         if(!pruefeobKlein(s.charAt(i))) {
                               trifftnichtzu = true;
                          }     
-                     }
-                     else{
-                         if(pruefeobKlein(s.charAt(i))){
+                     } else{
+                         if (pruefeobKlein(s.charAt(i))) {
                              trifftnichtzu  = true;
                          } 
                      }
@@ -142,7 +141,7 @@ public class ArrayFunctions {
          else{
             trifftnichtzu = true;
          }
-         if(!trifftnichtzu ){
+         if (!trifftnichtzu ){
             anzahl++;    
          }
       }
@@ -165,8 +164,8 @@ public class ArrayFunctions {
     * @param c der zu pruefende Buchstabe
     * @return true wenn er klein ist, falls er gross ist
     */
-    private static boolean  pruefeobKlein(Character c){
-          if(Character.isUpperCase(c)){
+    private static boolean pruefeobKlein(Character c){
+        if (Character.isUpperCase(c)){
                 return false;
          }   
          else{
