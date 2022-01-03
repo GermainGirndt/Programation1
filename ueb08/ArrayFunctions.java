@@ -9,6 +9,8 @@ public class ArrayFunctions {
     private static int ANZAHLLINKSANFANGS                   = 0;
     private static int MINDESTELEMENTENANZAHL               = 1;
     private static String ERROR_UNGUELTIGE_ELEMENETENANZAHL = "Der Array muss mindestens 1 Elemente enthalten."; 
+    private static String REGEXKLEIN = "^[a-z]+$"; 
+    private static String REGEXGROSS = "^[A-Z]+$";
     
     /**
     * Berechnet Angaben zum Mittewert für einen beliebigen double-Array mit mindestens 1 Element
@@ -112,37 +114,20 @@ public class ArrayFunctions {
      public static int stringsAuswerten(String[] strings){
          
      int anzahl             = ANZAHLLINKSANFANGS;
-     boolean istKlein;
      boolean trifftnichtzu ; 
      
      
      for (String s : strings) {
       s              = s.trim();
       trifftnichtzu  = false;    
-      istKlein       = false;
-         if(!pruefeobLeer(s)&&enthaeltkeineSonderzeichen(s)){      
-             for(int i = 0; i < s.length(); i++){
-                 if(i == 0){
-
-                     istKlein = pruefeobKlein(s.charAt(i));    
-                 } else{
-                     if (istKlein){
-                         if(!pruefeobKlein(s.charAt(i))) {
-                              trifftnichtzu = true;
-                         }     
-                     } else{
-                         if (pruefeobKlein(s.charAt(i))) {
-                             trifftnichtzu  = true;
-                         } 
-                     }
-                 }
-            }
-         }
-         else{
-            trifftnichtzu = true;
-         }
-         if (!trifftnichtzu ){
-            anzahl++;    
+     
+         if(!pruefeobLeer(s)){      
+             if(s.matches(REGEXKLEIN)){
+                 anzahl++;
+             }
+             else if(s.matches(REGEXGROSS)){
+                 anzahl++;    
+             }
          }
       }
      return anzahl;
@@ -173,12 +158,6 @@ public class ArrayFunctions {
          }    
      }
      
-     
-    private static boolean enthaeltkeineSonderzeichen(String s){
-        String regex = "^[a-zA-Z]+$"; 
-        boolean hatNurAlphabetischeCharaktere = s.matches(regex);
-
-        return hatNurAlphabetischeCharaktere;
-    }
+    
        
 }
