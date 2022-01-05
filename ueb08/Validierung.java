@@ -34,16 +34,16 @@ public final class Validierung {
         }
         
         if (!Validierung.checkeObNurAlphabetischeCharaktere(name)) {
-            
             throw new IllegalArgumentException(ERROR_UNGUELTIGER_NAME);
         }
 
     }
 
     /**
-    * Die Methode prueft ob der eingegebene String nur alphabestische Zeichen enthaelt
+    * Die Methode prueft ob der eingegebene String nur alphabestische Charaktere enthaelt
+    * leere Strings werden nicht akzeptiert
     * @param string ist der zu ueberpruefende String
-    * @return ist das Ergebnis: true (nur alphabestische Zeichen) oder false (enthaelt auch andere Charaktere)
+    * @return ist das Ergebnis: true (nur alphabestische Charaktere) oder false (enthaelt auch andere Charaktere)
     */
     private static boolean checkeObNurAlphabetischeCharaktere(String string) {
 
