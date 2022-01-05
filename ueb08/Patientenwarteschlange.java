@@ -128,7 +128,7 @@ public class Patientenwarteschlange
         }
         
         
-        for (int neuerIndex = indexZuLoeschen; neuerIndex < this.anzahlPatienten -1; neuerIndex++) {
+        for (int neuerIndex = indexZuLoeschen; neuerIndex < this.anzahlPatienten; neuerIndex++) {
             int indexZuVerschieben = neuerIndex + 1;
             patientenwarteschlange[neuerIndex] = patientenwarteschlange[indexZuVerschieben];
         }
