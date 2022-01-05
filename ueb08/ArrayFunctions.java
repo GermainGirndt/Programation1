@@ -11,6 +11,12 @@ public class ArrayFunctions {
     private static String REGEX_KLEINBUCHSTABE = "^[a-z]+$"; 
     private static String REGEX_GROSSBUCHSTABE = "^[A-Z]+$";
     
+
+    /**
+    * Konstruktor wird als privat gesetzt, um Klassen instanzieren zu verhindern
+    */
+    private ArrayFunctions() {};
+
     /**
     * Berechnet Angaben zum Mittewert für einen beliebigen double-Array mit mindestens 1 Element
     * 

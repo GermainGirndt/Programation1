@@ -45,7 +45,7 @@ public class Patientenwarteschlange
                 throw new IllegalArgumentException(ERROR_WARTESCHLANGE_IST_VOLL);
              }
      
-             if (this.getPatientenindexNachNummer(nummer) != INDEX_PATIENT_NOT_FOUND) {
+             if (this.getPatientenIndexNachNummer(nummer) != INDEX_PATIENT_NOT_FOUND) {
                  throw new IllegalArgumentException(ERROR_WIEDERHOLTE_PATIENTENNUMMER);
              }
         }
@@ -66,22 +66,17 @@ public class Patientenwarteschlange
             throw new IllegalArgumentException(ERROR_PATIENTENWARTESCHLANGE_IST_LEER);
         }
         
-        for (int index = 0; index < this.anzahlPatienten; index++) {
-            Patient patientZuChecken = this.patientenwarteschlange[index];
-            
-            if (patientZuChecken == null){ 
-                throw new IllegalArgumentException(ERROR_ZU_ENTFERNENDER_PATIENT_IST_NICHT_IN_DER_WARTESCHLANGE);
-            }
-            
-            if (patientZuChecken.getNummer() == patientenNummer) {
-                loeschePatientNachIndex(index);
-                return patientZuChecken;
-            }
-            
+        int patientIndex = this.getPatientenIndexNachNummer(patientenNummer);
+        
+        if (patientIndex == INDEX_PATIENT_NOT_FOUND){ 
+            throw new IllegalArgumentException(ERROR_ZU_ENTFERNENDER_PATIENT_IST_NICHT_IN_DER_WARTESCHLANGE);
         }
 
-        throw new IllegalArgumentException(ERROR_ZU_ENTFERNENDER_PATIENT_IST_NICHT_IN_DER_WARTESCHLANGE);
+        Patient patient = this.patientenwarteschlange[patientIndex];
         
+        loeschePatientenNachIndex(patientIndex);
+
+        return patient;
     }
 
     /**
@@ -93,7 +88,7 @@ public class Patientenwarteschlange
         }
         
         Patient naechsterPatient = this.patientenwarteschlange[0];
-        loeschePatientNachIndex(0);
+        loeschePatientenNachIndex(0);
         
         return naechsterPatient;
     }
@@ -105,7 +100,6 @@ public class Patientenwarteschlange
     */
     private boolean istWarteschlangeVoll() {
         return this.anzahlPatienten <= this.patientenwarteschlange.length;
-        
     }
     
     /**
@@ -123,7 +117,7 @@ public class Patientenwarteschlange
     * sodass es keine Luecke im Array gibt
     * @param indexZuLoeschen ist der Arrayindex, der entfernt werden soll
     */
-    private void loeschePatientNachIndex(int indexZuLoeschen) {
+    private void loeschePatientenNachIndex(int indexZuLoeschen) {
         
         if (indexZuLoeschen < 0){
             throw new IllegalArgumentException("Der gewaehlte Index muss positiv sein.");
@@ -133,20 +127,13 @@ public class Patientenwarteschlange
             throw new IllegalArgumentException("Der gewaehlte Index uebertrifft die Anzahl an Patientn.");
         }
         
-        patientenwarteschlange[indexZuLoeschen] = null;
         
-        for (int indexZuVerschieben = indexZuLoeschen + 1; indexZuVerschieben <= this.anzahlPatienten -1; indexZuVerschieben++) {
-            
-            if (patientenwarteschlange[indexZuVerschieben] == null) {
-                break;
-            }
-
-            int letzterIndex = indexZuVerschieben -1;
-            
-            patientenwarteschlange[letzterIndex] = patientenwarteschlange[indexZuVerschieben];
-            patientenwarteschlange[indexZuVerschieben] = null;
+        for (int neuerIndex = indexZuLoeschen; neuerIndex < this.anzahlPatienten -1; neuerIndex++) {
+            int indexZuVerschieben = neuerIndex + 1;
+            patientenwarteschlange[neuerIndex] = patientenwarteschlange[indexZuVerschieben];
         }
         
+        patientenwarteschlange[this.anzahlPatienten] = null;
         this.anzahlPatienten--;
     }
 
@@ -155,7 +142,7 @@ public class Patientenwarteschlange
     * @param patientenNummer ist die Patientennummer vom gewuenschten Patient
     * @return der Index des Patients in der Warteschlange oder INDEX_PATIENT_NOT_FOUND, falls dieser Patient nicht in der Warteschlange ist
     */    
-    public int getPatientenindexNachNummer(int patientenNummer) {
+    public int getPatientenIndexNachNummer(int patientenNummer) {
 
         for (int index = 0; index < this.anzahlPatienten; index++) {
             Patient patientZuChecken = this.patientenwarteschlange[index];
