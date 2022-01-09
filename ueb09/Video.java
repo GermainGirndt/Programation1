@@ -12,7 +12,7 @@ public class Video extends Artikel
     int jahr;
     
     Video(int artikelNr, int bestand, double preis, String titel, int spieldauer, int jahr){
-        super(artikelNr, "Video", bestand, preis);
+        super(artikelNr, "Medien", bestand, preis);
         
         Validierung.validiereTitel(titel);
         Validierung.validiereSpieldauer(spieldauer);

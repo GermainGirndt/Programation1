@@ -12,7 +12,7 @@ public class CD extends Artikel
    int anzahlTitel;
    
    CD(int artikelNr, int bestand, double preis, String interpret, String titel, int anzahlTitel){
-       super(artikelNr, "CD", bestand, preis);    
+       super(artikelNr, "Medien", bestand, preis);    
        
        Validierung.validiereInterpret(interpret);
        Validierung.validiereTitel(titel);
