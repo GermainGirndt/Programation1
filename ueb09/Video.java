@@ -7,11 +7,11 @@
  */
 public class Video extends Artikel
 {
-    String titel;
-    int spieldauer;
-    int jahr;
+    private String titel;
+    private int spieldauer;
+    private int jahr;
     
-    Video(int artikelNr, int bestand, double preis, String titel, int spieldauer, int jahr){
+    public Video(int artikelNr, int bestand, double preis, String titel, int spieldauer, int jahr){
         super(artikelNr, "Medien", bestand, preis);
         
         Validierung.validiereTitel(titel);

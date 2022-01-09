@@ -24,6 +24,10 @@ public final class Validierung {
     private static final String         FEHLERMELDUNGANZAHLTITEL                    = "Die Anzahl der Titel muss groesser als 0 sein";
     private static final String         FEHLERMELDUNGSPIELDAUER                     = "Die Spieldauer des Videos muss groesser als 0 sein";
     private static final String         FEHLERMELDUNGJAHR                           = "Das Jahr muss zwischen 1900 und 2022 liegen";
+    private static final String         FEHLERMELDUNGAUTORNULL                      = "Autor darf nicht null sein";    
+    private static final String         FEHLERMELDUNGAUTORLEER                      = "Autor darf nicht leer sein"; ;     
+    private static final String         FEHLERMELDUNGVERLAGNULL                     = "Verlag darf nicht null sein";    
+    private static final String         FEHLERMELDUNGVERLAGLEER                     = "Verlag darf nicht leer sein";
     
     /**
     * Die Werkzeugklasse soll statisch sein bzw. darf nicht instantiert werden
@@ -40,6 +44,26 @@ public final class Validierung {
         if(jahr < FRUEHESTESVIDEOJAHR || jahr > AKTUELLESJAHR){
              throw new IllegalArgumentException(FEHLERMELDUNGSPIELDAUER);   
         }
+    }
+    
+    public static void validiereVerlag(String verlag){
+        if (verlag == null) {
+            throw new IllegalArgumentException(FEHLERMELDUNGVERLAGNULL);
+        }
+
+        if (checkeFuerNurLeertasten(verlag)) {
+            throw new IllegalArgumentException(FEHLERMELDUNGVERLAGLEER);
+        }        
+    }
+    
+    public static void validiereAutor(String autor){
+        if (autor == null) {
+            throw new IllegalArgumentException(FEHLERMELDUNGAUTORNULL);
+        }
+
+        if (checkeFuerNurLeertasten(autor)) {
+            throw new IllegalArgumentException(FEHLERMELDUNGAUTORLEER);
+        }        
     }
     
     public static void validiereInterpret(String interpret){
