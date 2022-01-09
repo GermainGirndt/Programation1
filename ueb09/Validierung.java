@@ -12,6 +12,8 @@ public final class Validierung {
     private static final int            HOECHSTARTIKELNUMMER                        = 9999;
     private static final int            MINDESTBESTANDNUMMER                        =    0;
     private static final int            MINDEST_ANZAHL_AN_MENGEANDERUNG             =    0;
+    private static final int            FRUEHESTESVIDEOJAHR                         = 1900;
+    private static final int            AKTUELLESJAHR                               = 2022;
     private static final double         MINDESTPREIS                                =    0.0;
     private static final double         GROESSTE_NEGATIVE_PREISAENDERUNG            = -100.0;
     
@@ -20,12 +22,25 @@ public final class Validierung {
     private static final String         FEHLERMELDUNGTITELNULL                      = "Titel darf nicht null sein";   
     private static final String         FEHLERMELDUNGTITELLEER                      = "Titel darf nicht leer sein";   
     private static final String         FEHLERMELDUNGANZAHLTITEL                    = "Die Anzahl der Titel muss groesser als 0 sein";
+    private static final String         FEHLERMELDUNGSPIELDAUER                     = "Die Spieldauer des Videos muss groesser als 0 sein";
+    private static final String         FEHLERMELDUNGJAHR                           = "Das Jahr muss zwischen 1900 und 2022 liegen";
+    
     /**
     * Die Werkzeugklasse soll statisch sein bzw. darf nicht instantiert werden
     */
     private Validierung() {}
+    
+    public static void validiereSpieldauer(int spieldauer){
+        if(spieldauer <= 0){
+            throw new IllegalArgumentException(FEHLERMELDUNGSPIELDAUER);   
+        }
+    }
 
-
+    public static void validiereJahr(int jahr){
+        if(jahr < FRUEHESTESVIDEOJAHR || jahr > AKTUELLESJAHR){
+             throw new IllegalArgumentException(FEHLERMELDUNGSPIELDAUER);   
+        }
+    }
     
     public static void validiereInterpret(String interpret){
         if (interpret == null) {
