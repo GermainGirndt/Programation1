@@ -23,6 +23,24 @@ public class Video extends Artikel
         this.jahr       = jahr;
     }
     
+    @Override
+    public boolean equals(Object obj){
+        boolean istgleich = false;
+        
+        if(obj instanceof Video){
+            Video video = (Video)obj;
+            if(    titel.equals(video.getTitel()) 
+                && spieldauer   == video.getSpieldauer() 
+                && jahr         == video.getJahr()
+                && getPreis()   == video.getPreis()
+                && getBestand() == video.getBestand()){
+                    
+                istgleich = true;    
+            }
+        }
+        return istgleich;
+    }
+    
     public String getTitel(){
         return titel;
     }

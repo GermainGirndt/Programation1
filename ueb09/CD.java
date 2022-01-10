@@ -23,6 +23,24 @@ public class CD extends Artikel
        this.anzahlTitel = anzahlTitel;
    }
    
+   @Override
+    public boolean equals(Object obj){
+        boolean istgleich = false;
+        
+        if(obj instanceof CD){
+            CD cd= (CD)obj;
+            if(    interpret.equals(cd.getInterpret()) 
+                && titel.equals(cd.getTitel())
+                && anzahlTitel  == cd.getAnzahlTitel()
+                && getPreis()   == cd.getPreis()
+                && getBestand() == cd.getBestand()){
+                    
+                istgleich = true;    
+            }
+        }
+        return istgleich;
+    }
+   
    public String getInterpret(){
        return interpret;    
    }

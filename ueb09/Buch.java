@@ -23,6 +23,24 @@ public class Buch extends Artikel
         this.verlag = verlag;
     }
     
+    @Override
+    public boolean equals(Object obj){
+        boolean istgleich = false;
+        
+        if(obj instanceof Buch){
+            Buch buch = (Buch)obj;
+            if(    titel.equals(buch.getTitel()) 
+                && autor.equals(buch.getAutor())
+                && verlag.equals(buch.getVerlag())
+                && getPreis()   == buch.getPreis()
+                && getBestand() == buch.getBestand()){
+                    
+                istgleich = true;    
+            }
+        }
+        return istgleich;
+    }
+    
     public String getTitel(){
         return titel;
     }
