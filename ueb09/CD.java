@@ -41,6 +41,10 @@ public class CD extends Artikel
         return istgleich;
     }
    
+   public String getBeschreibung(){
+        return this.interpret + ": " + this.titel;
+   } 
+    
    public String getInterpret(){
        return interpret;    
    }

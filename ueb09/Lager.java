@@ -252,4 +252,9 @@ public class Lager
     public int getLagerGroesse() {
         return this.artikelLager.length;
     }
+    
+    //toDo
+    public void ausgebenBestandsListe(){
+        
+    }
 }

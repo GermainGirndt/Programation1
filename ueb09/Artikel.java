@@ -124,6 +124,12 @@ public class Artikel
                 ArtikelKonstanten.PREIS           + ": "     +   this.preis;
     }
 
+    public String getBeschreibung(){
+        return this.art;
+    }
+    
+    
+    
     /**
     * Die Methode gibt die Artikelnummer zurueck
     * @return die Artikelnummer

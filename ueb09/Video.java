@@ -41,6 +41,11 @@ public class Video extends Artikel
         return istgleich;
     }
     
+    @Override
+    public String getBeschreibung(){
+        return this.titel;
+    }
+    
     public String getTitel(){
         return titel;
     }

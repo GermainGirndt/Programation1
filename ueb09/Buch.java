@@ -41,6 +41,11 @@ public class Buch extends Artikel
         return istgleich;
     }
     
+    @Override
+    public String getBeschreibung(){
+        return this.autor + ": " + this.titel;
+    }
+
     public String getTitel(){
         return titel;
     }
