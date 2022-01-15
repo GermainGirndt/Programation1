@@ -1,45 +1,49 @@
 
 /**
- * Beschreiben Sie hier die Klasse Video.
+ * Die Klasse Video ist eine Spezialisierung von der Artikelklasse
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class Video extends Artikel
 {
     private String titel;
     private int spieldauer;
     private int jahr;
+
+    private final static String ARTIKEL_ART = "Medien";
     
-    public Video(int artikelNr, int bestand, double preis, String titel, int spieldauer, int jahr){
-        super(artikelNr, "Medien", bestand, preis);
+    public Video(int artikelNr, int bestand, double preis, String titel, int spieldauer, int jahr) {
+        super(artikelNr, ARTIKEL_ART, bestand, preis);
         
         Validierung.validiereTitel(titel);
         Validierung.validiereSpieldauer(spieldauer);
         Validierung.validiereJahr(jahr);
         
-        this.titel       = titel;
-        this.spieldauer = spieldauer;
-        this.jahr       = jahr;
+        this.titel       =  titel;
+        this.spieldauer  =  spieldauer;
+        this.jahr        =  jahr;
     }
     
     @Override
     public boolean equals(Object obj){
-        boolean istgleich = false;
-        
-        if(obj instanceof Video){
-            Video video = (Video)obj;
-            if(    titel.equals(video.getTitel()) 
-                && spieldauer   == video.getSpieldauer() 
-                && jahr         == video.getJahr()
-                && getPreis()   == video.getPreis()
-                && getBestand() == video.getBestand()){
-                    
-                istgleich = true;    
-            }
+        if (!(obj instanceof Video)){
+            return false;
         }
-        return istgleich;
+
+        Video video = (Video) obj;
+
+        return this.hatDieSelbenAttributen(video);
     }
+
+    private boolean hatDieSelbenAttributen(Video video) {
+        return this.titel.equals(video.getTitel())         &&
+               this.spieldauer   == video.getSpieldauer()  &&
+               this.jahr         == video.getJahr()        &&
+               this.getPreis()   == video.getPreis()       &&
+               this.getBestand() == video.getBestand();
+    }
+   
     
     @Override
     public String getBeschreibung(){

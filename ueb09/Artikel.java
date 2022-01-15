@@ -128,8 +128,6 @@ public class Artikel
         return this.art;
     }
     
-    
-    
     /**
     * Die Methode gibt die Artikelnummer zurueck
     * @return die Artikelnummer

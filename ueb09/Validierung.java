@@ -11,7 +11,9 @@ public final class Validierung {
     private static final int            MINDESTARTIKELNUMMER                        = 1000;
     private static final int            HOECHSTARTIKELNUMMER                        = 9999;
     private static final int            MINDESTBESTANDNUMMER                        =    0;
-    private static final int            MINDEST_ANZAHL_AN_MENGEANDERUNG             =    0;
+    private static final int            MINDESTANZAHL_AN_MENGEANDERUNG              =    0;
+    private static final int            MINDESTANZAHL_AN_TITEL                      =    1;
+    private static final int            UNTERE_LIMIT_UNGUELTIGER_SPIELDAUER         =    0;
     private static final int            FRUEHESTESVIDEOJAHR                         = 1900;
     private static final int            AKTUELLESJAHR                               = 2022;
     private static final double         MINDESTPREIS                                =    0.0;
@@ -35,59 +37,41 @@ public final class Validierung {
     private Validierung() {}
     
     public static void validiereSpieldauer(int spieldauer){
-        if(spieldauer <= 0){
+        if (spieldauer <= UNTERE_LIMIT_UNGUELTIGER_SPIELDAUER){
             throw new IllegalArgumentException(FEHLERMELDUNGSPIELDAUER);   
         }
     }
 
     public static void validiereJahr(int jahr){
-        if(jahr < FRUEHESTESVIDEOJAHR || jahr > AKTUELLESJAHR){
+        if (jahr < FRUEHESTESVIDEOJAHR || jahr > AKTUELLESJAHR){
              throw new IllegalArgumentException(FEHLERMELDUNGSPIELDAUER);   
         }
     }
     
     public static void validiereVerlag(String verlag){
-        if (verlag == null) {
-            throw new IllegalArgumentException(FEHLERMELDUNGVERLAGNULL);
-        }
-
-        if (checkeFuerNurLeertasten(verlag)) {
-            throw new IllegalArgumentException(FEHLERMELDUNGVERLAGLEER);
-        }        
+        Validierung.validiereStringHatNichtNurLeerTasten(verlag);    
     }
     
     public static void validiereAutor(String autor){
-        if (autor == null) {
-            throw new IllegalArgumentException(FEHLERMELDUNGAUTORNULL);
-        }
-
-        if (checkeFuerNurLeertasten(autor)) {
-            throw new IllegalArgumentException(FEHLERMELDUNGAUTORLEER);
-        }        
+        Validierung.validiereStringHatNichtNurLeerTasten(autor);    
     }
     
     public static void validiereInterpret(String interpret){
-        if (interpret == null) {
-            throw new IllegalArgumentException(FEHLERMELDUNGINTERPRETNULL);
-        }
-
-        if (checkeFuerNurLeertasten(interpret)) {
-            throw new IllegalArgumentException(FEHLERMELDUNGINTERPRETLEER);
-        }        
+        Validierung.validiereStringHatNichtNurLeerTasten(interpret);    
     }
     
-    public static void validiereTitel(String titel){
-        if (titel == null) {
+    public static void validiereTitel(String titel) {
+        Validierung.validiereStringHatNichtNurLeerTasten(titel);    
+    }
+
+    private static void validiereStringHatNichtNurLeerTasten(String string) {
+        if (string == null || Validierung.checkeFuerNurLeertasten(string)) {
             throw new IllegalArgumentException(FEHLERMELDUNGTITELNULL);
         }
-
-        if (checkeFuerNurLeertasten(titel)) {
-            throw new IllegalArgumentException(FEHLERMELDUNGTITELLEER);
-        }        
     }
     
     public static void validiereAnzahlTitel(int anzahlTitel){
-        if(anzahlTitel <= 0){
+        if (anzahlTitel < MINDESTANZAHL_AN_TITEL){
             throw new IllegalArgumentException( FEHLERMELDUNGANZAHLTITEL);    
         }
     }
@@ -97,7 +81,7 @@ public final class Validierung {
     * @param menge ist die Menge 
     */
     public static void validiereMengeanderung(int mengeArtikelaenderung) {
-        if (mengeArtikelaenderung <= MINDEST_ANZAHL_AN_MENGEANDERUNG) {
+        if (mengeArtikelaenderung <= MINDESTANZAHL_AN_MENGEANDERUNG) {
             throw new IllegalArgumentException("Die Menge muss eine natuerliche positive Zahl sein");
         }
     }

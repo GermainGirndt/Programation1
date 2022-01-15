@@ -1,18 +1,20 @@
 
 /**
- * Beschreiben Sie hier die Klasse CD.
+ * Die Klasse CD ist eine Spezialisierung von der Artikelklasse
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class CD extends Artikel
 {
-   String interpret;
-   String titel;
-   int anzahlTitel;
+   private String interpret;
+   private String titel;
+   private int anzahlTitel;
+
+   private final static String ARTIKEL_ART = "Medien";
    
-   CD(int artikelNr, int bestand, double preis, String interpret, String titel, int anzahlTitel){
-       super(artikelNr, "Medien", bestand, preis);    
+   CD(int artikelNr, int bestand, double preis, String interpret, String titel, int anzahlTitel) {
+       super(artikelNr, ARTIKEL_ART, bestand, preis);    
        
        Validierung.validiereInterpret(interpret);
        Validierung.validiereTitel(titel);
@@ -25,35 +27,38 @@ public class CD extends Artikel
    
    @Override
     public boolean equals(Object obj){
-        boolean istgleich = false;
         
-        if(obj instanceof CD){
-            CD cd= (CD)obj;
-            if(    interpret.equals(cd.getInterpret()) 
-                && titel.equals(cd.getTitel())
-                && anzahlTitel  == cd.getAnzahlTitel()
-                && getPreis()   == cd.getPreis()
-                && getBestand() == cd.getBestand()){
-                    
-                istgleich = true;    
-            }
+        if(!(obj instanceof CD)) {
+            return false;
         }
-        return istgleich;
+
+        CD cd = (CD) obj;
+
+        return this.hatDieSelbenAttributen(cd);
     }
-   
+
+    private boolean hatDieSelbenAttributen(CD cd) {
+        return this.interpret.equals(cd.getInterpret())  &&
+               this.titel.equals(cd.getTitel())          &&
+               this.anzahlTitel  == cd.getAnzahlTitel()  &&
+               this.getPreis()        == cd.getPreis()        &&
+               this.getBestand()      == cd.getBestand();
+    }
+
+   @Override
    public String getBeschreibung(){
         return this.interpret + ": " + this.titel;
    } 
     
    public String getInterpret(){
-       return interpret;    
+       return this.interpret;    
    }
    
    public String getTitel(){
-       return titel;    
+       return this.titel;    
    }
    
    public int getAnzahlTitel(){
-       return anzahlTitel;
+       return this.anzahlTitel;
    }
 }
