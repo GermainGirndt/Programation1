@@ -329,7 +329,7 @@ public class LagerTest
 
         this.lager.bucheZugang(artikel.getArtikelNr(), zugegangeneMenge);
 
-        assertSame(startbestand + zugegangeneMenge, artikel.getBestand());
+        assertEquals(startbestand + zugegangeneMenge, artikel.getBestand());
     }
 
     @Test
@@ -341,7 +341,7 @@ public class LagerTest
 
         this.lager.bucheAbgang(artikel.getArtikelNr(), abgegangeneMenge);
 
-        assertSame(startbestand - abgegangeneMenge, artikel.getBestand());
+        assertEquals(startbestand - abgegangeneMenge, artikel.getBestand());
     }
 
     
@@ -358,7 +358,7 @@ public class LagerTest
 
         this.lager.aenderePreisEinesArtikels(artikel.getArtikelNr(), hundert_prozent_inkrement);
 
-        assertSame(startpreis * 2.0, artikel.getPreis());
+        assertEquals(startpreis * 2.0, artikel.getPreis());
     }
 
     @Test
@@ -370,7 +370,7 @@ public class LagerTest
 
         this.lager.aenderePreisEinesArtikels(artikel.getArtikelNr(), hundert_prozent_inkrement);
 
-        assertSame(startpreis * 1.5, artikel.getPreis());
+        assertEquals(startpreis * 1.5, artikel.getPreis());
     }
 
     @Test
@@ -382,7 +382,7 @@ public class LagerTest
         
         this.lager.aenderePreisEinesArtikels(artikel.getArtikelNr(), null_prozent_aenderung);
         
-        assertSame(startpreis, artikel.getPreis());
+        assertEquals(startpreis, artikel.getPreis());
     }
     
     @Test
@@ -394,7 +394,7 @@ public class LagerTest
 
         this.lager.aenderePreisEinesArtikels(artikel.getArtikelNr(), hundert_prozent_inkrement);
 
-        assertSame(startpreis / 2, artikel.getPreis());
+        assertEquals(startpreis / 2, artikel.getPreis());
     }
 
     @Test
@@ -405,7 +405,7 @@ public class LagerTest
 
         this.lager.aenderePreisEinesArtikels(artikel.getArtikelNr(), hundert_prozent_dekrement);
 
-        assertSame(0, artikel.getPreis());
+        assertEquals(0, artikel.getPreis());
     }
 
     @Test

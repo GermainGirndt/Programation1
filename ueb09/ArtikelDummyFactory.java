@@ -14,6 +14,12 @@ public class ArtikelDummyFactory {
 
     private             int                        MAX_ARTIKEL_ANZAHL;
 
+
+    private final       int                        INDEX_ARTIKEL_NUMMER = 0;
+    private final       int                        INDEX_ARTIKEL_ART = 1;
+    private final       int                        INDEX_ARTIKEL_BESTAND = 2;
+    private final       int                        INDEX_ARTIKEL_PREIS = 3;
+
     private Object[][] seed = {
         new Object[] { 1111, "Playstation", 500,        750.00     },
         new Object[] { 1234, "Nintendo Wii", 10,        500.00     },
@@ -62,7 +68,7 @@ public class ArtikelDummyFactory {
 
         if (artikelAnzahl > MAX_ARTIKEL_ANZAHL) {
             throw new IndexOutOfBoundsException(String.format(
-                "Es werden bis %s Artikel unterstuezt. Anfragt: %s",
+                "Es werden bis %s Artikel unterstuezt. Angefragt: %s",
                 MAX_ARTIKEL_ANZAHL,
                 artikelAnzahl
             ));  
@@ -76,53 +82,26 @@ public class ArtikelDummyFactory {
         return Arrays.copyOfRange(this.artikelArray, startIndex, endIndex);
     }
 
-     /**
-     * Erstellt einen Artikel-Array gueltiger Artikel durch das Seed
-     */
+    /**
+    * Erstellt einen Artikel-Array gueltiger Artikel durch das Seed
+    */
     private void erstelleArtikelarray() {
-
-
 
         MAX_ARTIKEL_ANZAHL = this.seed.length;
         
         this.artikelWerte = (HashMap<String, Object>[]) new HashMap[MAX_ARTIKEL_ANZAHL];
 
-        for (int index = 0; index < MAX_ARTIKEL_ANZAHL; index++) {
-            this.werteAnlegen(index, this.seed[index]);
-        }
-
         this.artikelArray = new Artikel[MAX_ARTIKEL_ANZAHL];
         
         for (int index = 0; index < MAX_ARTIKEL_ANZAHL; index++) {
             
-            int artikelnummer        =   (int)    artikelWerte[index].get(ArtikelKonstanten.NUMMER);
-            String artikelart        =   (String) artikelWerte[index].get(ArtikelKonstanten.ART);
-            int bestand              =   (int)    artikelWerte[index].get(ArtikelKonstanten.BESTAND);
-            double artikelpreis      =   (double) artikelWerte[index].get(ArtikelKonstanten.PREIS);
+            int artikelnummer        =   (int)    this.seed[index][INDEX_ARTIKEL_NUMMER];
+            String artikelart        =   (String) this.seed[index][INDEX_ARTIKEL_ART];
+            int bestand              =   (int)    this.seed[index][INDEX_ARTIKEL_BESTAND];
+            double artikelpreis      =   (double) this.seed[index][INDEX_ARTIKEL_PREIS];
 
             this.artikelArray[index] = new Artikel(artikelnummer, artikelart, bestand, artikelpreis);
         }
-
-    }
-
-     /**
-     * Diese Methode weist ein HashMap einem HashMap-Array zu.
-     * 
-     * In dem zugewiesenen HashMap sind die Daten, die im Artikel-Konstruktor verwenden werden soll.
-     * 
-     * Das dient zur Code-Organisation.
-     */
-    private void werteAnlegen( int indexZumHinzufuegen, Object[] werteZumHinzufuegen ) {
-
-        HashMap<String, Object> werte = new HashMap<String, Object>()
-        {{
-            put(ArtikelKonstanten.NUMMER,   (int)    werteZumHinzufuegen[0]);
-            put(ArtikelKonstanten.ART,      (String) werteZumHinzufuegen[1]);
-            put(ArtikelKonstanten.BESTAND,  (int)    werteZumHinzufuegen[2]);
-            put(ArtikelKonstanten.PREIS,    (double) werteZumHinzufuegen[3]);
-        }};
-        
-        this.artikelWerte[indexZumHinzufuegen] = werte;
 
     }
 }
