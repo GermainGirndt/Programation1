@@ -1,44 +1,46 @@
 
 /**
- * Beschreiben Sie hier die Klasse Buch.
+ * Die Klasse Buch ist eine Spezialisierung von der Artikelklasse
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class Buch extends Artikel
 {
     private String titel;
     private String autor;
     private String verlag;
+
+    private final static String ARTIKEL_ART = "Medien";
     
-    public Buch(int artikelNr, int bestand, double preis, String titel, String autor, String verlag){
-        super(artikelNr, "Medien" , bestand, preis);
+    public Buch(int artikelNr, int bestand, double preis, String autor, String titel, String verlag) {
+        super(artikelNr, ARTIKEL_ART, bestand, preis);
         
-        Validierung.validiereTitel(titel);
         Validierung.validiereAutor(autor);
+        Validierung.validiereTitel(titel);
         Validierung.validiereVerlag(verlag);
         
-        this.titel  = titel;
         this.autor  = autor;
+        this.titel  = titel;
         this.verlag = verlag;
     }
     
     @Override
     public boolean equals(Object obj){
-        boolean istgleich = false;
-        
-        if(obj instanceof Buch){
-            Buch buch = (Buch)obj;
-            if(    titel.equals(buch.getTitel()) 
-                && autor.equals(buch.getAutor())
-                && verlag.equals(buch.getVerlag())
-                && getPreis()   == buch.getPreis()
-                && getBestand() == buch.getBestand()){
-                    
-                istgleich = true;    
-            }
+        if(!(obj instanceof Buch)){
+            return false;
         }
-        return istgleich;
+
+        Buch buch = (Buch) obj;
+        return this.hatDieSelbenAttributen(buch);
+    }
+
+    private boolean hatDieSelbenAttributen(Buch buch) {
+        return this.titel.equals(buch.getTitel())      &&
+               this.autor.equals(buch.getAutor())      &&
+               this.verlag.equals(buch.getVerlag())    &&
+               this.getPreis()   == buch.getPreis()    &&
+               this.getBestand() == buch.getBestand();
     }
     
     @Override

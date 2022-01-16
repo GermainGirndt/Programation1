@@ -38,7 +38,7 @@ public class Lager
            throw new IllegalArgumentException(LagerKonstanten.ERROR_LAGER_IST_VOLL);
         }
 
-        if(artikel == null){
+        if (artikel == null) {
             throw new IllegalArgumentException(LagerKonstanten.ERROR_NULL_ARTIKEL);
         }
         

@@ -11,23 +11,24 @@ public final class Validierung {
     private static final int            MINDESTARTIKELNUMMER                        = 1000;
     private static final int            HOECHSTARTIKELNUMMER                        = 9999;
     private static final int            MINDESTBESTANDNUMMER                        =    0;
-    private static final int            MINDEST_ANZAHL_AN_MENGEANDERUNG             =    0;
+    private static final int            MINDESTANZAHL_AN_MENGEANDERUNG              =    0;
+    private static final int            MINDESTANZAHL_AN_TITEL                      =    1;
+    private static final int            UNTERER_LIMIT_UNGUELTIGER_SPIELDAUER         =    0;
     private static final int            FRUEHESTESVIDEOJAHR                         = 1900;
     private static final int            AKTUELLESJAHR                               = 2022;
     private static final double         MINDESTPREIS                                =    0.0;
     private static final double         GROESSTE_NEGATIVE_PREISAENDERUNG            = -100.0;
     
-    private static final String         FEHLERMELDUNGINTERPRETNULL                  = "Interpret darf nicht null sein";    
-    private static final String         FEHLERMELDUNGINTERPRETLEER                  = "Interpret darf nicht leer sein";   
-    private static final String         FEHLERMELDUNGTITELNULL                      = "Titel darf nicht null sein";   
-    private static final String         FEHLERMELDUNGTITELLEER                      = "Titel darf nicht leer sein";   
-    private static final String         FEHLERMELDUNGANZAHLTITEL                    = "Die Anzahl der Titel muss groesser als 0 sein";
-    private static final String         FEHLERMELDUNGSPIELDAUER                     = "Die Spieldauer des Videos muss groesser als 0 sein";
-    private static final String         FEHLERMELDUNGJAHR                           = "Das Jahr muss zwischen 1900 und 2022 liegen";
-    private static final String         FEHLERMELDUNGAUTORNULL                      = "Autor darf nicht null sein";    
-    private static final String         FEHLERMELDUNGAUTORLEER                      = "Autor darf nicht leer sein"; ;     
-    private static final String         FEHLERMELDUNGVERLAGNULL                     = "Verlag darf nicht null sein";    
-    private static final String         FEHLERMELDUNGVERLAGLEER                     = "Verlag darf nicht leer sein";
+    private static final String         FEHLERMELDUNG_ANZAHLTITEL                    = "Die Anzahl der Titel muss groesser als 0 sein";
+    private static final String         FEHLERMELDUNG_SPIELDAUER                     = "Die Spieldauer des Videos muss groesser als 0 sein";
+    
+    private static final String         FEHLERMELDUNGSMUTER_NULL                  = "%s darf nicht null sein";   
+    private static final String         FEHLERMELDUNGSMUTER_LEER                  = "%s darf nicht leer sein";   
+
+    private static final String         ATTRIBUTE_TITEL                              = "Titel";
+    private static final String         ATTRIBUTE_AUTOR                              = "Autor";
+    private static final String         ATTRIBUTE_VERLAG                             = "Verlag";
+    private static final String         ATTRIBUTE_INTERPRET                          = "Interpret";
     
     /**
     * Die Werkzeugklasse soll statisch sein bzw. darf nicht instantiert werden
@@ -35,60 +36,46 @@ public final class Validierung {
     private Validierung() {}
     
     public static void validiereSpieldauer(int spieldauer){
-        if(spieldauer <= 0){
-            throw new IllegalArgumentException(FEHLERMELDUNGSPIELDAUER);   
+        if (spieldauer <= UNTERER_LIMIT_UNGUELTIGER_SPIELDAUER){
+            throw new IllegalArgumentException(FEHLERMELDUNG_SPIELDAUER);   
         }
     }
 
     public static void validiereJahr(int jahr){
-        if(jahr < FRUEHESTESVIDEOJAHR || jahr > AKTUELLESJAHR){
-             throw new IllegalArgumentException(FEHLERMELDUNGSPIELDAUER);   
+        if (jahr < FRUEHESTESVIDEOJAHR || jahr > AKTUELLESJAHR){
+             throw new IllegalArgumentException(FEHLERMELDUNG_SPIELDAUER);   
         }
     }
     
     public static void validiereVerlag(String verlag){
-        if (verlag == null) {
-            throw new IllegalArgumentException(FEHLERMELDUNGVERLAGNULL);
-        }
-
-        if (checkeFuerNurLeertasten(verlag)) {
-            throw new IllegalArgumentException(FEHLERMELDUNGVERLAGLEER);
-        }        
+        Validierung.validiereStringHatNichtNurLeerTasten(verlag, ATTRIBUTE_VERLAG);    
     }
     
     public static void validiereAutor(String autor){
-        if (autor == null) {
-            throw new IllegalArgumentException(FEHLERMELDUNGAUTORNULL);
-        }
-
-        if (checkeFuerNurLeertasten(autor)) {
-            throw new IllegalArgumentException(FEHLERMELDUNGAUTORLEER);
-        }        
+        Validierung.validiereStringHatNichtNurLeerTasten(autor, ATTRIBUTE_AUTOR);    
     }
     
     public static void validiereInterpret(String interpret){
-        if (interpret == null) {
-            throw new IllegalArgumentException(FEHLERMELDUNGINTERPRETNULL);
-        }
-
-        if (checkeFuerNurLeertasten(interpret)) {
-            throw new IllegalArgumentException(FEHLERMELDUNGINTERPRETLEER);
-        }        
+        Validierung.validiereStringHatNichtNurLeerTasten(interpret, ATTRIBUTE_INTERPRET);    
     }
     
-    public static void validiereTitel(String titel){
-        if (titel == null) {
-            throw new IllegalArgumentException(FEHLERMELDUNGTITELNULL);
-        }
+    public static void validiereTitel(String titel) {
+        Validierung.validiereStringHatNichtNurLeerTasten(titel, ATTRIBUTE_TITEL);    
+    }
 
-        if (checkeFuerNurLeertasten(titel)) {
-            throw new IllegalArgumentException(FEHLERMELDUNGTITELLEER);
-        }        
+    private static void validiereStringHatNichtNurLeerTasten(String string, String attributenname) {
+        if (string == null) {
+            throw new IllegalArgumentException(String.format(FEHLERMELDUNGSMUTER_NULL, attributenname));
+        }
+        
+        if (Validierung.checkeFuerNurLeertasten(string)) {
+            throw new IllegalArgumentException(String.format(FEHLERMELDUNGSMUTER_LEER, attributenname));
+        }
     }
     
     public static void validiereAnzahlTitel(int anzahlTitel){
-        if(anzahlTitel <= 0){
-            throw new IllegalArgumentException( FEHLERMELDUNGANZAHLTITEL);    
+        if (anzahlTitel < MINDESTANZAHL_AN_TITEL){
+            throw new IllegalArgumentException( FEHLERMELDUNG_ANZAHLTITEL);    
         }
     }
     
@@ -97,7 +84,7 @@ public final class Validierung {
     * @param menge ist die Menge 
     */
     public static void validiereMengeanderung(int mengeArtikelaenderung) {
-        if (mengeArtikelaenderung <= MINDEST_ANZAHL_AN_MENGEANDERUNG) {
+        if (mengeArtikelaenderung <= MINDESTANZAHL_AN_MENGEANDERUNG) {
             throw new IllegalArgumentException("Die Menge muss eine natuerliche positive Zahl sein");
         }
     }
