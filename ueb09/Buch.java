@@ -40,6 +40,15 @@ public class Buch extends Artikel
         return this.autor + ": " + this.titel;
     }
 
+    @Override
+    public int hashCode() {
+        int baseHash = super.hashCode();
+
+        int hashCode = Utils.generateHashCode(baseHash, this.titel, this.autor, this.verlag);
+        
+        return hashCode;
+    }
+
     public String getTitel(){
         return this.titel;
     }

@@ -35,6 +35,15 @@ public class CD extends Artikel
                this.anzahlTitel  == cd.getAnzahlTitel();
     }
 
+    @Override
+    public int hashCode() {
+        int baseHash = super.hashCode();
+
+        int hashCode = Utils.generateHashCode(baseHash, this.interpret, this.titel, this.anzahlTitel);
+        
+        return hashCode;
+    }
+
    @Override
    public String getBeschreibung(){
         return this.interpret + ": " + this.titel;

@@ -14,8 +14,6 @@ public class Artikel
     private static final int        MINIMUM_BESTAND = 0;
     private static final double     INITIAL_PREIS   = 0.0;
 
-    
-    
     /**
     * Konstruktor fuer Artikel mit Angaben
     * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
@@ -176,13 +174,14 @@ public class Artikel
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
         if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
 
-        if (obj == this) {
-            return true;
-        }
         
         return this.hatDieSelbenAttributen(obj);
     }
@@ -190,10 +189,15 @@ public class Artikel
     protected boolean hatDieSelbenAttributen(Object obj) {
         Artikel artikel = (Artikel) obj;
 
-        return this.artikelNr == artikel.getArtikelNr()     &&
-               this.art       == artikel.getArt()           &&
+        return this.art.equals(artikel.getArt())            &&
+               this.artikelNr == artikel.getArtikelNr()     &&
                this.bestand   == artikel.getBestand()       &&
                this.preis     == artikel.getPreis();
     }
 
+    @Override
+    public int hashCode() {
+        int hashCode = Utils.generateHashCode(this.art, this.artikelNr, this.bestand, this.preis);
+        return hashCode;
+    }
 }

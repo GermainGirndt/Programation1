@@ -35,8 +35,16 @@ public class Video extends Artikel
                this.spieldauer   == video.getSpieldauer()   &&
                this.jahr         == video.getJahr();
     }
+
+    @Override
+    public int hashCode() {
+        int baseHash = super.hashCode();
+
+        int hashCode = Utils.generateHashCode(baseHash, this.titel, this.spieldauer, this.jahr);
+        
+        return hashCode;
+    }
    
-    
     @Override
     public String getBeschreibung(){
         return this.titel;
