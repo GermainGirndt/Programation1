@@ -20,7 +20,7 @@ public class ArtikelTest
     // Funktion {} standardizieren
 
     private Artikel artikel;
-    private int[] testArtikelNr = {1 , 9999, 1234, 397, 9863};
+    private int[] testArtikelNr = {1000 , 9999, 1001, 3970, 9998};
     private String[] testArt    = {"Samsung Galaxy 7", "Kuhfutter", "4711", "Handyhuelle blau", "Test"};
     
     //KonstruktorTests    
@@ -62,7 +62,7 @@ public class ArtikelTest
     public void test_Artikel_Konstruktor_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis()
     {
         for (int gueltigeArtikelnr : testArtikelNr){
-            for(String art : testArt){
+            for (String art : testArt){
                  test_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis(gueltigeArtikelnr , art);
             }
             
