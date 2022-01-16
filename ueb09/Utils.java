@@ -12,12 +12,20 @@ public class Utils {
         for (Object seed : seeds) {
             if (seed instanceof String) {
                 ergebnis = primZahl * ergebnis + ((seed == null ? 0 : seed.hashCode()));
-            } else if (seed instanceof Integer || seed instanceof Long) {
+                
+            } else if (seed instanceof Integer) {
                 ergebnis = primZahl * ergebnis + (int) seed;
+
+            } else if (seed instanceof Long) {
+                Long longWert = (Long) seed;
+                ergebnis = primZahl * ergebnis + longWert.intValue();
+
             } else if (seed instanceof Double) {
                 ergebnis = primZahl * ergebnis + Double.hashCode((double) seed);
+
             } else {
                 throw new IllegalArgumentException(ERROR_TYP_NICHT_UNTERSTUETZ);
+
             }
         }
 
