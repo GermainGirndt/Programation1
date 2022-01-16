@@ -9,7 +9,6 @@ public class Artikel
     private              int        artikelNr;
     private              String     art;
     private              long       bestand;
-    
     private              double     preis;
     
     private static final int        MINIMUM_BESTAND = 0;
@@ -173,6 +172,28 @@ public class Artikel
         Validierung.validiereArtikelArt(art);
         
         this.art = art;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        if (obj == this) {
+            return true;
+        }
+        
+        return this.hatDieSelbenAttributen(obj);
+    }
+
+    protected boolean hatDieSelbenAttributen(Object obj) {
+        Artikel artikel = (Artikel) obj;
+
+        return this.artikelNr == artikel.getArtikelNr()     &&
+               this.art       == artikel.getArt()           &&
+               this.bestand   == artikel.getBestand()       &&
+               this.preis     == artikel.getPreis();
     }
 
 }

@@ -25,23 +25,15 @@ public class Video extends Artikel
         this.jahr        =  jahr;
     }
     
+    
     @Override
-    public boolean equals(Object obj){
-        if (!(obj instanceof Video)){
-            return false;
-        }
-
+    protected boolean hatDieSelbenAttributen(Object obj) {
         Video video = (Video) obj;
 
-        return this.hatDieSelbenAttributen(video);
-    }
-
-    private boolean hatDieSelbenAttributen(Video video) {
-        return this.titel.equals(video.getTitel())         &&
-               this.spieldauer   == video.getSpieldauer()  &&
-               this.jahr         == video.getJahr()        &&
-               this.getPreis()   == video.getPreis()       &&
-               this.getBestand() == video.getBestand();
+        return super.hatDieSelbenAttributen(video)          &&
+               this.titel.equals(video.getTitel())          &&
+               this.spieldauer   == video.getSpieldauer()   &&
+               this.jahr         == video.getJahr();
     }
    
     
@@ -51,14 +43,14 @@ public class Video extends Artikel
     }
     
     public String getTitel(){
-        return titel;
+        return this.titel;
     }
     
     public int getSpieldauer(){
-        return spieldauer;
+        return this.spieldauer;
     }
     
     public int getJahr(){
-        return jahr;
+        return this.jahr;
     }
 }
