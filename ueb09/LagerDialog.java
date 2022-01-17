@@ -67,7 +67,12 @@ public class LagerDialog
     private static final String         ARTIKEL_ERFOLGREICH                     = "Artikel wurde angelegt. ";
     private static final String         ART_FRAGE                               = "Art des Artikels?: ";
     private static final String         ARTIKEL_BEREITS_DA                      = "Die eingegebene Artikelnummer ist bereits im Lager!";
-    private static final String         NICHT_GUELTIG                           = "Keine gueltige Eingabe";
+    private static final String         NICHT_GUELTIG                           = "Keine gueltige Eingabe. ";
+    private static final String         LAGER_ERFOLGREICH                       = "Lager wurde erstellt. ";
+    private static final String         LAGER_FRAGE                             = "Lagergroesse? ";
+    private static final String         PROGRAMM_ENDE                           = "Das Programm ist zu Ende. ";
+    private static final String         FUNKTION                                = "Ausgewaehlte Funktion: ";
+    
     /**
     * Konstruktor
     */
@@ -132,7 +137,7 @@ public class LagerDialog
             FUNKTION_ENDE                   + ": beenden -> \n\n"   
         );
         
-        this.funktion = userInput.getInt("Ausgewählte Funktion: ");
+        this.funktion = userInput.getInt(FUNKTION);
         System.out.println();
     }
     
@@ -148,7 +153,7 @@ public class LagerDialog
                 break;
             case LAGER_ERSTELLEN_INITIAL:
                 this.lager = new Lager();
-                System.out.println("Lager wurde erstellt. ");
+                System.out.println(LAGER_ERFOLGREICH);
                 break;
             case ARTIKEL_ANLEGEN:
                 artikelAnlegen();
@@ -187,7 +192,7 @@ public class LagerDialog
                 ausgebenBestandsListe();
                 break;
             case FUNKTION_ENDE:  
-                System.out.println("Das Programm ist zu Ende");
+                System.out.println(PROGRAMM_ENDE);
                 break;
             default:
                 System.out.println( NICHT_GUELTIG);
@@ -209,10 +214,10 @@ public class LagerDialog
     public void lagerErstellen(){
         if (this.lager != null) throw new IllegalArgumentException(LAGER_EXISTIERT);    
         
-        int lagergroesse = this.userInput.getInt("Welche Lagergroesse?: ");
+        int lagergroesse = this.userInput.getInt(LAGER_FRAGE);
         
         this.lager = new Lager(lagergroesse);
-        System.out.println("Lager wurde erstellt. ");
+        System.out.println(LAGER_ERFOLGREICH);
     }
     
     /**
@@ -228,7 +233,7 @@ public class LagerDialog
             FUNKTION_ENDE                  + ": beenden -> \n\n"   
         );
         
-        this.artikelfunktion = userInput.getInt("Ausgewählte Funktion: ");  
+        this.artikelfunktion = userInput.getInt(FUNKTION);  
     }
     
     
