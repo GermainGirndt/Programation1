@@ -9,32 +9,24 @@ public class ArtikelDummyFactoryFacade {
 
     public final        String                     FEHLER_TYP_NICHT_UNTERSTUEZT = "Dieser Typ wird für Artikel nicht unterstützt.";
 
-    private StandardArtikelDummyFactory[] factories;
-    private StandardArtikelDummyFactory aktivesArtikelFactory;
+    private AbstractArtikelDummyFactory[] factories;
+    private AbstractArtikelDummyFactory aktivesArtikelFactory;
 
     public ArtikelDummyFactoryFacade() {
 
-        
-        this.factories = new StandardArtikelDummyFactory[ArtikelTypen.values().length];
-        System.out.println("Factories created: ");
-        System.out.println(this.factories);
+        this.factories = new AbstractArtikelDummyFactory[ArtikelTypen.values().length];
         
         this.factories[ArtikelTypen.STANDARD.getIndex()] = new StandardArtikelDummyFactory();
-        this.factories[ArtikelTypen.VIDEO.getIndex()] = new StandardArtikelDummyFactory();
-        this.factories[ArtikelTypen.CD.getIndex()] = new StandardArtikelDummyFactory();
-        this.factories[ArtikelTypen.BUCH.getIndex()] = new StandardArtikelDummyFactory();
-        
-        System.out.println("Standard factory put ");
-        System.out.println(this.factories[ArtikelTypen.STANDARD.getIndex()]);
+        this.factories[ArtikelTypen.VIDEO.getIndex()] = new VideoArtikelDummyFactory();
+        this.factories[ArtikelTypen.CD.getIndex()] = new CDArtikelDummyFactory();
+        this.factories[ArtikelTypen.BUCH.getIndex()] = new BuchArtikelDummyFactory();
         
         this.aktivesArtikelFactory = this.factories[ArtikelTypen.STANDARD.getIndex()];
 
-        System.out.println(this.aktivesArtikelFactory);
-        System.out.println();
     }
 
-    public void setzeBesonderenArtikel(ArtikelTypen artikelName) {
-        this.aktivesArtikelFactory = this.factories[artikelName.getIndex()];
+    public void setArtikelTyp(ArtikelTypen artikelTyp) {
+        this.aktivesArtikelFactory = this.factories[artikelTyp.getIndex()];
     }
 
     /**

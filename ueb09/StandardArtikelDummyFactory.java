@@ -37,8 +37,6 @@ public class StandardArtikelDummyFactory extends AbstractArtikelDummyFactory {
     */
     @Override
     protected void erstelleArtikelarray() {
-        System.out.println("A array called");
-
         int maximaleArtikelanzahl = this.seed.length;
         
         this.artikelArray = new Artikel[maximaleArtikelanzahl];

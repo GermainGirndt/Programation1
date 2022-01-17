@@ -66,7 +66,7 @@ public class LagerTest
             
         }
         
-        @Test
+    @Test
     public void die_Artikelanzahl_wird_um_eins_erhoert_bei_dem_Anlegen() {
         int erwarteteArtikelAnzahl = 1;
         
@@ -421,6 +421,28 @@ public class LagerTest
         );
     }
 
+
+     /**
+     * speziele Artikeltypen anlegen
+     */
+
+
+        
+    @Test
+    public void kann_ein_Video_anlegen() {
+        int erwarteteArtikelAnzahl = 1;
+
+        this.artikelDummyFactory.setArtikelTyp(ArtikelTypen.VIDEO);
+        
+        Artikel videoEins = this.anlege_einen_Artikel_ins_Lager(ARTIKEL_EINS_NUMMER);
+        Artikel angelegtesVideo = this.lager.getArtikel(this.getIndexFromArtikel(ARTIKEL_EINS_NUMMER));
+        
+        assertSame(videoEins, angelegtesVideo);
+        System.out.println(videoEins.getClass());
+
+        assert(videoEins.getClass() == Video.class);
+    }
+
     /**
     * Hilfmethoden
     */
@@ -447,5 +469,6 @@ public class LagerTest
     private int getIndexFromArtikel(int artikelNummer) {
         return artikelNummer - 1;
     }
+
     
 }
