@@ -262,27 +262,86 @@ public class Lager
         for(Artikel artikel: artikelLager){
             if(artikel != null){
                 double gesamtartikel = artikel.getPreis() * artikel.getBestand();
+                gesamtartikel        = Math.round(gesamtartikel*100.0)/ 100.0;
                 gesamt += gesamtartikel;
-                ausgabe += artikel.getArtikelNr() + "\t" + artikel.getBeschreibung() +
-                           "\t\t\t" + artikel.getPreis() + "\t" + artikel.getBestand() +
-                           "\t\t" + gesamtartikel + "\n";   
+                
+                ausgabe += artikel.getArtikelNr() + "\t" + artikel.getBeschreibung();  
+                ausgabe += gibTabsNachBeschreibung(artikel.getBeschreibung());
+                
+                ausgabe += artikel.getPreis();
+                ausgabe += gibTabsNachPreis(artikel.getPreis());
+                
+                ausgabe += artikel.getBestand();
+                ausgabe += gibTabsNachBestand(artikel.getBestand());
+                
+                ausgabe += gesamtartikel + "\n";
+                     
             }
             else{
                 break;
             }
         }
+        gesamt   = Math.round(gesamt*100.0)/ 100.0;
         ausgabe += LagerKonstanten.TRENNSTRICH;
         ausgabe += LagerKonstanten.GESAMT      + gesamt; 
         return ausgabe;
     }
-     
+    
+    private String gibTabsNachBestand(long bestand){
+        String ausgabe = "";
+        
+        if(bestand > 99999){
+            ausgabe += "\t";    
+        }
+        else{
+            ausgabe += "\t\t";
+        }
+        
+        return ausgabe;
+    }
+    
+    private String gibTabsNachPreis(double preis){
+        String ausgabe = "";
+        double centbetrag = Math.round(preis * 100.0);
+        
+        if(centbetrag > 999999){
+            ausgabe += "\t";    
+        }
+        else{
+            ausgabe += "\t\t";
+        }
+        
+        return ausgabe;
+    }
+    
+    private String gibTabsNachBeschreibung(String s){
+        String ausgabe = "";
+        if(s.length() > 23){
+            ausgabe += "\t";
+        }
+        else if(s.length() <= 23 && s.length() >16){
+            ausgabe += "\t\t";
+        }
+        else if(s.length() <= 16 && s.length() > 7){
+            ausgabe +=  "\t\t\t";    
+        }
+        else{
+            ausgabe +=  "\t\t\t\t";
+        }
+        return ausgabe;
+    }
+    
     //noch wegmachen!! hab ich jetzt nur zum test gemacht
     public static void main(String[] args) {
         Lager lager = new Lager();
-        Artikel video = new Video(1234,  2,  5, "Cow Massacre", 90, 2010);
-        Artikel normalerArtikel = new Artikel(1334, "Holstein", 2,  5);
+        Artikel video = new Video(1234,  15,  15.99, "Cow Massacre", 90, 2010);
+        Artikel normalerArtikel = new Artikel(1334, "Auto", 4,  199999.99);
+        Artikel buch = new Buch(1734, 5,  9.99, "Das Rind naht", "Kuh", "Weide Verlag");
+        Artikel buch2 = new Buch(2734, 10000,  8.99, "Das Streben nach Weide", "Kuh", "Weide Verlag");
         lager.legeAnArtikel(video);
         lager.legeAnArtikel(normalerArtikel);
+        lager.legeAnArtikel(buch);
+        lager.legeAnArtikel(buch2);
         System.out.println(lager.ausgebenBestandsListe());
     }
 }

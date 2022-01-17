@@ -5,7 +5,7 @@ public class LagerKonstanten {
     public static final String ERROR_LAGER_IST_VOLL                         =  "Der Artikel passt nicht im Lager. Entferne einen Artikel, um einen neuen anzulegen.";
     public static final String ERROR_NULL_ARTIKEL                           =  "Der Artikel ist null";
     public static final String ERROR_WIEDERHOLTE_ARTIKELNUMMER              =  "Die eingegebene Artikelnummer ist bereits im Lager!";
-    public static final String KOPFZEILE                                    =  "ArtNr \tBeschreibung \t\t\tPreis \tBestand \tGesamt\n";
-    public static final String TRENNSTRICH                                  =  "----------------------------------------------------------------------\n";
-    public static final String GESAMT                                       =  "Gesamtwert\t\t\t\t\t\t\t";
+    public static final String KOPFZEILE                                    =  "ArtNr \tBeschreibung \t\t\tPreis \t\tBestand \tGesamt\n";
+    public static final String TRENNSTRICH                                  =  "-------------------------------------------------------------------------------------\n";
+    public static final String GESAMT                                       =  "Gesamtwert\t\t\t\t\t\t\t\t";
 }
