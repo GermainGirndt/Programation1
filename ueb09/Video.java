@@ -40,12 +40,10 @@ public class Video extends Artikel
     public int hashCode() {
         int baseHash = super.hashCode();
 
-        int hashCode = Utils.generateHashCode(baseHash, this.titel, this.spieldauer, this.jahr);
+        int hashCode = Utils.generateHashCodeMitBaseHash(baseHash, this.titel, this.spieldauer, this.jahr);
         
         return hashCode;
     }
-   
-
     
     /**
     * Die Methode gibt das Objekt aufbereitet als String zurueck

@@ -211,6 +211,70 @@ public class BuchTest {
         
         assert(ersterHashcode == zweiterHashcode);
     }
+    
+    @Test
+    public void hashCodeVergleich_mit_einer_unterschiedlichen_Artikelnummer_ergibt_falsch() {
+        Buch buchMitEinemAnderenArtikelNummer = new Buch(2122, this.bestand, this.preis, this.autor, this.titel, this.verlag);
+        
+        int ersterHashcode = this.gueltigesBuch.hashCode();
 
+        int zweiterHashcode = buchMitEinemAnderenArtikelNummer.hashCode();
+        
+        assert(ersterHashcode != zweiterHashcode);
+    }
 
+    @Test
+    public void hashCodeVergleich_mit_einem_unterschiedlichen_Bestand_ergibt_falsch() {
+        Buch buchMitEinemAnderenBestand = new Buch(this.artikelNr, 99, this.preis, this.autor, this.titel, this.verlag);
+        
+        int ersterHashcode = this.gueltigesBuch.hashCode();
+
+        int zweiterHashcode = buchMitEinemAnderenBestand.hashCode();
+        
+        assert(ersterHashcode != zweiterHashcode);
+    }
+
+    @Test
+    public void hashCodeVergleich_mit_einem_unterschiedlichen_Preis_ergibt_falsch() {
+        Buch buchMitEinemAnderenPreis = new Buch(this.artikelNr, this.bestand, 42.42, this.autor, this.titel, this.verlag);
+        
+        int ersterHashcode = this.gueltigesBuch.hashCode();
+
+        int zweiterHashcode = buchMitEinemAnderenPreis.hashCode();
+        
+        assert(ersterHashcode != zweiterHashcode);
+    }
+
+    @Test
+    public void hashCodeVergleich_mit_einem_unterschiedlichen_Autor_ergibt_falsch() {
+        Buch buchMitEinemAnderenAutor = new Buch(this.artikelNr, this.bestand, this.preis, "Schiller", this.titel, this.verlag);
+        
+        int ersterHashcode = this.gueltigesBuch.hashCode();
+
+        int zweiterHashcode = buchMitEinemAnderenAutor.hashCode();
+        
+        assert(ersterHashcode != zweiterHashcode);
+    }
+
+    @Test
+    public void hashCodeVergleich_mit_einem_unterschiedlichen_Titel_ergibt_falsch() {
+        Buch buchMitEinemAnderenTitel = new Buch(this.artikelNr, this.bestand, this.preis, this.autor, "Wer bin ich und wenn ja wie viele", this.verlag);
+        
+        int ersterHashcode = this.gueltigesBuch.hashCode();
+
+        int zweiterHashcode = buchMitEinemAnderenTitel.hashCode();
+        
+        assert(ersterHashcode != zweiterHashcode);
+    }
+
+    @Test
+    public void hashCodeVergleich_mit_einem_unterschiedlichen_Verlag_ergibt_falsch() {
+        Buch buchMitEinemAnderenVerlag = new Buch(this.artikelNr, this.bestand, this.preis, this.autor, this.titel, "JurisPodium");
+        
+        int ersterHashcode = this.gueltigesBuch.hashCode();
+
+        int zweiterHashcode = buchMitEinemAnderenVerlag.hashCode();
+        
+        assert(ersterHashcode != zweiterHashcode);
+    }
 }

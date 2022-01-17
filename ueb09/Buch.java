@@ -60,7 +60,7 @@ public class Buch extends Artikel
     public int hashCode() {
         int baseHash = super.hashCode();
 
-        int hashCode = Utils.generateHashCode(baseHash, this.titel, this.autor, this.verlag);
+        int hashCode = Utils.generateHashCodeMitBaseHash(baseHash, this.titel, this.autor, this.verlag);
         
         return hashCode;
     }

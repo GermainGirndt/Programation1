@@ -39,7 +39,7 @@ public class CD extends Artikel
     public int hashCode() {
         int baseHash = super.hashCode();
 
-        int hashCode = Utils.generateHashCode(baseHash, this.interpret, this.titel, this.anzahlTitel);
+        int hashCode = Utils.generateHashCodeMitBaseHash(baseHash, this.interpret, this.titel, this.anzahlTitel);
         
         return hashCode;
     }
