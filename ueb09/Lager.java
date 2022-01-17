@@ -331,17 +331,4 @@ public class Lager
         return ausgabe;
     }
     
-    //noch wegmachen!! hab ich jetzt nur zum test gemacht
-    public static void main(String[] args) {
-        Lager lager = new Lager();
-        Artikel video = new Video(1234,  15,  15.99, "Cow Massacre", 90, 2010);
-        Artikel normalerArtikel = new Artikel(1334, "Auto", 4,  199999.99);
-        Artikel buch = new Buch(1734, 5,  9.99, "Das Rind naht", "Kuh", "Weide Verlag");
-        Artikel buch2 = new Buch(2734, 1000, 8.99, "Das Streben nach Weide", "Kuh", "Weide Verlag");
-        lager.legeAnArtikel(video);
-        lager.legeAnArtikel(normalerArtikel);
-        lager.legeAnArtikel(buch);
-        lager.legeAnArtikel(buch2);
-        System.out.println(lager.ausgebenBestandsListe());
-    }
 }

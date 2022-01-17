@@ -27,6 +27,10 @@ public class LagerDialog
     private static final int            ARTIKEL_ANZAHL_AUSGEBEN                 =  11;
     private static final int            LAGERPLATZ_ANSCHAUEN                    =  12;
     private static final int            ARTIKELSTANDORT_BEKOMMEN                =  13;
+    private static final int            ARTIKEL_VIDEO_ANLEGEN                   =  14;
+    private static final int            ARTIKEL_CD_ANLEGEN                      =  15;
+    private static final int            ARTIKEL_BUCH_ANLEGEN                    =  16;
+    private static final int            BESTANDSLISTE_AUSGEBEN                  =  17;
     
     
     private static final String         LAGER_NULL                              = "Der Befehl setzt voraus, dass ein Lager angelegt ist!";
@@ -95,6 +99,10 @@ public class LagerDialog
             ARTIKEL_ANZAHL_AUSGEBEN         + ": Artikelanzahl im Lager ausgeben;\n"             +
             LAGERPLATZ_ANSCHAUEN            + ": Lagerplatz anschauen;\n"                        +
             ARTIKELSTANDORT_BEKOMMEN        + ": Artikelstandort bekommen;\n"                    +
+            ARTIKEL_VIDEO_ANLEGEN           + ": Artikel von der Art Video anlegen;\n"           +
+            ARTIKEL_CD_ANLEGEN              + ": Artikel von der Art CD anlegen;\n"              +
+            ARTIKEL_BUCH_ANLEGEN            + ": Artikel von der Art BUCH anlegen;\n"            +
+            BESTANDSLISTE_AUSGEBEN          + ": Bestandsliste ausgeben;\n"                      +
             FUNKTION_ENDE                   + ": beenden -> \n\n"   
         );
         
@@ -149,6 +157,18 @@ public class LagerDialog
             case ARTIKELSTANDORT_BEKOMMEN:
                 arikelstandortBekommen();
                 break;
+            case  ARTIKEL_VIDEO_ANLEGEN:
+                videoAnLegen();
+                break;
+            case  ARTIKEL_CD_ANLEGEN:
+                CDAnLegen();
+                break;
+            case  ARTIKEL_BUCH_ANLEGEN:
+                buchAnLegen();
+                break;
+            case BESTANDSLISTE_AUSGEBEN:
+                ausgebenBestandsListe();
+                break;
             case FUNKTION_ENDE:  
                 System.out.println("Das Programm ist zu Ende");
                 break;
@@ -156,6 +176,11 @@ public class LagerDialog
                 System.out.println("Keine gueltige Eingabe");
                 break;
         }
+    }
+    
+    public void  ausgebenBestandsListe(){
+        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        System.out.println(lager.ausgebenBestandsListe());
     }
     
     /**
@@ -171,20 +196,113 @@ public class LagerDialog
     }
     
     /**
-    * Diese Funktion fragt nach Artikeldaten, legt einen Artikel an und macht diesen dann ins Lager
+    * Diese Funktion fragt nach Artikeldaten, legt eine CD an und macht diesen dann ins Lager
     */
-    public void artikelAnLegen(){
+    public void CDAnLegen(){
         if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
-         
-        if( lager.getArtikelAnzahl() <= lager.getLagerGroesse()) throw new IllegalArgumentException(LAGER_VOLL);
+        if( lager.getArtikelAnzahl() >= lager.getLagerGroesse()) throw new IllegalArgumentException(LAGER_VOLL);
         
         int artikelNr     = this.userInput.getInt("Artikelnummer?: ");
         Validierung.validiereArtikelNr(artikelNr);
+        
         if (lager.getArtikelNachNummer(artikelNr) != -1) {
             throw new IllegalArgumentException("Die eingegebene Artikelnummer ist bereits im Lager!");
         }
         
+        int bestand       = this.userInput.getInt("Bestand? 0 falls Initialbestand: ");
+        Validierung.validiereBestand(bestand);
+        double preis      = this.userInput.getDouble("Preis? 0 falls Initialpreis: ");
+        Validierung.validierePreis(preis);
+        String interpret = this.userInput.getString("Interpret der CD?");
+        Validierung.validiereInterpret(interpret);
+        String titel = this.userInput.getString("Titel der CD?");
+        Validierung.validiereTitel(titel);
+        int anzahlTitel      = this.userInput.getInt("Anzahl der Titel?");
+        Validierung.validiereAnzahlTitel(anzahlTitel);
         
+        CD cd   = new CD(artikelNr, bestand, preis, interpret, titel, anzahlTitel);
+        lager.legeAnArtikel(cd);
+        
+        System.out.println("Artikel wurde angelegt. ");
+    }
+    
+    /**
+    * Diese Funktion fragt nach Artikeldaten, legt ein Buch an und macht diesen dann ins Lager
+    */
+    public void buchAnLegen(){
+        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if( lager.getArtikelAnzahl() >= lager.getLagerGroesse()) throw new IllegalArgumentException(LAGER_VOLL);
+        
+        int artikelNr     = this.userInput.getInt("Artikelnummer?: ");
+        Validierung.validiereArtikelNr(artikelNr);
+        
+        if (lager.getArtikelNachNummer(artikelNr) != -1) {
+            throw new IllegalArgumentException("Die eingegebene Artikelnummer ist bereits im Lager!");
+        }
+        
+        int bestand       = this.userInput.getInt("Bestand? 0 falls Initialbestand: ");
+        Validierung.validiereBestand(bestand);
+        double preis      = this.userInput.getDouble("Preis? 0 falls Initialpreis: ");
+        Validierung.validierePreis(preis);
+        String autor = this.userInput.getString("Autor des Buchs?");
+        Validierung.validiereAutor(autor);
+        String titel = this.userInput.getString("Titel des Buchs?");
+        Validierung.validiereTitel(titel);
+        String verlag      = this.userInput.getString("Verlag des Buchs?");
+        Validierung.validiereVerlag(verlag);
+        
+        Buch buch   = new Buch(artikelNr, bestand, preis, autor, titel, verlag);
+        lager.legeAnArtikel(buch);
+        
+        System.out.println("Artikel wurde angelegt. ");
+    }
+    
+    
+    /**
+    * Diese Funktion fragt nach Artikeldaten, legt eine Video an und macht diesen dann ins Lager
+    */
+    public void videoAnLegen(){
+        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL"); 
+        if( lager.getArtikelAnzahl() >= lager.getLagerGroesse()) throw new IllegalArgumentException(LAGER_VOLL);
+        
+        int artikelNr     = this.userInput.getInt("Artikelnummer?: ");
+        Validierung.validiereArtikelNr(artikelNr);
+        
+        if (lager.getArtikelNachNummer(artikelNr) != -1) {
+            throw new IllegalArgumentException("Die eingegebene Artikelnummer ist bereits im Lager!");
+        }
+        
+        int bestand       = this.userInput.getInt("Bestand? 0 falls Initialbestand: ");
+        Validierung.validiereBestand(bestand);
+        double preis      = this.userInput.getDouble("Preis? 0 falls Initialpreis: ");
+        Validierung.validierePreis(preis);
+        String titel = this.userInput.getString("Titel des Videos?");
+        Validierung.validiereTitel(titel);
+        int laenge       = this.userInput.getInt("Laenge des Videos?");
+        Validierung.validiereSpieldauer(laenge);
+        int jahr         = this.userInput.getInt("Erscheinungsjahr?");
+        Validierung.validiereJahr(jahr);
+        
+        Video video   = new Video(artikelNr, bestand, preis, titel, laenge, jahr);
+        lager.legeAnArtikel(video);
+        
+        System.out.println("Artikel wurde angelegt. ");
+    }
+    
+    /**
+    * Diese Funktion fragt nach Artikeldaten, legt einen Artikel an und macht diesen dann ins Lager
+    */
+    public void artikelAnLegen(){
+        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if( lager.getArtikelAnzahl() >= lager.getLagerGroesse()) throw new IllegalArgumentException(LAGER_VOLL);
+        
+        int artikelNr     = this.userInput.getInt("Artikelnummer?: ");
+        Validierung.validiereArtikelNr(artikelNr);
+        
+        if (lager.getArtikelNachNummer(artikelNr) != -1) {
+            throw new IllegalArgumentException("Die eingegebene Artikelnummer ist bereits im Lager!");
+        }
+         
         String artikelArt = this.userInput.getString("Artikelart?: ");
         Validierung.validiereArtikelArt(artikelArt);
         int bestand       = this.userInput.getInt("Bestand? 0 falls Initialbestand: ");
