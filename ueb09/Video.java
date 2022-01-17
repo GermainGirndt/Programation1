@@ -13,6 +13,16 @@ public class Video extends Artikel
 
     private final static String ARTIKEL_ART = "Medien";
     
+    
+    /**
+    * Konstruktor fuer Video mit Angaben
+    * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
+    * @param bestand steht fuer den Bestand der nicht negativ sein muss
+    * @param preis steht fuer den Preis der nicht negativ sein muss
+    * @param titel ist der Videotitel, er darf nicht leer sein
+    * @param spieldauer ist die Laenge des Videos, sie muss groesser als 0 sein
+    * @param jahr ist das Erscheinungsjahr, es muss zwischen 1900 und 2022 liegen
+    */
     public Video(int artikelNr, int bestand, double preis, String titel, int spieldauer, int jahr) {
         super(artikelNr, ARTIKEL_ART, bestand, preis);
         

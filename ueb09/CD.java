@@ -13,7 +13,17 @@ public class CD extends Artikel
 
    private final static String ARTIKEL_ART = "Medien";
    
-   CD(int artikelNr, int bestand, double preis, String interpret, String titel, int anzahlTitel) {
+   
+    /**
+    * Konstruktor fuer CD mit Angaben
+    * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
+    * @param bestand steht fuer den Bestand der nicht negativ sein muss
+    * @param preis steht fuer den Preis der nicht negativ sein muss
+    * @param interpret ist der Interpret, darf nicht leer sein
+    * @param titel ist der Titel der CD, er darf nicht leer sein
+    * @param anzahlTitel ist die Anzahl der Titel auf der CD, muss groesser als 0 sein 
+    */
+    CD(int artikelNr, int bestand, double preis, String interpret, String titel, int anzahlTitel) {
        super(artikelNr, ARTIKEL_ART, bestand, preis);    
        
        Validierung.validiereInterpret(interpret);

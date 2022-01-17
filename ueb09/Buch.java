@@ -13,6 +13,15 @@ public class Buch extends Artikel
 
     private final static String ARTIKEL_ART = "Medien";
     
+    /**
+    * Konstruktor fuer Buch mit Angaben
+    * @param artikelNr ist die ArtikelNr die zwischen 1 und 9999 liegen muss
+    * @param bestand steht fuer den Bestand der nicht negativ sein muss
+    * @param preis steht fuer den Preis der nicht negativ sein muss
+    * @param autor ist der Autor des Buchs, darf nicht leer sein
+    * @param titel ist der Titel des Buchs, er darf nicht leer sein
+    * @param verlag ist der Verlag des Buchs, darf nicht leer sein
+    */
     public Buch(int artikelNr, int bestand, double preis, String autor, String titel, String verlag) {
         super(artikelNr, ARTIKEL_ART, bestand, preis);
         

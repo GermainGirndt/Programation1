@@ -11,8 +11,13 @@ public class Lager
    private Artikel[] artikelLager;
    private int anzahlArtikel                            = 0;
    private final static int STANDARD_LAGER_GROESSE      = 10;
-   
-   
+   private final static double STARTSUMME               = 0.0;
+   private final static double HUNDERT                  = 100.0;
+   private final static int GRENZETABSBESTAND           = 999999;
+   private final static int OBEREGRENZEBESCHREIBUNG     = 23;
+   private final static int MITTLEREGRENZEBESCHREIBUNG  = 16;
+   private final static int UNTEREGRENZEBESCHREIBUNG    = 7;
+   private final static double GRENZETABSPREIS          = 9999999.00;
    
    /**
    * Konstruktor fuer Lager mit Angabe ueber die Lagerplatzanzahl
@@ -255,14 +260,18 @@ public class Lager
         return this.artikelLager.length;
     }
     
-    
+    /**
+    * Die Methode gibt die Bestandsliste als String zurueck und rechnet den Wert aller Artikel aus
+    * und gibt am Schluss noch den Gesamtwert des Lagers an
+    * @return die Bestandsliste als String
+    */
     public String ausgebenBestandsListe(){
-        double gesamt = 0.0;
+        double gesamt = STARTSUMME;
         String ausgabe = LagerKonstanten.KOPFZEILE+ LagerKonstanten.TRENNSTRICH;
         for(Artikel artikel: artikelLager){
             if(artikel != null){
                 double gesamtartikel = artikel.getPreis() * artikel.getBestand();
-                gesamtartikel        = Math.round(gesamtartikel*100.0)/ 100.0;
+                gesamtartikel        = Math.round(gesamtartikel*HUNDERT)/ HUNDERT;
                 gesamt += gesamtartikel;
                 
                 ausgabe += artikel.getArtikelNr() + "\t" + artikel.getBeschreibung();  
@@ -281,16 +290,21 @@ public class Lager
                 break;
             }
         }
-        gesamt   = Math.round(gesamt*100.0)/ 100.0;
+        gesamt   = Math.round(gesamt * HUNDERT)/ HUNDERT;
         ausgabe += LagerKonstanten.TRENNSTRICH;
         ausgabe += LagerKonstanten.GESAMT      + gesamt; 
         return ausgabe;
     }
     
+    /**
+    * Die Methode gibt die richtige Anzahl an Tabs zurueck je nachdem wie gross der Bestand ist
+    * damit die Ausgabe schoen aussieht und alles richtig untereinander steht
+    * @return die Tabs
+    */
     private String gibTabsNachBestand(long bestand){
         String ausgabe = "";
         
-        if(bestand > 999999){
+        if(bestand > GRENZETABSBESTAND){
             ausgabe += "\t";    
         }
         else{
@@ -300,11 +314,16 @@ public class Lager
         return ausgabe;
     }
     
+    /**
+    * Die Methode gibt die richtige Anzahl an Tabs zurueck je nachdem wie gross der Preis ist
+    * damit die Ausgabe schoen aussieht und alles richtig untereinander steht
+    * @return die Tabs
+    */
     private String gibTabsNachPreis(double preis){
         String ausgabe = "";
-        double centbetrag = Math.round(preis * 100.0);
+        double centbetrag = Math.round(preis * HUNDERT);
         
-        if(centbetrag > 9999999){
+        if(centbetrag > GRENZETABSPREIS){
             ausgabe += "\t";    
         }
         else{
@@ -314,15 +333,20 @@ public class Lager
         return ausgabe;
     }
     
+    /**
+    * Die Methode gibt die richtige Anzahl an Tabs zurueck je nachdem wie lang die Beschreibung ist
+    * damit die Ausgabe schoen aussieht und alles richtig untereinander steht
+    * @return die Tabs
+    */
     private String gibTabsNachBeschreibung(String s){
         String ausgabe = "";
-        if(s.length() > 23){
+        if(s.length() > OBEREGRENZEBESCHREIBUNG){
             ausgabe += "\t";
         }
-        else if(s.length() <= 23 && s.length() >16){
+        else if(s.length() <= OBEREGRENZEBESCHREIBUNG && s.length() > MITTLEREGRENZEBESCHREIBUNG){
             ausgabe += "\t\t";
         }
-        else if(s.length() <= 16 && s.length() > 7){
+        else if(s.length() <= MITTLEREGRENZEBESCHREIBUNG && s.length() > UNTEREGRENZEBESCHREIBUNG){
             ausgabe +=  "\t\t\t";    
         }
         else{

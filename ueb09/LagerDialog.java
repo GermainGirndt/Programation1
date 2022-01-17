@@ -28,11 +28,12 @@ public class LagerDialog
     private static final int            ARTIKEL_ANZAHL_AUSGEBEN                 =  11;
     private static final int            LAGERPLATZ_ANSCHAUEN                    =  12;
     private static final int            ARTIKELSTANDORT_BEKOMMEN                =  13;
+    private static final int            BESTANDSLISTE_AUSGEBEN                  =  14;
+        
     private static final int            EINFACHER_ARTIKEL                       =  1;
     private static final int            ARTIKEL_VIDEO_ANLEGEN                   =  2;
     private static final int            ARTIKEL_CD_ANLEGEN                      =  3;
     private static final int            ARTIKEL_BUCH_ANLEGEN                    =  4;
-    private static final int            BESTANDSLISTE_AUSGEBEN                  =  14;
     
     
     private static final String         LAGER_NULL                              = "Der Befehl setzt voraus, dass ein Lager angelegt ist!";
