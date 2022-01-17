@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class LagerTest
 {       
     private Lager                                   lager;
-    private ArtikelDummyFactory                     artikelDummyFactory;
+    private ArtikelDummyFactoryFacade               artikelDummyFactory;
 
     public static int                               ARTIKEL_EINS_NUMMER = 1;
     public static int                               ARTIKEL_ZWEI_NUMMER = 2;
@@ -26,7 +26,7 @@ public class LagerTest
     @BeforeEach
     public void setUp() {
         this.lager = new Lager();
-        this.artikelDummyFactory = new ArtikelDummyFactory();
+        this.artikelDummyFactory = new ArtikelDummyFactoryFacade();
     }
 
     /**
