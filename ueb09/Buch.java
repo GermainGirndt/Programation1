@@ -43,6 +43,22 @@ public class Buch extends Artikel
                this.getBestand() == buch.getBestand();
     }
     
+    /**
+    * Die Methode gibt das Objekt aufbereitet als String zurueck
+    * @return gibt die Attribute des Artikels als String zurueck
+    */
+    @Override
+    public String toString()
+    {
+        return  ArtikelKonstanten.NUMMER_VARIABLE       + ": "     +   this.getArtikelNr()     + "\n" +
+                ArtikelKonstanten.ART                   + ": "     +   this.getArt()           + "\n" +
+                ArtikelKonstanten.BESTAND               + ": "     +   this.getBestand()       + "\n" +
+                ArtikelKonstanten.PREIS                 + ": "     +   this.getPreis()         + "\n" +
+                ArtikelKonstanten.TITEL_VARIABLE        + ": "     +   this.titel              + "\n" +
+                ArtikelKonstanten.AUTOR_VARIABLE        + ": "     +   this.autor              + "\n" +
+                ArtikelKonstanten.VERLAG_VARIABLE       + ": "     +   this.verlag;
+    }
+    
     @Override
     public String getBeschreibung(){
         return this.autor + ": " + this.titel;

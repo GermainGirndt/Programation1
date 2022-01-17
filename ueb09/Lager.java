@@ -12,6 +12,8 @@ public class Lager
    private int anzahlArtikel                            = 0;
    private final static int STANDARD_LAGER_GROESSE      = 10;
    
+   
+   
    /**
    * Konstruktor fuer Lager mit Angabe ueber die Lagerplatzanzahl
    * @param lagerplatzanzahl ist die Anzahl an verfuegbaren Plätze im Lager
@@ -253,8 +255,34 @@ public class Lager
         return this.artikelLager.length;
     }
     
-    //toDo
-    public void ausgebenBestandsListe(){
-        
+    
+    public String ausgebenBestandsListe(){
+        double gesamt = 0.0;
+        String ausgabe = LagerKonstanten.KOPFZEILE+ LagerKonstanten.TRENNSTRICH;
+        for(Artikel artikel: artikelLager){
+            if(artikel != null){
+                double gesamtartikel = artikel.getPreis() * artikel.getBestand();
+                gesamt += gesamtartikel;
+                ausgabe += artikel.getArtikelNr() + "\t" + artikel.getBeschreibung() +
+                           "\t\t\t" + artikel.getPreis() + "\t" + artikel.getBestand() +
+                           "\t\t" + gesamtartikel + "\n";   
+            }
+            else{
+                break;
+            }
+        }
+        ausgabe += LagerKonstanten.TRENNSTRICH;
+        ausgabe += LagerKonstanten.GESAMT      + gesamt; 
+        return ausgabe;
+    }
+     
+    //noch wegmachen!! hab ich jetzt nur zum test gemacht
+    public static void main(String[] args) {
+        Lager lager = new Lager();
+        Artikel video = new Video(1234,  2,  5, "Cow Massacre", 90, 2010);
+        Artikel normalerArtikel = new Artikel(1334, "Holstein", 2,  5);
+        lager.legeAnArtikel(video);
+        lager.legeAnArtikel(normalerArtikel);
+        System.out.println(lager.ausgebenBestandsListe());
     }
 }

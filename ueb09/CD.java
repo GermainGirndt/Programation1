@@ -45,6 +45,23 @@ public class CD extends Artikel
                this.getBestand()      == cd.getBestand();
     }
 
+    /**
+    * Die Methode gibt das Objekt aufbereitet als String zurueck
+    * @return gibt die Attribute des Artikels als String zurueck
+    */
+    @Override
+    public String toString()
+    {
+        return  ArtikelKonstanten.NUMMER_VARIABLE       + ": "     +   this.getArtikelNr()     + "\n" +
+                ArtikelKonstanten.ART                   + ": "     +   this.getArt()           + "\n" +
+                ArtikelKonstanten.BESTAND               + ": "     +   this.getBestand()       + "\n" +
+                ArtikelKonstanten.PREIS                 + ": "     +   this.getPreis()         + "\n" +
+                ArtikelKonstanten.TITEL_VARIABLE        + ": "     +   this.titel              + "\n" +
+                ArtikelKonstanten.INTERPRET_VARIABLE    + ": "     +   this.interpret          + "\n" +
+                ArtikelKonstanten.ANZAHLTITEL_VARIABLE  + ": "     +   this.anzahlTitel;
+    }
+     
+    
    @Override
    public String getBeschreibung(){
         return this.interpret + ": " + this.titel;

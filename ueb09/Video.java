@@ -45,6 +45,22 @@ public class Video extends Artikel
     }
    
     
+    /**
+    * Die Methode gibt das Objekt aufbereitet als String zurueck
+    * @return gibt die Attribute des Artikels als String zurueck
+    */
+    @Override
+    public String toString()
+    {
+        return  ArtikelKonstanten.NUMMER_VARIABLE       + ": "     +   this.getArtikelNr()     + "\n" +
+                ArtikelKonstanten.ART                   + ": "     +   this.getArt()           + "\n" +
+                ArtikelKonstanten.BESTAND               + ": "     +   this.getBestand()       + "\n" +
+                ArtikelKonstanten.PREIS                 + ": "     +   this.getPreis()         + "\n" +
+                ArtikelKonstanten.TITEL_VARIABLE        + ": "     +   this.titel              + "\n" +
+                ArtikelKonstanten.SPIELDAUER_VARIABLE   + ": "     +   this.spieldauer         + "\n" +
+                ArtikelKonstanten.JAHR_VARIABLE         + ": "     +   this.jahr;
+    }
+    
     @Override
     public String getBeschreibung(){
         return this.titel;
