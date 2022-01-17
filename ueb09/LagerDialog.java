@@ -185,7 +185,9 @@ public class LagerDialog
         System.out.println("Lager wurde erstellt. ");
     }
     
-    
+    /**
+    * Diese Funktion liest ein welche Art von Artikel angelegt werden soll
+    */
     public void  leseArtikelGruppeEin(){
          System.out.print(
             "\n\n" +
@@ -199,13 +201,18 @@ public class LagerDialog
         this.artikelfunktion = userInput.getInt("Ausgewählte Funktion: ");  
     }
     
+    
+    /**
+    * Diese Funktion erfragt je nach ausgewählter Artikelart die nötigen Information und legt dann einen
+    * Artikel dieser Art an
+    */
     public void artikelfunktionAusfuehren(){
         int artikelNr     = 0;
-        int bestand   = 0;
+        int bestand       = 0;
        
-        double preis  = 0.0;
+        double preis      = 0.0;
         
-        if(this.artikelfunktion < 5 && this.artikelfunktion > 0){
+        if(this.artikelfunktion <= ARTIKEL_BUCH_ANLEGEN && this.artikelfunktion > FUNKTION_ENDE){
             artikelNr     = this.userInput.getInt("Artikelnummer?: ");
             Validierung.validiereArtikelNr(artikelNr);
         
@@ -213,46 +220,47 @@ public class LagerDialog
                 throw new IllegalArgumentException("Die eingegebene Artikelnummer ist bereits im Lager!");
             }
             
-             bestand       = this.userInput.getInt("Bestand? 0 falls Initialbestand: ");
-             Validierung.validiereBestand(bestand);
-             preis      = this.userInput.getDouble("Preis? 0 falls Initialpreis: ");
-             Validierung.validierePreis(preis);
+            bestand    = this.userInput.getInt("Bestand? 0 falls Initialbestand: ");
+            Validierung.validiereBestand(bestand);
+            preis      = this.userInput.getDouble("Preis? 0 falls Initialpreis: ");
+            Validierung.validierePreis(preis);
         }
         
+
         switch(this.artikelfunktion){
             case ARTIKEL_VIDEO_ANLEGEN:
                  String titelvideo = this.userInput.getString("Titel des Videos?");
                  Validierung.validiereTitel(titelvideo);
-                 int laenge       = this.userInput.getInt("Laenge des Videos?");
+                 int laenge        = this.userInput.getInt("Laenge des Videos?");
                  Validierung.validiereSpieldauer(laenge);
-                 int jahr         = this.userInput.getInt("Erscheinungsjahr?");
+                 int jahr          = this.userInput.getInt("Erscheinungsjahr?");
                  Validierung.validiereJahr(jahr);
         
-                 Video video   = new Video(artikelNr, bestand, preis, titelvideo, laenge, jahr);
+                 Video video        = new Video(artikelNr, bestand, preis, titelvideo, laenge, jahr);
                  lager.legeAnArtikel(video);
                  System.out.println("Video wurde angelegt. ");
                  break;
             case  ARTIKEL_CD_ANLEGEN:
                   String interpret   = this.userInput.getString("Interpret der CD?");
                   Validierung.validiereInterpret(interpret);
-                  String titelcd      = this.userInput.getString("Titel der CD?");
+                  String titelcd     = this.userInput.getString("Titel der CD?");
                   Validierung.validiereTitel(titelcd);
                   int anzahlTitel    = this.userInput.getInt("Anzahl der Titel?");
                   Validierung.validiereAnzahlTitel(anzahlTitel);
         
-                  CD cd   = new CD(artikelNr, bestand, preis, interpret, titelcd, anzahlTitel);
+                  CD cd    = new CD(artikelNr, bestand, preis, interpret, titelcd, anzahlTitel);
                   lager.legeAnArtikel(cd);
                   System.out.println("CD wurde angelegt. ");
                   break;
             case  ARTIKEL_BUCH_ANLEGEN:
-                  String autor = this.userInput.getString("Autor des Buchs?");
+                  String autor       = this.userInput.getString("Autor des Buchs?");
                   Validierung.validiereAutor(autor);
-                  String titelbuch= this.userInput.getString("Titel des Buchs?");
+                  String titelbuch   = this.userInput.getString("Titel des Buchs?");
                   Validierung.validiereTitel(titelbuch);
                   String verlag      = this.userInput.getString("Verlag des Buchs?");
                   Validierung.validiereVerlag(verlag);
         
-                  Buch buch   = new Buch(artikelNr, bestand, preis, autor, titelbuch, verlag);
+                  Buch buch          = new Buch(artikelNr, bestand, preis, autor, titelbuch, verlag);
                   lager.legeAnArtikel(buch);
                   System.out.println("Buch wurde angelegt. ");
                   break;
@@ -271,16 +279,16 @@ public class LagerDialog
         }
         
     }
+    
     /**
-    * Diese Funktion fragt nach Artikeldaten, legt eine CD an und macht diesen dann ins Lager
+    * Diese Funktion ist eine Unterdialogschleife es wird so lange gefragt welche Artikelart angelegt werden soll
+    * bis der Nutzer 0 eingibt
     */
     public void artikelAnlegen(){
         if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
         if( lager.getArtikelAnzahl() >= lager.getLagerGroesse()) throw new IllegalArgumentException(LAGER_VOLL);
         
         this.artikelfunktion        = FUNKTION_NICHT_DEFINIERT;
-        
-        
         
         while(this.artikelfunktion != FUNKTION_ENDE) {
             try {
