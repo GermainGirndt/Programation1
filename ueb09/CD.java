@@ -25,24 +25,23 @@ public class CD extends Artikel
        this.anzahlTitel = anzahlTitel;
    }
    
-   @Override
-    public boolean equals(Object obj){
-        
-        if(!(obj instanceof CD)) {
-            return false;
-        }
-
+    @Override
+    protected boolean hatDieSelbenAttributen(Object obj) {
         CD cd = (CD) obj;
 
-        return this.hatDieSelbenAttributen(cd);
+        return super.hatDieSelbenAttributen(cd)          &&
+               this.interpret.equals(cd.getInterpret())  &&
+               this.titel.equals(cd.getTitel())          &&
+               this.anzahlTitel  == cd.getAnzahlTitel();
     }
 
-    private boolean hatDieSelbenAttributen(CD cd) {
-        return this.interpret.equals(cd.getInterpret())  &&
-               this.titel.equals(cd.getTitel())          &&
-               this.anzahlTitel  == cd.getAnzahlTitel()  &&
-               this.getPreis()        == cd.getPreis()        &&
-               this.getBestand()      == cd.getBestand();
+    @Override
+    public int hashCode() {
+        int baseHash = super.hashCode();
+
+        int hashCode = Utils.generateHashCode(baseHash, this.interpret, this.titel, this.anzahlTitel);
+        
+        return hashCode;
     }
 
     /**

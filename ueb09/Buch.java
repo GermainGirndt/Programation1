@@ -26,21 +26,13 @@ public class Buch extends Artikel
     }
     
     @Override
-    public boolean equals(Object obj){
-        if(!(obj instanceof Buch)){
-            return false;
-        }
-
+    protected boolean hatDieSelbenAttributen(Object obj) {
         Buch buch = (Buch) obj;
-        return this.hatDieSelbenAttributen(buch);
-    }
 
-    private boolean hatDieSelbenAttributen(Buch buch) {
-        return this.titel.equals(buch.getTitel())      &&
+        return super.hatDieSelbenAttributen(buch)      &&
+               this.titel.equals(buch.getTitel())      &&
                this.autor.equals(buch.getAutor())      &&
-               this.verlag.equals(buch.getVerlag())    &&
-               this.getPreis()   == buch.getPreis()    &&
-               this.getBestand() == buch.getBestand();
+               this.verlag.equals(buch.getVerlag());
     }
     
     /**
@@ -64,15 +56,24 @@ public class Buch extends Artikel
         return this.autor + ": " + this.titel;
     }
 
+    @Override
+    public int hashCode() {
+        int baseHash = super.hashCode();
+
+        int hashCode = Utils.generateHashCode(baseHash, this.titel, this.autor, this.verlag);
+        
+        return hashCode;
+    }
+
     public String getTitel(){
-        return titel;
+        return this.titel;
     }
     
     public String getAutor(){
-        return autor;
+        return this.autor;
     }
     
     public String getVerlag(){
-        return verlag;
+        return this.verlag;
     }
 }
