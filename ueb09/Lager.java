@@ -290,7 +290,7 @@ public class Lager
     private String gibTabsNachBestand(long bestand){
         String ausgabe = "";
         
-        if(bestand > 99999){
+        if(bestand > 999999){
             ausgabe += "\t";    
         }
         else{
@@ -304,7 +304,7 @@ public class Lager
         String ausgabe = "";
         double centbetrag = Math.round(preis * 100.0);
         
-        if(centbetrag > 999999){
+        if(centbetrag > 9999999){
             ausgabe += "\t";    
         }
         else{
@@ -337,7 +337,7 @@ public class Lager
         Artikel video = new Video(1234,  15,  15.99, "Cow Massacre", 90, 2010);
         Artikel normalerArtikel = new Artikel(1334, "Auto", 4,  199999.99);
         Artikel buch = new Buch(1734, 5,  9.99, "Das Rind naht", "Kuh", "Weide Verlag");
-        Artikel buch2 = new Buch(2734, 10000,  8.99, "Das Streben nach Weide", "Kuh", "Weide Verlag");
+        Artikel buch2 = new Buch(2734, 1000, 8.99, "Das Streben nach Weide", "Kuh", "Weide Verlag");
         lager.legeAnArtikel(video);
         lager.legeAnArtikel(normalerArtikel);
         lager.legeAnArtikel(buch);
