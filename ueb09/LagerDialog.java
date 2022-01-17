@@ -169,6 +169,9 @@ public class LagerDialog
         }
     }
     
+    /**
+    * Gibt die Bestandsliste auf der Konsole aus
+    */
     public void  ausgebenBestandsListe(){
         if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
         System.out.println(lager.ausgebenBestandsListe());
