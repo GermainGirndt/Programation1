@@ -41,7 +41,33 @@ public class LagerDialog
     private static final String         ARTIKELNUMMER_FRAGE                     = "Zu welcher Artikelnummer? ";
     private static final String         PROZENTANTEIL_FRAGE                     = "Um wie viel Prozent handelt es sich? ";
     private static final String         LAGER_VOLL                              = "Der Artikel passt nicht im Lager. Entferne einen Artikel, um einen neuen anzulegen.";
-    
+    private static final String         ARTIKEL_NICHT_DA                        = "Es gibt diesen Artikel nicht im Lager. ";
+    private static final String         PREISAENDERUNG_ALLE_ERFOLGREICH         = "Alle Preise sind geändert worden! ";
+    private static final String         PREISAENDERUNG_EIN_ERFOLGREICH          = "Der Preis des Artikels wurde geändert! ";
+    private static final String         ABGANG_ERFOLGREICH                      = "Abgang wurde gebucht. ";
+    private static final String         ZUGANG_ERFOLGREICH                      = "Zugang wurde gebucht. ";
+    private static final String         ARTIKEL_ENTFERNT_FRAGE                  = "Geben Sie die Artikelnummer des zu entfernenden Artikels ein: ";
+    private static final String         ARTIKEL_ENTFERNT                        = "Artikel wurde entfernt. ";
+    private static final String         LAGERPLATZ_FRAGE                        = "Welcher Lagerplatz? ";
+    private static final String         ABGANG_FRAGE                            = "Welche Menge soll abgebucht werden? ";
+    private static final String         ZUGANG_FRAGE                            = "Welche Menge soll zugebucht werden? ";
+    private static final String         ARTIKELNR_FRAGE                         = "Artikelnummer?: ";
+    private static final String         AUTOR_FRAGE                             = "Autor?: ";
+    private static final String         TITEL_FRAGE                             = "Titel?: ";
+    private static final String         LAENGE_FRAGE                            = "Laenge?: ";
+    private static final String         BESTAND_FRAGE                           = "Bestand?: ";
+    private static final String         PREIS_FRAGE                             = "Preis?: ";
+    private static final String         VERLAG_FRAGE                            = "Verlag?: ";
+    private static final String         JAHR_FRAGE                              = "Erscheinungsjahr?: ";
+    private static final String         INTERPRET_FRAGE                         = "Interpret?: ";
+    private static final String         ANZAHL_TITEL_FRAGE                      = "Anzahl der Titel?: ";
+    private static final String         VIDEO_ERFOLGREICH                       = "Video wurde angelegt. ";
+    private static final String         CD_ERFOLGREICH                          = "CD wurde angelegt. ";
+    private static final String         BUCH_ERFOLGREICH                        = "Buch wurde angelegt. ";
+    private static final String         ARTIKEL_ERFOLGREICH                     = "Artikel wurde angelegt. ";
+    private static final String         ART_FRAGE                               = "Art des Artikels?: ";
+    private static final String         ARTIKEL_BEREITS_DA                      = "Die eingegebene Artikelnummer ist bereits im Lager!";
+    private static final String         NICHT_GUELTIG                           = "Keine gueltige Eingabe";
     /**
     * Konstruktor
     */
@@ -164,7 +190,7 @@ public class LagerDialog
                 System.out.println("Das Programm ist zu Ende");
                 break;
             default:
-                System.out.println("Keine gueltige Eingabe");
+                System.out.println( NICHT_GUELTIG);
                 break;
         }
     }
@@ -173,7 +199,7 @@ public class LagerDialog
     * Gibt die Bestandsliste auf der Konsole aus
     */
     public void  ausgebenBestandsListe(){
-        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if (this.lager == null) throw new IllegalArgumentException(LAGER_NULL);
         System.out.println(lager.ausgebenBestandsListe());
     }
     
@@ -181,7 +207,7 @@ public class LagerDialog
     * Diese Funktion fragt nach einer Lagergroesse und erzeugt dann ein Lager
     */
     public void lagerErstellen(){
-        if (this.lager != null) throw new IllegalArgumentException("LAGER_EXISTIERT");    
+        if (this.lager != null) throw new IllegalArgumentException(LAGER_EXISTIERT);    
         
         int lagergroesse = this.userInput.getInt("Welche Lagergroesse?: ");
         
@@ -217,69 +243,72 @@ public class LagerDialog
         double preis      = 0.0;
         
         if(this.artikelfunktion <= ARTIKEL_BUCH_ANLEGEN && this.artikelfunktion > FUNKTION_ENDE){
-            artikelNr     = this.userInput.getInt("Artikelnummer?: ");
+            artikelNr     = this.userInput.getInt(ARTIKELNR_FRAGE);
             Validierung.validiereArtikelNr(artikelNr);
         
             if (lager.getArtikelNachNummer(artikelNr) != -1) {
-                throw new IllegalArgumentException("Die eingegebene Artikelnummer ist bereits im Lager!");
+                throw new IllegalArgumentException(ARTIKEL_BEREITS_DA );
             }
             
-            bestand    = this.userInput.getInt("Bestand? 0 falls Initialbestand: ");
+            bestand    = this.userInput.getInt(BESTAND_FRAGE);
             Validierung.validiereBestand(bestand);
-            preis      = this.userInput.getDouble("Preis? 0 falls Initialpreis: ");
+            preis      = this.userInput.getDouble(PREIS_FRAGE);
             Validierung.validierePreis(preis);
         }
         
 
         switch(this.artikelfunktion){
             case ARTIKEL_VIDEO_ANLEGEN:
-                 String titelvideo = this.userInput.getString("Titel des Videos?");
+                 String titelvideo = this.userInput.getString(TITEL_FRAGE);
                  Validierung.validiereTitel(titelvideo);
-                 int laenge        = this.userInput.getInt("Laenge des Videos?");
+                 int laenge        = this.userInput.getInt(LAENGE_FRAGE);
                  Validierung.validiereSpieldauer(laenge);
-                 int jahr          = this.userInput.getInt("Erscheinungsjahr?");
+                 int jahr          = this.userInput.getInt(JAHR_FRAGE);
                  Validierung.validiereJahr(jahr);
-        
                  Video video        = new Video(artikelNr, bestand, preis, titelvideo, laenge, jahr);
                  lager.legeAnArtikel(video);
-                 System.out.println("Video wurde angelegt. ");
+                 System.out.println(VIDEO_ERFOLGREICH);
                  break;
+                 
             case  ARTIKEL_CD_ANLEGEN:
-                  String interpret   = this.userInput.getString("Interpret der CD?");
+                  String interpret   = this.userInput.getString(INTERPRET_FRAGE);
                   Validierung.validiereInterpret(interpret);
-                  String titelcd     = this.userInput.getString("Titel der CD?");
+                  String titelcd     = this.userInput.getString(TITEL_FRAGE);
                   Validierung.validiereTitel(titelcd);
-                  int anzahlTitel    = this.userInput.getInt("Anzahl der Titel?");
+                  int anzahlTitel    = this.userInput.getInt(ANZAHL_TITEL_FRAGE);
                   Validierung.validiereAnzahlTitel(anzahlTitel);
-        
                   CD cd    = new CD(artikelNr, bestand, preis, interpret, titelcd, anzahlTitel);
                   lager.legeAnArtikel(cd);
-                  System.out.println("CD wurde angelegt. ");
+                  System.out.println(CD_ERFOLGREICH);
                   break;
+                  
             case  ARTIKEL_BUCH_ANLEGEN:
-                  String autor       = this.userInput.getString("Autor des Buchs?");
+                  String autor       = this.userInput.getString(AUTOR_FRAGE);
                   Validierung.validiereAutor(autor);
-                  String titelbuch   = this.userInput.getString("Titel des Buchs?");
+                  String titelbuch   = this.userInput.getString(TITEL_FRAGE);
                   Validierung.validiereTitel(titelbuch);
-                  String verlag      = this.userInput.getString("Verlag des Buchs?");
+                  String verlag      = this.userInput.getString(VERLAG_FRAGE);
                   Validierung.validiereVerlag(verlag);
-        
                   Buch buch          = new Buch(artikelNr, bestand, preis, autor, titelbuch, verlag);
                   lager.legeAnArtikel(buch);
-                  System.out.println("Buch wurde angelegt. ");
+                  System.out.println(BUCH_ERFOLGREICH);
                   break;
+                  
             case EINFACHER_ARTIKEL:
-                  String art= this.userInput.getString("Art des Artikels?");
+                  String art= this.userInput.getString(ART_FRAGE);
                   Validierung.validiereArtikelArt(art);
                   Artikel artikel   = new Artikel(artikelNr, art,bestand, preis);
                   lager.legeAnArtikel(artikel);
-                  System.out.println("Artikel wurde angelegt. ");
+                  System.out.println(ARTIKEL_ERFOLGREICH);
                 break;
+                
             case FUNKTION_ENDE:
                 break;
+                
             default:
-                System.out.println("Keine gueltige Eingabe");
+                System.out.println( NICHT_GUELTIG);
                 break;
+                
         }
         
     }
@@ -289,7 +318,7 @@ public class LagerDialog
     * bis der Nutzer 0 eingibt
     */
     public void artikelAnlegen(){
-        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if (this.lager == null) throw new IllegalArgumentException(LAGER_NULL);
         if( lager.getArtikelAnzahl() >= lager.getLagerGroesse()) throw new IllegalArgumentException(LAGER_VOLL);
         
         this.artikelfunktion        = FUNKTION_NICHT_DEFINIERT;
@@ -320,47 +349,47 @@ public class LagerDialog
     * Diese Funktion fragt nach dem zu entfernenden Artikel und entfernt diesen dann
     */
     public void artikelEntfernen() {
-        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if (this.lager == null) throw new IllegalArgumentException(LAGER_NULL);
          
-        int artikelNr = this.userInput.getInt("Geben Sie die Artikelnummer des zu entfernenden Artikels ein: ");
+        int artikelNr = this.userInput.getInt(ARTIKEL_ENTFERNT_FRAGE);
         Validierung.validiereArtikelNr(artikelNr);
         
         this.lager.entferneArtikel(artikelNr);
         
-        System.out.println("Artikel wurde entfernt. ");
+        System.out.println(ARTIKEL_ENTFERNT);
     }
 
 
     public void bestandZubuchen() {
 
-        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if (this.lager == null) throw new IllegalArgumentException(LAGER_NULL);
         
         int artikelNr = this.userInput.getInt(ARTIKELNUMMER_FRAGE);
         Validierung.validiereArtikelNr(artikelNr);
         
-        int zugang = this.userInput.getInt("Welche Menge soll dazugebucht werden? ");
+        int zugang = this.userInput.getInt(ZUGANG_FRAGE);
         Validierung.validiereMengeanderung(zugang);
         
         this.lager.bucheZugang(artikelNr, zugang);
 
-        System.out.println("Zugang wurde gebucht. ");
+        System.out.println(ZUGANG_ERFOLGREICH );
     }
     
     public void bestandAbbuchen() {
-        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if (this.lager == null) throw new IllegalArgumentException(LAGER_NULL);
         
         int artikelNr = this.userInput.getInt(ARTIKELNUMMER_FRAGE);
         Validierung.validiereArtikelNr(artikelNr);
         
-        int abgang = this.userInput.getInt("Welche Menge soll abgebucht werden? ");
+        int abgang = this.userInput.getInt(ABGANG_FRAGE);
         Validierung.validiereMengeanderung(abgang);
         
         this.lager.bucheAbgang(artikelNr, abgang);
-        System.out.println("Abgang wurde gebucht. ");
+        System.out.println(ABGANG_ERFOLGREICH );
     }
     
     public void einzelnpreisAendern(){
-        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if (this.lager == null) throw new IllegalArgumentException(LAGER_NULL);
         
         int artikelNr = this.userInput.getInt(ARTIKELNUMMER_FRAGE);
         Validierung.validiereArtikelNr(artikelNr);
@@ -370,30 +399,30 @@ public class LagerDialog
         
         this.lager.aenderePreisEinesArtikels(artikelNr, prozent);
         
-        System.out.println("Der Preis des Artikels wurde geändert! ");
+        System.out.println(PREISAENDERUNG_EIN_ERFOLGREICH);
     }
     
     public void allePreiseAendern(){
-        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if (this.lager == null) throw new IllegalArgumentException(LAGER_NULL);
 
         int prozent = this.userInput.getInt( PROZENTANTEIL_FRAGE);
         Validierung.validierePreisaenderung(prozent);
 
         this.lager.aenderePreisAllerArtikel(prozent);
         
-        System.out.println("Alle Preise sind geändert worden! ");
+        System.out.println(PREISAENDERUNG_ALLE_ERFOLGREICH );
     }
   
     public void lagerAusgeben(){
-        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if (this.lager == null) throw new IllegalArgumentException(LAGER_NULL);
 
         System.out.println(lager.toString());
     }
     
     public void lagerPlatzAnschauen(){
-        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if (this.lager == null) throw new IllegalArgumentException(LAGER_NULL);
         
-        int lagerplatz = this.userInput.getInt("Welcher Lagerplatz? ");
+        int lagerplatz = this.userInput.getInt( LAGERPLATZ_FRAGE);
         
         if(lager.getArtikel(lagerplatz)==null){
             System.out.println("leer");
@@ -404,7 +433,7 @@ public class LagerDialog
     }
     
     public void arikelstandortBekommen(){
-        if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
+        if (this.lager == null) throw new IllegalArgumentException(LAGER_NULL);
         
         int artikelNr = this.userInput.getInt(ARTIKELNUMMER_FRAGE);
         Validierung.validiereArtikelNr(artikelNr);
@@ -412,7 +441,7 @@ public class LagerDialog
         int platz = lager.getArtikelNachNummer(artikelNr);       
         
         if(platz == -1){
-            System.out.println("Es gibt diesen Artikel nicht im Lager. ");
+            System.out.println(ARTIKEL_NICHT_DA);
         }
         else{
             System.out.println("Der Artikel ist am Lagerplatz: " + platz);
