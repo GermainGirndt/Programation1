@@ -41,8 +41,8 @@ public class VideoArtikelDummyFactory extends AbstractArtikelDummyFactory {
             int bestand              =   (int)    this.seed[index][INDEX_ARTIKEL_BESTAND];
             double artikelpreis      =   (double) this.seed[index][INDEX_ARTIKEL_PREIS];
             String titel             =   (String) this.seed[index][INDEX_TITEL];
-            int spieldauer        =      (int) this.seed[index][INDEX_SPIELDAUER];
-            int jahr              =      (int) this.seed[index][INDEX_JAHR];
+            int spieldauer        =      (int)    this.seed[index][INDEX_SPIELDAUER];
+            int jahr              =      (int)    this.seed[index][INDEX_JAHR];
 
             this.artikelArray[index] = new Video(artikelnummer, bestand, artikelpreis, titel, spieldauer, jahr);
         }

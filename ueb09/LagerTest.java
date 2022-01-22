@@ -66,7 +66,7 @@ public class LagerTest
             
         }
         
-        @Test
+    @Test
     public void die_Artikelanzahl_wird_um_eins_erhoert_bei_dem_Anlegen() {
         int erwarteteArtikelAnzahl = 1;
         
@@ -421,6 +421,56 @@ public class LagerTest
         );
     }
 
+
+     /**
+     * speziele Artikeltypen anlegen
+     */
+
+
+        
+    @Test
+    public void kann_ein_Video_anlegen() {
+        int erwarteteArtikelAnzahl = 1;
+
+        this.artikelDummyFactory.setArtikelTyp(ArtikelTypen.VIDEO);
+        
+        Video videoEins = (Video) this.anlege_einen_Artikel_ins_Lager(ARTIKEL_EINS_NUMMER);
+        Video angelegtesVideo = (Video) this.lager.getArtikel(this.getIndexFromArtikel(ARTIKEL_EINS_NUMMER));
+        
+        assertSame(videoEins, angelegtesVideo);
+        
+        assert(videoEins.getClass() == Video.class);
+    }
+    
+    @Test
+    public void kann_ein_CD_anlegen() {
+        int erwarteteArtikelAnzahl = 1;
+
+        this.artikelDummyFactory.setArtikelTyp(ArtikelTypen.CD);
+        
+        CD cdEins = (CD) this.anlege_einen_Artikel_ins_Lager(ARTIKEL_EINS_NUMMER);
+        CD angelegtesCD = (CD) this.lager.getArtikel(this.getIndexFromArtikel(ARTIKEL_EINS_NUMMER));
+        
+        assertSame(cdEins, angelegtesCD);
+
+        assert(cdEins.getClass() == CD.class);
+    }
+    
+    @Test
+    public void kann_ein_Buch_anlegen() {
+        int erwarteteArtikelAnzahl = 1;
+
+        this.artikelDummyFactory.setArtikelTyp(ArtikelTypen.BUCH);
+        
+        Buch buchEins = (Buch) this.anlege_einen_Artikel_ins_Lager(ARTIKEL_EINS_NUMMER);
+        Buch angelegtesBuch = (Buch) this.lager.getArtikel(this.getIndexFromArtikel(ARTIKEL_EINS_NUMMER));
+        
+        assertSame(buchEins, angelegtesBuch);
+
+        assert(buchEins.getClass() == Buch.class);
+    }
+
+
     /**
     * Hilfmethoden
     */
@@ -447,5 +497,6 @@ public class LagerTest
     private int getIndexFromArtikel(int artikelNummer) {
         return artikelNummer - 1;
     }
+
     
 }

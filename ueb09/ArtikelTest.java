@@ -189,7 +189,7 @@ public class ArtikelTest
     public void test_buche_Zugang_1_zu_bestand_0_erwartet_1() {
         long erwarteterBestand      = 1;
         Artikel artikel             = new Artikel(1234, "Test", 0);
-        artikel.bucheZugang(11);
+        artikel.bucheZugang(1);
         long tatsaechlicherBestand  = artikel.getBestand();
         assertEquals(erwarteterBestand , tatsaechlicherBestand);
     }
