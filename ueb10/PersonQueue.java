@@ -9,7 +9,7 @@
 public class PersonQueue extends AbstractQueue implements Queue {
 
     public PersonQueue(int size) {
-        super(new Person[size]);   
+        super(Person.class, size);   
     }
     
 }

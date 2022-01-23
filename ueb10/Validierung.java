@@ -8,10 +8,10 @@
 */
 public final class Validierung {
 
-    private final static String FEHLER_KEINE_NATUERLICHE_ZAHL = "Die Zahl muss groesser gleich null sein. Eingegebene Zahl: %s";
-    private final static String FEHLER_ATTRIBUTE_NAME_IST_LEER = " darf nicht leer sein";
-    private final static String FEHLER_ATTRIBUTE_NAME_IST_NULL = " darf nicht null sein";
-    private final static String FEHLER_ATTRIBUTE_ENTHAELT_SPEZIELLE_CHARAKTERE = " darf keine speziellen Charakteren außer Leertaste enthalten. Erhalten: ";
+    private final static String FEHLER_KEINE_NATUERLICHE_ZAHL = "Die Zahl muss groesser gleich null sein. Eingegebene Zahl: %s.";
+    private final static String FEHLER_ATTRIBUTE_NAME_IST_LEER = " darf nicht leer sein.";
+    private final static String FEHLER_ATTRIBUTE_NAME_IST_NULL = " darf nicht null sein.";
+    private final static String FEHLER_ATTRIBUTE_ENTHAELT_SPEZIELLE_CHARAKTERE = " darf keine speziellen Charakteren außer Leertaste enthalten.";
     
     private final static String REGEX_NUR_ALPHABETISCHE_CHARAKTERE = "^[a-zA-ZäoeueÄoeueßa-]+$";
     private final static String REGEX_LEERZEICHEN = "^\\s+$";
@@ -31,12 +31,12 @@ public final class Validierung {
             throw new IllegalArgumentException(attributeName + FEHLER_ATTRIBUTE_NAME_IST_NULL);
         }
 
-        if (checkeFuerNurLeertasten(personName)) {
+        if (Validierung.checkeFuerNurLeertasten(personName)) {
             throw new IllegalArgumentException(attributeName + FEHLER_ATTRIBUTE_NAME_IST_LEER);
         }
 
-        if (!checkeFuerNurCharaktereVonNamen(personName, sollLeertasteErlauben)) {
-            throw new IllegalArgumentException(attributeName + FEHLER_ATTRIBUTE_ENTHAELT_SPEZIELLE_CHARAKTERE + art);
+        if (!Validierung.checkeFuerNurCharaktereVonNamen(personName, sollLeertasteErlauben)) {
+            throw new IllegalArgumentException(attributeName + FEHLER_ATTRIBUTE_ENTHAELT_SPEZIELLE_CHARAKTERE);
         }
     }
 
@@ -79,6 +79,19 @@ public final class Validierung {
     */    
     public static void validiereNatuerlicheZahl(int zuCheckendeZahl) {
         if (zuCheckendeZahl <= 0) {
+            throw new IllegalArgumentException(String.format(FEHLER_KEINE_NATUERLICHE_ZAHL, zuCheckendeZahl));
+        }
+    }
+
+    /**
+    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natuerlichen Zahl ist.
+    * @param zuCheckendeZahl die ueberprueft werden soll
+    * @return true fuer ja; false fuer nein
+    */    
+    public static void validiereNatuerlicheZahl(int zuCheckendeZahl, boolean erlaubeNull) {
+        int grenze = erlaubeNull ? 0 : 1;
+        
+        if (zuCheckendeZahl <= grenze) {
             throw new IllegalArgumentException(String.format(FEHLER_KEINE_NATUERLICHE_ZAHL, zuCheckendeZahl));
         }
     }

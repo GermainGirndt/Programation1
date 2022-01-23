@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 
 /**
  * Eine Abstrakte Klasse mit den für Queue typische Methoden 
@@ -17,19 +18,27 @@ public abstract class AbstractQueue implements Queue {
     private final String FEHLER_QUEUE_LEER = "Schlange leer";
     private final String FEHLER_INDEX_UEBERTROFFEN = "Index außerhalb der Schlange";
     private final String FEHLER_STELLE_LEER = "Die eingegebene Stelle ist leer";
+    private final String FEHLER_NULL_REFERENZ = "Das neue Objekt darf nicht null sein";
 
-    AbstractQueue(Object[] queue) {
-        this.queue = queue;
+    AbstractQueue(Class<?> arrayKomponentTyp, int size) {
+
+        Validierung.validiereNatuerlicheZahl(size, false);
+
+        this.queue = (Object[]) Array.newInstance(arrayKomponentTyp, size);
         this.arrayKomponentTyp = this.queue.getClass().getComponentType();
     }
 
     @Override
     public void addLast(Object o) {
 
+        if (o == null) {
+            throw new IllegalArgumentException(FEHLER_NULL_REFERENZ);
+        }
+
         Class<?> objectTyp = o.getClass();
 
         if (!(objectTyp == this.arrayKomponentTyp)) {
-            throw new Error(
+            throw new IllegalArgumentException(
                 String.format(FEHLER_FALSCHER_OBJECT_TYP, arrayKomponentTyp, objectTyp)
             );
         }
@@ -95,14 +104,18 @@ public abstract class AbstractQueue implements Queue {
     }
     
     private void entferne(int index) {
+        Validierung.validiereNatuerlicheZahl(index, true);
+
+        if (index >= this.anzahl) {
+           throw new IllegalArgumentException(FEHLER_INDEX_UEBERTROFFEN);
+        }
+       
          for (int i = index; i < this.anzahl; i++) {
-             if (i < this.queue.length) {
-                 this.queue[i] = this.queue[i + 1];
-                 this.queue[this.anzahl] = null;
-             }
+            this.queue[i] = this.queue[i + 1];
          }
+
+         this.queue[this.anzahl] = null;
          this.anzahl--;
-        
     }
 
 }
