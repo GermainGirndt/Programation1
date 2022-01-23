@@ -77,20 +77,9 @@ public final class Validierung {
     * @param zuCheckendeZahl die ueberprueft werden soll
     * @return true fuer ja; false fuer nein
     */    
-    public static void validiereNatuerlicheZahl(int zuCheckendeZahl) {
-        if (zuCheckendeZahl <= 0) {
-            throw new IllegalArgumentException(String.format(FEHLER_KEINE_NATUERLICHE_ZAHL, zuCheckendeZahl));
-        }
-    }
-
-    /**
-    * Die Methode prueft, ob die eigegebene Zahl Element der Menge der natuerlichen Zahl ist.
-    * @param zuCheckendeZahl die ueberprueft werden soll
-    * @return true fuer ja; false fuer nein
-    */    
     public static void validiereNatuerlicheZahl(int zuCheckendeZahl, boolean erlaubeNull) {
         int grenze = erlaubeNull ? 0 : 1;
-        
+
         if (zuCheckendeZahl <= grenze) {
             throw new IllegalArgumentException(String.format(FEHLER_KEINE_NATUERLICHE_ZAHL, zuCheckendeZahl));
         }
