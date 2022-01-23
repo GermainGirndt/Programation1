@@ -27,12 +27,12 @@ public class Person {
     }
     
     public void setVorname(String vorname){
-        Validierung.validiereAlphabetischenString(vorname, VORNAME);
+        Validierung.validiereNamenString(vorname, VORNAME);
         this.vorname = vorname;
     }
     
     public void setNachname(String nachname){
-        Validierung.validiereAlphabetischenString(vorname, NACHNAME);
+        Validierung.validiereNamenString(vorname, NACHNAME);
         this.nachname = nachname;
     }
 }
