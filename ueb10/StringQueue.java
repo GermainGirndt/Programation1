@@ -16,8 +16,8 @@ public class StringQueue implements Queue {
    
    @Override
    public void addLast(Object o) {
-       if(o instanceof String) {
-          if(full()) {
+       if (o instanceof String) {
+          if (full()) {
                throw new IllegalArgumentException("Schlange schon voll");
           }
           String s = (String)o;
@@ -30,33 +30,33 @@ public class StringQueue implements Queue {
    @Override 
    public Object removeFirst() {
        
-       if(empty()) {
+       if (this.empty()) {
            throw new IllegalArgumentException("Schlange leer");    
        }
        
        Object o = queue[0];
-       entferne(0);   
+       this.entferne(0);   
        return o;
    }
    
    @Override 
    public Object get(int i) {
-       if(empty()) {
+       if (this.empty()) {
            throw new IllegalArgumentException("Schlange leer");    
        }
-       if(i >= queue.length || i < 0) {
+       if (i >= queue.length || i < 0) {
            throw new IllegalArgumentException("Index Außerhalb der Schlange"); 
        }
        
-       if(i >= anzahl) {
+       if (i >= anzahl) {
            throw new IllegalArgumentException("An der Stelle der Schlang ist nichts"); 
        }
        return queue[i];
    }
    
    @Override
-   public boolean empty() {
-       if(anzahl == 0) {
+   public boolean this.empty() {
+       if (anzahl == 0) {
            return true;
        }
        else{
@@ -66,7 +66,7 @@ public class StringQueue implements Queue {
    
    @Override
    public boolean full() {
-       if(anzahl < queue.length) {
+       if (anzahl < queue.length) {
            return false;
        }
        else{
@@ -79,9 +79,9 @@ public class StringQueue implements Queue {
        return queue.length;   
    }
    
-   private void entferne(int index) {
+   private void this.entferne(int index) {
         for (int i = index; i < anzahl; i++) {
-            if(i < queue.length) {
+            if (i < queue.length) {
                 queue[i] = queue[i + 1];
                 queue[anzahl] = null;
             }

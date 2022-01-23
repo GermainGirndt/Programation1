@@ -10,6 +10,9 @@ public class Person {
     private String vorname;
     private String nachname;
     
+    private final String VORNAME = "Vorname";
+    private final String NACHNAME = "Nachname";
+
     public Person(String vorname, String nachname){
         this.vorname  = vorname;
         this.nachname = nachname;
@@ -24,10 +27,12 @@ public class Person {
     }
     
     public void setVorname(String vorname){
+        Validierung.validiereAlphabetischenString(vorname, VORNAME);
         this.vorname = vorname;
     }
     
     public void setNachname(String nachname){
+        Validierung.validiereAlphabetischenString(vorname, NACHNAME);
         this.nachname = nachname;
     }
 }
