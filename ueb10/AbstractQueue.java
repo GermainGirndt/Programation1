@@ -2,29 +2,36 @@ public abstract class AbstractQueue implements Queue {
 
     private Object[] queue;
     private int anzahl = 0;
+    Class<?> arrayKomponentTyp;
+
+    private final String FEHLER_FALSCHER_OBJECT_TYP = "Object muss eine Instanz von der Klasse %s sein. Erhalten: %s";
+    private final String FEHLER_QUEUE_VOLL = "Schlange schon voll";
+    private final String FEHLER_QUEUE_LEER = "Schlange leer";
+    private final String FEHLER_INDEX_UEBERTROFFEN = "Index außerhalb der Schlange";
+    private final String FEHLER_STELLE_LEER = "Die eingegebene Stelle ist leer";
 
     protected void setQueue(Object[] queue) {
         this.queue = queue;
+        this.arrayKomponentTyp = this.queue.getClass().getComponentType();
     }
 
     @Override
     public void addLast(Object o) {
 
         Class<?> objectTyp = o.getClass();
-        Class<?> arrayKomponentTyp = this.queue.getClass().getComponentType();
 
-        if (!(objectTyp == arrayKomponentTyp)) {
+        if (!(objectTyp == this.arrayKomponentTyp)) {
             throw new Error(
-                String.format("Object muss eine Instanz von der Klasse %s sein. Erhalten: %s", arrayKomponentTyp, objectTyp)
+                String.format(FEHLER_FALSCHER_OBJECT_TYP, arrayKomponentTyp, objectTyp)
             );
         }
         
     
         if (this.full()) {
-            throw new IllegalArgumentException("Schlange schon voll");
+            throw new IllegalArgumentException(FEHLER_QUEUE_VOLL);
         }
 
-        queue[this.anzahl] = o;
+        this.queue[this.anzahl] = o;
         this.anzahl++; 
     
         
@@ -34,10 +41,10 @@ public abstract class AbstractQueue implements Queue {
     public Object removeFirst() {
         
         if (this.empty()) {
-            throw new IllegalArgumentException("Schlange leer");    
+            throw new IllegalArgumentException(FEHLER_QUEUE_LEER);    
         }
         
-        Object o = queue[0];
+        Object o = this.queue[0];
         this.entferne(0);   
         return o;
     }
@@ -45,16 +52,17 @@ public abstract class AbstractQueue implements Queue {
     @Override 
     public Object get(int i) {
         if (this.empty()) {
-            throw new IllegalArgumentException("Schlange leer");    
+            throw new IllegalArgumentException(FEHLER_QUEUE_LEER);    
         }
-        if (i >= queue.length || i < 0) {
-            throw new IllegalArgumentException("Index Außerhalb der Schlange"); 
+        if (i >= this.queue.length || i < 0) {
+            throw new IllegalArgumentException(FEHLER_INDEX_UEBERTROFFEN); 
         }
         
         if (i >= this.anzahl) {
-            throw new IllegalArgumentException("An der Stelle der Schlang ist nichts"); 
+            throw new IllegalArgumentException(FEHLER_STELLE_LEER); 
         }
-        return queue[i];
+
+        return this.queue[i];
     }
     
     @Override
@@ -69,7 +77,7 @@ public abstract class AbstractQueue implements Queue {
     
     @Override
     public boolean full() {
-        if (this.anzahl < queue.length) {
+        if (this.anzahl < this.queue.length) {
             return false;
         }
         else{
@@ -79,14 +87,14 @@ public abstract class AbstractQueue implements Queue {
     
     @Override
     public int size() {
-        return queue.length;   
+        return this.queue.length;   
     }
     
     private void entferne(int index) {
          for (int i = index; i < this.anzahl; i++) {
-             if (i < queue.length) {
-                 queue[i] = queue[i + 1];
-                 queue[this.anzahl] = null;
+             if (i < this.queue.length) {
+                 this.queue[i] = this.queue[i + 1];
+                 this.queue[this.anzahl] = null;
              }
          }
          this.anzahl--;
