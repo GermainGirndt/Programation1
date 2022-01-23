@@ -2,10 +2,10 @@
 /**
  * Beschreiben Sie hier die Klasse PersonQueue.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Germain, Girndt; Krier, Katharina
+ * @version 1.0
+ * 
  */
-public class PersonQueue
-{
+public class PersonQueue implements Queue {
     
 }

@@ -2,11 +2,11 @@
 /**
  * Beschreiben Sie hier die Klasse Person.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Germain, Girndt; Krier, Katharina
+ * @version 1.0
+ * 
  */
-public class Person
-{
+public class Person {
     private String vorname;
     private String nachname;
     

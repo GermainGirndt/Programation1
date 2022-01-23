@@ -2,22 +2,22 @@
 /**
  * Beschreiben Sie hier die Klasse StringQueue.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Germain, Girndt; Krier, Katharina
+ * @version 1.0
+ * 
  */
-public class StringQueue implements Queue
-{
+public class StringQueue implements Queue {
    private String[] queue;
    private int anzahl = 0;
    
-   public StringQueue(int size){
+   public StringQueue(int size) {
        queue = new String[size];    
    }
    
    @Override
-   public void addLast(Object o){
-       if(o instanceof String){
-          if(full()){
+   public void addLast(Object o) {
+       if(o instanceof String) {
+          if(full()) {
                throw new IllegalArgumentException("Schlange schon voll");
           }
           String s = (String)o;
@@ -27,10 +27,10 @@ public class StringQueue implements Queue
        
    }
    
-   @ Override 
-   public Object removeFirst(){
+   @Override 
+   public Object removeFirst() {
        
-       if(empty()){
+       if(empty()) {
            throw new IllegalArgumentException("Schlange leer");    
        }
        
@@ -40,23 +40,23 @@ public class StringQueue implements Queue
    }
    
    @Override 
-   public Object get(int i){
-       if(empty()){
+   public Object get(int i) {
+       if(empty()) {
            throw new IllegalArgumentException("Schlange leer");    
        }
-       if(i >= queue.length || i < 0){
+       if(i >= queue.length || i < 0) {
            throw new IllegalArgumentException("Index Außerhalb der Schlange"); 
        }
        
-       if(i >= anzahl){
+       if(i >= anzahl) {
            throw new IllegalArgumentException("An der Stelle der Schlang ist nichts"); 
        }
        return queue[i];
    }
    
    @Override
-   public boolean empty(){
-       if(anzahl == 0){
+   public boolean empty() {
+       if(anzahl == 0) {
            return true;
        }
        else{
@@ -65,8 +65,8 @@ public class StringQueue implements Queue
    }
    
    @Override
-   public boolean full(){
-       if(anzahl < queue.length){
+   public boolean full() {
+       if(anzahl < queue.length) {
            return false;
        }
        else{
@@ -75,13 +75,13 @@ public class StringQueue implements Queue
    }
    
    @Override
-   public int size(){
+   public int size() {
        return queue.length;   
    }
    
-   private void entferne(int index){
-        for(int i = index; i < anzahl; i++){
-            if(i < queue.length){
+   private void entferne(int index) {
+        for (int i = index; i < anzahl; i++) {
+            if(i < queue.length) {
                 queue[i] = queue[i + 1];
                 queue[anzahl] = null;
             }
