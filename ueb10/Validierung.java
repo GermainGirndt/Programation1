@@ -18,7 +18,7 @@ public final class Validierung {
     * @param personName ist die PersonName
     */
     public static void validiereAlphabetischenString(String personName, String attributeName) {
-        boolean sollLeertasteErlauben = true;
+        boolean sollLeertasteErlauben = false;
 
         if (personName == null) {
             throw new IllegalArgumentException(attributeName + " darf nicht null sein");

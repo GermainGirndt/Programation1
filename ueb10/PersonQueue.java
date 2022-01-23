@@ -6,6 +6,14 @@
  * @version 1.0
  * 
  */
-public class PersonQueue implements Queue {
+public class PersonQueue extends AbstractQueue implements Queue {
+
+    public StringQueue(int size) {
+
+        Person[] queue = new Person[size];
+        
+        super.setQueue(queue);
+    
+    }
     
 }
