@@ -110,11 +110,11 @@ public abstract class AbstractQueue implements Queue {
            throw new IllegalArgumentException(FEHLER_INDEX_UEBERTROFFEN);
         }
        
-         for (int i = index; i < this.anzahl; i++) {
+         for (int i = index; i < this.anzahl - 1; i++) {
             this.queue[i] = this.queue[i + 1];
          }
 
-         this.queue[this.anzahl] = null;
+         this.queue[this.anzahl - 1] = null;
          this.anzahl--;
     }
 
