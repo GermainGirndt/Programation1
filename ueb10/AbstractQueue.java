@@ -1,3 +1,11 @@
+
+/**
+ * Eine Abstrakte Klasse mit den für Queue typische Methoden 
+ * 
+ * @author Germain, Girndt; Krier, Katharina
+ * @version 1.0
+ * 
+ */
 public abstract class AbstractQueue implements Queue {
 
     private Object[] queue;
@@ -10,7 +18,7 @@ public abstract class AbstractQueue implements Queue {
     private final String FEHLER_INDEX_UEBERTROFFEN = "Index außerhalb der Schlange";
     private final String FEHLER_STELLE_LEER = "Die eingegebene Stelle ist leer";
 
-    protected void setQueue(Object[] queue) {
+    AbstractQueue(Object[] queue) {
         this.queue = queue;
         this.arrayKomponentTyp = this.queue.getClass().getComponentType();
     }
@@ -67,22 +75,18 @@ public abstract class AbstractQueue implements Queue {
     
     @Override
     public boolean empty() {
-        if (this.anzahl == 0) {
-            return true;
-        }
-        else{
-            return false;
-        }
+
+        boolean istLeer = this.anzahl == 0;
+
+        return istLeer;
     }
     
     @Override
     public boolean full() {
-        if (this.anzahl < this.queue.length) {
-            return false;
-        }
-        else{
-            return true;
-        }
+
+        boolean istVoll = this.anzahl >= this.queue.length;
+
+        return istVoll;
     }
     
     @Override

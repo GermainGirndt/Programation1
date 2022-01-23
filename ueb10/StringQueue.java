@@ -9,10 +9,6 @@
 public class StringQueue extends AbstractQueue implements Queue {
    
    public StringQueue(int size) {
-
-    String[] queue = new String[size];
-    
-    super.setQueue(queue);
-
+    super(new String[size]);
    }
 }

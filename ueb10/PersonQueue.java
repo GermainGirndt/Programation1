@@ -8,12 +8,8 @@
  */
 public class PersonQueue extends AbstractQueue implements Queue {
 
-    public StringQueue(int size) {
-
-        Person[] queue = new Person[size];
-        
-        super.setQueue(queue);
-    
+    public PersonQueue(int size) {
+        super(new Person[size]);   
     }
     
 }
