@@ -1,6 +1,6 @@
 
 /**
- * Beschreiben Sie hier die Klasse Person.
+ * Eine Person
  * 
  * @author Germain, Girndt; Krier, Katharina
  * @version 1.0

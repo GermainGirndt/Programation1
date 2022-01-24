@@ -1,6 +1,6 @@
 
 /**
- * Tragen Sie hier eine Beschreibung des Interface Queue ein.
+ * Interface für Queue mit einigen der fuer Queue typischen Methoden
  * 
  * @author Germain, Girndt; Krier, Katharina
  * @version 1.0

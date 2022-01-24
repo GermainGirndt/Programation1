@@ -22,7 +22,7 @@ public abstract class AbstractQueue implements Queue {
 
     /**
     * Konstruktor AbstractQueue
-    * @param Klasse der Objekte in der Queue
+    * @param arrayKomponentTyp Klasse der Objekte in der Queue
     * @param size die Groesse
     */
     AbstractQueue(Class<?> arrayKomponentTyp, int size) {
@@ -35,7 +35,7 @@ public abstract class AbstractQueue implements Queue {
 
     
     /**
-    * stellt ein uebergebenes Objekt hinten an der Queue an
+    * Stellt ein uebergebenes Objekt hinten an der Queue an
     * @param o Element was an letzt möglicher Stelle hinten in die Queue gestellt wird
     */
     @Override
@@ -139,7 +139,7 @@ public abstract class AbstractQueue implements Queue {
     * Gibt die Anzahl der Elemente in der Queue zurueck
     * @return Anzahl der Elemente
     */
-   @Override
+    @Override
     public int anzahlElemente() {
         return this.anzahl;   
     }
