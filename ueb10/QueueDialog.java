@@ -23,6 +23,7 @@ public class QueueDialog
     private static final int            FUNKTION_LEER                  =  6;
     private static final int            FUNKTION_VOLL                  =  7;
     private static final int            FUNKTION_GET_NACH_POSITION     =  8;
+    private static final int            FUNKTION_PRINT_QUEUE           =  9;
 
 
     private static final String         FEHLER_NULL_QUEUE              = "Es existiert noch keine Queue!";
@@ -83,6 +84,7 @@ public class QueueDialog
             FUNKTION_LEER                    + ": Pruefen ob Queue leer;\n"             + 
             FUNKTION_VOLL                    + ": Pruefen ob Queue voll;\n"             +
             FUNKTION_GET_NACH_POSITION       + ": GetElement nach Position in Queue;\n" +
+            FUNKTION_PRINT_QUEUE             + ": Queue ausgeben;\n"                    +
             FUNKTION_ENDE                    + ": beenden -> \n\n"
         );
         
@@ -121,6 +123,9 @@ public class QueueDialog
                 break;
             case FUNKTION_GET_NACH_POSITION:
                 getElementNachPosition();
+                break;
+            case  FUNKTION_PRINT_QUEUE:
+                print(queue);
                 break;
             case FUNKTION_ENDE:  
                 System.out.println("Das Programm ist zu Ende");
@@ -208,6 +213,16 @@ public class QueueDialog
         int size = userInput.getInt("Groesse: ");
         this.queue = new PersonQueue(size);
         System.out.println("PersonQueue wurde angelegt.");
+    }
+    
+    private void print(Queue q){
+        if(queue == null){
+          throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
+        }
+        
+        for(int i = 0; i < q.size(); i++){
+            System.out.println(q.get(i));
+        }
     }
 }
 
