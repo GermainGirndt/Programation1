@@ -8,6 +8,10 @@
  */
 public class PersonQueue extends AbstractQueue implements Queue {
 
+    /**
+    * Konstruktor PersonQueue
+    * @param size die Groesse
+    */
     public PersonQueue(int size) {
         super(Person.class, size);   
     }

@@ -138,6 +138,9 @@ public class QueueDialog
        
     }
     
+    /**
+    * Holt das Element an erster Stelle, entfernt es und gibt es dann aus
+    */
     private void elementHolen(){
         if(queue == null){
             throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
@@ -146,6 +149,9 @@ public class QueueDialog
         
     }
     
+    /**
+    * Stellt ein Element hinten an der Queue an
+    */
     private void elementHinzufuegen(){
         if(queue == null){
             throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
@@ -166,7 +172,9 @@ public class QueueDialog
         System.out.println("Element hinzugefuegt.");
     }
     
-    
+    /**
+    * Gibt die Groesse der Queue aus
+    */
     private void gibGroesseaus(){
         if(queue == null){
           throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
@@ -174,13 +182,19 @@ public class QueueDialog
         System.out.println("Groesse: " + queue.size());
     }
     
-     private void pruefeLeer(){
+    /**
+    * Gibt aus ob die Queue leer ist
+    */
+    private void pruefeLeer(){
         if(queue == null){
           throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
         }
         System.out.println("istLeer: " + queue.empty());
     }
     
+    /**
+    * Gibt aus ob die Queue voll ist
+    */
     private void pruefeVoll(){
         if(queue == null){
           throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
@@ -188,6 +202,9 @@ public class QueueDialog
         System.out.println("istVoll: " + queue.full());
     }
     
+    /**
+    * Fragt nach einer Position und gibt dann das Element an dieser Position aus
+    */
     private void getElementNachPosition(){
         if(queue == null){
           throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
@@ -197,6 +214,9 @@ public class QueueDialog
         System.out.println(queue.get(platz));
     }
     
+    /**
+    * Fragt nach der Queue Groesse und legt dann eine StringQueue an
+    */
     private void legeStringQueueAn(){
         if(queue != null){
           throw new IllegalArgumentException(FEHLER_EXIST_QUEUE);   
@@ -206,6 +226,9 @@ public class QueueDialog
         System.out.println("StringQueue wurde angelegt.");
     }
     
+    /**
+    * Fragt nach der Queue Groesse und legt dann eine PersonQueue an
+    */
     private void legePersonQueueAn(){
         if(queue != null){
           throw new IllegalArgumentException(FEHLER_EXIST_QUEUE);   
@@ -215,6 +238,9 @@ public class QueueDialog
         System.out.println("PersonQueue wurde angelegt.");
     }
     
+    /**
+    * Gibt die gesammte Queue aus
+    */
     private void print(Queue q){
         if(queue == null){
           throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   

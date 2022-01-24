@@ -13,6 +13,11 @@ public class Person {
     private final String VORNAME = "Vorname";
     private final String NACHNAME = "Nachname";
 
+    /**
+    * Konstruktor Person
+    * @param vorname, der Vorname
+    * @param nachname, der Nachname
+    */
     public Person(String vorname, String nachname){
         this.vorname  = vorname;
         this.nachname = nachname;

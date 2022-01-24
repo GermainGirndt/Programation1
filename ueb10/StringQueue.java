@@ -8,6 +8,11 @@
  */
 public class StringQueue extends AbstractQueue implements Queue {
    
+    
+    /**
+    * Konstruktor StringQueue
+    * @param size die Groesse
+    */
    public StringQueue(int size) {
     super(String.class, size);
    }

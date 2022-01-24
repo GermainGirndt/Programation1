@@ -20,6 +20,11 @@ public abstract class AbstractQueue implements Queue {
     private final String FEHLER_STELLE_LEER = "Die eingegebene Stelle ist leer";
     private final String FEHLER_NULL_REFERENZ = "Das neue Objekt darf nicht null sein";
 
+    /**
+    * Konstruktor AbstractQueue
+    * @param Klasse der Objekte in der Queue
+    * @param size die Groesse
+    */
     AbstractQueue(Class<?> arrayKomponentTyp, int size) {
 
         Validierung.validiereNatuerlicheZahl(size, false);
@@ -28,6 +33,11 @@ public abstract class AbstractQueue implements Queue {
         this.arrayKomponentTyp = this.queue.getClass().getComponentType();
     }
 
+    
+    /**
+    * stellt ein uebergebenes Objekt hinten an der Queue an
+    * @param o Element was an letzt möglicher Stelle hinten in die Queue gestellt wird
+    */
     @Override
     public void addLast(Object o) {
 
@@ -54,6 +64,10 @@ public abstract class AbstractQueue implements Queue {
         
     }
     
+    /**
+    * Holt das Element an erster Stelle in der Queue heraus und loescht es und alle Elemente dahinter ruecken vor
+    * @return das Element an erster Stelle
+    */
     @Override 
     public Object removeFirst() {
         
@@ -66,6 +80,11 @@ public abstract class AbstractQueue implements Queue {
         return o;
     }
     
+    /**
+    * Schaut was für ein Objekt an einer Stelle i ist und gibt dieses zurueck
+    * @param i die Stelle in der Queue
+    * @return das Element an der Stelle i
+    */
     @Override 
     public Object get(int i) {
         if (this.empty()) {
@@ -82,6 +101,10 @@ public abstract class AbstractQueue implements Queue {
         return this.queue[i];
     }
     
+    /**
+    * Prueft ob die Queue leer ist
+    * @return Wert ob istLeer
+    */
     @Override
     public boolean empty() {
 
@@ -90,6 +113,11 @@ public abstract class AbstractQueue implements Queue {
         return istLeer;
     }
     
+    
+    /**
+    * Prueft ob die Queue voll ist
+    * @return Wert ob istVoll
+    */
     @Override
     public boolean full() {
 
@@ -98,11 +126,19 @@ public abstract class AbstractQueue implements Queue {
         return istVoll;
     }
     
+    /**
+    * Gibt die Groesse der Queue zurueck
+    * @return Groesse der Queue
+    */
     @Override
     public int size() {
         return this.queue.length;   
     }
     
+    /**
+    * Entfernt ein Element an der Stelle des Index
+    * @param index die Stelle des zu entfernenden Elements
+    */
     private void entferne(int index) {
         Validierung.validiereNatuerlicheZahl(index, true);
 
