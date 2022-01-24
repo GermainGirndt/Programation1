@@ -35,4 +35,9 @@ public class Person {
         Validierung.validiereNamenString(vorname, NACHNAME);
         this.nachname = nachname;
     }
+    
+    @Override
+    public String toString(){
+        return getVorname() + ", " + getNachname();
+    }
 }

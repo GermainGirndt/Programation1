@@ -25,8 +25,8 @@ public class QueueDialog
     private static final int            FUNKTION_GET_NACH_POSITION     =  8;
 
 
-    
-    
+    private static final String         FEHLER_NULL_QUEUE              = "Es existiert noch keine Queue!";
+    private static final String         FEHLER_EXIST_QUEUE             = "Es existiert schon eine Queue!";
     /**
     * Konstruktor
     */
@@ -82,7 +82,7 @@ public class QueueDialog
             FUNKTION_GROESSE                 + ": Groesse der Queue;\n"                 +
             FUNKTION_LEER                    + ": Pruefen ob Queue leer;\n"             + 
             FUNKTION_VOLL                    + ": Pruefen ob Queue voll;\n"             +
-            FUNKTION_GET_NACH_POSITION       + ": GetElement nach Position in Queue\n;" +
+            FUNKTION_GET_NACH_POSITION       + ": GetElement nach Position in Queue;\n" +
             FUNKTION_ENDE                    + ": beenden -> \n\n"
         );
         
@@ -98,7 +98,30 @@ public class QueueDialog
         boolean sollNachBestandFragen;
 
         switch(this.funktion) {
-           
+            case FUNKTION_STRING_QUEUE_ANLEGEN:
+                legeStringQueueAn();
+                break;
+            case FUNKTION_PERSON_QUEUE_ANLEGEN:
+                legePersonQueueAn();
+                break;
+            case FUNKTION_ELEMENT_HINZUFUEGEN:
+                elementHinzufuegen();
+                break;
+            case FUNKTION_ERSTES_ELEMENT_HOLEN:
+                elementHolen();
+                break;
+            case FUNKTION_GROESSE:
+                gibGroesseaus();
+                break;
+            case  FUNKTION_LEER:
+                pruefeLeer();
+                break;
+            case FUNKTION_VOLL:
+                pruefeVoll();
+                break;
+            case FUNKTION_GET_NACH_POSITION:
+                getElementNachPosition();
+                break;
             case FUNKTION_ENDE:  
                 System.out.println("Das Programm ist zu Ende");
                 break;
@@ -110,7 +133,82 @@ public class QueueDialog
        
     }
     
+    private void elementHolen(){
+        if(queue == null){
+            throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
+        }  
+        System.out.println("Entfernt: " + queue.removeFirst());
+        
+    }
     
+    private void elementHinzufuegen(){
+        if(queue == null){
+            throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
+        }  
+        if(queue instanceof StringQueue){
+            String s = userInput.getString("String: ");    
+            
+            queue.addLast(s);
+        }
+        
+        if(queue instanceof PersonQueue){
+            String vorname  = userInput.getString("Vorname: ");    
+            String nachname = userInput.getString("Nachname: ");   
+            Person p = new Person(vorname, nachname);
+            queue.addLast(p);
+        }
+        
+        System.out.println("Element hinzugefuegt.");
+    }
+    
+    
+    private void gibGroesseaus(){
+        if(queue == null){
+          throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
+        }
+        System.out.println("Groesse: " + queue.size());
+    }
+    
+     private void pruefeLeer(){
+        if(queue == null){
+          throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
+        }
+        System.out.println("istLeer: " + queue.empty());
+    }
+    
+    private void pruefeVoll(){
+        if(queue == null){
+          throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
+        }
+        System.out.println("istVoll: " + queue.full());
+    }
+    
+    private void getElementNachPosition(){
+        if(queue == null){
+          throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
+        }
+        
+        int platz = userInput.getInt("Ausgewaehlter Platz: ");
+        System.out.println(queue.get(platz));
+    }
+    
+    private void legeStringQueueAn(){
+        if(queue != null){
+          throw new IllegalArgumentException(FEHLER_EXIST_QUEUE);   
+        } 
+        int size = userInput.getInt("Groesse: ");
+        this.queue = new StringQueue(size);
+        System.out.println("StringQueue wurde angelegt.");
+    }
+    
+    private void legePersonQueueAn(){
+        if(queue != null){
+          throw new IllegalArgumentException(FEHLER_EXIST_QUEUE);   
+        } 
+        int size = userInput.getInt("Groesse: ");
+        this.queue = new PersonQueue(size);
+        System.out.println("PersonQueue wurde angelegt.");
+    }
 }
 
 

@@ -78,9 +78,9 @@ public final class Validierung {
     * @return true fuer ja; false fuer nein
     */    
     public static void validiereNatuerlicheZahl(int zuCheckendeZahl, boolean erlaubeNull) {
-        int grenze = erlaubeNull ? 0 : 1;
+        int grenze = 0;
 
-        if (zuCheckendeZahl <= grenze) {
+        if (zuCheckendeZahl < grenze) {
             throw new IllegalArgumentException(String.format(FEHLER_KEINE_NATUERLICHE_ZAHL, zuCheckendeZahl));
         }
     }
