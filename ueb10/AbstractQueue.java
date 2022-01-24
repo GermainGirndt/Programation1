@@ -136,6 +136,15 @@ public abstract class AbstractQueue implements Queue {
     }
     
     /**
+    * Gibt die Anzahl der Elemente in der Queue zurueck
+    * @return Anzahl der Elemente
+    */
+   @Override
+    public int anzahlElemente() {
+        return this.anzahl;   
+    }
+    
+    /**
     * Entfernt ein Element an der Stelle des Index
     * @param index die Stelle des zu entfernenden Elements
     */

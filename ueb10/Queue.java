@@ -14,4 +14,5 @@ public interface Queue {
     public boolean empty();
     public boolean full();
     public int size();
+    public int anzahlElemente();
 }
