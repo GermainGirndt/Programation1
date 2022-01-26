@@ -6,19 +6,22 @@
 * @author Girndt & Krier
 * @version 1.0
 */
-public final class Validierung {
+public final class Validierungsutils {
 
-    private final static String FEHLER_KEINE_NATUERLICHE_ZAHL = "Die Zahl muss groesser gleich null sein. Eingegebene Zahl: %s.";
+    private final static String FEHLER_KEINE_NATUERLICHE_ZAHL = "Die Zahl muss groesser gleich null sein." +
+                                                                "Eingegebene Zahl: %s.";
+
     private final static String FEHLER_ATTRIBUTE_NAME_IST_LEER = " darf nicht leer sein.";
     private final static String FEHLER_ATTRIBUTE_NAME_IST_NULL = " darf nicht null sein.";
-    private final static String FEHLER_ATTRIBUTE_ENTHAELT_SPEZIELLE_CHARAKTERE = " darf keine speziellen Charakteren außer Leertaste enthalten.";
+    private final static String FEHLER_ATTRIBUTE_ENTHAELT_SPEZIELLE_CHARAKTERE = " darf keine speziellen "+ 
+                                                                                 "Charakteren außer Leertaste enthalten.";
     
     private final static String REGEX_NUR_ALPHABETISCHE_CHARAKTERE = "^[a-zA-ZäoeueÄoeueßa-]+$";
     private final static String REGEX_LEERZEICHEN = "^\\s+$";
     /**
     * Die Werkzeugklasse soll statisch sein bzw. darf nicht instantiert werden
     */
-    private Validierung() {}
+    private Validierungsutils() {}
     
     /**
     * Die Methode prueft ob die PersonName nicht leer ist, falls doch wirft sie eine Exception
@@ -31,11 +34,11 @@ public final class Validierung {
             throw new IllegalArgumentException(attributeName + FEHLER_ATTRIBUTE_NAME_IST_NULL);
         }
 
-        if (Validierung.checkeFuerNurLeertasten(personName)) {
+        if (Validierungsutils.checkeFuerNurLeertasten(personName)) {
             throw new IllegalArgumentException(attributeName + FEHLER_ATTRIBUTE_NAME_IST_LEER);
         }
 
-        if (!Validierung.checkeFuerNurCharaktereVonNamen(personName, sollLeertasteErlauben)) {
+        if (!Validierungsutils.checkeFuerNurCharaktereVonNamen(personName, sollLeertasteErlauben)) {
             throw new IllegalArgumentException(attributeName + FEHLER_ATTRIBUTE_ENTHAELT_SPEZIELLE_CHARAKTERE);
         }
     }

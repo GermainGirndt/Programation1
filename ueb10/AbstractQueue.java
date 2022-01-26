@@ -11,7 +11,7 @@ public abstract class AbstractQueue implements Queue {
 
     private Object[] queue;
     private int anzahl = 0;
-    Class<?> arrayKomponentTyp;
+    private Class<?> arrayKomponentTyp;
 
     private final String FEHLER_FALSCHER_OBJECT_TYP = "Object muss eine Instanz von der Klasse %s sein. Erhalten: %s";
     private final String FEHLER_QUEUE_VOLL = "Schlange schon voll";
@@ -20,14 +20,15 @@ public abstract class AbstractQueue implements Queue {
     private final String FEHLER_STELLE_LEER = "Die eingegebene Stelle ist leer";
     private final String FEHLER_NULL_REFERENZ = "Das neue Objekt darf nicht null sein";
 
+
     /**
     * Konstruktor AbstractQueue
     * @param arrayKomponentTyp Klasse der Objekte in der Queue
     * @param size die Groesse
     */
-    AbstractQueue(Class<?> arrayKomponentTyp, int size) {
+    public AbstractQueue(Class<?> arrayKomponentTyp, int size) {
 
-        Validierung.validiereNatuerlicheZahl(size, false);
+        Validierungsutils.validiereNatuerlicheZahl(size, false);
 
         this.queue = (Object[]) Array.newInstance(arrayKomponentTyp, size);
         this.arrayKomponentTyp = this.queue.getClass().getComponentType();
@@ -45,6 +46,10 @@ public abstract class AbstractQueue implements Queue {
             throw new IllegalArgumentException(FEHLER_NULL_REFERENZ);
         }
 
+        if (this.full()) {
+            throw new IllegalArgumentException(FEHLER_QUEUE_VOLL);
+        }
+
         Class<?> objectTyp = o.getClass();
 
         if (!(objectTyp == this.arrayKomponentTyp)) {
@@ -52,15 +57,9 @@ public abstract class AbstractQueue implements Queue {
                 String.format(FEHLER_FALSCHER_OBJECT_TYP, arrayKomponentTyp, objectTyp)
             );
         }
-        
-    
-        if (this.full()) {
-            throw new IllegalArgumentException(FEHLER_QUEUE_VOLL);
-        }
 
         this.queue[this.anzahl] = o;
         this.anzahl++; 
-    
         
     }
     
@@ -149,18 +148,23 @@ public abstract class AbstractQueue implements Queue {
     * @param index die Stelle des zu entfernenden Elements
     */
     private void entferne(int index) {
-        Validierung.validiereNatuerlicheZahl(index, true);
+        Validierungsutils.validiereNatuerlicheZahl(index, true);
 
         if (index >= this.anzahl) {
            throw new IllegalArgumentException(FEHLER_INDEX_UEBERTROFFEN);
         }
        
-         for (int i = index; i < this.anzahl - 1; i++) {
-            this.queue[i] = this.queue[i + 1];
-         }
+         this.shiftUmEinsNachIndex(index);
 
-         this.queue[this.anzahl - 1] = null;
          this.anzahl--;
+    }
+        
+    private void shiftUmEinsNachIndex(int index) {
+        for (int i = index; i < this.anzahl - 1; i++) {
+            this.queue[i] = this.queue[i + 1];
+        }
+        
+        this.queue[this.anzahl - 1] = null;
     }
 
 }

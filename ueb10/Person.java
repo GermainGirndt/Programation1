@@ -32,12 +32,12 @@ public class Person {
     }
     
     public void setVorname(String vorname){
-        Validierung.validiereNamenString(vorname, VORNAME);
+        Validierungsutils.validiereNamenString(vorname, VORNAME);
         this.vorname = vorname;
     }
     
     public void setNachname(String nachname){
-        Validierung.validiereNamenString(vorname, NACHNAME);
+        Validierungsutils.validiereNamenString(vorname, NACHNAME);
         this.nachname = nachname;
     }
     
