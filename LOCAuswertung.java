@@ -72,8 +72,8 @@ public class LOCAuswertung {
             // Validierung (wenn nicht gültig, eigene Ausnahme werfen!):
             // checke ob Datei existiert
             // checke ob Datei kein Ordner ist
-            // checke ob Datei richtiges format hat
-            // checke ob Datei kann gelesen werden
+            // checke ob Datei das richtige Format hat
+            // checke ob Datei gelesen werden kann
 
 
             
