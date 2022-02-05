@@ -28,34 +28,61 @@ public class LOCAuswertung {
 
     private LOCAuswertung() {};
 
+    private static StringBuilder auswertungsmessage;
+    private static StringBuilder auswertungsfehler;
+
+    private static String START_MESSAGE = "Auswertung Lines Of Code (LOC)\n";
+    private static String TEMPLATE_DATEI_MESSAGE = "%s \t %s LOC";
+
+    private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn (mit spezifischer Fehlerbeschreibung ergaenzen)";
+    
     public static void main(String[] args[]) {
 
-         for (String arg : args) {
-            LOCAuswertung.auswerteDatei(arg);
+        LOCAuswertung.auswertungsmessage = new StringBuilder();
+        LOCAuswertung.auswertungsfehler = new StringBuilder();
+
+        
+        LOCAuswertung.auswertungsmessage.append(START_MESSAGE);
+
+        for (String dateiname : args) {
+             // validierung arg nicht null und String nicht leer
+
+            try {
+                int zeilenAnzahl = LOCAuswertung.auswerteDatei(dateiname);
+                LOCAuswertung.auswertungsmessage.append(String.format(TEMPLATE_DATEI_MESSAGE, dateiname, zeilenAnzahl));
+                
+            } catch (IOException error) {
+                // eigene Ausnahmeklassen definineren und behandeln
+                // ausgeben, was das Problem war
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname));
+    
+            }
          }
+
+         System.out.println(LOCAuswertung.auswertungsmessage);
+         System.out.println(LOCAuswertung.auswertungsfehler);
 
     }
 
-    private static void auswerteDatei(String dateiname) {
+    // zaelt Zeilenanzahlt
+    private static int auswerteDatei(String dateiname) {
 
-        try {
+     
             int zaehler = 0;
-            // checke ob Datei existiert (wenn nicht, eigene Ausnahme werfen)
-            // checke ob Datei kein Ordner ist (wenn nicht, eigene Ausnahme werfen)
-            // checke ob Datei richtiges format hat (wenn nicht, eigene Ausnahme werfen)
-            // checke ob Datei kann gelesen werden (wenn nicht, eigene Ausnahme werfen)
+            // Validierung (wenn nicht gültig, eigene Ausnahme werfen!):
+            // checke ob Datei existiert
+            // checke ob Datei kein Ordner ist
+            // checke ob Datei richtiges format hat
+            // checke ob Datei kann gelesen werden
+
 
             
-            // Zeilen durchlaufen (mit Buffer?)
-            // ueberprufen, ob Zeile ein Kommentar ist (mit // anfaengt)
-            // wenn ja, uebersprigen
-            // wenn nein, zaehler++
+            // Zeilen durchlaufen bis zum Dateienende (??mit Buffer + while-loop?? )
+            // ueberprufen, ob Zeile gezahelt werden soll
+            // wenn Zeile ein Kommentar ist (mit // anfaengt), nichts tun
+            // sonst, zaehler++
 
-            // auswerten
-        } catch (IOException error) {
-            // eigene Ausnahmeklassen definineren und behandeln
-            // ausgeben, was das Problem war
+            return zaehler;
 
-        }
     }
 }
