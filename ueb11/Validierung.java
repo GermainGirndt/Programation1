@@ -13,9 +13,13 @@ public class Validierung
      */
     private Validierung() {}
 
+    private static String FEHLER_KEINE_DATEIEN = "Ungueltige Eingabe. Bitte geben Sie die auszuwertenden " +
+                                                 "Dateinamen als Argumente ein\n" +
+                                                 "Benutzung: java LOCAuswertung Dateiname(n)";
+
     public static void validiereArgsLaenge(String[] args){
         if (args.length == 0 ) {
-            throw new IllegalArgumentException("Benutzung: java LOCAuswertung Dateiname(n)");
+            throw new IllegalArgumentException(FEHLER_KEINE_DATEIEN);
         }
     }
     
@@ -31,7 +35,7 @@ public class Validierung
     // checke ob Datei kein Ordner ist
     // checke ob Datei das richtige Format hat
     // checke ob Datei gelesen werden kann
-    public static void validiereFile(String dateiname) {
+    public static void validiereFile(String dateiname) throws FileNotExistsException {
         File file         = new File(dateiname);
 
         Validierung.validiereFileExistiert(file);
@@ -39,10 +43,10 @@ public class Validierung
         Validierung.validiereFileIstFile(file);
     }
     
-    private static void validiereFileExistiert(File file){
-
+    private static void validiereFileExistiert(File file) throws FileNotExistsException {
+        
         if (!file.exists()) {
-            throw new IllegalArgumentException("Datei existiert nicht");
+            throw new FileNotExistsException(file.getName());
         }
     }
     

@@ -41,31 +41,14 @@ public class LOCAuswertung {
     private static String START_MESSAGE = "Auswertung Lines Of Code (LOC)\n";
     private static String TEMPLATE_DATEI_MESSAGE = "%s \t %s LOC\n";
 
-    private static String FEHLER_KEINE_DATEIEN = "Ungueltige Eingabe. Bitte geben Sie die auszuwertenden Dateinamen als Argumente ein";
-
     private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn: ";    
     private static boolean isSetUp = false;
     public static void main(String[] args) {
 
-        if (args.length == 0) {
-
-            throw new IllegalArgumentException(FEHLER_KEINE_DATEIEN)
-        }
+        Validierung.validiereArgsLaenge(args);
 
         LOCAuswertung.setUp();
 
-        try {
-        // validierung args nicht null
-
-        LOCAuswertung.auswertungsmessage.append(START_MESSAGE);
-        // validierung arg nicht null
-        Validierung.validiereArgsLaenge(args);
-        } catch (IllegalArgumentException argsError) {
-            // eigene Ausnahmeklassen definineren und behandeln
-            // ausgeben, was das Problem war
-            LOCAuswertung.auswertungsfehler.append(String.format( argsError.getMessage()));
-        }
-         
         LOCAuswertung.auswertungsmessage.append(START_MESSAGE);
        
         for (String dateiname : args) {
