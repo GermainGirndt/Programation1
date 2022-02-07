@@ -22,16 +22,21 @@ public class Validierung
         }
     }
     
-     public static void validiereNichtLeer(String text){
+    public static void validiereNichtLeer(String text){
         text = text.trim();
-        if (text.isEmpty()) {
+        if (text == null || text.isEmpty()) {
             throw new IllegalArgumentException("Dateiname ist leer");
         }
     }
 
+    // Validierung (wenn nicht gültig, eigene Ausnahme werfen!):
+    // checke ob Datei existiert
+    // checke ob Datei kein Ordner ist
+    // checke ob Datei das richtige Format hat
+    // checke ob Datei gelesen werden kann
     public static void validiereFile(String dateiname) {
         File file         = new File(dateiname);
-        
+
         Validierung.validiereFileExistiert(file);
         Validierung.validiereFileLesbar(file);
         Validierung.validiereFileIstFile(file);

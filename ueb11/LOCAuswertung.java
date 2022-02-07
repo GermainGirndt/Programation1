@@ -41,9 +41,16 @@ public class LOCAuswertung {
     private static String START_MESSAGE = "Auswertung Lines Of Code (LOC)\n";
     private static String TEMPLATE_DATEI_MESSAGE = "%s \t %s LOC\n";
 
+    private static String FEHLER_KEINE_DATEIEN = "Ungueltige Eingabe. Bitte geben Sie die auszuwertenden Dateinamen als Argumente ein";
+
     private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn: ";    
     private static boolean isSetUp = false;
     public static void main(String[] args) {
+
+        if (args.length == 0) {
+
+            throw new IllegalArgumentException(FEHLER_KEINE_DATEIEN)
+        }
 
         LOCAuswertung.setUp();
 
@@ -64,22 +71,15 @@ public class LOCAuswertung {
         for (String dateiname : args) {
             
             try {
-               
-                // validierung String nicht leer
                 Validierung.validiereNichtLeer(dateiname);
                 
                 int zeilenAnzahl = LOCAuswertung.auswerteDatei(dateiname);
                 LOCAuswertung.auswertungsmessage.append(String.format(TEMPLATE_DATEI_MESSAGE, dateiname, zeilenAnzahl));
                 
             } catch (IOException IOError) {
-                // eigene Ausnahmeklassen definineren und behandeln
-                // ausgeben, was das Problem war
                 LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + IOError.getMessage(), dateiname));
-    
             
             } catch (IllegalArgumentException IlError) {
-                // eigene Ausnahmeklassen definineren und behandeln
-                // ausgeben, was das Problem war
                 LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + IlError.getMessage(), dateiname));
             }
         }
@@ -92,29 +92,21 @@ public class LOCAuswertung {
 
    
     private static int auswerteDatei(String dateiname) throws IOException {            
-        // Validierung (wenn nicht gültig, eigene Ausnahme werfen!):
-        // checke ob Datei existiert
-        // checke ob Datei kein Ordner ist
-        // checke ob Datei das richtige Format hat
-        // checke ob Datei gelesen werden kann
+
         
         Validierung.validiereFile(dateiname);
 
+        String zeile;
         BufferedReader reader       = new BufferedReader(new FileReader(dateiname));
     
-        int zaehler  = 0;
-        String zeile;
-           
-        // Zeilen durchlaufen bis zum Dateienende (??mit Buffer + while-loop?? )
-        // ueberprufen, ob Zeile gezahelt werden soll
-        // wenn Zeile ein Kommentar ist (mit // anfaengt), nichts tun
-        // sonst, zaehler++
+        
+        int zaehler = 0;
         while ((zeile = reader.readLine()) != null) {
             zeile = zeile.trim();
             Matcher kommentarMatcher = patternKommentar.matcher(zeile);   
 
             if (!zeile.isEmpty() && !kommentarMatcher.find() ) {
-                    zaehler++;  
+                zaehler++;  
             }
         }
         
