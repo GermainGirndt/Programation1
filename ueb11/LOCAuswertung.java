@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
  * java LOCAuswertung datei1.java datei2.java datei3.java
@@ -36,7 +38,9 @@ public class LOCAuswertung {
     
     private static StringBuilder auswertungsmessage;
     private static StringBuilder auswertungsfehler;
-   
+    
+    private static Pattern patternKommentar = Pattern.compile("^//*");
+
     
     private static String START_MESSAGE = "Auswertung Lines Of Code (LOC)\n";
     private static String TEMPLATE_DATEI_MESSAGE = "%s \t %s LOC";
@@ -88,9 +92,14 @@ public class LOCAuswertung {
             // ueberprufen, ob Zeile gezahelt werden soll
             // wenn Zeile ein Kommentar ist (mit // anfaengt), nichts tun
             // sonst, zaehler++
-            
             while((zeile = reader.readLine()) != null){
-                zaehler++;
+                zeile = zeile.trim();
+                if(!zeile.isEmpty()){
+                     Matcher matcher = patternKommentar.matcher(zeile);{   
+                     if(!matcher.find()){
+                         zaehler++;  
+                     }
+                }
             }
 
 
