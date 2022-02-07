@@ -35,7 +35,8 @@ public class Validierung
     // checke ob Datei kein Ordner ist
     // checke ob Datei das richtige Format hat
     // checke ob Datei gelesen werden kann
-    public static void validiereFile(String dateiname) throws FileNotExistsException {
+    public static void validiereFile(String dateiname) throws FileNotFileException, 
+                                                       FileNotExistsException,  FileNotReadableException {
         File file         = new File(dateiname);
 
         Validierung.validiereFileExistiert(file);
@@ -50,17 +51,17 @@ public class Validierung
         }
     }
     
-    private static void validiereFileLesbar(File file){
+    private static void validiereFileLesbar(File file) throws FileNotReadableException{
 
         if (!file.canRead()) {
-            throw new IllegalArgumentException("Datei nicht lesbar");
+            throw new  FileNotReadableException(file.getName());
         }
     }
     
-     private static void validiereFileIstFile(File file){
+     private static void validiereFileIstFile(File file) throws FileNotFileException {
 
         if (!file.isFile()) {
-            throw new IllegalArgumentException("Die angegebene Datei ist gar keine Datei");
+            throw new FileNotFileException(file.getName());
         }
     }
 }

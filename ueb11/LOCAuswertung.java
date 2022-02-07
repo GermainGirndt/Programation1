@@ -66,6 +66,10 @@ public class LOCAuswertung {
                 LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
             } catch (FileNotExistsException error) {
                 LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
+            }  catch (FileNotFileException error) {
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
+            } catch (FileNotReadableException error) {
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
             }
         }
          
@@ -76,7 +80,8 @@ public class LOCAuswertung {
     }
 
    
-    private static int auswerteDatei(String dateiname) throws IOException, FileNotExistsException {            
+    private static int auswerteDatei(String dateiname) throws IOException, FileNotExistsException,
+                                                       FileNotFileException,  FileNotReadableException {            
 
         
         Validierung.validiereFile(dateiname);
