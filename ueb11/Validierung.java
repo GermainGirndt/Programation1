@@ -1,3 +1,4 @@
+import java.io.File;
 
 /**
  * Beschreiben Sie hier die Klasse Validierung.
@@ -16,8 +17,8 @@ public class Validierung
     {  }
 
     public static void validiereArgsLaenge(String[] args){
-        if (args.length == 0) {
-            throw new IllegalArgumentException("Proper Usage is: java LOCAuswertung filename(s)");
+        if (args.length == 0 ) {
+            throw new IllegalArgumentException("Benutzung: java LOCAuswertung Dateiname(n)");
         }
     }
     
@@ -25,6 +26,27 @@ public class Validierung
         text = text.trim();
         if (text.isEmpty()) {
             throw new IllegalArgumentException("Dateiname ist leer");
+        }
+    }
+    
+    public static void validiereFileExistiert(File file){
+
+        if (!file.exists()) {
+            throw new IllegalArgumentException("Datei existiert nicht");
+        }
+    }
+    
+    public static void validiereFileLesbar(File file){
+
+        if (!file.canRead()) {
+            throw new IllegalArgumentException("Datei nicht lesbar");
+        }
+    }
+    
+     public static void validiereFileIstFile(File file){
+
+        if (!file.isFile()) {
+            throw new IllegalArgumentException("Die angegebene Datei ist gar keine Datei");
         }
     }
 }

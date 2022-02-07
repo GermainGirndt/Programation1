@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.File;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -40,25 +41,32 @@ public class LOCAuswertung {
     
     private static Pattern patternKommentar = Pattern.compile("^//*");
 
+    private static File file;
     
     private static String START_MESSAGE = "Auswertung Lines Of Code (LOC)\n";
-    private static String TEMPLATE_DATEI_MESSAGE = "%s \t %s LOC";
+    private static String TEMPLATE_DATEI_MESSAGE = "%s \t %s LOC\n";
 
-    private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn (mit spezifischer Fehlerbeschreibung ergaenzen)";
-    
+    private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn: ";    
     public static void main(String[] args) {
 
         LOCAuswertung.auswertungsmessage = new StringBuilder();
         LOCAuswertung.auswertungsfehler = new StringBuilder();
-
         
-        LOCAuswertung.auswertungsmessage.append(START_MESSAGE);
-        // validierung arg nicht null
+        try {
+        // validierung args nicht null
         Validierung.validiereArgsLaenge(args);
-        
+        } catch (IllegalArgumentException argsError) {
+            // eigene Ausnahmeklassen definineren und behandeln
+            // ausgeben, was das Problem war
+            LOCAuswertung.auswertungsfehler.append(String.format( argsError.getMessage()));
+        }
+         
+        LOCAuswertung.auswertungsmessage.append(START_MESSAGE);
+       
         for (String dateiname : args) {
             
             try {
+               
                 // validierung String nicht leer
                 Validierung.validiereNichtLeer(dateiname);
                 
@@ -68,13 +76,13 @@ public class LOCAuswertung {
             } catch (IOException IOError) {
                 // eigene Ausnahmeklassen definineren und behandeln
                 // ausgeben, was das Problem war
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname));
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + IOError.getMessage(), dateiname));
     
             
             } catch (IllegalArgumentException IlError) {
                 // eigene Ausnahmeklassen definineren und behandeln
                 // ausgeben, was das Problem war
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname));
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + IlError.getMessage(), dateiname));
             }
         }
          
@@ -86,16 +94,22 @@ public class LOCAuswertung {
 
    
     private static int auswerteDatei(String dateiname) throws IOException {
-            reader       = new BufferedReader(new FileReader(dateiname));
-     
-            int zaehler  = 0;
-            String zeile = "";
             
             // Validierung (wenn nicht gültig, eigene Ausnahme werfen!):
             // checke ob Datei existiert
             // checke ob Datei kein Ordner ist
             // checke ob Datei das richtige Format hat
             // checke ob Datei gelesen werden kann
+            
+            file         = new File(dateiname);
+            Validierung.validiereFileExistiert(file);
+            Validierung.validiereFileLesbar(file);
+            Validierung.validiereFileIstFile(file);
+            
+            reader       = new BufferedReader(new FileReader(dateiname));
+     
+            int zaehler  = 0;
+            String zeile = "";
 
                         
             // Zeilen durchlaufen bis zum Dateienende (??mit Buffer + while-loop?? )
