@@ -59,11 +59,13 @@ public class LOCAuswertung {
                 int zeilenAnzahl = LOCAuswertung.auswerteDatei(dateiname);
                 LOCAuswertung.auswertungsmessage.append(String.format(TEMPLATE_DATEI_MESSAGE, dateiname, zeilenAnzahl));
                 
-            } catch (IOException IOError) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + IOError.getMessage(), dateiname));
+            } catch (IOException error) {
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
             
-            } catch (IllegalArgumentException IlError) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + IlError.getMessage(), dateiname));
+            } catch (IllegalArgumentException error) {
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
+            } catch (FileNotExistsException error) {
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
             }
         }
          
@@ -74,7 +76,7 @@ public class LOCAuswertung {
     }
 
    
-    private static int auswerteDatei(String dateiname) throws IOException {            
+    private static int auswerteDatei(String dateiname) throws IOException, FileNotExistsException {            
 
         
         Validierung.validiereFile(dateiname);
