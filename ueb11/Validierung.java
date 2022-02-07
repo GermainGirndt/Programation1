@@ -28,22 +28,30 @@ public class Validierung
             throw new IllegalArgumentException("Dateiname ist leer");
         }
     }
+
+    public static void validiereFile(String dateiname) {
+        File file         = new File(dateiname);
+        
+        Validierung.validiereFileExistiert(file);
+        Validierung.validiereFileLesbar(file);
+        Validierung.validiereFileIstFile(file);
+    }
     
-    public static void validiereFileExistiert(File file){
+    private static void validiereFileExistiert(File file){
 
         if (!file.exists()) {
             throw new IllegalArgumentException("Datei existiert nicht");
         }
     }
     
-    public static void validiereFileLesbar(File file){
+    private static void validiereFileLesbar(File file){
 
         if (!file.canRead()) {
             throw new IllegalArgumentException("Datei nicht lesbar");
         }
     }
     
-     public static void validiereFileIstFile(File file){
+     private static void validiereFileIstFile(File file){
 
         if (!file.isFile()) {
             throw new IllegalArgumentException("Die angegebene Datei ist gar keine Datei");

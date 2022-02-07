@@ -31,29 +31,27 @@ import java.util.regex.Matcher;
  */
 public class LOCAuswertung {
 
-    private LOCAuswertung() {
-    };
+    private LOCAuswertung() {};
 
-    private static BufferedReader reader;
-    
     private static StringBuilder auswertungsmessage;
     private static StringBuilder auswertungsfehler;
     
     private static Pattern patternKommentar = Pattern.compile("^//*");
 
-    private static File file;
-    
     private static String START_MESSAGE = "Auswertung Lines Of Code (LOC)\n";
     private static String TEMPLATE_DATEI_MESSAGE = "%s \t %s LOC\n";
 
     private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn: ";    
+    private static boolean isSetUp = false;
     public static void main(String[] args) {
 
-        LOCAuswertung.auswertungsmessage = new StringBuilder();
-        LOCAuswertung.auswertungsfehler = new StringBuilder();
-        
+        LOCAuswertung.setUp();
+
         try {
         // validierung args nicht null
+
+        LOCAuswertung.auswertungsmessage.append(START_MESSAGE);
+        // validierung arg nicht null
         Validierung.validiereArgsLaenge(args);
         } catch (IllegalArgumentException argsError) {
             // eigene Ausnahmeklassen definineren und behandeln
@@ -93,39 +91,48 @@ public class LOCAuswertung {
     }
 
    
-    private static int auswerteDatei(String dateiname) throws IOException {
-            
-            // Validierung (wenn nicht gültig, eigene Ausnahme werfen!):
-            // checke ob Datei existiert
-            // checke ob Datei kein Ordner ist
-            // checke ob Datei das richtige Format hat
-            // checke ob Datei gelesen werden kann
-            
-            file         = new File(dateiname);
-            Validierung.validiereFileExistiert(file);
-            Validierung.validiereFileLesbar(file);
-            Validierung.validiereFileIstFile(file);
-            
-            reader       = new BufferedReader(new FileReader(dateiname));
-     
-            int zaehler  = 0;
-            String zeile = "";
+    private static int auswerteDatei(String dateiname) throws IOException {            
+        // Validierung (wenn nicht gültig, eigene Ausnahme werfen!):
+        // checke ob Datei existiert
+        // checke ob Datei kein Ordner ist
+        // checke ob Datei das richtige Format hat
+        // checke ob Datei gelesen werden kann
+        
+        Validierung.validiereFile(dateiname);
 
-                        
-            // Zeilen durchlaufen bis zum Dateienende (??mit Buffer + while-loop?? )
-            // ueberprufen, ob Zeile gezahelt werden soll
-            // wenn Zeile ein Kommentar ist (mit // anfaengt), nichts tun
-            // sonst, zaehler++
-            while((zeile = reader.readLine()) != null){
-                zeile = zeile.trim();
-                if(!zeile.isEmpty()){
-                     Matcher matcher = patternKommentar.matcher(zeile);{   
-                     if(!matcher.find()){
-                         zaehler++;  
-                     }
-                }
+        BufferedReader reader       = new BufferedReader(new FileReader(dateiname));
+    
+        int zaehler  = 0;
+        String zeile;
+           
+        // Zeilen durchlaufen bis zum Dateienende (??mit Buffer + while-loop?? )
+        // ueberprufen, ob Zeile gezahelt werden soll
+        // wenn Zeile ein Kommentar ist (mit // anfaengt), nichts tun
+        // sonst, zaehler++
+        while ((zeile = reader.readLine()) != null) {
+            zeile = zeile.trim();
+            Matcher kommentarMatcher = patternKommentar.matcher(zeile);   
+
+            if (!zeile.isEmpty() && !kommentarMatcher.find() ) {
+                    zaehler++;  
             }
         }
+        
+        reader.close();
+
         return zaehler;
     }
+
+    private static void setUp() {
+
+        if (LOCAuswertung.isSetUp) {
+            return;
+        }
+
+        LOCAuswertung.auswertungsmessage = new StringBuilder();
+        LOCAuswertung.auswertungsfehler = new StringBuilder();
+        LOCAuswertung.isSetUp = true;
+    }
+
+
 }
