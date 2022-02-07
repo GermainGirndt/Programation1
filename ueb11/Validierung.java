@@ -20,4 +20,11 @@ public class Validierung
             throw new IllegalArgumentException("Proper Usage is: java LOCAuswertung filename(s)");
         }
     }
+    
+     public static void validiereNichtLeer(String text){
+        text = text.trim();
+        if (text.isEmpty()) {
+            throw new IllegalArgumentException("Dateiname ist leer");
+        }
+    }
 }
