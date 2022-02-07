@@ -5,32 +5,12 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 /**
- * java LOCAuswertung datei1.java datei2.java datei3.java
+ * LOCAuswertung wertet die LOC von Dateien aus
  * 
- * • Es ist mindestens eine Datei zu übergeben. Die Gesamtanzahl an übergebenen Dateien ist beliebig.
- *
- *
- * • Die zu verarbeitenden Dateien sind auf die Eigenschaften „normale Datei“ und „Lesbarkeit“
- * zu prüfen. Natürlich müssen die zu verarbeitenden Dateien auch existieren, bevor eine Verarbeitung starten kann.
- * 
- * 
- * • Mögliche Ausnahmen sind zu behandeln. Definieren Sie dazu eigene Ausnahmeklassen.
- * 
- * 
- * • Bei Lesefehlern in einer Datei soll mit der nächsten Datei fortgefahren werden.
- * 
- * 
- * • Zu zählen sind dabei alle nichtleeren Zeilen, die keine Kommentarzeilen sind.
- * 
- * – Dabei können leere Zeilen durchaus eine Länge größer als 0 haben.
- * 
- * – Als Kommentarzeilen betrachten wir der Einfachheit halber nur die Zeilen, die mit dem
- * String „//“ beginnen
- * 
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class LOCAuswertung {
-
-    private LOCAuswertung() {};
 
     private static StringBuilder auswertungsmessage;
     private static StringBuilder auswertungsfehler;
@@ -38,12 +18,21 @@ public class LOCAuswertung {
     private static Pattern patternKommentar = Pattern.compile("^//*");
 
     private static String START_MESSAGE = "Auswertung Lines Of Code (LOC)\n";
-    private static String TEMPLATE_DATEI_MESSAGE = "%s \t %s LOC\n";
-
-    private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn: ";    
+    private static String TEMPLATE_DATEI_MESSAGE = "%s \t\t %s LOC\n";
+    
+    private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn:\n %s\n\n";    
     private static boolean isSetUp = false;
 
+    /**
+    * Konstrutkor - Klasse nicht instanzierbar
+    */
+    private LOCAuswertung() {};
 
+    /**
+     * Koordiniert die LOC-Auswertung der eingegebenen Dateiennamen und
+     * gibt die Auswertungsergebnisse und Auswertungsfehler aus
+     * @params args die Namen der Dateien, die ausgewertet werden soll
+     */
     public static void main(String[] args) {
 
         Validierung.validiereArgsLaenge(args);
@@ -61,15 +50,15 @@ public class LOCAuswertung {
                 LOCAuswertung.auswertungsmessage.append(String.format(TEMPLATE_DATEI_MESSAGE, dateiname, zeilenAnzahl));
                 
             } catch (IOException error) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
             } catch (IllegalArgumentException error) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
             } catch (FileDoesNotExistException error) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
             }  catch (FileNotFileException error) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
             } catch (FileNotReadableException error) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
             }
         }
          
@@ -78,7 +67,11 @@ public class LOCAuswertung {
          System.out.println(LOCAuswertung.auswertungsfehler);
     }
 
-   
+    /**
+     * Wertet die LOC der eingegebenen Datei aus
+     * leere Zeilen, Zeilen nur mit Leertasten und Kommentarenzeilen "//" werden nicht gezählt
+     * @params dateiname der Datei, die ausgewertet werden soll
+     */
     private static int auswerteDatei(String dateiname) throws IOException, FileDoesNotExistException,
                                                        FileNotFileException,  FileNotReadableException {            
 
@@ -104,6 +97,9 @@ public class LOCAuswertung {
         return zaehler;
     }
 
+    /**
+    * Initialisiert Klassen-Variablen bei der ersten Ausführung
+    */
     private static void setUp() {
 
         if (LOCAuswertung.isSetUp) {
