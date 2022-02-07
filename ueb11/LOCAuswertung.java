@@ -31,7 +31,6 @@ import java.util.regex.Matcher;
 public class LOCAuswertung {
 
     private LOCAuswertung() {
-    
     };
 
     private static BufferedReader reader;
@@ -75,12 +74,13 @@ public class LOCAuswertung {
 
     }
 
-    // zaelt Zeilenanzahlt
+   
     private static int auswerteDatei(String dateiname) throws IOException {
             reader       = new BufferedReader(new FileReader(dateiname));
      
             int zaehler  = 0;
-            String zeile = ""; 
+            String zeile = "";
+            
             // Validierung (wenn nicht gültig, eigene Ausnahme werfen!):
             // checke ob Datei existiert
             // checke ob Datei kein Ordner ist
@@ -101,10 +101,7 @@ public class LOCAuswertung {
                      }
                 }
             }
-
-
-
-            return zaehler;
-
+        }
+        return zaehler;
     }
 }
