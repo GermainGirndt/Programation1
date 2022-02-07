@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.File;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -43,6 +42,8 @@ public class LOCAuswertung {
 
     private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn: ";    
     private static boolean isSetUp = false;
+
+
     public static void main(String[] args) {
 
         Validierung.validiereArgsLaenge(args);
@@ -61,10 +62,9 @@ public class LOCAuswertung {
                 
             } catch (IOException error) {
                 LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
-            
             } catch (IllegalArgumentException error) {
                 LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
-            } catch (FileNotExistsException error) {
+            } catch (FileDoesNotExistException error) {
                 LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
             }  catch (FileNotFileException error) {
                 LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE + error.getMessage(), dateiname));
@@ -76,11 +76,10 @@ public class LOCAuswertung {
 
          System.out.println(LOCAuswertung.auswertungsmessage);
          System.out.println(LOCAuswertung.auswertungsfehler);
-
     }
 
    
-    private static int auswerteDatei(String dateiname) throws IOException, FileNotExistsException,
+    private static int auswerteDatei(String dateiname) throws IOException, FileDoesNotExistException,
                                                        FileNotFileException,  FileNotReadableException {            
 
         

@@ -1,9 +1,8 @@
-
 /**
- * Beschreiben Sie hier die Klasse FileNotFileException.
+ * FileNotFileException wird geworfen, wenn die eingegebene Datei keine Datei ist
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class FileNotFileException  extends Exception
 {

@@ -1,9 +1,9 @@
 
 /**
- * Beschreiben Sie hier die Klasse FileNotReadableException.
+ * FileNotReadableException wird geworfen, wenn die eingegebene Datei nicht lesbar ist
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class FileNotReadableException extends Exception
 {
