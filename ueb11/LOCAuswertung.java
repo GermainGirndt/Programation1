@@ -53,10 +53,11 @@ public class LOCAuswertung {
 
         
         LOCAuswertung.auswertungsmessage.append(START_MESSAGE);
-
+        // validierung arg nicht null
+        Validierung.validiereArgsLaenge(args);
+        
         for (String dateiname : args) {
-             // validierung arg nicht null und String nicht leer
-
+            // validierung String nicht leer
             try {
                 int zeilenAnzahl = LOCAuswertung.auswerteDatei(dateiname);
                 LOCAuswertung.auswertungsmessage.append(String.format(TEMPLATE_DATEI_MESSAGE, dateiname, zeilenAnzahl));
