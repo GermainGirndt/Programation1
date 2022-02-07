@@ -57,20 +57,27 @@ public class LOCAuswertung {
         Validierung.validiereArgsLaenge(args);
         
         for (String dateiname : args) {
-            // validierung String nicht leer
-            Validierung.validiereNichtLeer(dateiname);
             
             try {
+                // validierung String nicht leer
+                Validierung.validiereNichtLeer(dateiname);
+                
                 int zeilenAnzahl = LOCAuswertung.auswerteDatei(dateiname);
                 LOCAuswertung.auswertungsmessage.append(String.format(TEMPLATE_DATEI_MESSAGE, dateiname, zeilenAnzahl));
                 
-            } catch (IOException error) {
+            } catch (IOException IOError) {
                 // eigene Ausnahmeklassen definineren und behandeln
                 // ausgeben, was das Problem war
                 LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname));
     
+            
+            } catch (IllegalArgumentException IlError) {
+                // eigene Ausnahmeklassen definineren und behandeln
+                // ausgeben, was das Problem war
+                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname));
             }
-         }
+        }
+         
 
          System.out.println(LOCAuswertung.auswertungsmessage);
          System.out.println(LOCAuswertung.auswertungsfehler);
