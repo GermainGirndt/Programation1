@@ -8,13 +8,10 @@ import java.io.File;
  */
 public class Validierung
 {
-
-
     /**
      * Konstruktor für Objekte der Klasse Validierung
      */
-    private Validierung()
-    {  }
+    private Validierung() {}
 
     public static void validiereArgsLaenge(String[] args){
         if (args.length == 0 ) {
