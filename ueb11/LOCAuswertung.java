@@ -12,21 +12,29 @@ import java.util.regex.Matcher;
  */
 public class LOCAuswertung {
 
-    private static StringBuilder auswertungsmessage;
-    private static StringBuilder auswertungsfehler;
+    private StringBuilder auswertungsmessage;
+    private StringBuilder auswertungsfehler;
     
     private static Pattern patternKommentar = Pattern.compile("^//*");
 
     private static String START_MESSAGE = "Auswertung Lines Of Code (LOC)\n";
+    private static String END_MESSAGE = "\nGesamt:\n%s Dateien \t\t %s\n";
     private static String TEMPLATE_DATEI_MESSAGE = "%s \t\t %s LOC\n";
     
     private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn:\n %s\n\n";    
-    private static boolean isSetUp = false;
+
+    private BufferedReader reader;
+
+    private int gesamtzeilenanzahl; 
+    private int erfolgreichgeleseneDateien; 
 
     /**
     * Konstrutkor - Klasse nicht instanzierbar
     */
-    private LOCAuswertung() {};
+    private LOCAuswertung() {
+        this.auswertungsmessage = new StringBuilder();
+        this.auswertungsfehler = new StringBuilder();
+    };
 
     /**
      * Koordiniert die LOC-Auswertung der eingegebenen Dateiennamen und
@@ -34,37 +42,34 @@ public class LOCAuswertung {
      * @params args die Namen der Dateien, die ausgewertet werden soll
      */
     public static void main(String[] args) {
+        LOCAuswertung instance = new LOCAuswertung();
+        instance.start(args);
+    }
 
+    private void start(String[] args) {
         Validierung.validiereArgsLaenge(args);
 
-        LOCAuswertung.setUp();
+        this.auswertungsmessage.append(START_MESSAGE);
 
-        LOCAuswertung.auswertungsmessage.append(START_MESSAGE);
-       
         for (String dateiname : args) {
-            
-            try {
+            try (BufferedReader reader = new BufferedReader(new FileReader(dateiname))) {
+                this.reader = reader;
+
                 Validierung.validiereNichtLeer(dateiname);
                 
-                int zeilenAnzahl = LOCAuswertung.auswerteDatei(dateiname);
-                LOCAuswertung.auswertungsmessage.append(String.format(TEMPLATE_DATEI_MESSAGE, dateiname, zeilenAnzahl));
+                int zeilenAnzahl = this.auswerteDatei(dateiname);
+                this.auswertungsmessage.append(String.format(TEMPLATE_DATEI_MESSAGE, dateiname, zeilenAnzahl));
                 
-            } catch (IOException error) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
-            } catch (IllegalArgumentException error) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
-            } catch (FileDoesNotExistException error) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
-            }  catch (FileNotFileException error) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
-            } catch (FileNotReadableException error) {
-                LOCAuswertung.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
+                this.erfolgreichgeleseneDateien++;
+                this.gesamtzeilenanzahl += zeilenAnzahl;
+            } catch (Exception error) {
+                this.auswertungsfehler.append(String.format(FEHLER_MESSAGE, dateiname, error.getMessage()));
             }
         }
          
-
-         System.out.println(LOCAuswertung.auswertungsmessage);
-         System.out.println(LOCAuswertung.auswertungsfehler);
+        this.auswertungsmessage.append(String.format(END_MESSAGE, this.erfolgreichgeleseneDateien, this.gesamtzeilenanzahl));
+         System.out.println(this.auswertungsmessage);
+         System.out.println(this.auswertungsfehler);
     }
 
     /**
@@ -72,43 +77,24 @@ public class LOCAuswertung {
      * leere Zeilen, Zeilen nur mit Leertasten und Kommentarenzeilen "//" werden nicht gezählt
      * @params dateiname der Datei, die ausgewertet werden soll
      */
-    private static int auswerteDatei(String dateiname) throws IOException, FileDoesNotExistException,
+    private int auswerteDatei(String dateiname) throws IOException, FileDoesNotExistException,
                                                        FileNotFileException,  FileNotReadableException {            
-
-        
+                                             
         Validierung.validiereFile(dateiname);
 
         String zeile;
-        BufferedReader reader       = new BufferedReader(new FileReader(dateiname));
-    
         
         int zaehler = 0;
-        while ((zeile = reader.readLine()) != null) {
+        while ((zeile = this.reader.readLine()) != null) {
             zeile = zeile.trim();
             Matcher kommentarMatcher = patternKommentar.matcher(zeile);   
 
-            if (!zeile.isEmpty() && !kommentarMatcher.find() ) {
-                zaehler++;  
+            if (!zeile.isEmpty() && !kommentarMatcher.matches()) {
+                zaehler++;
             }
         }
-        
-        reader.close();
 
         return zaehler;
-    }
-
-    /**
-    * Initialisiert Klassen-Variablen bei der ersten Ausführung
-    */
-    private static void setUp() {
-
-        if (LOCAuswertung.isSetUp) {
-            return;
-        }
-
-        LOCAuswertung.auswertungsmessage = new StringBuilder();
-        LOCAuswertung.auswertungsfehler = new StringBuilder();
-        LOCAuswertung.isSetUp = true;
     }
 
 
