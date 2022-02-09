@@ -89,15 +89,29 @@ public abstract class AbstractQueue implements Queue {
         if (this.empty()) {
             throw new IllegalArgumentException(FEHLER_QUEUE_LEER);    
         }
-        if (i >= this.queue.length || i < 0) {
+        if (!this.checkeObIndexInDerQueueExistiert(i)) {
             throw new IllegalArgumentException(FEHLER_INDEX_UEBERTROFFEN); 
         }
         
-        if (i >= this.anzahl) {
+        if (this.checkeObIndexLeerIst(i)) {
             throw new IllegalArgumentException(FEHLER_STELLE_LEER); 
         }
 
         return this.queue[i];
+    }
+
+    private boolean checkeObIndexInDerQueueExistiert(int zuUeberpruefenderIndex) {
+        boolean existiert = zuUeberpruefenderIndex >= 0 && zuUeberpruefenderIndex < this.queue.length;
+
+        return existiert;
+
+    }
+    
+    private boolean checkeObIndexLeerIst(int index) {
+        boolean istLeer = index >= this.anzahl;
+
+        return istLeer;
+
     }
     
     /**
@@ -150,8 +164,12 @@ public abstract class AbstractQueue implements Queue {
     private void entferne(int index) {
         Validierungsutils.validiereNatuerlicheZahl(index, true);
 
-        if (index >= this.anzahl) {
+        if (!this.checkeObIndexInDerQueueExistiert(index)) {
            throw new IllegalArgumentException(FEHLER_INDEX_UEBERTROFFEN);
+        }
+
+        if (this.checkeObIndexLeerIst(index)) {
+            throw new IllegalArgumentException(FEHLER_STELLE_LEER); 
         }
        
          this.shiftUmEinsNachIndex(index);
