@@ -15,11 +15,10 @@ public class LOCAuswertung {
     private StringBuilder auswertungsmessage;
     private StringBuilder auswertungsfehler;
     
-    private static Pattern patternKommentar = Pattern.compile("^//*");
-
     private static String START_MESSAGE = "Auswertung Lines Of Code (LOC)\n";
     private static String END_MESSAGE = "\nGesamt:\n%s Dateien \t\t %s\n";
     private static String TEMPLATE_DATEI_MESSAGE = "%s \t\t %s LOC\n";
+    private static String KOMMENTAR_REGEX = "^//*";
     
     private static String FEHLER_MESSAGE = "Die Datei %s könnte nicht ausgewertet werden, denn:\n %s\n\n";    
 
@@ -68,8 +67,8 @@ public class LOCAuswertung {
         }
          
         this.auswertungsmessage.append(String.format(END_MESSAGE, this.erfolgreichgeleseneDateien, this.gesamtzeilenanzahl));
-         System.out.println(this.auswertungsmessage);
-         System.out.println(this.auswertungsfehler);
+        System.out.println(this.auswertungsmessage);
+        System.out.println(this.auswertungsfehler);
     }
 
     /**
@@ -87,7 +86,8 @@ public class LOCAuswertung {
         int zaehler = 0;
         while ((zeile = this.reader.readLine()) != null) {
             zeile = zeile.trim();
-            Matcher kommentarMatcher = patternKommentar.matcher(zeile);   
+            Pattern patternkommentar = Pattern.compile(KOMMENTAR_REGEX);
+            Matcher kommentarMatcher = patternkommentar.matcher(zeile);   
 
             if (!zeile.isEmpty() && !kommentarMatcher.matches()) {
                 zaehler++;
