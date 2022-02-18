@@ -206,6 +206,7 @@ public class LagerTest
      * Artikel entfernen
      */
 
+    
     @Test
     public void kann_einen_Artikel_entfernen() {
         Artikel artikel = this.anlege_einen_Artikel_ins_Lager(ARTIKEL_EINS_NUMMER);
@@ -311,6 +312,20 @@ public class LagerTest
         assertThrows(
             Error.class,
             () -> this.lager.getArtikel(this.getIndexFromArtikel(ARTIKEL_DREI_NUMMER)),
+            "Expected doThing() to throw, but it didn't"
+        );
+    }
+
+    @Test
+    public void kann_einen_Artikel_entfernen_mit_vollem_Lager() {
+        this.lager = new Lager(1);
+        Artikel artikel = this.anlege_einen_Artikel_ins_Lager(ARTIKEL_EINS_NUMMER);
+
+        this.lager.entferneArtikel(artikel.getArtikelNr());
+
+        assertThrows(
+            Error.class,
+            () -> this.lager.getArtikel(this.getIndexFromArtikel(ARTIKEL_EINS_NUMMER)),
             "Expected doThing() to throw, but it didn't"
         );
     }
