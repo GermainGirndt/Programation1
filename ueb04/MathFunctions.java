@@ -119,39 +119,29 @@ public class MathFunctions
   * @return das Ergebnis von der Pruefung
   */
    public static boolean istSummeVonPotenzen(long zahl){  
-    long basis2 =  START_WERT_BASIS;
-    long basis3 =  START_WERT_BASIS;
-    long basis4 =  START_WERT_BASIS;
-    
-    Validierung.validiereZahlPotenzsumme(zahl);  
-    
-    double temp   = zahl;
-    
-    while(Math.pow(basis2 , SQUARE) < zahl){
         
-        temp   =  zahl - Math.pow(basis2 , SQUARE);
-        basis3 =  START_WERT_BASIS;
-        basis4 =  START_WERT_BASIS;
+        Validierung.validiereZahlPotenzsumme(zahl);  
         
-        while(Math.pow(basis3 , KUBUS) < temp){ 
-            
-            temp   = zahl - Math.pow(basis2 , SQUARE) - Math.pow(basis3 , KUBUS);
-            basis4 = START_WERT_BASIS;
-            
-            while(Math.pow(basis4 , EXPONENT_VIER) - temp < FEHLER_MULTIPLIKATOR  *  Double.MIN_VALUE){ 
-                
-                if(Math.pow(basis4, EXPONENT_VIER) - temp < FEHLER_MULTIPLIKATOR  * Double.MIN_VALUE  &&
-                   Math.pow(basis4, EXPONENT_VIER) - temp > - FEHLER_MULTIPLIKATOR  * Double.MIN_VALUE){
-                       
-                    return true;
+        long a, aPotenz, b, bPotenz, c, cqp, sum;
+
+        for (a = 1; a * a * a * a + 2 <= zahl; a++) {
+
+            aPotenz = a * a * a * a;
+
+            for (b = 1; aPotenz + b * b * b + 1 <= zahl; b++) {
+                bPotenz = b * b * b;
+
+                for ( c = 1; aPotenz + bPotenz + c * c <= zahl; c++) {
+                    
+                    sum = aPotenz + bPotenz + c * c;
+
+                    if (zahl == sum) {
+                        return true;
+                    }
                 }
-                basis4++;
-            } 
-            basis3++;
-        }  
-        basis2++;
-    }
-    return false;
+            }
+        }
+        return false;
     }
     
   /**

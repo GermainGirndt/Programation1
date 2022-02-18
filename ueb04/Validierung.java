@@ -43,7 +43,11 @@ public class Validierung {
     public static void validiereZahlPotenzsumme(long zahlPotenzsumme){
         if(!Validierung.checkeObNatuerlicheZahl(zahlPotenzsumme)){
              throw new IllegalArgumentException("Ob eine Zahl durch Potenzen dargestellt werden kann, wird nur bei natuerlichen Zahlen geprueft");    
-        }   
+        }
+
+        if (zahlPotenzsumme < 3) {
+            throw new IllegalArgumentException("Kann keine Potenzsumme sein");
+        }
     }
     
     /**
