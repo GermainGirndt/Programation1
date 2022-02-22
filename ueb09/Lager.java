@@ -66,19 +66,14 @@ public class Lager
         if (this.lagerLeer()) {
             throw new IllegalArgumentException(LagerKonstanten.ERROR_LAGER_IST_LEER);
         }
-        
-        for (int index = 0; index <= this.anzahlArtikel -1; index++) {
-            Artikel artikelZuChecken = this.artikelLager[index];
-            
-            if(artikelZuChecken != null){
-                if (artikelZuChecken.getArtikelNr() == artikelNr) {
-                    loescheArtikelNachIndex(index);
-                    return;
-                }
-            }
-        }    
-        
-        throw new IllegalArgumentException(LagerKonstanten.ERROR_ZU_ENTFERNENDER_ARTIKEL_NICHT_IM_LAGER);
+
+        int index = this.getArtikelNachNummer(artikelNr);
+
+        if (index == -1) {
+            throw new IllegalArgumentException(LagerKonstanten.ERROR_ZU_ENTFERNENDER_ARTIKEL_NICHT_IM_LAGER);
+        }
+
+        loescheArtikelNachIndex(index);
     }
     
     /**
@@ -164,23 +159,15 @@ public class Lager
         if (this.anzahlArtikel - 1 < indexZuLoeschen) {
             throw new IllegalArgumentException("Der gewählte Index uebertrifft die Anzahl an Artikeln.");
         }
-        if(indexZuLoeschen < 0){
+        if (indexZuLoeschen < 0){
             throw new IllegalArgumentException("Der gewählte Index muss positiv sein.");
         }
         
-        artikelLager[indexZuLoeschen] = null;
-        
-        for (int indexZuVerschieben = indexZuLoeschen + 1; indexZuVerschieben <= this.anzahlArtikel - 1; indexZuVerschieben++) {
-            if (artikelLager[indexZuVerschieben] == null) {
-                break;
-            }
-
-            int letzterIndex = indexZuVerschieben -1;
-            
-            artikelLager[letzterIndex] = artikelLager[indexZuVerschieben];
-            artikelLager[indexZuVerschieben] = null;
+        int indexLeztenArtikels = this.anzahlArtikel -1;
+        for (int indexZuVerschieben = indexZuLoeschen; indexZuVerschieben < indexLeztenArtikels; indexZuVerschieben++) {            
+            artikelLager[indexZuVerschieben] = artikelLager[indexZuVerschieben + 1];
         }
-        
+        artikelLager[indexLeztenArtikels] = null;
         this.anzahlArtikel--;
     }
 
