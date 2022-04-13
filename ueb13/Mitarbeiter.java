@@ -34,9 +34,26 @@ public class Mitarbeiter extends Person
         this.email = email;
     }
 
+    /**
+     * reserviere erstellt eine Reservierung und setzt eine Bemerkung, 
+     * den uebergebenen Raum und den Mitarbeiter
+     * selbst als erzeugenden Mitarbeiter.
+     * @param raum ist der Raum, der reserviert wird
+     * @param beginn ist die Anfangsuhrzeit
+     * @param ende ist die Enduhrzeit
+     * @bemerkung ist die Bemerkung
+     */
+    public void reserviere(Raum raum, Uhrzeit beginn, Uhrzeit ende, String bemerkung){
+        Reservierung reservierung = new Reservierung(beginn, ende);
+        reservierung.setBemerkung(bemerkung);
+        reservierung.setMitarbeiter(this);
+        reservierung.setRaum(raum);
+        
+    }
+    
     @Override
     public String toString(){
         return  super.toString() 
                + " (" + email + ")";
-   }
+    }
 }

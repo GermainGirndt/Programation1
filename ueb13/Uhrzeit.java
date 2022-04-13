@@ -44,7 +44,7 @@ public class Uhrzeit
             return  stunde + ":0" + minute + " Uhr";    
         }
         else{
-            return  stunde + ":" + minute + " Uhr";    
+            return  stunde + ":"  + minute + " Uhr";    
         }  
     }
     
