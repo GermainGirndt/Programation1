@@ -38,6 +38,14 @@ public class Uhrzeit
       
     }
 
+    public int getStunde(){
+        return stunde;
+    }
+    
+    public int getMinute(){
+        return minute;
+    }
+    
     @Override
     public String toString(){
         if(minute < MINUTE_ZWEISTELLIG){

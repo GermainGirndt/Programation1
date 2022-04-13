@@ -7,7 +7,7 @@
  */
 public class Reservierung
 {
-    private String bemerkung;
+    private String bemerkung = "";
     private Uhrzeit beginn;
     private Uhrzeit ende;
     private Mitarbeiter mitarbeiter;
@@ -17,18 +17,27 @@ public class Reservierung
     private static String FEHLER_BEMERKUNG     = "Die Bemerkung ist leer";
     private static String FEHLER_MITARBEITER   = "Der Mitarbeiter ist null";
     private static String FEHLER_RAUM          = "Der Raum ist null";
+    private static String FEHLER_ZEIT          = "Das Ende muss in der Zukunft vom Beginn liegen";
     
     /**
      * Konstruktor für Objekte der Klasse Reservierung
+     * @param beginn ist der Anfangszeitpunkt der Reservierung
+     * @param ende ist der Endzeitpunkt der Reservierung
+     * Der Endzeitpunkt muss in der Zukunft vom Anfangszeitpunkt liegen
      */
     public Reservierung(Uhrzeit beginn, Uhrzeit ende)
     {
-        //toDo pruefen ob beginn vor ende liegt
+       
         if(beginn == null){
             throw new IllegalArgumentException(FEHLER_BEGINN);   
         }
         if(ende == null){
             throw new IllegalArgumentException(FEHLER_ENDE);   
+        }
+        if(beginn.getStunde() > ende.getStunde() ||
+          (beginn.getStunde() == ende.getStunde() && beginn.getMinute() > ende.getMinute())){
+              
+            throw new IllegalArgumentException(FEHLER_ZEIT); 
         }
         this.beginn = beginn;
         this.ende   = ende;  
@@ -48,6 +57,10 @@ public class Reservierung
         this.mitarbeiter = mitarbeiter;
     }
     
+    /**
+     * setRaum gibt dem Uebergebenen Raum sich selbst mit 
+     * @param raum ist der Raum, dem diese Reservierung uebergeben werden soll
+     */
     public void setRaum(Raum raum){
         if(raum == null){
             throw new IllegalArgumentException(FEHLER_RAUM);       
@@ -57,9 +70,13 @@ public class Reservierung
     
     @Override
     public String toString(){
-        return "gebucht von " + mitarbeiter.toString() + 
-               " von "        + beginn.toString() + 
-               " bis "        + ende.toString() +
-               " fuer "       + bemerkung;
+        String ausgabe = "gebucht ";
+        if(mitarbeiter != null){
+           ausgabe += "von " + mitarbeiter.toString();
+        }
+        ausgabe += " von "        + beginn.toString() + 
+                   " bis "        + ende.toString() +
+                   " fuer "       + bemerkung;
+        return ausgabe;
     }
 }
