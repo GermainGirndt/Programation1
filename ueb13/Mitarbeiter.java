@@ -8,7 +8,12 @@
 public class Mitarbeiter extends Person
 {
     private String email;
-
+    
+    private String emailRegex = "^\\S+@\\S+$";
+    
+    private static String FEHLER_EMAIL_LEER = "Die Email darf nicht leer sein";
+    private static String FEHLER_KEINE_EMAIL = "Das ist keine valide email-Adresse";
+    
     /**
      * Konstruktor für Objekte der Klasse Mitarbeiter
      * @param vorname ist der Vorname der Person, darf nicht leer sein
@@ -20,10 +25,10 @@ public class Mitarbeiter extends Person
         super(vorname, nachname);
         
         if(email == null || email.trim().isEmpty()){
-            throw new IllegalArgumentException("Die Email darf nicht leer sein");
+            throw new IllegalArgumentException(FEHLER_EMAIL_LEER);
         }
-        if(!email.matches("^\\S+@\\S+$")){
-             throw new IllegalArgumentException("Das ist keine valide email-Adresse");  
+        if(!email.matches(emailRegex)){
+             throw new IllegalArgumentException(FEHLER_KEINE_EMAIL);  
         }
         this.email = email;
     }

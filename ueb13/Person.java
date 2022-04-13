@@ -10,6 +10,8 @@ public class Person
     private String vorname;
     private String nachname;
 
+    private static String FEHLER_VORNAME_LEER  = "Der Vorname darf nicht leer sein";
+    private static String FEHLER_NACHNAME_LEER = "Der Nachname darf nicht leer sein";
     /**
      * Konstruktor für Objekte der Klasse Person
      * @param vorname ist der Vorname der Person, darf nicht leer sein
@@ -18,10 +20,10 @@ public class Person
     public Person(String vorname, String nachname)
     {
         if(vorname == null || vorname.trim().isEmpty()){
-            throw new IllegalArgumentException("Der Vorname darf nicht leer sein");
+            throw new IllegalArgumentException(FEHLER_VORNAME_LEER);
         }
         if(nachname == null || nachname.trim().isEmpty()){
-            throw new IllegalArgumentException("Der Nachname darf nicht leer sein");
+            throw new IllegalArgumentException(FEHLER_NACHNAME_LEER);
         }
         this.vorname  = vorname;
         this.nachname = nachname;
