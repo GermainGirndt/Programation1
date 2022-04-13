@@ -1,9 +1,10 @@
 
 /**
  * Beschreiben Sie hier die Klasse Person.
+ * Die Klasse Person soll einen Menschen mit Vor- und Nachname abbilden
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt & Krier 
+ * @version 1.0
  */
 public class Person
 {

@@ -1,9 +1,10 @@
 
 /**
  * Beschreiben Sie hier die Klasse Mitarbeiter.
+ * Die Klasse Mitarbeiter erbt von Person, zusätzlich hat ein Mitarbeiter eine email Adresse
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt & Krier
+ * @version 1.0
  */
 public class Mitarbeiter extends Person
 {
