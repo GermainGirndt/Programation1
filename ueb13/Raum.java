@@ -13,13 +13,13 @@ public class Raum
     private int anzahlReservierungen = 0;
     private Reservierung[] reservierungen;
     
-    private static int GEB_MIN       = 1;
-    private static int RAUM_MIN      = 1;
-    private static int ARRAY_GROESSE = 20;
+    private static final int GEB_MIN       = 1;
+    private static final int RAUM_MIN      = 1;
+    private static final int ARRAY_GROESSE = 20;
     
-    private static String FEHLER_GEB          = "Die Gebaeudenummer muss positiv sein";
-    private static String FEHLER_RAUM         = "Die Raumnummer muss positiv sein";
-    private static String FEHLER_RESERVIERUNG = "Die Reservierung ist null";
+    private static final String FEHLER_GEB          = "Die Gebaeudenummer muss positiv sein";
+    private static final String FEHLER_RAUM         = "Die Raumnummer muss positiv sein";
+    private static final String FEHLER_RESERVIERUNG = "Die Reservierung ist null";
     
     /**
      * Konstruktor für Objekte der Klasse Raum

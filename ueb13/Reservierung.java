@@ -12,12 +12,12 @@ public class Reservierung
     private Uhrzeit ende;
     private Mitarbeiter mitarbeiter;
     
-    private static String FEHLER_BEGINN        = "Die Anfangsuhrzeit ist null";
-    private static String FEHLER_ENDE          = "Die Enduhrzeit ist null";
-    private static String FEHLER_BEMERKUNG     = "Die Bemerkung ist leer";
-    private static String FEHLER_MITARBEITER   = "Der Mitarbeiter ist null";
-    private static String FEHLER_RAUM          = "Der Raum ist null";
-    private static String FEHLER_ZEIT          = "Das Ende muss in der Zukunft vom Beginn liegen";
+    private static final String FEHLER_BEGINN        = "Die Anfangsuhrzeit ist null";
+    private static final String FEHLER_ENDE          = "Die Enduhrzeit ist null";
+    private static final String FEHLER_BEMERKUNG     = "Die Bemerkung ist leer";
+    private static final String FEHLER_MITARBEITER   = "Der Mitarbeiter ist null";
+    private static final String FEHLER_RAUM          = "Der Raum ist null";
+    private static final String FEHLER_ZEIT          = "Das Ende muss in der Zukunft vom Beginn liegen";
     
     /**
      * Konstruktor für Objekte der Klasse Reservierung

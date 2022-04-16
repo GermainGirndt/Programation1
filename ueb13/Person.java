@@ -11,8 +11,8 @@ public class Person
     private String vorname;
     private String nachname;
 
-    private static String FEHLER_VORNAME_LEER  = "Der Vorname darf nicht leer sein";
-    private static String FEHLER_NACHNAME_LEER = "Der Nachname darf nicht leer sein";
+    private static final String FEHLER_VORNAME_LEER  = "Der Vorname darf nicht leer sein";
+    private static final String FEHLER_NACHNAME_LEER = "Der Nachname darf nicht leer sein";
     /**
      * Konstruktor für Objekte der Klasse Person
      * @param vorname ist der Vorname der Person, darf nicht leer sein

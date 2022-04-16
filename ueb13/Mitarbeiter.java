@@ -12,8 +12,8 @@ public class Mitarbeiter extends Person
     
     private String emailRegex = "^\\S+@\\S+$";
     
-    private static String FEHLER_EMAIL_LEER = "Die Email darf nicht leer sein";
-    private static String FEHLER_KEINE_EMAIL = "Das ist keine valide email-Adresse";
+    private static final String FEHLER_EMAIL_LEER = "Die Email darf nicht leer sein";
+    private static final String FEHLER_KEINE_EMAIL = "Das ist keine valide email-Adresse";
     
     /**
      * Konstruktor für Objekte der Klasse Mitarbeiter
