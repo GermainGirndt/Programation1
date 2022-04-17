@@ -64,9 +64,9 @@ public class Raum
     
     @Override
     public String toString(){
-        String ausgabe = "Raum " + geb + "-" + etage + "." + raum + "\n";
+        String ausgabe = "Raum " + geb + "-" + etage + "." + raum ;
         for(int i = 0; i < anzahlReservierungen; i++){
-            ausgabe += reservierungen[i].toString() + "\n";    
+            ausgabe += "\n" + reservierungen[i].toString();    
         }
         return ausgabe;
     }

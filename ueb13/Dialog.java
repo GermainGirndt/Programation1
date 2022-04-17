@@ -14,15 +14,18 @@ public class Dialog
     private Raum[] raeume;
     private Mitarbeiter[] mitarbeiter;
     private int anzahlMitarbeiter = 0;
-    
+    private int anzahlRaeume = 0;
+
+    private static final int MAX_ANZAHL               = 10;
     private static final int FUNKTION_NICHT_DEFINIERT = -1;
     private static final int FUNKTION_ENDE            = 0;
     private static final int FUNKTION_MITARBEITER     = 1;
     private static final int FUNKTION_RAUM            = 2; 
+    private static final int FUNKTION_RESERVIERUNG    = 3; 
     
     public Dialog(){
-         this.raeume = new Raum[10];
-         this.mitarbeiter = new Mitarbeiter[10];
+         this.raeume = new Raum[MAX_ANZAHL];
+         this.mitarbeiter = new Mitarbeiter[MAX_ANZAHL];
          this.input = new Scanner(System.in);
     }
     
@@ -69,6 +72,7 @@ public class Dialog
             "\n\n" +
             FUNKTION_MITARBEITER            + ": Mitarbeiter anlegen;\n"  +
             FUNKTION_RAUM                   + ": Raum anlegen;\n"  + 
+            FUNKTION_RESERVIERUNG           + ": Reservierung anlegen;\n"  + 
             FUNKTION_ENDE                   + ": beenden -> \n\n"
         );
         
@@ -83,14 +87,15 @@ public class Dialog
     * @param funktion die ausgefuehrt werden soll
     */
     private void ausfuehrenFunktion() {
-        boolean sollNachBestandFragen;
-
         switch(this.funktion) {
             case FUNKTION_MITARBEITER:
                 legeMitarbeiterAn();
                 break;
             case FUNKTION_RAUM:
                 legeRaumAn();
+                break;
+            case FUNKTION_RESERVIERUNG:
+                legeReservierungAn();
                 break;
             case FUNKTION_ENDE:  
                 System.out.println("Das Programm ist zu Ende");
@@ -128,7 +133,92 @@ public class Dialog
         System.out.println("Raumnummer des Raums?");
         int raumnummer    = input.nextInt();
         Raum raum = new Raum(geb, etage, raumnummer);
-        
+        if(anzahlRaeume < this.raeume.length ){
+            this.raeume[anzahlRaeume] = raum;
+            this.anzahlRaeume++;
+        }
+        else{
+            System.out.println("Raumliste ist voll");
+        }
         
     }
+    
+    private void legeReservierungAn(){
+        int m   = auswaehlen(anzahlMitarbeiter, true);     
+        if(m > -1){
+           int r = auswaehlen(anzahlRaeume, false);
+           if( r > -1){
+               Mitarbeiter mita = mitarbeiter[m];
+               Raum raum = raeume[r];
+               System.out.println("Stunde Anfang?");
+               int stundeAn = input.nextInt();
+               input.nextLine();
+               System.out.println("Minute Anfang?");
+               int minuteAn = input.nextInt();
+               input.nextLine();
+               System.out.println("Stunde Ende?");
+               int stundeEn = input.nextInt();
+               input.nextLine();
+               System.out.println("Minute Ende?");
+               int minuteEn = input.nextInt();
+               input.nextLine();
+               System.out.println("Bemerkung?");
+               String bemerkung = input.nextLine();
+               
+               Uhrzeit anfang = new Uhrzeit(stundeAn, minuteAn);
+               Uhrzeit ende = new Uhrzeit(stundeEn, minuteEn);
+               mita.reserviere(raum, anfang, ende, bemerkung);
+               System.out.println(raum.toString());
+           }
+        }
+    }
+    
+    private int auswaehlen(int anzahl, boolean istmitarbeiter){
+        int funktion = -2;
+        while(funktion != -1) {
+        try {
+                if(istmitarbeiter){
+                    for(int i = 0; i < anzahl; i++){
+                        System.out.println(mitarbeiter[i].toString() + "\t" + i + "\n" );
+                    }
+                }
+                else{
+                    for(int i = 0; i < anzahl; i++){
+                        System.out.println(raeume[i].toString() + "\t" + i + "\n" );
+                    }
+                }
+                System.out.println("Auswahl beenden: \t-1");
+                
+                System.out.println("Ausgewählte Funktion: ");
+                funktion = input.nextInt();
+                input.nextLine();
+                System.out.println();
+                if(funktion > -1 && funktion < 11){
+                     if(funktion <= anzahl){
+                            return funktion;
+                        }    
+                }
+                else if(funktion == -1){
+                     System.out.println("Auswahl wird abgebrochen");    
+                }
+                else{
+                    System.out.println("Keine gueltige Eingabe");  
+                }
+            } catch(IllegalArgumentException error) {
+                System.err.println(error);
+
+            } catch(InputMismatchException error) {
+                System.err.println(error);
+                input.next();
+
+            } catch(Exception error) {
+                System.err.println(error);
+                error.printStackTrace(System.out); 
+
+            }
+        }
+        return -1;
+    }
+    
+  
 }
