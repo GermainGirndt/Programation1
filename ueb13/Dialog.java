@@ -17,8 +17,8 @@ public class Dialog
     private int anzahlRaeume = 0;
 
     private static final int MAX_ANZAHL               = 10;
-    private static final int FUNKTION_NICHT_DEFINIERT = -1;
-    private static final int FUNKTION_ENDE            = 0;
+    private static final int FUNKTION_NICHT_DEFINIERT = -2;
+    private static final int FUNKTION_ENDE            = -1;
     private static final int FUNKTION_MITARBEITER     = 1;
     private static final int FUNKTION_RAUM            = 2; 
     private static final int FUNKTION_RESERVIERUNG    = 3; 
@@ -107,6 +107,9 @@ public class Dialog
 
     }
     
+    /**
+    * Diese Funktion erfragt Daten zu einem Mitarbeiter und legt dann einen Mitarbeiter an
+    */
     private void legeMitarbeiterAn() {
         System.out.println("Vorname des Mitarbeiters?");
         String vorname = input.nextLine();
@@ -124,6 +127,9 @@ public class Dialog
         }
     }
     
+    /**
+    * Diese Funktion erfragt Daten zu einem Raum und legt dann einen Raum an
+    */
     private void legeRaumAn() {
 
         System.out.println("Gebaeude des Raums?");
@@ -143,6 +149,9 @@ public class Dialog
         
     }
     
+    /**
+    * Diese Funktion erfragt Daten zu einer Reservierung und legt dann eine Reservierung an
+    */
     private void legeReservierungAn() {
         int m   = auswaehlen(anzahlMitarbeiter, true);     
         if (m > -1) {
@@ -173,9 +182,15 @@ public class Dialog
         }
     }
     
+    /**
+    * Diese Funktion lässt einen einen Mitarbeiter oder einen Raum aus der Liste auswählen
+    * @param anzahl ist die Anzahl von Mitarbeitern oder Raeumen
+    * @param istmitarbeiter ist ob die Mitarbeiterliste oder die Raumliste benutzt wird
+    * @return ist der Index des ausgewaehlten Mitarbeiters oder Raumes
+    */
     private int auswaehlen(int anzahl, boolean istmitarbeiter) {
-        int funktion = -2;
-        while(funktion != -1) {
+        int funktion =  FUNKTION_NICHT_DEFINIERT;
+        while(funktion != FUNKTION_ENDE) {
         try {
                 if (istmitarbeiter) {
                     for (int i = 0; i < anzahl; i++) {
