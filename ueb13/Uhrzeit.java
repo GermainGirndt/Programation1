@@ -45,6 +45,19 @@ public class Uhrzeit
         return this.minute;
     }
 
+    public boolean istDavor(Uhrzeit uhrzeit) {
+
+        int stunde = uhrzeit.getStunde();
+        int minute = uhrzeit.getMinute();
+
+        if (this.stunde < stunde
+            || this.stunde == stunde && this.minute < minute) {
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * Gibt die Uhrzeit in der Format hh:mm
      */
