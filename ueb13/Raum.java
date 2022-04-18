@@ -82,7 +82,7 @@ public class Raum
     public String toString() {
         StringBuffer stringBuffer = new StringBuffer();
         
-        stringBuffer.append("Raum " + this.geb + "-" + this.etage + "." + this.raum)
+        stringBuffer.append("Raum " + this.geb + "-" + this.etage + "." + this.raum);
         
         for(int i = 0; i < anzahlReservierungen; i++) {
             stringBuffer.append("\n" + reservierungen[i].toString());    
