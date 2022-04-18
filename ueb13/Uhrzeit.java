@@ -39,21 +39,19 @@ public class Uhrzeit
     }
 
     public int getStunde() {
-        return stunde;
+        return this.stunde;
     }
     
     public int getMinute() {
-        return minute;
+        return this.minute;
     }
-    
+
+    /**
+     * Gibt die Uhrzeit in der Format hh:mm
+     */
     @Override
     public String toString() {
-        if (minute < MINUTE_ZWEISTELLIG) {
-            return  stunde + ":0" + minute + " Uhr";    
-        }
-        else{
-            return  stunde + ":"  + minute + " Uhr";    
-        }  
+        return String.format("%02d:%02d", this.stunde, this.minute);  
     }
     
 }

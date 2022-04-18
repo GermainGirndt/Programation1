@@ -1,6 +1,6 @@
 
 /**
- * Beschreiben Sie hier die Klasse Raum.
+ * Der Raum wird in der Reservierung benutzt
  * 
  * @author Girndt & Krier
  * @version 1.0
@@ -16,10 +16,12 @@ public class Raum
     private static final int GEB_MIN       = 1;
     private static final int RAUM_MIN      = 1;
     private static final int ARRAY_GROESSE = 20;
+    private static final int MAXANZAHL_AN_RESERVIERUNGEN = 9999999;
     
     private static final String FEHLER_GEB          = "Die Gebaeudenummer muss positiv sein";
     private static final String FEHLER_RAUM         = "Die Raumnummer muss positiv sein";
     private static final String FEHLER_RESERVIERUNG = "Die Reservierung ist null";
+    private static final String FEHLER_RAUM_VOLL    = "Der Raum ist voll.";
     
     /**
      * Konstruktor für Objekte der Klasse Raum
@@ -39,7 +41,7 @@ public class Raum
        this.etage = etage;
        this.raum  = raum;
        
-       reservierungen = new Reservierung[ARRAY_GROESSE];
+       this.reservierungen = new Reservierung[ARRAY_GROESSE];
     }
 
     /**
@@ -52,22 +54,40 @@ public class Raum
             throw new IllegalArgumentException(FEHLER_RESERVIERUNG);   
         }
         
-        reservierungen[anzahlReservierungen] = reservierung;
-        anzahlReservierungen++;
-        
-        if (anzahlReservierungen >= reservierungen.length) {
-           Reservierung[] temp = new Reservierung[reservierungen.length * 2];
-           System.arraycopy(reservierungen, 0, temp, 0, reservierungen.length);
-           reservierungen = temp;
+        if (this.anzahlReservierungen == MAXANZAHL_AN_RESERVIERUNGEN) {
+            throw new IllegalArgumentException(FEHLER_RAUM_VOLL);   
         }
+
+        if (this.anzahlReservierungen == this.reservierungen.length) {
+            this.verdoppleArrayGroesse();
+        }
+
+        this.reservierungen[anzahlReservierungen] = reservierung;
+        this.anzahlReservierungen++;
+        
+    }
+
+    private void verdoppleArrayGroesse() {
+
+        Reservierung[] erweitertesArray = new Reservierung[reservierungen.length * 2];
+           
+        for (int index = 0; index < this.reservierungen.length; index++ ) {
+             erweitertesArray[index] = this.reservierungen[index];
+        }
+
+        this.reservierungen = erweitertesArray;
     }
     
     @Override
     public String toString() {
-        String ausgabe = "Raum " + geb + "-" + etage + "." + raum ;
+        StringBuffer stringBuffer = new StringBuffer();
+        
+        stringBuffer.append("Raum " + this.geb + "-" + this.etage + "." + this.raum)
+        
         for(int i = 0; i < anzahlReservierungen; i++) {
-            ausgabe += "\n" + reservierungen[i].toString();    
+            stringBuffer.append("\n" + reservierungen[i].toString());    
         }
-        return ausgabe;
+
+        return stringBuffer.toString();
     }
 }

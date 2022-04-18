@@ -27,7 +27,6 @@ public class Reservierung
      */
     public Reservierung(Uhrzeit beginn, Uhrzeit ende)
     {
-       
         if (beginn == null) {
             throw new IllegalArgumentException(FEHLER_BEGINN);   
         }
@@ -36,7 +35,7 @@ public class Reservierung
         }
         if (beginn.getStunde() > ende.getStunde()
             || (beginn.getStunde() == ende.getStunde()
-            && beginn.getMinute() > ende.getMinute())) {
+            && beginn.getMinute() >= ende.getMinute())) {
               
             throw new IllegalArgumentException(FEHLER_ZEIT); 
         }
@@ -71,13 +70,20 @@ public class Reservierung
     
     @Override
     public String toString() {
-        String ausgabe = "gebucht ";
-        if (mitarbeiter != null) {
-           ausgabe += "von " + mitarbeiter.toString();
-        }
-        ausgabe += " von "        + beginn.toString() + 
-                   " bis "        + ende.toString() +
-                   " fuer "       + bemerkung;
-        return ausgabe;
+
+        if (mitarbeiter == null) {
+
+            return String.format("gebucht von %s bis %s fuer %s", 
+                                    beginn.toString(),
+                                    ende.toString(),
+                                    bemerkung);
+        } 
+        
+        return String.format("gebucht von %s von %s bis %s fuer %s",
+                                mitarbeiter.toString(), 
+                                beginn.toString(),
+                                ende.toString(),
+                                bemerkung);
+
     }
 }

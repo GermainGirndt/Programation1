@@ -11,8 +11,11 @@ public class Person
     private String vorname;
     private String nachname;
 
-    private static final String FEHLER_VORNAME_LEER  = "Der Vorname darf nicht leer sein";
-    private static final String FEHLER_NACHNAME_LEER = "Der Nachname darf nicht leer sein";
+    private static final String FEHLER_VORNAME_UNGUELTIG  = "Der Vorname darf nur alphabetische Charactere und Bindestrich enthalten";
+    private static final String FEHLER_NACHNAME_UNGUELTIG = "Der Nachname darf nur alphabetische Charactere und Bindestrich enthalten";
+
+    private static final String regexAlphabetischeCharaktere = "^[a-zA-Z0-9\\-äöüÄÖÜß]+$";
+
     /**
      * Konstruktor für Objekte der Klasse Person
      * @param vorname ist der Vorname der Person, darf nicht leer sein
@@ -20,31 +23,28 @@ public class Person
      */
     public Person(String vorname, String nachname)
     {
-        // validieren für nur alphabetische Charaktere (keine Zahlen und Sonderzeichen) 
-        if (vorname == null || vorname.trim().isEmpty()) {
-            throw new IllegalArgumentException(FEHLER_VORNAME_LEER);
+        if (vorname == null || !vorname.matches(regexAlphabetischeCharaktere)) {
+            throw new IllegalArgumentException(FEHLER_VORNAME_UNGUELTIG);
         }
-        if (nachname == null || nachname.trim().isEmpty()) {
-            throw new IllegalArgumentException(FEHLER_NACHNAME_LEER);
+        if (nachname == null || !nachname.matches(regexAlphabetischeCharaktere)) {
+            throw new IllegalArgumentException(FEHLER_NACHNAME_UNGUELTIG);
         }
+
         this.vorname  = vorname;
         this.nachname = nachname;
     }
 
     public String getVorname() {
-        return vorname;
+        return this.vorname;
     }
     
     public String getNachname() {
-        return nachname;
+        return this.nachname;
     }
     
     @Override
     public String toString() {
-        return   vorname 
-               + " " 
-               + nachname;
-                
+        return String.format("%s %s",  this.vorname, this.nachname); 
     }
 
 }
