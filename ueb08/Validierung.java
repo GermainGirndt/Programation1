@@ -74,8 +74,8 @@ public final class Validierung {
     * Die Methode validiert, ob die Warteschlangegroesse sich zwischen den Midenst- und Hoechstgroessen befindet.
     * @param groesse ist die zu validierende Groesse
     */
-    public static void validiereWarteschlangegroesse(int groesse){
-        if (groesse < MINDESTWARTESCHLANGEGROESSE || groesse > HOESCHSTWARTESCHLANGEGROESSE){
+    public static void validiereWarteschlangegroesse(int groesse) {
+        if (groesse < MINDESTWARTESCHLANGEGROESSE || groesse > HOESCHSTWARTESCHLANGEGROESSE) {
             throw new IllegalArgumentException(ERROR_UNGUELTIGE_WARTESCHLANGEGROESSE);
         }
     }

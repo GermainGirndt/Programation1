@@ -45,12 +45,12 @@ public class MathFunctions
   * @param  zahl die Zahl dessen Teilersumme berechnet wird
   * @return teilersumme ist die Teilersumme der Zahl
   */
-  public static long berechneTeilersumme (long zahl){
+  public static long berechneTeilersumme (long zahl) {
        long teilersumme   = START_WERT_SUMME;
        long spiegelteiler;
        Validierung.validiereZahlTeilersumme(zahl);
        for(long teiler = KLEINSTER_TEILER; teiler <= Math.sqrt(zahl) ;teiler++)
-           if(zahl % teiler == OHNEREST){
+           if (zahl % teiler == OHNEREST) {
                spiegelteiler   = zahl / teiler;
                teilersumme    += teiler;    
                teilersumme    += spiegelteiler;
@@ -66,7 +66,7 @@ public class MathFunctions
    * 
    * Nicht belegte Stellen werden als null interpretiert (zB. 1 = 000000001) 
    */
-   public static String berechneChecksummeIsbn(long isbn){
+   public static String berechneChecksummeIsbn(long isbn) {
        long checksumme = START_WERT_SUMME;
        Validierung.validiereIsbn(isbn);
 
@@ -90,17 +90,17 @@ public class MathFunctions
    * @param q in das Produkt zweier Nullstellen (zB. in dem Term a^2 + p * x + q)
    * @return Die Art der Nullstellen und die Werte der Nullstellen
    */
-   public static String berechneNullstellen (double p, double q){
+   public static String berechneNullstellen (double p, double q) {
        double x1               = INITIALWERT;
        double x2               = INITIALWERT;
        double halbesP          = p/2;
        double halbesPimQuadrat = Math.pow(halbesP , SQUARE);
       
-       if(halbesPimQuadrat - q < 2 * Double.MIN_VALUE && halbesPimQuadrat - q > - 2 * Double.MIN_VALUE){
+       if (halbesPimQuadrat - q < 2 * Double.MIN_VALUE && halbesPimQuadrat - q > - 2 * Double.MIN_VALUE) {
            x1 = -1 * halbesP;
            return "Doppelte Nullstelle: " + x1;
        }
-       else if(halbesPimQuadrat - q < 2 * Double.MIN_VALUE){
+       else if (halbesPimQuadrat - q < 2 * Double.MIN_VALUE) {
            return "Komplexe Nullstellen";
        }
        else {
@@ -118,7 +118,7 @@ public class MathFunctions
   * @param zahl ist die Zahl, die ueberprueft werden soll
   * @return das Ergebnis von der Pruefung
   */
-   public static boolean istSummeVonPotenzen(long zahl){  
+   public static boolean istSummeVonPotenzen(long zahl) {  
         
         Validierung.validiereZahlPotenzsumme(zahl);  
         
@@ -151,7 +151,7 @@ public class MathFunctions
   * @param zahl2 ist die zweite Zahl
   * @return ist der groesste gemeinsame Teiler
   */
-  public static int berechneGgt(int zahl1, int zahl2){
+  public static int berechneGgt(int zahl1, int zahl2) {
       int divisor;
       int dividend;
       Validierung.validiereZahlGgt(zahl1);
@@ -169,7 +169,7 @@ public class MathFunctions
       
       divisor  = euklidischerAlgorithmus(dividend , divisor);
       
-      if (kleinereZahl % divisor != OHNEREST){
+      if (kleinereZahl % divisor != OHNEREST) {
           divisor = KLEINSTER_TEILER_GGT;
         }
         
@@ -185,7 +185,7 @@ public class MathFunctions
      * @return die groesste Zahl
      */
     private static int getGroessteZahl(int zahl1, int zahl2) {
-        if(zahl1 < zahl2){
+        if (zahl1 < zahl2) {
             return zahl2;
         }
         else{
@@ -203,7 +203,7 @@ public class MathFunctions
   * @return die groesste Zahl
   */
   private static int getKleinsteZahl(int zahl1, int zahl2) {
-     if(zahl1 > zahl2){
+     if (zahl1 > zahl2) {
             return zahl2;
         }
      else{
@@ -218,8 +218,8 @@ public class MathFunctions
   * @param divisor ist der Divisor oder die kleinere Zahl
   * @return Das Ergebnis des Algorithmus
   */
-  private static int euklidischerAlgorithmus(int dividend, int divisor){
-      while(dividend % divisor != 0){
+  private static int euklidischerAlgorithmus(int dividend, int divisor) {
+      while(dividend % divisor != 0) {
           divisor = dividend % divisor;   
       }
       return divisor;
@@ -233,7 +233,7 @@ public class MathFunctions
   * @param zahl ist die Zahl, deren Fakultaet zu berechnen ist
   * @return Die ausgerechnete Fakultaet
   */
-  public static long berechneFakultaet(int zahl){
+  public static long berechneFakultaet(int zahl) {
 
     Validierung.validiereZahlZurFakultaetberechnung(zahl, OBERE_GRENZE_LONG);
 
@@ -254,7 +254,7 @@ public class MathFunctions
   * @param x ist der Wert von "x" in der Funktion
   * @return Die ausgerechnete Reihensumme
   */
-  public static double berechneReihensumme(int anzahl, double x){
+  public static double berechneReihensumme(int anzahl, double x) {
     Validierung.validiereIndex(anzahl);
     
     double ergebnis = 0.0;

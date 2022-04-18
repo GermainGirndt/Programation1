@@ -61,7 +61,7 @@ public class Buch extends Artikel
     }
     
     @Override
-    public String getBeschreibung(){
+    public String getBeschreibung() {
         return this.autor + ": " + this.titel;
     }
 
@@ -74,15 +74,15 @@ public class Buch extends Artikel
         return hashCode;
     }
 
-    public String getTitel(){
+    public String getTitel() {
         return this.titel;
     }
     
-    public String getAutor(){
+    public String getAutor() {
         return this.autor;
     }
     
-    public String getVerlag(){
+    public String getVerlag() {
         return this.verlag;
     }
 }

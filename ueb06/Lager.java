@@ -38,7 +38,7 @@ public class Lager
            throw new IllegalArgumentException(LagerKonstanten.ERROR_LAGER_IST_VOLL);
         }
 
-        if(artikel == null){
+        if (artikel == null) {
             throw new IllegalArgumentException(LagerKonstanten.ERROR_NULL_ARTIKEL);
         }
         
@@ -63,7 +63,7 @@ public class Lager
         for (int index = 0; index <= this.anzahlArtikel -1; index++) {
             Artikel artikelZuChecken = this.artikelLager[index];
             
-            if(artikelZuChecken != null){
+            if (artikelZuChecken != null) {
                 if (artikelZuChecken.getArtikelNr() == artikelNr) {
                     loescheArtikelNachIndex(index);
                     return;
@@ -80,7 +80,7 @@ public class Lager
     */
     public void bucheZugang(int artikelNr, int zugang) {
         Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
-        if(artikel != null){
+        if (artikel != null) {
             artikel.bucheZugang(zugang);   
         }
     }
@@ -91,7 +91,7 @@ public class Lager
     */
     public void bucheAbgang(int artikelNr, int abgang) {
         Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
-        if(artikel != null){
+        if (artikel != null) {
             artikel.bucheAbgang(abgang);    
         }
     }
@@ -103,7 +103,7 @@ public class Lager
     */
     public void aenderePreisEinesArtikels(int artikelNr, double prozent) {
         Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
-        if(artikel != null){
+        if (artikel != null) {
             artikel.aenderePreis(prozent);  
         }
     }
@@ -157,7 +157,7 @@ public class Lager
         if (this.anzahlArtikel - 1 < indexZuLoeschen) {
             throw new IllegalArgumentException("Der gewählte Index uebertrifft die Anzahl an Artikeln.");
         }
-        if(indexZuLoeschen < 0){
+        if (indexZuLoeschen < 0) {
             throw new IllegalArgumentException("Der gewählte Index muss positiv sein.");
         }
         
@@ -207,7 +207,7 @@ public class Lager
         if (index > this.anzahlArtikel -1) {
             throw new Error("Es gibt keinen Artikel im gewählten Index.");
         }
-        if (index <0){
+        if (index <0) {
             throw new Error("Bitte positiven Index angeben.");
         }
 

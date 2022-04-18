@@ -110,7 +110,7 @@ public class MathFunctionsDialog
     /**
     *  Erfragt eine ISBN und bildet dann die Checksumme
     */    
-    public void berechneChecksummeIsbn(){
+    public void berechneChecksummeIsbn() {
             String isbn = userInput.getString("ISBN: ");
             Validierung.validiereZeichenAnzahl(isbn);
             System.out.println("Checksumme: " + MathFunctions.berechneChecksummeIsbn(Long.parseLong(isbn)));
@@ -119,7 +119,7 @@ public class MathFunctionsDialog
     /**
     * Berechnet die Nullstellen einer quadratischen Funktion in der Form x^2 + p*x + q
     */
-       public void berechneNullstellen(){
+       public void berechneNullstellen() {
             double p = userInput.getDouble("p: ");
             double q = userInput.getDouble("q: ");
             System.out.println(MathFunctions.berechneNullstellen(p , q));

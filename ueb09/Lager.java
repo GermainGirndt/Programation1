@@ -82,7 +82,7 @@ public class Lager
     */
     public void bucheZugang(int artikelNr, int zugang) {
         Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
-        if(artikel != null){
+        if (artikel != null) {
             artikel.bucheZugang(zugang);   
         }
     }
@@ -93,7 +93,7 @@ public class Lager
     */
     public void bucheAbgang(int artikelNr, int abgang) {
         Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
-        if(artikel != null){
+        if (artikel != null) {
             artikel.bucheAbgang(abgang);    
         }
     }
@@ -105,7 +105,7 @@ public class Lager
     */
     public void aenderePreisEinesArtikels(int artikelNr, double prozent) {
         Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
-        if(artikel != null){
+        if (artikel != null) {
             artikel.aenderePreis(prozent);  
         }
     }
@@ -159,7 +159,7 @@ public class Lager
         if (this.anzahlArtikel - 1 < indexZuLoeschen) {
             throw new IllegalArgumentException("Der gewählte Index uebertrifft die Anzahl an Artikeln.");
         }
-        if (indexZuLoeschen < 0){
+        if (indexZuLoeschen < 0) {
             throw new IllegalArgumentException("Der gewählte Index muss positiv sein.");
         }
         
@@ -201,7 +201,7 @@ public class Lager
         if (index > this.anzahlArtikel -1) {
             throw new Error("Es gibt keinen Artikel im gewählten Index.");
         }
-        if (index <0){
+        if (index <0) {
             throw new Error("Bitte positiven Index angeben.");
         }
 
@@ -252,11 +252,11 @@ public class Lager
     * und gibt am Schluss noch den Gesamtwert des Lagers an
     * @return die Bestandsliste als String
     */
-    public String ausgebenBestandsListe(){
+    public String ausgebenBestandsListe() {
         double gesamt = STARTSUMME;
         String ausgabe = LagerKonstanten.KOPFZEILE+ LagerKonstanten.TRENNSTRICH;
-        for(Artikel artikel: artikelLager){
-            if(artikel != null){
+        for(Artikel artikel: artikelLager) {
+            if (artikel != null) {
                 double gesamtartikel = artikel.getPreis() * artikel.getBestand();
                 gesamtartikel        = Math.round(gesamtartikel*HUNDERT)/ HUNDERT;
                 gesamt += gesamtartikel;
@@ -288,10 +288,10 @@ public class Lager
     * damit die Ausgabe schoen aussieht und alles richtig untereinander steht
     * @return die Tabs
     */
-    private String gibTabsNachBestand(long bestand){
+    private String gibTabsNachBestand(long bestand) {
         String ausgabe = "";
         
-        if(bestand > GRENZETABSBESTAND){
+        if (bestand > GRENZETABSBESTAND) {
             ausgabe += "\t";    
         }
         else{
@@ -306,11 +306,11 @@ public class Lager
     * damit die Ausgabe schoen aussieht und alles richtig untereinander steht
     * @return die Tabs
     */
-    private String gibTabsNachPreis(double preis){
+    private String gibTabsNachPreis(double preis) {
         String ausgabe = "";
         double centbetrag = Math.round(preis * HUNDERT);
         
-        if(centbetrag > GRENZETABSPREIS){
+        if (centbetrag > GRENZETABSPREIS) {
             ausgabe += "\t";    
         }
         else{
@@ -325,15 +325,15 @@ public class Lager
     * damit die Ausgabe schoen aussieht und alles richtig untereinander steht
     * @return die Tabs
     */
-    private String gibTabsNachBeschreibung(String s){
+    private String gibTabsNachBeschreibung(String s) {
         String ausgabe = "";
-        if(s.length() > OBEREGRENZEBESCHREIBUNG){
+        if (s.length() > OBEREGRENZEBESCHREIBUNG) {
             ausgabe += "\t";
         }
-        else if(s.length() <= OBEREGRENZEBESCHREIBUNG && s.length() > MITTLEREGRENZEBESCHREIBUNG){
+        else if (s.length() <= OBEREGRENZEBESCHREIBUNG && s.length() > MITTLEREGRENZEBESCHREIBUNG) {
             ausgabe += "\t\t";
         }
-        else if(s.length() <= MITTLEREGRENZEBESCHREIBUNG && s.length() > UNTEREGRENZEBESCHREIBUNG){
+        else if (s.length() <= MITTLEREGRENZEBESCHREIBUNG && s.length() > UNTEREGRENZEBESCHREIBUNG) {
             ausgabe +=  "\t\t\t";    
         }
         else{

@@ -42,6 +42,7 @@ public class LOCAuswertung {
      */
     public static void main(String[] args) {
         LOCAuswertung instance = new LOCAuswertung();
+        System.out.println("First arg: " + args[0]);
         instance.start(args);
     }
 

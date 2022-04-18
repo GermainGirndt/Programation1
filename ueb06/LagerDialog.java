@@ -161,7 +161,7 @@ public class LagerDialog
     /**
     * Diese Funktion fragt nach einer Lagergroesse und erzeugt dann ein Lager
     */
-    public void lagerErstellen(){
+    public void lagerErstellen() {
         if (this.lager != null) throw new IllegalArgumentException("LAGER_EXISTIERT");    
         
         int lagergroesse = this.userInput.getInt("Welche Lagergroesse?: ");
@@ -173,10 +173,10 @@ public class LagerDialog
     /**
     * Diese Funktion fragt nach Artikeldaten, legt einen Artikel an und macht diesen dann ins Lager
     */
-    public void artikelAnLegen(){
+    public void artikelAnLegen() {
         if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
          
-        if( lager.getArtikelAnzahl() <= lager.getLagerGroesse()) throw new IllegalArgumentException(LAGER_VOLL);
+        if ( lager.getArtikelAnzahl() <= lager.getLagerGroesse()) throw new IllegalArgumentException(LAGER_VOLL);
         
         int artikelNr     = this.userInput.getInt("Artikelnummer?: ");
         Validierung.validiereArtikelNr(artikelNr);
@@ -241,7 +241,7 @@ public class LagerDialog
         System.out.println("Abgang wurde gebucht. ");
     }
     
-    public void einzelnpreisAendern(){
+    public void einzelnpreisAendern() {
         if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
         
         int artikelNr = this.userInput.getInt(ARTIKELNUMMER_FRAGE);
@@ -255,7 +255,7 @@ public class LagerDialog
         System.out.println("Der Preis des Artikels wurde geändert! ");
     }
     
-    public void allePreiseAendern(){
+    public void allePreiseAendern() {
         if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
 
         int prozent = this.userInput.getInt( PROZENTANTEIL_FRAGE);
@@ -266,18 +266,18 @@ public class LagerDialog
         System.out.println("Alle Preise sind geändert worden! ");
     }
   
-    public void lagerAusgeben(){
+    public void lagerAusgeben() {
         if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
 
         System.out.println(lager.toString());
     }
     
-    public void lagerPlatzAnschauen(){
+    public void lagerPlatzAnschauen() {
         if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
         
         int lagerplatz = this.userInput.getInt("Welcher Lagerplatz? ");
         
-        if(lager.getArtikel(lagerplatz)==null){
+        if (lager.getArtikel(lagerplatz)==null) {
             System.out.println("leer");
         }
         else{
@@ -285,7 +285,7 @@ public class LagerDialog
         }
     }
     
-    public void arikelstandortBekommen(){
+    public void arikelstandortBekommen() {
         if (this.lager == null) throw new IllegalArgumentException("LAGER_NULL");
         
         int artikelNr = this.userInput.getInt(ARTIKELNUMMER_FRAGE);
@@ -293,7 +293,7 @@ public class LagerDialog
         
         int platz = lager.getArtikelNachNummer(artikelNr);       
         
-        if(platz == -1){
+        if (platz == -1) {
             System.out.println("Es gibt diesen Artikel nicht im Lager. ");
         }
         else{

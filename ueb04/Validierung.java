@@ -20,8 +20,8 @@ public class Validierung {
     * Die Methode prueft ob die Zahl, deren TeilerSumme gebildet wird, ob diese eine natürliche Zahl ist
     * @param zahlTeilersumme ist die Zahl die validiert wird
     */
-    public static void validiereZahlTeilersumme(long zahlTeilersumme){
-        if(!Validierung.checkeObNatuerlicheZahl(zahlTeilersumme)){
+    public static void validiereZahlTeilersumme(long zahlTeilersumme) {
+        if (!Validierung.checkeObNatuerlicheZahl(zahlTeilersumme)) {
              throw new IllegalArgumentException("Teilersummen können nur für natürliche Zahlen gebildet werden");    
         }
     }
@@ -30,8 +30,8 @@ public class Validierung {
     * Die Methode prueft ob die Zahl, deren GGT gebildet wird, ob diese eine natürliche Zahl ist
     * @param zahlGgt ist die Zahl die validiert wird
     */
-    public static void validiereZahlGgt(int zahlGgt){
-        if(!Validierung.checkeObNatuerlicheZahlInt(zahlGgt)){
+    public static void validiereZahlGgt(int zahlGgt) {
+        if (!Validierung.checkeObNatuerlicheZahlInt(zahlGgt)) {
              throw new IllegalArgumentException("Der GGT wird nur bei natürlichen Zahlen gebildet");    
         }   
     }
@@ -40,8 +40,8 @@ public class Validierung {
     * Die Methode prueft ob die Zahl, die geprueft wird bei der Potenzsumme, eine natürliche Zahl ist
     * @param zahlPotenzsumme ist die Zahl die validiert wird
     */
-    public static void validiereZahlPotenzsumme(long zahlPotenzsumme){
-        if(!Validierung.checkeObNatuerlicheZahl(zahlPotenzsumme)){
+    public static void validiereZahlPotenzsumme(long zahlPotenzsumme) {
+        if (!Validierung.checkeObNatuerlicheZahl(zahlPotenzsumme)) {
              throw new IllegalArgumentException("Ob eine Zahl durch Potenzen dargestellt werden kann, wird nur bei natuerlichen Zahlen geprueft");    
         }
 
@@ -54,11 +54,11 @@ public class Validierung {
     * Die Methode prueft, ob die ISBN positiv ist und nicht zu viele Ziffern hat
     * @param isbn die ueberprueft werden soll
     */    
-    public static void validiereIsbn(long isbn){
-        if(isbn < KLEINSTE_ISBN ){
+    public static void validiereIsbn(long isbn) {
+        if (isbn < KLEINSTE_ISBN ) {
              throw new IllegalArgumentException("Die ISBN darf nicht negativ sein");      
         }
-        else if(isbn > GROESSTE_ISBN) {
+        else if (isbn > GROESSTE_ISBN) {
              throw new IllegalArgumentException("Die ISBN, deren Checksumme berechnet werden soll, darf nicht mehr als 9 Ziffern haben");               
             }
         }
@@ -74,14 +74,14 @@ public class Validierung {
     * @param zahl die ueberprueft werden soll
     * @param obereGrenze ist die Zahl in der oberen Grenze. Sie legt fest, bis welche Zahlen hat der Rechner genügenden Speicherplatz, um die Fakultaet zu berechnen.
     */    
-    public static void validiereZahlZurFakultaetberechnung(int zahl, int obereGrenze){
+    public static void validiereZahlZurFakultaetberechnung(int zahl, int obereGrenze) {
         boolean sollNullErlaubtWerden = true;
 
         if (zahl > obereGrenze) {
             throw new IllegalArgumentException("Für die korrekte Fakultätbildung darf die Zahl nicht größer als " + obereGrenze + " sein");      
         }
 
-        if(!Validierung.checkeObNatuerlicheZahl(zahl, sollNullErlaubtWerden)){
+        if (!Validierung.checkeObNatuerlicheZahl(zahl, sollNullErlaubtWerden)) {
              throw new IllegalArgumentException("Für die Fakultätbildung muss die Zahl natürlich sein. Eingegebene Zahl: " + zahl);      
             }
         }

@@ -38,12 +38,12 @@ public class MathFunctions
    * @param  zahl die Zahl dessen Teilersumme berechnet wird
    * @return teilersumme ist die Teilersumme der Zahl
    */
-  public static long berechneTeilersumme (long zahl){
+  public static long berechneTeilersumme (long zahl) {
        long teilersumme   = START_WERT_SUMME;
        long spiegelteiler;
        Validierung.validiereZahlTeilersumme(zahl);
        for(long teiler = KLEINSTER_TEILER; teiler <= Math.sqrt(zahl) ;teiler++)
-           if(zahl % teiler == OHNEREST){
+           if (zahl % teiler == OHNEREST) {
                spiegelteiler   = zahl / teiler;
                teilersumme    += teiler;    
                teilersumme    += spiegelteiler;
@@ -59,7 +59,7 @@ public class MathFunctions
    * 
    * Nicht belegte Stellen werden als null interpretiert (zB. 1 = 000000001) 
    */
-   public static String berechneChecksummeIsbn(long isbn){
+   public static String berechneChecksummeIsbn(long isbn) {
        long checksumme = START_WERT_SUMME;
        Validierung.validiereIsbn(isbn);
 
@@ -83,17 +83,17 @@ public class MathFunctions
    * @param q in das Produkt zweier Nullstellen (zB. in dem Term a^2 + p * x + q)
    * @return Die Art der Nullstellen und die Werte der Nullstellen
    */
-   static String berechneNullstellen (double p, double q){
+   static String berechneNullstellen (double p, double q) {
        double x1               = INITIALWERT;
        double x2               = INITIALWERT;
        double halbesP          = p/2;
        double halbesPimQuadrat = Math.pow(halbesP , SQUARE);
       
-       if(halbesPimQuadrat - q < 2 * Double.MIN_VALUE && halbesPimQuadrat - q > - 2 * Double.MIN_VALUE){
+       if (halbesPimQuadrat - q < 2 * Double.MIN_VALUE && halbesPimQuadrat - q > - 2 * Double.MIN_VALUE) {
            x1 = -1 * halbesP;
            return "Doppelte Nullstelle: " + x1;
        }
-       else if(halbesPimQuadrat - q < 2 * Double.MIN_VALUE){
+       else if (halbesPimQuadrat - q < 2 * Double.MIN_VALUE) {
            return "Komplexe Nullstellen";
        }
        else{

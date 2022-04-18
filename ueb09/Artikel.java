@@ -121,7 +121,7 @@ public class Artikel
                 ArtikelKonstanten.PREIS           + ": "     +   this.preis;
     }
 
-    public String getBeschreibung(){
+    public String getBeschreibung() {
         return this.art;
     }
     

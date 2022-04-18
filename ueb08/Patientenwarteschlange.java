@@ -68,7 +68,7 @@ public class Patientenwarteschlange
         
         int patientIndex = this.getPatientenIndexNachNummer(patientenNummer);
         
-        if (patientIndex == INDEX_PATIENT_NOT_FOUND){ 
+        if (patientIndex == INDEX_PATIENT_NOT_FOUND) { 
             throw new IllegalArgumentException(ERROR_ZU_ENTFERNENDER_PATIENT_IST_NICHT_IN_DER_WARTESCHLANGE);
         }
 
@@ -119,7 +119,7 @@ public class Patientenwarteschlange
     */
     private void loeschePatientenNachIndex(int indexZuLoeschen) {
         
-        if (indexZuLoeschen < 0){
+        if (indexZuLoeschen < 0) {
             throw new IllegalArgumentException("Der gewaehlte Index muss positiv sein.");
         }
 
