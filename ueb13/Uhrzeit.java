@@ -47,15 +47,45 @@ public class Uhrzeit
 
     public boolean istDavor(Uhrzeit uhrzeit) {
 
+        if (uhrzeit == null) {
+            return false; 
+        }
+
         int stunde = uhrzeit.getStunde();
         int minute = uhrzeit.getMinute();
 
-        if (this.stunde < stunde
-            || this.stunde == stunde && this.minute < minute) {
-            return true;
+        
+        return this.stunde < stunde
+                || (this.stunde == stunde
+                    && this.minute < minute);
+    }
+
+    public boolean istDanach(Uhrzeit uhrzeit) {
+
+        if (uhrzeit == null) {
+            return false; 
         }
 
-        return false;
+        int stunde = uhrzeit.getStunde();
+        int minute = uhrzeit.getMinute();
+
+        return this.stunde > stunde
+                || (this.stunde == stunde 
+                && this.minute > minute);
+    }
+
+    public boolean istGleich(Uhrzeit uhrzeit) {
+
+        if (uhrzeit == null) {
+            return false; 
+        }
+
+        int stunde = uhrzeit.getStunde();
+        int minute = uhrzeit.getMinute();
+
+        return this.stunde == stunde
+                && this.minute == minute;
+
     }
 
     /**

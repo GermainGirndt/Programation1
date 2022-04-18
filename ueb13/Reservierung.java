@@ -33,14 +33,52 @@ public class Reservierung
         if (ende == null) {
             throw new IllegalArgumentException(FEHLER_ENDE);   
         }
-        if (beginn.getStunde() > ende.getStunde()
-            || (beginn.getStunde() == ende.getStunde()
-            && beginn.getMinute() >= ende.getMinute())) {
-              
+        if (!ende.istDanach(beginn)) {              
             throw new IllegalArgumentException(FEHLER_ZEIT); 
         }
+
         this.beginn = beginn;
         this.ende   = ende;  
+    }
+
+    public boolean hatUerberschneidung(Reservierung reservierung) {
+        Uhrzeit beginn = reservierung.getBeginn();
+        Uhrzeit ende = reservierung.getEnde();
+
+        if (this.beginn.istGleich(beginn)
+            || this.ende.istGleich(ende)) {
+            return true;
+        }
+
+        // Überschneidungen auf der linken Seite 
+        if (this.beginn.istDanach(beginn)
+            && this.beginn.istDavor(ende)) {
+                return true;
+        }
+
+        // Überschneidungen auf der rechten Seite
+        if (this.ende.istDanach(beginn)
+        && this.ende.istDavor(ende) 
+        ) {
+            return true;
+        }
+        
+        // Enthält Uhrzeit 
+        if (this.beginn.istDavor(beginn)
+            && this.ende.istDanach(ende))  {
+                return true;
+            }
+        
+        return false;
+    }
+
+
+    public Uhrzeit getBeginn() {
+        return this.beginn;
+    }
+
+    public Uhrzeit getEnde() {
+        return this.ende;
     }
 
     public void setBemerkung(String bemerkung) {

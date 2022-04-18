@@ -4,8 +4,8 @@ import java.util.Scanner;
 /**
  * Beschreiben Sie hier die Klasse Dialog.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina 
+ * @version 1.0
  */
 public class Dialog
 {
@@ -119,7 +119,7 @@ public class Dialog
             this.mitarbeiter[anzahlMitarbeiter] = mitarbeiter;
             this.anzahlMitarbeiter++;
         }
-        else{
+        else {
             System.out.println("Mitarbeiterliste ist voll");
         }
     }
@@ -137,7 +137,7 @@ public class Dialog
             this.raeume[anzahlRaeume] = raum;
             this.anzahlRaeume++;
         }
-        else{
+        else {
             System.out.println("Raumliste ist voll");
         }
         
@@ -178,12 +178,16 @@ public class Dialog
         while(funktion != -1) {
         try {
                 if (istmitarbeiter) {
-                    for(int i = 0; i < anzahl; i++) {
+                    for (int i = 0; i < anzahl; i++) {
+                        System.out.println("--------------" );
+                        System.out.println("Welcher Mitarbeiter moechte den Raum buchen?" );
                         System.out.println(mitarbeiter[i].toString() + "\t" + i + "\n" );
                     }
                 }
-                else{
-                    for(int i = 0; i < anzahl; i++) {
+                else {
+                    for (int i = 0; i < anzahl; i++) {
+                        System.out.println("--------------" );
+                        System.out.println("Welcher Raum soll gebucht werden?" );
                         System.out.println(raeume[i].toString() + "\t" + i + "\n" );
                     }
                 }
@@ -193,15 +197,12 @@ public class Dialog
                 funktion = input.nextInt();
                 input.nextLine();
                 System.out.println();
-                if (funktion > -1 && funktion < 11) {
-                     if (funktion <= anzahl) {
-                            return funktion;
-                        }    
-                }
-                else if (funktion == -1) {
+                
+                if (funktion > -1 && funktion < anzahl) {
+                    return funktion;
+                } else if (funktion == -1) {
                      System.out.println("Auswahl wird abgebrochen");    
-                }
-                else{
+                } else {
                     System.out.println("Keine gueltige Eingabe");  
                 }
             } catch(IllegalArgumentException error) {

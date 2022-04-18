@@ -18,10 +18,11 @@ public class Raum
     private static final int ARRAY_GROESSE = 20;
     private static final int MAXANZAHL_AN_RESERVIERUNGEN = 9999999;
     
-    private static final String FEHLER_GEB          = "Die Gebaeudenummer muss positiv sein";
-    private static final String FEHLER_RAUM         = "Die Raumnummer muss positiv sein";
-    private static final String FEHLER_RESERVIERUNG = "Die Reservierung ist null";
-    private static final String FEHLER_RAUM_VOLL    = "Der Raum ist voll.";
+    private static final String FEHLER_GEB              = "Die Gebaeudenummer muss positiv sein";
+    private static final String FEHLER_RAUM             = "Die Raumnummer muss positiv sein";
+    private static final String FEHLER_RESERVIERUNG     = "Die Reservierung ist null";
+    private static final String FEHLER_RAUM_VOLL        = "Der Raum ist voll.";
+    private static final String FEHLER_UHRZEIT_GEBUCHT  = "Der Raum ist für die eingegebene Uhrzeit schon gebucht.";
     
     /**
      * Konstruktor für Objekte der Klasse Raum
@@ -33,10 +34,11 @@ public class Raum
     {
        if (geb < GEB_MIN) {
            throw new IllegalArgumentException(FEHLER_GEB);
+        }
+        if (raum < RAUM_MIN) {
+           throw new IllegalArgumentException(FEHLER_RAUM);
        }
-       if (raum < RAUM_MIN) {
-            
-       }
+
        this.geb   = geb;
        this.etage = etage;
        this.raum  = raum;
@@ -57,14 +59,32 @@ public class Raum
         if (this.anzahlReservierungen == MAXANZAHL_AN_RESERVIERUNGEN) {
             throw new IllegalArgumentException(FEHLER_RAUM_VOLL);   
         }
+        
+        if (this.checkeObRaumIstZuDerZeitGebucht(reservierung)) {
+            throw new IllegalArgumentException(FEHLER_UHRZEIT_GEBUCHT);   
+        }
 
         if (this.anzahlReservierungen == this.reservierungen.length) {
             this.verdoppleArrayGroesse();
         }
 
+
         this.reservierungen[anzahlReservierungen] = reservierung;
         this.anzahlReservierungen++;
         
+    }
+
+    private boolean checkeObRaumIstZuDerZeitGebucht( Reservierung gewuenschteReservierung) {
+
+        for (int index = 0; index < anzahlReservierungen; index++) {
+
+            Reservierung reservierung = this.reservierungen[index];
+
+            if (reservierung.hatUerberschneidung(gewuenschteReservierung)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void verdoppleArrayGroesse() {
@@ -84,7 +104,7 @@ public class Raum
         
         stringBuffer.append("Raum " + this.geb + "-" + this.etage + "." + this.raum);
         
-        for(int i = 0; i < anzahlReservierungen; i++) {
+        for (int i = 0; i < anzahlReservierungen; i++) {
             stringBuffer.append("\n" + reservierungen[i].toString());    
         }
 

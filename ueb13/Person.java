@@ -14,7 +14,7 @@ public class Person
     private static final String FEHLER_VORNAME_UNGUELTIG  = "Der Vorname darf nur alphabetische Charactere und Bindestrich enthalten";
     private static final String FEHLER_NACHNAME_UNGUELTIG = "Der Nachname darf nur alphabetische Charactere und Bindestrich enthalten";
 
-    private static final String regexAlphabetischeCharaktere = "^[a-zA-Z0-9\\-äöüÄÖÜß]+$";
+    private static final String regexAlphabetischeCharaktere = "^[a-zA-Z\\-\\säöüÄÖÜß]+$";
 
     /**
      * Konstruktor für Objekte der Klasse Person
