@@ -20,26 +20,27 @@ public class Person
      */
     public Person(String vorname, String nachname)
     {
-        if(vorname == null || vorname.trim().isEmpty()){
+        // validieren für nur alphabetische Charaktere (keine Zahlen und Sonderzeichen) 
+        if (vorname == null || vorname.trim().isEmpty()) {
             throw new IllegalArgumentException(FEHLER_VORNAME_LEER);
         }
-        if(nachname == null || nachname.trim().isEmpty()){
+        if (nachname == null || nachname.trim().isEmpty()) {
             throw new IllegalArgumentException(FEHLER_NACHNAME_LEER);
         }
         this.vorname  = vorname;
         this.nachname = nachname;
     }
 
-    public String getVorname(){
+    public String getVorname() {
         return vorname;
     }
     
-    public String getNachname(){
+    public String getNachname() {
         return nachname;
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         return   vorname 
                + " " 
                + nachname;

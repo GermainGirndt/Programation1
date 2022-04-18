@@ -72,19 +72,19 @@ public class CD extends Artikel
      
     
    @Override
-   public String getBeschreibung(){
+   public String getBeschreibung() {
         return this.interpret + ": " + this.titel;
    } 
     
-   public String getInterpret(){
+   public String getInterpret() {
        return this.interpret;    
    }
    
-   public String getTitel(){
+   public String getTitel() {
        return this.titel;    
    }
    
-   public int getAnzahlTitel(){
+   public int getAnzahlTitel() {
        return this.anzahlTitel;
    }
 }

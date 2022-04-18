@@ -13,7 +13,7 @@ public class ArrayFunctionsTest
 {
     //berechne Mittelwert
     @Test
-    public void  berechneMittelwert3Positive(){
+    public void  berechneMittelwert3Positive() {
         Mittelwert erwarteterMittelwert = new Mittelwert(3.0, 3.0, 1.0);
         
         double[] messwerte ={1.0 , 3.0 , 5.0};
@@ -23,7 +23,7 @@ public class ArrayFunctionsTest
     }
     
     @Test
-    public void  berechneMittelwert3Negative(){
+    public void  berechneMittelwert3Negative() {
         Mittelwert erwarteterMittelwert = new Mittelwert(-3.0, -3.0, -1.0);
         
         double[] messwerte ={-1.0 , -3.0 , -5.0};
@@ -33,7 +33,7 @@ public class ArrayFunctionsTest
     }
     
     @Test
-    public void  berechneMittelwert2Negative2Positive(){
+    public void  berechneMittelwert2Negative2Positive() {
         Mittelwert erwarteterMittelwert = new Mittelwert(1.375, 5.0, 6.5);
         
         double[] messwerte ={-3.0, -3.0, 5.0, 6.5};
@@ -44,7 +44,7 @@ public class ArrayFunctionsTest
     
     
     @Test
-    public void  berechneMittelwertNur0Komma0(){
+    public void  berechneMittelwertNur0Komma0() {
         Mittelwert erwarteterMittelwert = new Mittelwert(0.0, 0.0, 0.0);
         
         double[] messwerte ={0.0};
@@ -54,7 +54,7 @@ public class ArrayFunctionsTest
     }
     
    @Test
-    public void  berechneMittelwertLeer(){
+    public void  berechneMittelwertLeer() {
         Mittelwert erwarteterMittelwert = new Mittelwert(0.0, 0.0, 0.0);
         
         double[] messwerte ={};
@@ -212,7 +212,7 @@ public class ArrayFunctionsTest
         assertEquals(erwarteteRueckgabe , tatsaechlicheRueckgabe);
     }
     
-    private void assertEqualsMittelwert(Mittelwert erwarteterMittelwert , Mittelwert tatsachlicherMittelwert){
+    private void assertEqualsMittelwert(Mittelwert erwarteterMittelwert , Mittelwert tatsachlicherMittelwert) {
         assertEquals(erwarteterMittelwert.getMittelwert() , tatsachlicherMittelwert.getMittelwert(), 2* Double.MIN_VALUE);
         assertEquals(erwarteterMittelwert.getNahesterwert() , tatsachlicherMittelwert.getNahesterwert(), 2* Double.MIN_VALUE);
         assertEquals(erwarteterMittelwert.getEntferntesterwert() , tatsachlicherMittelwert.getEntferntesterwert(), 2* Double.MIN_VALUE);

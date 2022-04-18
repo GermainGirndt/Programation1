@@ -10,10 +10,10 @@ public class Mitarbeiter extends Person
 {
     private String email;
     
-    private String emailRegex = "^\\S+@\\S+$";
+    private String emailRegex = "^\\S+@\\S+.\\S+$";
     
     private static final String FEHLER_EMAIL_LEER = "Die Email darf nicht leer sein";
-    private static final String FEHLER_KEINE_EMAIL = "Das ist keine valide email-Adresse";
+    private static final String FEHLER_UNGUELTIGE_EMAIL = "Das ist keine valide email-Adresse";
     
     /**
      * Konstruktor für Objekte der Klasse Mitarbeiter
@@ -25,11 +25,11 @@ public class Mitarbeiter extends Person
     {
         super(vorname, nachname);
         
-        if(email == null || email.trim().isEmpty()){
+        if (email == null || email.trim().isEmpty()) {
             throw new IllegalArgumentException(FEHLER_EMAIL_LEER);
         }
-        if(!email.matches(emailRegex)){
-             throw new IllegalArgumentException(FEHLER_KEINE_EMAIL);  
+        if (!email.matches(emailRegex)) {
+             throw new IllegalArgumentException(FEHLER_UNGUELTIGE_EMAIL);  
         }
         this.email = email;
     }
@@ -43,7 +43,7 @@ public class Mitarbeiter extends Person
      * @param ende ist die Enduhrzeit
      * @bemerkung ist die Bemerkung
      */
-    public void reserviere(Raum raum, Uhrzeit beginn, Uhrzeit ende, String bemerkung){
+    public void reserviere(Raum raum, Uhrzeit beginn, Uhrzeit ende, String bemerkung) {
         Reservierung reservierung = new Reservierung(beginn, ende);
         reservierung.setBemerkung(bemerkung);
         reservierung.setMitarbeiter(this);
@@ -52,7 +52,7 @@ public class Mitarbeiter extends Person
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         return  super.toString() 
                + " (" + email + ")";
     }

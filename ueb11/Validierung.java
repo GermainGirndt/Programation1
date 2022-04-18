@@ -35,7 +35,7 @@ public class Validierung
                                                   * Validiert, ob Argumente da sind
      * @params args ein String-Array mit den Argumenten
      */
-    public static void validiereArgsLaenge(String[] args){
+    public static void validiereArgsLaenge(String[] args) {
         if (args.length == 0 ) {
             throw new IllegalArgumentException(FEHLER_KEINE_DATEIEN);
         }

@@ -4,7 +4,7 @@
  */
 public class Test
 {
-    public static void main(String[] strg){
+    public static void main(String[] strg) {
         Uhrzeit u = new Uhrzeit(12, 54);
         System.out.println(u);
         Mitarbeiter m = new Mitarbeiter("Max", "Mustermann", "max@htwsaar.de");

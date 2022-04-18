@@ -29,10 +29,10 @@ public class Raum
      */
     public Raum(int geb, int etage, int raum)
     {
-       if(geb < GEB_MIN){
+       if (geb < GEB_MIN) {
            throw new IllegalArgumentException(FEHLER_GEB);
        }
-       if(raum < RAUM_MIN){
+       if (raum < RAUM_MIN) {
             
        }
        this.geb   = geb;
@@ -47,15 +47,15 @@ public class Raum
      * falls das limit erreicht ist wird die groesse des Arrays verdoppelt
      * @param reservierung ist die Reservierung, die hinzugefuegt wird
      */
-    public void addReservierung(Reservierung reservierung){
-        if(reservierung == null){
+    public void addReservierung(Reservierung reservierung) {
+        if (reservierung == null) {
             throw new IllegalArgumentException(FEHLER_RESERVIERUNG);   
         }
         
         reservierungen[anzahlReservierungen] = reservierung;
         anzahlReservierungen++;
         
-        if(anzahlReservierungen >= reservierungen.length){
+        if (anzahlReservierungen >= reservierungen.length) {
            Reservierung[] temp = new Reservierung[reservierungen.length * 2];
            System.arraycopy(reservierungen, 0, temp, 0, reservierungen.length);
            reservierungen = temp;
@@ -63,9 +63,9 @@ public class Raum
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         String ausgabe = "Raum " + geb + "-" + etage + "." + raum ;
-        for(int i = 0; i < anzahlReservierungen; i++){
+        for(int i = 0; i < anzahlReservierungen; i++) {
             ausgabe += "\n" + reservierungen[i].toString();    
         }
         return ausgabe;

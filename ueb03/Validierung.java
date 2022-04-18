@@ -20,8 +20,8 @@ public class Validierung {
     * Die Methode prueft ob die Zahl, deren TeilerSumme gebildet wird, ob diese eine natürliche Zahl ist
     * @param zahlTeilersumme ist die Zahl die validiert wird
     */
-    public static void validiereZahlTeilersumme(long zahlTeilersumme){
-        if(Validierung.checkeObNatuerlicheZahl(zahlTeilersumme)){
+    public static void validiereZahlTeilersumme(long zahlTeilersumme) {
+        if (Validierung.checkeObNatuerlicheZahl(zahlTeilersumme)) {
              throw new IllegalArgumentException("Teilersummen können nur für natürliche Zahlen gebildet werden");    
         }
     }
@@ -30,11 +30,11 @@ public class Validierung {
     * Die Methode prueft, ob die ISBN positiv ist und nicht zu viele Ziffern hat
     * @param isbn die ueberprueft werden soll
     */    
-    public static void validiereIsbn(long isbn){
-        if(isbn < KLEINSTE_ISBN ){
+    public static void validiereIsbn(long isbn) {
+        if (isbn < KLEINSTE_ISBN ) {
              throw new IllegalArgumentException("Die ISBN darf nicht negativ sein");      
         }
-        else if(isbn > GROESSTE_ISBN) {
+        else if (isbn > GROESSTE_ISBN) {
              throw new IllegalArgumentException("Die ISBN, deren Checksumme berechnet werden soll, darf nicht mehr als 9 Ziffern haben");               
             }
         }

@@ -23,7 +23,7 @@ public class Dialog
     private static final int FUNKTION_RAUM            = 2; 
     private static final int FUNKTION_RESERVIERUNG    = 3; 
     
-    public Dialog(){
+    public Dialog() {
          this.raeume = new Raum[MAX_ANZAHL];
          this.mitarbeiter = new Mitarbeiter[MAX_ANZAHL];
          this.input = new Scanner(System.in);
@@ -107,7 +107,7 @@ public class Dialog
 
     }
     
-    private void legeMitarbeiterAn(){
+    private void legeMitarbeiterAn() {
         System.out.println("Vorname des Mitarbeiters?");
         String vorname = input.nextLine();
         System.out.println("Nachname des Mitarbeiters?");
@@ -115,7 +115,7 @@ public class Dialog
         System.out.println("Email des Mitarbeiters?");
         String email    = input.nextLine();
         Mitarbeiter mitarbeiter = new Mitarbeiter(vorname, nachname, email);  
-        if(anzahlMitarbeiter < this.mitarbeiter.length ){
+        if (anzahlMitarbeiter < this.mitarbeiter.length ) {
             this.mitarbeiter[anzahlMitarbeiter] = mitarbeiter;
             this.anzahlMitarbeiter++;
         }
@@ -124,7 +124,7 @@ public class Dialog
         }
     }
     
-    private void legeRaumAn(){
+    private void legeRaumAn() {
 
         System.out.println("Gebaeude des Raums?");
         int geb = input.nextInt();
@@ -133,7 +133,7 @@ public class Dialog
         System.out.println("Raumnummer des Raums?");
         int raumnummer    = input.nextInt();
         Raum raum = new Raum(geb, etage, raumnummer);
-        if(anzahlRaeume < this.raeume.length ){
+        if (anzahlRaeume < this.raeume.length ) {
             this.raeume[anzahlRaeume] = raum;
             this.anzahlRaeume++;
         }
@@ -143,11 +143,11 @@ public class Dialog
         
     }
     
-    private void legeReservierungAn(){
+    private void legeReservierungAn() {
         int m   = auswaehlen(anzahlMitarbeiter, true);     
-        if(m > -1){
+        if (m > -1) {
            int r = auswaehlen(anzahlRaeume, false);
-           if( r > -1){
+           if ( r > -1) {
                Mitarbeiter mita = mitarbeiter[m];
                Raum raum = raeume[r];
                System.out.println("Stunde Anfang?");
@@ -173,17 +173,17 @@ public class Dialog
         }
     }
     
-    private int auswaehlen(int anzahl, boolean istmitarbeiter){
+    private int auswaehlen(int anzahl, boolean istmitarbeiter) {
         int funktion = -2;
         while(funktion != -1) {
         try {
-                if(istmitarbeiter){
-                    for(int i = 0; i < anzahl; i++){
+                if (istmitarbeiter) {
+                    for(int i = 0; i < anzahl; i++) {
                         System.out.println(mitarbeiter[i].toString() + "\t" + i + "\n" );
                     }
                 }
                 else{
-                    for(int i = 0; i < anzahl; i++){
+                    for(int i = 0; i < anzahl; i++) {
                         System.out.println(raeume[i].toString() + "\t" + i + "\n" );
                     }
                 }
@@ -193,12 +193,12 @@ public class Dialog
                 funktion = input.nextInt();
                 input.nextLine();
                 System.out.println();
-                if(funktion > -1 && funktion < 11){
-                     if(funktion <= anzahl){
+                if (funktion > -1 && funktion < 11) {
+                     if (funktion <= anzahl) {
                             return funktion;
                         }    
                 }
-                else if(funktion == -1){
+                else if (funktion == -1) {
                      System.out.println("Auswahl wird abgebrochen");    
                 }
                 else{

@@ -154,8 +154,8 @@ public class QueueDialog {
     /**
     * Gibt die Anzahl der Objekte in der Queue aus
     */
-    private void gibAnzahlaus(){
-        if(queue == null){
+    private void gibAnzahlaus() {
+        if (queue == null) {
             throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
         } 
         System.out.println("Elementanzahl: " + queue.anzahlElemente());
@@ -298,7 +298,7 @@ public class QueueDialog {
           throw new IllegalArgumentException(FEHLER_NULL_QUEUE);   
         }
         
-        for(int i = 0; i < q.anzahlElemente(); i++){
+        for(int i = 0; i < q.anzahlElemente(); i++) {
             System.out.println(q.get(i));
         }
     }

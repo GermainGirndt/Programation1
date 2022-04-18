@@ -29,15 +29,15 @@ public class Mittelwert {
     }
 
     
-    public double getMittelwert(){
+    public double getMittelwert() {
         return mittelwert;    
     }
     
-    public double getNahesterwert(){
+    public double getNahesterwert() {
         return nahesterWert;    
     }
     
-    public double getEntferntesterwert(){
+    public double getEntferntesterwert() {
         return entferntesterWert;    
     }
 }

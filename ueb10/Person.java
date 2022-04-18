@@ -18,31 +18,31 @@ public class Person {
     * @param vorname, der Vorname
     * @param nachname, der Nachname
     */
-    public Person(String vorname, String nachname){
+    public Person(String vorname, String nachname) {
         this.vorname  = vorname;
         this.nachname = nachname;
     }
     
-    public String getVorname(){
+    public String getVorname() {
         return this.vorname;
     }
     
-    public String getNachname(){
+    public String getNachname() {
         return this.nachname;
     }
     
-    public void setVorname(String vorname){
+    public void setVorname(String vorname) {
         Validierungsutils.validiereNamenString(vorname, VORNAME);
         this.vorname = vorname;
     }
     
-    public void setNachname(String nachname){
+    public void setNachname(String nachname) {
         Validierungsutils.validiereNamenString(vorname, NACHNAME);
         this.nachname = nachname;
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         return getVorname() + ", " + getNachname();
     }
 }

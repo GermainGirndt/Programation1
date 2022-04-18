@@ -27,14 +27,14 @@ public class LinkFilter
     
     }
 
-    public void leseDateiEin(){
+    public void leseDateiEin() {
         String x = null;
         try{
              while( (x = reader.readLine()) != null )
              {
                 System.out.println(x);
                 boolean matchFound = Pattern.matches(regex, x);
-                 if(matchFound) {
+                 if (matchFound) {
                       System.out.println("Match found");
                 } else {
                       System.out.println("Match not found");

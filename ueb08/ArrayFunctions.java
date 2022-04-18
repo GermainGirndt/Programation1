@@ -114,14 +114,14 @@ public class ArrayFunctions {
     * @param strings ein Array von Strings
     * @return die Anzahl der Strings die nur aus grossen oder kleinen Buchstaben bestehen
     */
-     public static int stringsAuswerten(String[] strings){
+     public static int stringsAuswerten(String[] strings) {
          
         int zähler = 0;
         
         for (String s : strings) {
-            if (s.matches(REGEX_KLEINBUCHSTABE)){
+            if (s.matches(REGEX_KLEINBUCHSTABE)) {
                 zähler++;
-            } else if (s.matches(REGEX_GROSSBUCHSTABE)){
+            } else if (s.matches(REGEX_GROSSBUCHSTABE)) {
                 zähler++;    
             }
         }

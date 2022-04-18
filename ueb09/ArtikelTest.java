@@ -23,8 +23,8 @@ public class ArtikelTest
     */
     @Test
     public void test_Artikel_Konstruktor_gueltige_Artikelnr_sonst_0() {
-        for (int gueltigeArtikelnr : testArtikelNr){
-            for (String art : testArt){
+        for (int gueltigeArtikelnr : testArtikelNr) {
+            for (String art : testArt) {
                 test_gueltige_ArtikelNr_sonst_0(gueltigeArtikelnr, art); 
             }
         }
@@ -36,8 +36,8 @@ public class ArtikelTest
     */
     @Test
     public void test_Artikel_Konstruktor_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand() {
-        for (int gueltigeArtikelnr : testArtikelNr){
-            for (String art : testArt){
+        for (int gueltigeArtikelnr : testArtikelNr) {
+            for (String art : testArt) {
                  test_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(gueltigeArtikelnr, art);
             }
            
@@ -50,8 +50,8 @@ public class ArtikelTest
     */
     @Test
     public void test_Artikel_Konstruktor_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis() {
-        for (int gueltigeArtikelnr : testArtikelNr){
-            for (String art : testArt){
+        for (int gueltigeArtikelnr : testArtikelNr) {
+            for (String art : testArt) {
                  test_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis(gueltigeArtikelnr , art);
             }
             
@@ -66,15 +66,15 @@ public class ArtikelTest
      @Test
     public void test_Artikel_Konstruktor_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0() {
         
-     for (int gueltigeArtikelnr  : testArtikelNr){
-         for (String art : testArt){
+     for (int gueltigeArtikelnr  : testArtikelNr) {
+         for (String art : testArt) {
              test_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(gueltigeArtikelnr , art);
          }
      }
 
     }
     
-    private void test_gueltige_ArtikelNr_sonst_0(int artikelNr, String art){
+    private void test_gueltige_ArtikelNr_sonst_0(int artikelNr, String art) {
         int erwarteteNr      = artikelNr;   
         String erwarteteArt  = art;
         
@@ -86,7 +86,7 @@ public class ArtikelTest
         
     }
     
-    private void test_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(int artikelNr, String art){
+    private void test_gueltige_ArtikelNr_Mit_Preis_3_komma_5_ohne_Bestand(int artikelNr, String art) {
         double erwarteterPreis     = 3.5;
         int   erwarteteNr          = artikelNr;  
         String erwarteteArt        = art;
@@ -99,7 +99,7 @@ public class ArtikelTest
         assertEquals(erwarteteArt, art);
     }
 
-    private void test_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis(int artikelNr, String art){
+    private void test_gueltige_ArtikelNr_mit_Bestand_40_ohne_Preis(int artikelNr, String art) {
         long erwarteterBestand     = 40;
         int   erwarteteNr          = artikelNr;   
         String erwarteteArt        = art;
@@ -112,7 +112,7 @@ public class ArtikelTest
         assertEquals(erwarteteArt, art);
     }
     
-    private void test_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(int artikelNr, String art){
+    private void test_gueltige_ArtikelNr_mit_Bestand_40_mit_Preis_3_komma_0(int artikelNr, String art) {
         long erwarteterBestand     = 40;
         double erwarteterPreis     = 3.0;
         int   erwarteteNr          = artikelNr;  
@@ -242,16 +242,16 @@ public class ArtikelTest
     }
 
     
-    private void ueberpruefeObBestand0(long bestand){
+    private void ueberpruefeObBestand0(long bestand) {
         assertEquals(0 , bestand);    
     }
     
     
-    private void ueberpruefeObPreis0Komma0(double preis){
+    private void ueberpruefeObPreis0Komma0(double preis) {
        assertEquals(0.0 , preis , 2* Double.MIN_VALUE);  
     }
     
-    private void ueberpruefeObPreisUndBestand0(long bestand, double preis){
+    private void ueberpruefeObPreisUndBestand0(long bestand, double preis) {
        ueberpruefeObBestand0(bestand);
        ueberpruefeObPreis0Komma0(preis);
     }

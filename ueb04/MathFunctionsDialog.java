@@ -129,7 +129,7 @@ public class MathFunctionsDialog
     /**
     *  Erfragt eine ISBN und bildet dann die Checksumme
     */    
-    public void berechneChecksummeIsbn(){
+    public void berechneChecksummeIsbn() {
             String isbn = userInput.getString("ISBN: ");
             Validierung.validiereZeichenAnzahl(isbn);
             System.out.println("Checksumme: " + MathFunctions.berechneChecksummeIsbn(Long.parseLong(isbn)));
@@ -138,7 +138,7 @@ public class MathFunctionsDialog
     /**
     * Berechnet die Nullstellen einer quadratischen Funktion in der Form x^2 + p*x + q
     */
-       public void berechneNullstellen(){
+       public void berechneNullstellen() {
             double p = userInput.getDouble("p: ");
             double q = userInput.getDouble("q: ");
             System.out.println(MathFunctions.berechneNullstellen(p , q));
@@ -147,9 +147,9 @@ public class MathFunctionsDialog
     /**
     * Prueft ob eine Zahl als Summe von Potenzen geschrieben werden kann
     */
-    public void pruefeObPotenzsumme(){
+    public void pruefeObPotenzsumme() {
             long zahl = userInput.getLong("Zahl zum Testen: ");
-            if(MathFunctions.istSummeVonPotenzen(zahl)){
+            if (MathFunctions.istSummeVonPotenzen(zahl)) {
                 System.out.println(zahl + " ist eine Summe von Potenzen");
             }
             else{
@@ -160,7 +160,7 @@ public class MathFunctionsDialog
     /**
     * Berechnet den groessten gemeinsamen Teiler zweier Zahlen
     */
-    public void berechneGgt(){
+    public void berechneGgt() {
         int zahl1 = userInput.getInt("Erste Zahl: ");
         int zahl2 = userInput.getInt("Zweite Zahl: ");
         System.out.println("Groesster gemeinsamer Teiler: " + MathFunctions.berechneGgt(zahl1 , zahl2));
@@ -169,7 +169,7 @@ public class MathFunctionsDialog
     /**
     * Berechnet die Reihensumme mit den von den Benutzer eingegebenen Werten
     */
-    public void berechneReihensumme(){
+    public void berechneReihensumme() {
         int anzahl = userInput.getInt("Anzahl an Teilsummen: ");
         double x = userInput.getDouble("X-Wert: ");
         System.out.println("Ergebnis der Reihensumme: " + MathFunctions.berechneReihensumme(anzahl , x));
@@ -178,7 +178,7 @@ public class MathFunctionsDialog
     /**
     * Berechnet die Fakultaet von dem von Benutzer eingegebenen Werten
     */
-    public void berechneFakultaet(){
+    public void berechneFakultaet() {
             int zahl1 = userInput.getInt("Zahl zur Fakultaetsberechnung: ");
             System.out.println("Fakultaet der gewaehlten Zahl: " + MathFunctions.berechneFakultaet(zahl1));
     }

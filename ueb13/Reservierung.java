@@ -28,14 +28,15 @@ public class Reservierung
     public Reservierung(Uhrzeit beginn, Uhrzeit ende)
     {
        
-        if(beginn == null){
+        if (beginn == null) {
             throw new IllegalArgumentException(FEHLER_BEGINN);   
         }
-        if(ende == null){
+        if (ende == null) {
             throw new IllegalArgumentException(FEHLER_ENDE);   
         }
-        if(beginn.getStunde() > ende.getStunde() ||
-          (beginn.getStunde() == ende.getStunde() && beginn.getMinute() > ende.getMinute())){
+        if (beginn.getStunde() > ende.getStunde()
+            || (beginn.getStunde() == ende.getStunde()
+            && beginn.getMinute() > ende.getMinute())) {
               
             throw new IllegalArgumentException(FEHLER_ZEIT); 
         }
@@ -43,15 +44,15 @@ public class Reservierung
         this.ende   = ende;  
     }
 
-    public void setBemerkung(String bemerkung){
-        if(bemerkung == null || bemerkung.strip().isEmpty()){
+    public void setBemerkung(String bemerkung) {
+        if (bemerkung == null || bemerkung.strip().isEmpty()) {
              throw new IllegalArgumentException(FEHLER_BEMERKUNG);       
         }
         this.bemerkung = bemerkung;
     }
     
-    public void setMitarbeiter(Mitarbeiter mitarbeiter){
-        if(mitarbeiter == null){
+    public void setMitarbeiter(Mitarbeiter mitarbeiter) {
+        if (mitarbeiter == null) {
             throw new IllegalArgumentException(FEHLER_MITARBEITER);       
         }
         this.mitarbeiter = mitarbeiter;
@@ -61,17 +62,17 @@ public class Reservierung
      * setRaum gibt dem Uebergebenen Raum sich selbst mit 
      * @param raum ist der Raum, dem diese Reservierung uebergeben werden soll
      */
-    public void setRaum(Raum raum){
-        if(raum == null){
+    public void setRaum(Raum raum) {
+        if (raum == null) {
             throw new IllegalArgumentException(FEHLER_RAUM);       
         } 
         raum.addReservierung(this);   
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         String ausgabe = "gebucht ";
-        if(mitarbeiter != null){
+        if (mitarbeiter != null) {
            ausgabe += "von " + mitarbeiter.toString();
         }
         ausgabe += " von "        + beginn.toString() + 

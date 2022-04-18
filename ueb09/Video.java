@@ -72,19 +72,19 @@ public class Video extends Artikel
     }
     
     @Override
-    public String getBeschreibung(){
+    public String getBeschreibung() {
         return this.titel;
     }
     
-    public String getTitel(){
+    public String getTitel() {
         return this.titel;
     }
     
-    public int getSpieldauer(){
+    public int getSpieldauer() {
         return this.spieldauer;
     }
     
-    public int getJahr(){
+    public int getJahr() {
         return this.jahr;
     }
 }

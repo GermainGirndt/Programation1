@@ -131,7 +131,7 @@ public final class Validierung {
     * @param preis ist der zu überprüfende Preis
     */
     public static void validierePreis(double preis) {
-        if (preis < MINDESTPREIS){
+        if (preis < MINDESTPREIS) {
             throw new IllegalArgumentException("Preis darf nicht negativ sein");
         }
     }
@@ -148,8 +148,8 @@ public final class Validierung {
         }
     }
     
-    public static void validiereLagergroesse(int groesse){
-        if(groesse < 1){
+    public static void validiereLagergroesse(int groesse) {
+        if (groesse < 1) {
             throw new IllegalArgumentException("Lagergroessen die kleiner sind als 1 sind nicht erlaubt");
         }
     }

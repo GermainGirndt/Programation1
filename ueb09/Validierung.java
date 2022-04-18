@@ -35,27 +35,27 @@ public final class Validierung {
     */
     private Validierung() {}
     
-    public static void validiereSpieldauer(int spieldauer){
-        if (spieldauer <= UNTERER_LIMIT_UNGUELTIGER_SPIELDAUER){
+    public static void validiereSpieldauer(int spieldauer) {
+        if (spieldauer <= UNTERER_LIMIT_UNGUELTIGER_SPIELDAUER) {
             throw new IllegalArgumentException(FEHLERMELDUNG_SPIELDAUER);   
         }
     }
 
-    public static void validiereJahr(int jahr){
-        if (jahr < FRUEHESTESVIDEOJAHR || jahr > AKTUELLESJAHR){
+    public static void validiereJahr(int jahr) {
+        if (jahr < FRUEHESTESVIDEOJAHR || jahr > AKTUELLESJAHR) {
              throw new IllegalArgumentException(FEHLERMELDUNG_SPIELDAUER);   
         }
     }
     
-    public static void validiereVerlag(String verlag){
+    public static void validiereVerlag(String verlag) {
         Validierung.validiereStringHatNichtNurLeerTasten(verlag, ATTRIBUTE_VERLAG);    
     }
     
-    public static void validiereAutor(String autor){
+    public static void validiereAutor(String autor) {
         Validierung.validiereStringHatNichtNurLeerTasten(autor, ATTRIBUTE_AUTOR);    
     }
     
-    public static void validiereInterpret(String interpret){
+    public static void validiereInterpret(String interpret) {
         Validierung.validiereStringHatNichtNurLeerTasten(interpret, ATTRIBUTE_INTERPRET);    
     }
     
@@ -73,8 +73,8 @@ public final class Validierung {
         }
     }
     
-    public static void validiereAnzahlTitel(int anzahlTitel){
-        if (anzahlTitel < MINDESTANZAHL_AN_TITEL){
+    public static void validiereAnzahlTitel(int anzahlTitel) {
+        if (anzahlTitel < MINDESTANZAHL_AN_TITEL) {
             throw new IllegalArgumentException( FEHLERMELDUNG_ANZAHLTITEL);    
         }
     }
@@ -218,7 +218,7 @@ public final class Validierung {
     * @param preis ist der zu ueberpruefende Preis
     */
     public static void validierePreis(double preis) {
-        if (preis < MINDESTPREIS){
+        if (preis < MINDESTPREIS) {
             throw new IllegalArgumentException("Preis darf nicht negativ sein");
         }
     }
@@ -235,8 +235,8 @@ public final class Validierung {
         }
     }
     
-    public static void validiereLagergroesse(int groesse){
-        if(groesse < 1){
+    public static void validiereLagergroesse(int groesse) {
+        if (groesse < 1) {
             throw new IllegalArgumentException("Lagergroessen die kleiner sind als 1 sind nicht erlaubt");
         }
     }
