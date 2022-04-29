@@ -17,7 +17,7 @@ public class GGTRechner {
      */
     private GGTRechner(String[] args) {
 
-        instace.validiereHatGenauZweiArgumente(args);
+        this.validiereHatGenauZweiArgumente(args);
         
         this.a = parseInt(args[0], "a");
         this.b = parseInt(args[1], "b");
@@ -26,12 +26,13 @@ public class GGTRechner {
 
     public static void main(String[] args) {
 
-        GGTRechner instace = new GGTRechner(args);
+        GGTRechner instance = new GGTRechner(args);
 
-        return berechneGgT(instance.getA(), instance.getB());
+        int ggt = berechneGgT(instance.getA(), instance.getB());
+        System.out.println("ggT ist " + ggt);
     }
 
-    public static int berechneGgT(int a, int b){
+    public static int berechneGgT(int a, int b) {
 
         if (a <= 0 || b <= 0) {
             throw new GGTError("A und B muessen natuerliche Zahlen sein");
@@ -40,7 +41,7 @@ public class GGTRechner {
         return rekursiverEuklidischerAlgoritmus(a, b);
     }
 
-    private rekursiverEuklidischerAlgoritmus(int a, int b) {
+    private static int rekursiverEuklidischerAlgoritmus(int a, int b) {
 
         if (b == 0) {
             return a;
@@ -51,7 +52,7 @@ public class GGTRechner {
 
     private void validiereHatGenauZweiArgumente(String[] string) {
 
-        if (args.length != 2) {
+        if (string.length != 2) {
             throw new GGTError("GGT Rechner muss genau 2 Zahlen als Argument erhalten");
         }
 
@@ -62,7 +63,7 @@ public class GGTRechner {
             return Integer.parseInt(arg);
 
         } catch(NumberFormatException e) {
-            throw GGTError(String.format("Die Zahl %s kann nicht in int umgewandelt werden", zahlName));
+            throw new GGTError(String.format("Die Zahl %s kann nicht in int umgewandelt werden", zahlName));
         }
     }
 
