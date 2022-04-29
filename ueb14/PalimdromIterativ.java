@@ -1,9 +1,9 @@
 
 /**
- * Beschreiben Sie hier die Klasse PalimdromIterativ.
+ * Überprüft mittels Iteraktion, ob zwei Wörter Palimdrome sind.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class PalimdromIterativ implements Palimdrom
 {

@@ -2,10 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File;
 /**
- * Beschreiben Sie hier die Klasse PalimdromRekursiv.
+ * Überprüft mittels Rekursion, ob zwei Wörter Palimdrome sind.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class PalimdromRekursiv implements Palimdrom
 {

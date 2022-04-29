@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 /**
  * Beschreiben Sie hier die Klasse LinkFilter.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class LinkFilter
 {

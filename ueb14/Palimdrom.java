@@ -2,8 +2,8 @@
 /**
  * Tragen Sie hier eine Beschreibung des Interface Palimdrom ein.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 
 public interface Palimdrom
