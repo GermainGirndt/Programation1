@@ -31,6 +31,8 @@ public class TestPalindrom {
             "Otto",
             "Reittier",
             "Rentner",
+            "a a",
+            "aa aa"
         };
 
         return palindrome;
@@ -46,11 +48,25 @@ public class TestPalindrom {
             "aab",
             "Wuhu",
             "AWW",
-            "bdA"
+            "bdA",
+            "irgendetwas",
+            "a a  a"
         };
 
         return falschePalindrome;
     }
+
+    public static String[] fehlpalindromeProvider() { 
+
+        String[] fehlpalindrome = 
+        {
+            "",
+            "  "
+        };
+
+        return fehlpalindrome;
+    }
+
 
     @BeforeEach 
     public void init() {
@@ -78,6 +94,20 @@ public class TestPalindrom {
     void testFalschePalindromeParameterized(String wort) {
         for ( Palindrom palindromIdentifier : this.palindrome ) {
             assertEquals(false, palindromIdentifier.istPalindrom(wort), String.format("%s muss kein Palindrom sein (Typ: %s)", wort, palindromIdentifier.getClass().getName()));
+        }
+    }
+
+    @ParameterizedTest
+    @MethodSource(value =  "fehlpalindromeProvider")
+    void testFehlpalindromeParameterized(String wort) {
+        for ( Palindrom palindromIdentifier : this.palindrome ) {
+            
+            assertThrows(
+                PalindromError.class,
+                () -> palindromIdentifier.istPalindrom(wort),
+               "Expected istPalindrom() to throw, but it didn't"
+            );
+
         }
     }
 
