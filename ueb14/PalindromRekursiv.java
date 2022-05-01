@@ -170,13 +170,6 @@ public class PalindromRekursiv implements Palindrom {
 
     }
 
-   
-
-    private boolean pruefePalindrom(String string) {
-
-        return this.pruefeRekursiv(string);
-
-    }
 
     private boolean pruefePalindromInString(String string) {
 
