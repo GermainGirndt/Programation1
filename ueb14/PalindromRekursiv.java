@@ -9,29 +9,26 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class PalindromRekursiv implements Palindrom {
-    private boolean istFile;
     ArrayList<String> zeilen;
-    private String filemode = "-f";
-    private String wordmode = "-s";
 
     private BufferedReader reader;
 
     private String eingabe;
 
-    private EingabeTyp eingabeTyp;
+    private Mode mode;
 
-    public enum EingabeTyp { 
-        WORT(0),
-        TEXT_DATEI(1);
+    public enum Mode { 
+        WORT("-s"),
+        TEXT_DATEI("-f");
     
-        private int index;
+        String modeName;
     
-        EingabeTyp(int index) {
-            this.index = index;
+        Mode(String modeName) {
+            this.modeName = modeName;
         }
     
-        public int getIndex() {
-            return this.index;
+        public String getModeName() {
+            return this.modeName;
         }
     
     };
@@ -46,37 +43,6 @@ public class PalindromRekursiv implements Palindrom {
 
     }
     
-    
-    public void start(String[] args) {
-        if (args.length < 2){
-            throw new PalindromError("Benutzung java PalindromRekursiv <-s|-f> <String|Dateiname>");            
-        }  
-
-        // if (args[0].equals(this.filemode)) {
-        //    this.istFile = true;
-        //    this.readLines(args[1]);
-        // } else if ((args[0].equals(this.wordmode))) {
-        //    this.istFile = false;
-        // }
-        // else {
-        //     throw new PalindromError("Benutzung java PalindromRekursiv <-s|-f> <String|Dateiname>");      
-        // }
-        // if(this.istFile){
-        //     if(this.zeilen.size() > 0){
-        //     for(String z: this.zeilen){
-        //         System.out.println(z);
-        //         System.out.println(this.istPalindrom(z));   
-        //     }
-        // }
-        // }
-        // else{
-        //     for(int i = 1; i < args.length ; i++){
-        //         System.out.println(args[i]);
-        //         System.out.println(this.istPalindrom(args[i]));    
-        //     }
-        // }
-    }
-    
 
     public static PalindromRekursiv instantieerePalindrom(String[] args) {
         if (args.length != 1 && args.length != 2){
@@ -85,8 +51,11 @@ public class PalindromRekursiv implements Palindrom {
 
         PalindromRekursiv instance;
         if (args.length == 2) {
+            System.out.println(args[0]);
+            System.out.println(args[1]);
             instance = new PalindromRekursiv(args[0], args[1]);
         } else {
+            System.out.println(args[0]);
             instance = new PalindromRekursiv(args[0]);
         }
         return instance;
@@ -95,49 +64,53 @@ public class PalindromRekursiv implements Palindrom {
 
     /**
      * Konstruktor für Objekte der Klasse PalindromRekursiv
-     * notwendig für die automatisiertenTests
      */
     public PalindromRekursiv() {
-        this.zeilen = new ArrayList<>(); 
     }
 
     /**
      * Konstruktor für Objekte der Klasse PalindromRekursiv
      */
-    public PalindromRekursiv(String string) {
-        this.setEingabe(string);
-        this.eingabeTyp = EingabeTyp.WORT;
+    public PalindromRekursiv(String eingabe) {
+        this.setEingabe(eingabe);
+        this.mode = Mode.WORT;
     }
 
     /**
      * Konstruktor für Objekte der Klasse PalindromRekursiv
      */
-    public PalindromRekursiv(String string, String stringInt) {
+    public PalindromRekursiv(String mode, String string) {
         this(string);
-
-        try {
-            int enumIndex = Integer.parseInt(stringInt);
-
-            this.setEingabeTyp(enumIndex);
-        } catch (NumberFormatException e) {
-            throw new PalindromError("Das zweite Argument muss ein Integer sein");
-        }
-
+        this.setMode(mode);
     }
 
-    public void setEingabe(String eingabeString) {
-        if (eingabeString == null){
+    public void setEingabe(String eingabestring) {
+        if (eingabestring == null){
             throw new PalindromError("kein Argument übergeben");
         }
-        if (eingabeString.trim().isEmpty()){
-            throw new PalindromError("erstes Argument darf nicht leer sein");
+        if (eingabestring.trim().isEmpty()){
+            throw new PalindromError("eingabestring darf nicht leer sein");
         }
-
-        this.eingabe = eingabeString;
+        
+        this.eingabe = eingabestring;
     }
 
-    public void setEingabeTyp(int eingabeTypIndex) {
-        this.eingabeTyp = this.toEingabeTyp(eingabeTypIndex);
+    public void setMode(String ausgewählterMode) {
+
+        if (ausgewählterMode == null || ausgewählterMode.trim().isEmpty()) {
+            throw new PalindromError("Bitte geben Sie einen Mode ein");
+        }
+
+        for ( Mode mode : Mode.values() ) {
+            if (mode.getModeName().equals(ausgewählterMode)) {
+                System.out.println("Ausgewählter Mode: " + mode.getModeName());
+                this.mode = mode;
+                return;
+            }
+        }
+        
+        throw new PalindromError("Nur Modes '-f' und '-s' werden unterstützt. Auswahl:" + ausgewählterMode);
+
     }
 
     @Override 
@@ -150,7 +123,7 @@ public class PalindromRekursiv implements Palindrom {
 
     private boolean prüefePalindrom() {
 
-        switch (this.eingabeTyp) {
+        switch (this.mode) {
             case WORT:
                 return pruefePalindromInString(this.eingabe);
             case TEXT_DATEI:
@@ -160,21 +133,9 @@ public class PalindromRekursiv implements Palindrom {
         }
     }
 
-    private EingabeTyp toEingabeTyp(int enumIndex) {
-
-        int maxIndex = EingabeTyp.values().length - 1;
-        if (enumIndex < 0 || enumIndex > maxIndex) {
-            throw new PalindromError(String.format("Eingabetyp muss zwischen 0 und %s sein", maxIndex  ));
-        }
-        return EingabeTyp.values()[enumIndex];
-
-    }
-
 
     private boolean pruefePalindromInString(String string) {
-
         return this.pruefeRekursiv(string);
-
     }
 
 
@@ -191,7 +152,7 @@ public class PalindromRekursiv implements Palindrom {
             return pruefeRekursiv(zeile);
         } catch (Exception error) {
             throw new PalindromError("Dateilesung hat fehlgeschlagen");
-        }        
+        }
 
     }
     
@@ -207,25 +168,25 @@ public class PalindromRekursiv implements Palindrom {
              }
              u = string.substring(1, string.length() -1);
              return pruefeRekursiv(u);    
-        }
-        else {
+        } else {
             return false;
         }    
     }
     
     private void validiereFile(File file){
+        
+        if (!file.exists()) {
+            throw new PalindromError(String.format("Die Datei '%s' existiert nicht" , file.getName()));
+        }    
 
         if (!file.isFile()) {
-            throw new IllegalArgumentException(file.getName());
+            throw new PalindromError(String.format("%s ist keine Datei" , file.getName()));
         }
 
         if (!file.canRead()) {
-            throw new  IllegalArgumentException(file.getName());
+            throw new  PalindromError(String.format("%s ist nicht lesbar" , file.getName()));
         }
 
-        if (!file.exists()) {
-            throw new IllegalArgumentException(file.getName());
-        }    
     }
     
     private void readLines(String s){

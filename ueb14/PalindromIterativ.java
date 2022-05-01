@@ -11,10 +11,7 @@ public class PalindromIterativ implements Palindrom
     /**
      * Konstruktor für Objekte der Klasse PalindromIterativ
      */
-    public PalindromIterativ()
-    {
-   
-    }
+    public PalindromIterativ() {}
 
     @Override 
     public boolean istPalindrom(String string) {
