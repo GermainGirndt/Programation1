@@ -7,7 +7,7 @@ import java.io.File;
  * @author Girndt, Germain; Krier, Katharina
  * @version 1.0
  */
-public class PalindromRekursiv implements Palindrom {
+public class PalindromRekursiv2 implements Palindrom {
     private String textDateiRegex = "([a-zA-Z0-9\\s_\\.\\-\\(\\):])+(.txt)";
     private BufferedReader reader;
 
@@ -33,13 +33,22 @@ public class PalindromRekursiv implements Palindrom {
 
 
     public static void main(String[] args) {
-        PalindromRekursiv instance = new PalindromRekursiv();
-        instance.start(args);
+        PalindromRekursiv2 instance = new PalindromRekursiv2(args);
+        instance.start();
         
         
     }
     
-    private void start(String[] args) {
+    private void start() {
+        System.out.println(this.prüefePalindrom(this.eingabe));
+
+    }
+    
+    
+    /**
+     * Konstruktor für Objekte der Klasse PalindromRekursiv
+     */
+    public PalindromRekursiv2(String[] args) {
 
         if (args.length != 1 && args.length != 2){
             throw new PalindromError("Benutzung java PalindromRekursiv <String|Dateiname>");            
@@ -53,22 +62,15 @@ public class PalindromRekursiv implements Palindrom {
             this.ausgewaehlterEingabeTyp = EingabeTyp.WORT;
         }
 
-        System.out.println(this.prüefePalindrom(this.eingabe, this.ausgewaehlterEingabeTyp));
-
     }
-    
-    
-    /**
-     * Konstruktor für Objekte der Klasse PalindromRekursiv
-     */
-    public PalindromRekursiv() {}
+
 
     @Override 
     public boolean istPalindrom(String string) {
         if (string == null){
             throw new IllegalArgumentException("keine Datei übergeben");
         }
-        if (string.isEmpty()){
+        if (string.trim().isEmpty()){
             return false;
         }
 
@@ -77,12 +79,7 @@ public class PalindromRekursiv implements Palindrom {
 
     private boolean prüefePalindrom(String string) {
 
-        return this.prüefePalindrom(string, EingabeTyp.WORT);
-    }
-
-    private boolean prüefePalindrom(String string, EingabeTyp eingabeTyp) {
-
-        switch (eingabeTyp) {
+        switch (this.ausgewaehlterEingabeTyp) {
             case WORT:
                 return pruefePalindromInString(string);
             case TEXT_DATEI:
@@ -91,7 +88,6 @@ public class PalindromRekursiv implements Palindrom {
                 throw new PalindromError("Eingabetyp nicht unterstuetzt");
         }
     }
-
 
     private EingabeTyp toEingabeTyp(String string) {
         try {
@@ -115,32 +111,16 @@ public class PalindromRekursiv implements Palindrom {
     }
 
     private boolean pruefePalindromInDatei(String dateiName) {
-
-        // s.matches(textDateiRegex) das brauchen wir nicht, oder?
         File file         = new File(dateiName);
-
-        if (!file.isFile()) {
-            throw new IllegalArgumentException(file.getName());
-        }
-
-        if (!file.canRead()) {
-            throw new  IllegalArgumentException(file.getName());
-        }
-
-        if (!file.exists()) {
-            throw new IllegalArgumentException(file.getName());
-        }
+        
+        validiereFile(file);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            this.reader = reader;
-            
+            this.reader = reader;      
             String zeile = this.reader.readLine();
-    
-            zeile = zeile.trim(); // warum ???
-            
+            zeile = zeile.trim(); 
             reader.close();
             return pruefeRekursiv(zeile);
-    
         } catch (Exception error) {
             throw new PalindromError("Dateilesung hat fehlgeschlagen");
         }        
@@ -149,7 +129,7 @@ public class PalindromRekursiv implements Palindrom {
     
     private boolean pruefeRekursiv(String string){
 
-        string = string.trim().toLowerCase();
+        string = string.toLowerCase();
 
         String u;
         
@@ -165,4 +145,19 @@ public class PalindromRekursiv implements Palindrom {
         }    
     }
     
+    private void validiereFile(File file){
+     
+
+        if (!file.isFile()) {
+            throw new IllegalArgumentException(file.getName());
+        }
+
+        if (!file.canRead()) {
+            throw new  IllegalArgumentException(file.getName());
+        }
+
+        if (!file.exists()) {
+            throw new IllegalArgumentException(file.getName());
+        }    
+    }
 }
