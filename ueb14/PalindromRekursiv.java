@@ -39,7 +39,7 @@ public class PalindromRekursiv implements Palindrom {
     }
 
     private void start() {
-        System.out.println(this.prüefePalindrom());
+        System.out.println(this.pruefePalindrom());
 
     }
     
@@ -58,6 +58,7 @@ public class PalindromRekursiv implements Palindrom {
             System.out.println(args[0]);
             instance = new PalindromRekursiv(args[0]);
         }
+
         return instance;
 
     }
@@ -118,10 +119,10 @@ public class PalindromRekursiv implements Palindrom {
 
         PalindromRekursiv palindrom = new PalindromRekursiv(string);
         
-        return palindrom.prüefePalindrom();
+        return palindrom.pruefePalindrom();
     }
 
-    private boolean prüefePalindrom() {
+    private boolean pruefePalindrom() {
 
         switch (this.mode) {
             case WORT:
@@ -145,15 +146,13 @@ public class PalindromRekursiv implements Palindrom {
         this.validiereFile(file);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            this.reader = reader;      
+            this.reader = reader;
             String zeile = this.reader.readLine();
             zeile = zeile.trim(); 
-            reader.close();
             return pruefeRekursiv(zeile);
         } catch (Exception error) {
             throw new PalindromError("Dateilesung hat fehlgeschlagen");
         }
-
     }
     
     private boolean pruefeRekursiv(String string){
@@ -196,8 +195,7 @@ public class PalindromRekursiv implements Palindrom {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 
-            while((zeile = reader.readLine()) != null)
-            {
+            while((zeile = reader.readLine()) != null) {
                 
                  this.zeilen.add(zeile);
                
