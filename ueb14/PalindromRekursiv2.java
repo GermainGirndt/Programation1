@@ -70,7 +70,7 @@ public class PalindromRekursiv2 implements Palindrom {
         if (string == null){
             throw new IllegalArgumentException("keine Datei übergeben");
         }
-        if (string.isEmpty()){
+        if (string.trim().isEmpty()){
             return false;
         }
 

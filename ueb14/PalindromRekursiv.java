@@ -33,22 +33,13 @@ public class PalindromRekursiv implements Palindrom {
 
 
     public static void main(String[] args) {
-        PalindromRekursiv instance = new PalindromRekursiv(args);
-        instance.start();
+        PalindromRekursiv instance = new PalindromRekursiv();
+        instance.start(args);
         
         
     }
     
-    private void start() {
-        System.out.println(this.prüefePalindrom(this.eingabe, this.ausgewaehlterEingabeTyp));
-
-    }
-    
-    
-    /**
-     * Konstruktor für Objekte der Klasse PalindromRekursiv
-     */
-    public PalindromRekursiv(String[] args) {
+    private void start(String[] args) {
 
         if (args.length != 1 && args.length != 2){
             throw new PalindromError("Benutzung java PalindromRekursiv <String|Dateiname>");            
@@ -62,8 +53,15 @@ public class PalindromRekursiv implements Palindrom {
             this.ausgewaehlterEingabeTyp = EingabeTyp.WORT;
         }
 
-    }
+        System.out.println(this.prüefePalindrom(this.eingabe, this.ausgewaehlterEingabeTyp));
 
+    }
+    
+    
+    /**
+     * Konstruktor für Objekte der Klasse PalindromRekursiv
+     */
+    public PalindromRekursiv() {}
 
     @Override 
     public boolean istPalindrom(String string) {
@@ -151,7 +149,7 @@ public class PalindromRekursiv implements Palindrom {
     
     private boolean pruefeRekursiv(String string){
 
-        string = string.toLowerCase();
+        string = string.trim().toLowerCase();
 
         String u;
         
