@@ -5,16 +5,66 @@
  * @author Girndt, Germain; Krier, Katharina
  * @version 1.0
  */
-public class PalindromIterativ implements Palindrom
-{
-   
-    /**
-     * Konstruktor für Objekte der Klasse PalindromIterativ
-     */
+public class PalindromIterativ extends AbstractPalindrom implements Palindrom {
+
+     /**
+    * Konstruktor für Objekte der Klasse AbstractPalindrom
+    */
     public PalindromIterativ() {}
+
+    public PalindromIterativ(String[] eingabeString) {
+        super(eingabeString);
+    }
+
+    /**
+     * Konstruktor für Objekte der Klasse AbstractPalindrom
+     */
+    public PalindromIterativ(String mode, String[] eingabeStrings) {
+        super(mode, eingabeStrings);
+    }
+    
+    public static void main(String[] args) {
+        PalindromIterativ instance = PalindromIterativ.instantieerePalindrom(args);
+        instance.start();
+    }
+    
+    public static PalindromIterativ instantieerePalindrom(String[] args) {
+        if (args.length <= 1){
+            throw new PalindromError("Geben Sie den Mode und die zu bewertenden Strings ein");            
+        }
+
+        String mode = args[PalindromIterativ.getModeArgumentIndex()];
+        String[] eingabeStrings = PalindromIterativ.extrahireEingabeStrings(args);
+
+        PalindromIterativ instance = new PalindromIterativ(mode, eingabeStrings);
+
+        return instance;
+
+    }
 
     @Override 
     public boolean istPalindrom(String string) {
+
+        PalindromIterativ palindrom = new PalindromIterativ(new String[] { string });
+        
+        return palindrom.pruefePalindrom();
+    }
+
+    @Override 
+    public boolean[] sindPalindrome(String[] strings) {
+
+        PalindromIterativ palindrom = new PalindromIterativ(strings);
+        
+        return palindrom.pruefePalindrome();
+    }
+
+
+    protected boolean pruefe(String string){
+
+        return pruefeIteraktiv(string);
+    }
+    
+    private boolean pruefeIteraktiv(String string){
 
         if (string == null || string.trim().isEmpty()) {
             throw new PalindromError("String darf nicht leer sein");
@@ -34,14 +84,6 @@ public class PalindromIterativ implements Palindrom
         return true;
     }
     
-    @Override
-    public boolean[] sindPalindrome(String[] string) {
-        return new boolean[] { true };
-    }
- 
-    
-    @Override
-    public void start(String[] args){
-        
-    }
+
+
 }

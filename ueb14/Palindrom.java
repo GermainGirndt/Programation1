@@ -8,14 +8,6 @@
 
 public interface Palindrom
 {
-    /**
-     * 
-     */
-    boolean istPalindrom(String s);
-    boolean[] sindPalindrome(String[] s);
-    
-    void start(String[] args);
-    
-    
-  
+    public boolean istPalindrom(String s);
+    public boolean[] sindPalindrome(String[] s);
 }
