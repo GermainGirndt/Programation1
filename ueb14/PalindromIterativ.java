@@ -33,6 +33,11 @@ public class PalindromIterativ implements Palindrom
 
         return true;
     }
+    
+    @Override
+    public boolean[] sindPalindrome(String[] string) {
+        return new boolean[] { true };
+    }
  
     
     @Override
