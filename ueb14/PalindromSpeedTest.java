@@ -48,15 +48,15 @@ public class PalindromSpeedTest
         ArrayList<Palindrom> pals = new ArrayList<>();
         pals.add(PalindromRekursiv.instantieerePalindrom(startPalindrom));
           
-       
+        try {
+                out = new PrintWriter(args[0]);
+        } catch (FileNotFoundException e) {
+                System.out.println("Unable to locate the fileName: " + e.getMessage());
+        }
 
         for(Palindrom p : pals)
         {
-                try {
-                    out = new PrintWriter(args[0]);
-                } catch (FileNotFoundException e) {
-                    System.out.println("Unable to locate the fileName: " + e.getMessage());
-                }
+               
                 p.start(startPalindrom);
                 out.print(p.toString() + ";\n" );    
                 if(istFile){
@@ -78,10 +78,10 @@ public class PalindromSpeedTest
                         out.print(end-start + ";\n");
                     }
                 }
-                out.close();
+               
         }
         
-       
+         out.close();
             
             
     }
