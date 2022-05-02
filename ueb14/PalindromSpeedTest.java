@@ -56,24 +56,26 @@ public class PalindromSpeedTest
 
         for(Palindrom p : pals)
         {
-                out.print(p.toString() + ";\n" );    
+                out.print(p.toString() + "\t\n" );    
                 if(istFile){
                     for(String zeile : zeilen){
-                        out.print(zeile.length() + ";");
+
+                        out.print(zeile.length() + "\t");
                         long start = System.nanoTime();    
                         p.istPalindrom(zeile);
                         long end = System.nanoTime();
-                        out.print(end-start + ";\n");
+                        out.print(end-start + "\t\n");
                     }
                    
                 }
                 else{
                     for(int i = 2; i< args.length; i++)  {
-                        out.print(args[i].length() + ";");    
+
+                        out.print(args[i].length() + "\t");    
                         long start = System.nanoTime();    
                         p.istPalindrom(args[i]);
                         long end = System.nanoTime();
-                        out.print(end-start + ";\n");
+                        out.print(end-start + "\t\n");
                     }
                 }
                
