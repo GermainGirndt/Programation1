@@ -5,7 +5,7 @@
  * @author Girndt, Germain; Krier, Katharina
  * @version 1.0
  */
-public class PalindromIterativ extends AbstractPalindrom implements Palindrom {
+public class PalindromIterativ extends AbstractPalindrom {
 
      /**
     * Konstruktor für Objekte der Klasse AbstractPalindrom

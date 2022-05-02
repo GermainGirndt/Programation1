@@ -4,7 +4,7 @@
  * @author Girndt, Germain; Krier, Katharina
  * @version 1.0
  */
-public class PalindromRekursiv extends AbstractPalindrom implements Palindrom {
+public class PalindromRekursiv extends AbstractPalindrom {
 
     
     /**
