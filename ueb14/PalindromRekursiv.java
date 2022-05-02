@@ -11,21 +11,23 @@ import java.io.File;
  */
 public class PalindromRekursiv implements Palindrom {
 
-
     private BufferedReader reader;
 
     private String[] eingabe;
 
     private Mode mode;
 
-    private final static int MODE_INDEX = 0;
-    private final static int EINGABE_STRINGS_START_INDEX = 1;
+    private final static int MODE_ARGUMENT_INDEX = 0;
+    private final static int EINGABE_STRINGS_ARGUMENT_START_INDEX = 1;
 
-    private final static int EINZEL_STRING_EINGABE_INDEX = 0;
+    private final static int EINZEL_STRING_ARGUMENT_EINGABE_INDEX = 0;
+
+    private final static String WORT_MODE = "-s";
+    private final static String TEXT_DATEI_MODE = "-f";
 
     public enum Mode { 
-        WORT("-s"),
-        TEXT_DATEI("-f");
+        WORT(WORT_MODE),
+        TEXT_DATEI(TEXT_DATEI_MODE);
     
         String modeName;
     
@@ -55,7 +57,7 @@ public class PalindromRekursiv implements Palindrom {
         boolean[] ergebnis = this.pruefePalindrome();
         
         for (int i = 0; i < this.eingabe.length; i++) {
-            sb.append(String.format("%s Geprüfter String: %s || Ergebnis: %s\n", i+1, this.eingabe[i], ergebnis[i]) );
+            sb.append(String.format("%s) Geprüfter String: '%s' || Ergebnis: %s\n", i+1, this.eingabe[i], ergebnis[i]) );
         }
 
         System.out.println(sb);
@@ -68,7 +70,7 @@ public class PalindromRekursiv implements Palindrom {
             throw new PalindromError("Geben Sie den Mode und die zu bewertenden Strings ein");            
         }
 
-        String mode = args[MODE_INDEX];
+        String mode = args[MODE_ARGUMENT_INDEX];
         String[] eingabeStrings = PalindromRekursiv.extrahireEingabeStrings(args);
 
         PalindromRekursiv instance = new PalindromRekursiv(mode, eingabeStrings);
@@ -80,10 +82,11 @@ public class PalindromRekursiv implements Palindrom {
 
     private static String[] extrahireEingabeStrings( String[] args ) {
 
-        String[] eingabeStrings = new String[args.length - PalindromRekursiv.EINGABE_STRINGS_START_INDEX];
+        int eingabeStringLaenge = args.length - PalindromRekursiv.EINGABE_STRINGS_ARGUMENT_START_INDEX;
+        String[] eingabeStrings = new String[eingabeStringLaenge];
 
-        for (int i = 0; i < args.length; i++) {
-            eingabeStrings[0] = args[PalindromRekursiv.EINGABE_STRINGS_START_INDEX];
+        for (int i = 0; i < eingabeStringLaenge; i++) {
+            eingabeStrings[i] = args[PalindromRekursiv.EINGABE_STRINGS_ARGUMENT_START_INDEX + i];
         }
 
         return eingabeStrings;
@@ -97,7 +100,8 @@ public class PalindromRekursiv implements Palindrom {
     }
 
     public PalindromRekursiv(String[] eingabeString) {
-
+        System.out.println("1");
+        
         this.setEingabe(eingabeString );
     }
 
@@ -105,6 +109,7 @@ public class PalindromRekursiv implements Palindrom {
      * Konstruktor für Objekte der Klasse PalindromRekursiv
      */
     public PalindromRekursiv(String mode, String[] eingabeStrings) {
+        System.out.println("2");
         this.setMode(mode);
         this.setEingabe(eingabeStrings);
     }
@@ -118,7 +123,6 @@ public class PalindromRekursiv implements Palindrom {
         if (this.mode == Mode.TEXT_DATEI && eingabestring.length != 1 ) {
             throw new PalindromError("Mode 'Textdatei' unterstuetzt nur eine Stringeingabe");
         }
-
 
         for (int i = 0; i < eingabestring.length; i++) {
 
@@ -160,9 +164,9 @@ public class PalindromRekursiv implements Palindrom {
     }
 
     @Override 
-    public boolean[] sindPalindrome(String[] string) {
+    public boolean[] sindPalindrome(String[] strings) {
 
-        PalindromRekursiv palindrom = new PalindromRekursiv(string);
+        PalindromRekursiv palindrom = new PalindromRekursiv(strings);
         
         return palindrom.pruefePalindrome();
     }
@@ -172,9 +176,9 @@ public class PalindromRekursiv implements Palindrom {
 
         switch (this.mode) {
             case WORT:
-                return pruefePalindromInString(this.eingabe[EINZEL_STRING_EINGABE_INDEX]);
+                return pruefePalindromInString(this.eingabe[EINZEL_STRING_ARGUMENT_EINGABE_INDEX]);
             case TEXT_DATEI:
-                return pruefePalindromInDatei(this.eingabe[EINZEL_STRING_EINGABE_INDEX]);
+                return pruefePalindromInDatei(this.eingabe[EINZEL_STRING_ARGUMENT_EINGABE_INDEX]);
             default:
                 throw new PalindromError("Eingabetyp nicht unterstuetzt");
         }
@@ -186,7 +190,7 @@ public class PalindromRekursiv implements Palindrom {
             case WORT:
                 return pruefePalindromeInStrings(this.eingabe);
             case TEXT_DATEI:
-                return pruefePalindromeInDatei(this.eingabe[EINZEL_STRING_EINGABE_INDEX]);
+                return pruefePalindromeInDatei(this.eingabe[EINZEL_STRING_ARGUMENT_EINGABE_INDEX]);
             default:
                 throw new PalindromError("Eingabetyp nicht unterstuetzt");
         }
@@ -194,8 +198,9 @@ public class PalindromRekursiv implements Palindrom {
 
 
     private boolean pruefePalindromInString(String string) {
-        return this.pruefeRekursiv(string);
+        return this.pruefe(string);
     }
+
 
     private boolean[] pruefePalindromeInStrings(String[] string) {
         
@@ -203,7 +208,7 @@ public class PalindromRekursiv implements Palindrom {
 
         for (int i = 0; i < string.length; i++) {
 
-            ergebnisse[i] = this.pruefeRekursiv(string[i]);
+            ergebnisse[i] = this.pruefe(string[i]);
         }
 
         return ergebnisse;
@@ -219,8 +224,8 @@ public class PalindromRekursiv implements Palindrom {
             this.reader = reader;
             String zeile = this.reader.readLine();
             this.eingabe = new String[] { zeile };
-            
-            return pruefeRekursiv(zeile);
+
+            return pruefe(zeile);
         } catch (IOException error) {
             throw new PalindromError("Dateilesung hat fehlgeschlagen");
         }
@@ -271,23 +276,8 @@ public class PalindromRekursiv implements Palindrom {
         }
 
     }
+
     
-    private boolean pruefeRekursiv(String string){
-
-        string = string.toLowerCase();
-
-        String u;
-        
-        if (string.charAt(0) == string.charAt(string.length() -1)){
-             if (string.length() <= 2){
-                 return true;
-             }
-             u = string.substring(1, string.length() -1);
-             return pruefeRekursiv(u);    
-        } else {
-            return false;
-        }    
-    }
     
     private void validiereFile(File file){
         
@@ -313,5 +303,27 @@ public class PalindromRekursiv implements Palindrom {
     @Override
     public void start(String[] args){
         
+    }
+
+    private boolean pruefe(String string){
+
+        return pruefeRekursiv(string);
+    }
+    
+    private boolean pruefeRekursiv(String string){
+
+        string = string.toLowerCase();
+
+        String u;
+        
+        if (string.charAt(0) == string.charAt(string.length() -1)){
+             if (string.length() <= 2){
+                 return true;
+             }
+             u = string.substring(1, string.length() -1);
+             return pruefeRekursiv(u);    
+        } else {
+            return false;
+        }    
     }
 }
