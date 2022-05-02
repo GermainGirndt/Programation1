@@ -6,8 +6,8 @@ import java.util.ArrayList;
 /**
  * Beschreiben Sie hier die Klasse Einlesen.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class Einlesen
 {
