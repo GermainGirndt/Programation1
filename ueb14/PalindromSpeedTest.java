@@ -59,7 +59,7 @@ public class PalindromSpeedTest
                 out.print(p.toString() + ";\n" );    
                 if(istFile){
                     for(String zeile : zeilen){
-                        out.print(zeile + ";");
+                        out.print(zeile.length() + ";");
                         long start = System.nanoTime();    
                         p.istPalindrom(zeile);
                         long end = System.nanoTime();
@@ -69,7 +69,7 @@ public class PalindromSpeedTest
                 }
                 else{
                     for(int i = 2; i< args.length; i++)  {
-                        out.print(args[i] + ";");    
+                        out.print(args[i].length() + ";");    
                         long start = System.nanoTime();    
                         p.istPalindrom(args[i]);
                         long end = System.nanoTime();
