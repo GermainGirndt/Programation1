@@ -1,0 +1,33 @@
+Set first two line styles to blue (#0060ad) and red (#dd181f)
+set style line 1 \
+    linecolor rgb '#0060ad' \
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize 1.5
+set style line 2 \
+    linecolor rgb '#dd181f' \
+    linetype 1 linewidth 2 \
+    pointtype 5 pointsize 1.5
+set datafile separator "\t"
+
+plot 'gnu_plot_test_1.dat' index 0 with linespoints linestyle 1, \
+     'gnu_plot_test_2.dat' index 0 with linespoints linestyle 2
+
+
+### Quelle: http://www.gnuplotting.org/plotting-data/ Abruf am 02.05.2022
+
+
+
+----
+
+set style line 1 \
+    linecolor rgb '#0060ad' \
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize 1.5
+set style line 2 \
+    linecolor rgb '#dd181f' \
+    linetype 1 linewidth 2 \
+    pointtype 5 pointsize 1.5
+set datafile separator "\t"
+
+plot 'ergebnisse.txt' index 0 with linespoints linestyle 1, \
+     ''                   index 1 with linespoints linestyle 2
