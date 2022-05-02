@@ -83,11 +83,12 @@ public abstract class AbstractPalindrom implements Palindrom {
      * Konstruktor für Objekte der Klasse AbstractPalindrom
      */
     public AbstractPalindrom() {
-
+        this.mode = Mode.WORT;
     }
-
+    
     public AbstractPalindrom(String[] eingabeString) {
-        this.setEingabe(eingabeString );
+        this.mode = Mode.WORT;
+        this.setEingabe(eingabeString);
     }
 
     /**

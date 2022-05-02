@@ -10,7 +10,9 @@ public class PalindromIterativ extends AbstractPalindrom implements Palindrom {
      /**
     * Konstruktor für Objekte der Klasse AbstractPalindrom
     */
-    public PalindromIterativ() {}
+    public PalindromIterativ() {
+        super();
+    }
 
     public PalindromIterativ(String[] eingabeString) {
         super(eingabeString);

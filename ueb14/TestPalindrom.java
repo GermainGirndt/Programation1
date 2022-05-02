@@ -84,27 +84,27 @@ public class TestPalindrom {
     @MethodSource(value =  "palindromeProvider")
     void testPalindromeParameterized(String wort) {
 
-        for ( Palindrom palindromIdentifier : this.palindrome ) {
-            assertEquals(true, palindromIdentifier.istPalindrom(wort), String.format("%s muss ein Palindrom sein (Typ: %s)", wort, palindromIdentifier.getClass().getName()));
+        for ( Palindrom konkretesPalindrom : this.palindrome ) {
+            assertEquals(true, konkretesPalindrom.istPalindrom(wort), String.format("%s muss ein Palindrom sein (Typ: %s)", wort, konkretesPalindrom.getClass().getName()));
         }
     }
     
     @ParameterizedTest
     @MethodSource(value =  "falschePalindromeProvider")
     void testFalschePalindromeParameterized(String wort) {
-        for ( Palindrom palindromIdentifier : this.palindrome ) {
-            assertEquals(false, palindromIdentifier.istPalindrom(wort), String.format("%s muss kein Palindrom sein (Typ: %s)", wort, palindromIdentifier.getClass().getName()));
+        for ( Palindrom konkretesPalindrom : this.palindrome ) {
+            assertEquals(false, konkretesPalindrom.istPalindrom(wort), String.format("%s muss kein Palindrom sein (Typ: %s)", wort, konkretesPalindrom.getClass().getName()));
         }
     }
 
     @ParameterizedTest
     @MethodSource(value =  "fehlpalindromeProvider")
     void testFehlpalindromeParameterized(String wort) {
-        for ( Palindrom palindromIdentifier : this.palindrome ) {
+        for ( Palindrom konkretesPalindrom : this.palindrome ) {
             
             assertThrows(
                 PalindromError.class,
-                () -> palindromIdentifier.istPalindrom(wort),
+                () -> konkretesPalindrom.istPalindrom(wort),
                "Expected istPalindrom() to throw, but it didn't"
             );
 
