@@ -80,4 +80,9 @@ public class PalindromRekursiv extends AbstractPalindrom implements Palindrom {
             return false;
         }    
     }
+    
+    @Override
+    public String toString(){
+        return "PalindromRekursiv";
+    }
 }

@@ -86,6 +86,10 @@ public class PalindromIterativ extends AbstractPalindrom implements Palindrom {
         return true;
     }
     
-
+    
+    @Override
+    public String toString(){
+        return "PalindromIterativ";
+    }
 
 }

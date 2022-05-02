@@ -36,7 +36,6 @@ public class PalindromSpeedTest
         if (args[1].equals(this.filemode)) {
             this.istFile = true;
             zeilen = Einlesen.readLines(args[2]);
-            
         } else if ((args[1].equals(this.wordmode))) {
             this.istFile = false;
         }
@@ -44,10 +43,11 @@ public class PalindromSpeedTest
             throw new PalindromError("Benutzung java PalindromSpeedTester <Logfile.txt> <-s|-f> <String|Dateiname>");      
         }
         
-        String[] startPalindrom = { "-s"};
+ 
         ArrayList<Palindrom> pals = new ArrayList<>();
-        pals.add(PalindromRekursiv.instantieerePalindrom(startPalindrom));
-          
+        pals.add(new PalindromRekursiv());
+        pals.add(new PalindromIterativ());
+            
         try {
                 out = new PrintWriter(args[0]);
         } catch (FileNotFoundException e) {
@@ -56,8 +56,6 @@ public class PalindromSpeedTest
 
         for(Palindrom p : pals)
         {
-               
-                p.start(startPalindrom);
                 out.print(p.toString() + ";\n" );    
                 if(istFile){
                     for(String zeile : zeilen){

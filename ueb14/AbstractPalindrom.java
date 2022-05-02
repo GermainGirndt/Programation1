@@ -270,5 +270,7 @@ public abstract class AbstractPalindrom implements Palindrom {
     protected static int getModeArgumentIndex() {
         return AbstractPalindrom.MODE_ARGUMENT_INDEX;
     }
+    
+    
 
 }
