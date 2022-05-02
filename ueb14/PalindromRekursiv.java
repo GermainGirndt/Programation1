@@ -207,4 +207,14 @@ public class PalindromRekursiv implements Palindrom {
             throw new PalindromError("Dateilesung hat fehlgeschlagen");
             }    
     }
+    
+    @Override 
+    public String toString(){
+        return "PalindromRekursiv";
+    }
+    
+    @Override
+    public void start(String[] args){
+        
+    }
 }

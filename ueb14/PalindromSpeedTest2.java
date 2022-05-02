@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class PalindromSpeedTest
+public class PalindromSpeedTest2
 {
     private String filemode = "-f";
     private String wordmode = "-s";
@@ -18,13 +18,13 @@ public class PalindromSpeedTest
     private ArrayList<String> zeilen;
     private PrintWriter out;
     
-    public PalindromSpeedTest(){
+    public PalindromSpeedTest2(){
        
        
     }
     
     public static void main(String[] args) throws Exception {
-        PalindromSpeedTest tester = new PalindromSpeedTest();
+        PalindromSpeedTest2 tester = new PalindromSpeedTest2();
         tester.start(args);
        
     }
@@ -44,11 +44,10 @@ public class PalindromSpeedTest
             throw new PalindromError("Benutzung java PalindromSpeedTester <Logfile.txt> <-s|-f> <String|Dateiname>");      
         }
         
-        String[] startPalindrom = { "-s"};
         ArrayList<Palindrom> pals = new ArrayList<>();
-        pals.add(PalindromRekursiv.instantieerePalindrom(startPalindrom));
+        pals.add(new PalindromRekursiv2());
           
-       
+        String[] startPalindrom = { "-s"};
 
         for(Palindrom p : pals)
         {

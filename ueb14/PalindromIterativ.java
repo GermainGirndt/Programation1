@@ -34,4 +34,9 @@ public class PalindromIterativ implements Palindrom
         return true;
     }
  
+    
+    @Override
+    public void start(String[] args){
+        
+    }
 }

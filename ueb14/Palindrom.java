@@ -12,4 +12,9 @@ public interface Palindrom
      * 
      */
     boolean istPalindrom(String s);
+    
+    void start(String[] args);
+    
+    
+  
 }
