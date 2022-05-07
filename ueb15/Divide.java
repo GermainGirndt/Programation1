@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class Divide
+public class Divide implements CrunchOperation
 {
    
     /**

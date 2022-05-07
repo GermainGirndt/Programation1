@@ -5,7 +5,7 @@
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class Subtract
+public class Subtract implements CrunchOperation
 {
 
     /**

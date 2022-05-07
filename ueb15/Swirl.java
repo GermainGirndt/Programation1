@@ -6,7 +6,7 @@ import java.util.Random;
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class Swirl
+public class Swirl implements CrunchOperation 
 {
  
 

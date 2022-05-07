@@ -5,7 +5,7 @@
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class Sum
+public class Sum implements CrunchOperation
 {
     /**
      * Konstruktor für Objekte der Klasse Sum
