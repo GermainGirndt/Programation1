@@ -23,12 +23,12 @@ public class Swirl implements CrunchOperation
         int index1;
         int index2;
         float temp;
-            for(int i = 0; i < values.length; i++){
-                index1  = r.nextInt(values.length);   
-                index2 = r.nextInt(values.length);
-                temp = values[index1];
-                values[index1] = values[index2];
-                values[index2] = temp;
-            }
+        for(int i = 0; i < values.length; i++){
+            index1  = r.nextInt(values.length);   
+            index2 = r.nextInt(values.length);
+            temp = values[index1];
+            values[index1] = values[index2];
+            values[index2] = temp;
+        }
     }
 }

@@ -11,13 +11,10 @@ public class Average implements CrunchOperation
     /**
      * Konstruktor für Objekte der Klasse Average
      */
-    public Average()
-    {
-          
-    }
+    public Average(){}
     
     public void crunch(float[] values){
-        int maxIndex =0;
+        int maxIndex = 0;
         float sum = 0;
             for(int i = 0; i < values.length; i++){
                 if(values[maxIndex] < values[i]){

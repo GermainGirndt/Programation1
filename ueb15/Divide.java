@@ -22,7 +22,7 @@ public class Divide implements CrunchOperation
                 float[] valuesCopy = Arrays.copyOf(values, values.length);
                 //ersetze durch mergesort
                 Sort.bubbleSort(valuesCopy);
-                for(int i= 0 ; i < values.length / 2; i++){
+                for(int i= 0 ; i < values.length / 2; i++) {
                     int minIndex = Search.search(valuesCopy[i], values);
                     int maxIndex = Search.search(valuesCopy[values.length - i -1], values);
                     values[maxIndex] =  values[maxIndex] / values[minIndex];
