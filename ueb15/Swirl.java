@@ -9,7 +9,7 @@ import java.util.Random;
 public class Swirl implements CrunchOperation 
 {
  
-
+ 
     /**
      * Konstruktor für Objekte der Klasse Swirl
      */
@@ -30,5 +30,6 @@ public class Swirl implements CrunchOperation
             values[index1] = values[index2];
             values[index2] = temp;
         }
+      
     }
 }
