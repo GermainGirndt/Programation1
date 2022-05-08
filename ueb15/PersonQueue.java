@@ -46,7 +46,7 @@ public class PersonQueue extends AbstractQueue implements Queue {
         Iterator iterator = new Iterator();
 
         if (!iterator.hasNext()) {
-            throw new IllegalStateException("Es gibt keine Person in der Queue")
+            throw new IllegalStateException("Es gibt keine Person in der Queue");
         }
         
         String smallest = iterator.next().getVorname();
@@ -63,13 +63,12 @@ public class PersonQueue extends AbstractQueue implements Queue {
 
     private String gibZurueckKleinsterZeichenString(String vornameEins, String vornameZwei) {
 
-        char[] vornameEinsChars = vornameEins.toLowerCase().toCharArray();
+        String kleinsterVorname = null;
 
+        char[] vornameEinsChars = vornameEins.toLowerCase().toCharArray();
         char[] vornameZweiChars = vornameZwei.toLowerCase().toCharArray();
 
         String vornameMitKleinsterLaenge = vornameEinsChars.length < vornameZweiChars.length ?  vornameEins : vornameZwei;
-
-        String kleinsterVorname = null;
 
         boolean unterschiedGefunden = false;
         for (int i = 0; i < vornameMitKleinsterLaenge.length(); i++) {

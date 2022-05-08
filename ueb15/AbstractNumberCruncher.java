@@ -55,7 +55,7 @@ public abstract class AbstractNumberCruncher {
                     average.crunch(this.numbers);
                     break;
                 default:
-                    throw new NumberCruncherException(MESSAGE_OPERATION_NICHT_UNTERSTUETZT);
+                    throw new NumberCruncherException(MESSAGE_OPERATION_NICHT_UNTERSTUETZT + operation.name());
             }
         }
     }

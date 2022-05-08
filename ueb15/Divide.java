@@ -13,10 +13,7 @@ public class Divide implements CrunchOperation
     /**
      * Konstruktor für Objekte der Klasse Divide
      */
-    public Divide()
-    {
-      
-    }
+    public Divide() {}
 
     public void crunch(float[] values){
                 float[] valuesCopy = Arrays.copyOf(values, values.length);
@@ -46,6 +43,10 @@ public class Divide implements CrunchOperation
                                 maxIndex = k;
                             }
                         }
+                    }
+
+                    if (values[minIndex] == 0.0f) {
+                        throw new NumberCruncherException("Kann nicht durch 0 teilen");
                     }
                                         
                     values[maxIndex] =  values[maxIndex] / values[minIndex];

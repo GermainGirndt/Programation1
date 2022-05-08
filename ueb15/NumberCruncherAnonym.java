@@ -13,8 +13,7 @@ public class NumberCruncherAnonym extends AbstractNumberCruncher {
      * Konstruktor für Objekte der Klasse NumberCruncherAnonym
      * @param numbers ist ein Array mit float Werten
      */
-    public NumberCruncherAnonym(float[] numbers)
-    {
+    public NumberCruncherAnonym(float[] numbers) {
         super(numbers);
         this.anonymeKlassenDefinieren();
     }
@@ -23,7 +22,7 @@ public class NumberCruncherAnonym extends AbstractNumberCruncher {
         CrunchOperation sum = new CrunchOperation() {
             
             public void crunch(float[] values) {
-                for(int i = 1; i <values.length; i++) {
+                for(int i = 1; i < values.length; i++) {
                     values[i] = values[i-1] + values[i];
                 }
             }
@@ -76,7 +75,11 @@ public class NumberCruncherAnonym extends AbstractNumberCruncher {
                             }
                         }
                     }
-                                        
+                               
+                    if (values[minIndex] == 0.0f) {
+                        throw new NumberCruncherException("Kann nicht durch 0 teilen");
+                    }
+                    
                     values[maxIndex] =  values[maxIndex] / values[minIndex];
                     besucht[minIndex] = 1;
                     besucht[maxIndex] = 1;

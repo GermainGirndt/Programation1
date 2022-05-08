@@ -1,20 +1,14 @@
 public enum Operation {
     
-    SUM("sum"),
-    SWIRL("swirl"),
-    DIVIDE("divide"),
-    SUBTRACT("subtract"),
-    AVERAGE("average");
+    SUM(),
+    SWIRL(),
+    DIVIDE(),
+    SUBTRACT(),
+    AVERAGE();
 
     String operationName;
 
-    Operation(String operation) {
-        this.operationName = operation;
-    }
-
-    public String getOperationName() {
-        return this.operationName;
-    }
+    Operation() {}
 
     public static Operation[] toOperations(String[] operations) {
         Operation[] umgewandelteOperations = new Operation[operations.length];
@@ -27,9 +21,9 @@ public enum Operation {
             }
 
             try {
-                umgewandelteOperations[i] = Operation.valueOf(operation.toLowerCase());
+                umgewandelteOperations[i] = Operation.valueOf(operation.toUpperCase());
             } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException("Operation nicht unterstuetzt");
+                throw new IllegalArgumentException("Operation nicht unterstuetzt: " + operation.toLowerCase());
 
             }
         }
