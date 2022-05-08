@@ -12,6 +12,7 @@ public abstract class AbstractQueue implements Queue {
     private Object[] queue;
     private int anzahl = 0;
     private Class<?> arrayKomponentTyp;
+    private Iterator iterator;
 
     private final String FEHLER_FALSCHER_OBJECT_TYP = "Object muss eine Instanz von der Klasse %s sein. Erhalten: %s";
     private final String FEHLER_QUEUE_VOLL = "Schlange schon voll";
@@ -32,6 +33,31 @@ public abstract class AbstractQueue implements Queue {
 
         this.queue = (Object[]) Array.newInstance(arrayKomponentTyp, size);
         this.arrayKomponentTyp = this.queue.getClass().getComponentType();
+        this.iterator = new Iterator();
+    }
+
+    public Iterator getIterator() {
+        return this.iterator;
+    }
+
+    protected class Iterator implements hasIterator {
+        private int nextIndex = 0;
+
+        @Override
+        public boolean hasNext() {
+            return nextIndex < queue.length;
+        }
+
+        @Override
+        public Object next() {
+            return queue[nextIndex++];
+        }
+    }
+
+    public void print() {
+        while (this.iterator.hasNext()) {
+            System.out.println(this.iterator.next());
+        }
     }
 
     
