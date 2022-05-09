@@ -18,6 +18,7 @@ public class PalindromSpeedTest
     private ArrayList<String> zeilen;
     private PrintWriter out;
     
+    
     public PalindromSpeedTest(){
        
        
