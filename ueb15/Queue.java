@@ -7,10 +7,10 @@
  * 
  */
 
-public interface Queue {
-    public void addLast(Object o);
-    public Object removeFirst();
-    public Object get(int i);
+public interface Queue<Type> {
+    public void addLast(Type o);
+    public Type removeFirst();
+    public Type get(int i);
     public boolean empty();
     public boolean full();
     public int size();

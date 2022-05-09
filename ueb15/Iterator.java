@@ -1,6 +1,6 @@
-interface hasIterator {
+interface Iterator<Type> {
 
     public boolean hasNext();
 
-    public Object next();
+    public Type next();
 }

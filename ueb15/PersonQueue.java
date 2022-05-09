@@ -6,7 +6,7 @@
  * @version 1.0
  * 
  */
-public class PersonQueue extends AbstractQueue implements Queue {
+public class PersonQueue extends AbstractQueue<Person> implements Queue<Person> {
 
     /**
     * Konstruktor PersonQueue
@@ -15,35 +15,11 @@ public class PersonQueue extends AbstractQueue implements Queue {
     public PersonQueue(int size) {
         super(Person.class, size);   
     }
+
     
-    // Klasse geschrieben wegen der Aufgabestellung
-    // Kann in der Zukunft durch "generics" in der Innere Iterator-Klasse von AbstractQueue ersetzt werden
-    private class Iterator implements PersonenIterator {
-
-        @Override
-        public boolean hasNext() {
-            return PersonQueue.this.getIterator().hasNext();
-        }
-        
-        @Override
-        public Person next() {
-            return (Person) PersonQueue.this.getIterator().next();
-        }
-    }
-
-    // Methode geschrieben wegen der Aufgabestellung
-    // Kann geloescht werden
-    @Override
-    public void print() {
-        Iterator i = new Iterator();
-        while (i.hasNext()) {
-            System.out.println(i.next());
-        }
-    }
-
     public String smallest() {
 
-        Iterator iterator = new Iterator();
+        Iterator<Person> iterator = PersonQueue.this.getIterator();
 
         if (!iterator.hasNext()) {
             throw new IllegalStateException("Es gibt keine Person in der Queue");

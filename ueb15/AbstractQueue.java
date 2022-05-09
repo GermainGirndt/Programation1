@@ -7,14 +7,14 @@ import java.lang.reflect.Array;
  * @version 1.0
  * 
  */
-public abstract class AbstractQueue implements Queue {
+public abstract class AbstractQueue<Type> implements Queue<Type> {
 
-    private Object[] queue;
+    private Type[] queue;
     private int anzahl = 0;
     private Class<?> arrayKomponentTyp;
     private Iterator iterator;
 
-    private final String FEHLER_FALSCHER_OBJECT_TYP = "Object muss eine Instanz von der Klasse %s sein. Erhalten: %s";
+    private final String FEHLER_FALSCHER_OBJECT_TYP = "Type muss eine Instanz von der Klasse %s sein. Erhalten: %s";
     private final String FEHLER_QUEUE_VOLL = "Schlange schon voll";
     private final String FEHLER_QUEUE_LEER = "Schlange leer";
     private final String FEHLER_INDEX_UEBERTROFFEN = "Index außerhalb der Schlange";
@@ -31,33 +31,52 @@ public abstract class AbstractQueue implements Queue {
 
         Validierungsutils.validiereNatuerlicheZahl(size, false);
 
-        this.queue = (Object[]) Array.newInstance(arrayKomponentTyp, size);
+        this.queue = (Type[]) Array.newInstance(arrayKomponentTyp, size);
         this.arrayKomponentTyp = this.queue.getClass().getComponentType();
-        this.iterator = new Iterator();
+        
     }
 
-    public Iterator getIterator() {
-        return this.iterator;
+    public Iterator<Type> getIterator() {
+        return new AbstractIterator();
     }
 
-    protected class Iterator implements hasIterator {
+    private class AbstractIterator implements Iterator {
         private int nextIndex = 0;
 
         @Override
         public boolean hasNext() {
-            return nextIndex < queue.length;
+            System.out.println("" + nextIndex + " " + anzahl);
+            return nextIndex < AbstractQueue.this.anzahl;
         }
 
         @Override
-        public Object next() {
-            return queue[nextIndex++];
+        public Type next() {
+            if (!this.hasNext()) {
+                throw new IllegalStateException("Das naechste Element gibt es nicht");
+            }
+
+            Type o = AbstractQueue.this.queue[nextIndex];
+            nextIndex++;
+
+            return o;
         }
     }
 
     public void print() {
-        while (this.iterator.hasNext()) {
-            System.out.println(this.iterator.next());
+        Iterator iterator = new AbstractIterator();
+
+        System.out.println("One");
+        if (!iterator.hasNext()) {
+            System.err.println("Queue ist leer");
         }
+        System.out.println("Two");
+        
+        while (iterator.hasNext()) {
+            System.out.println("Three");
+            System.out.println(iterator.next());
+            System.out.println("Bin da");
+        }
+        System.out.println("Four");
     }
 
     
@@ -66,7 +85,7 @@ public abstract class AbstractQueue implements Queue {
     * @param o Element was an letzt möglicher Stelle hinten in die Queue gestellt wird
     */
     @Override
-    public void addLast(Object o) {
+    public void addLast(Type o) {
 
         if (o == null) {
             throw new IllegalArgumentException(FEHLER_NULL_REFERENZ);
@@ -94,13 +113,13 @@ public abstract class AbstractQueue implements Queue {
     * @return das Element an erster Stelle
     */
     @Override 
-    public Object removeFirst() {
+    public Type removeFirst() {
         
         if (this.empty()) {
             throw new IllegalArgumentException(FEHLER_QUEUE_LEER);    
         }
         
-        Object o = this.queue[0];
+        Type o = this.queue[0];
         this.entferne(0);   
         return o;
     }
@@ -111,7 +130,7 @@ public abstract class AbstractQueue implements Queue {
     * @return das Element an der Stelle i
     */
     @Override 
-    public Object get(int i) {
+    public Type get(int i) {
         if (this.empty()) {
             throw new IllegalArgumentException(FEHLER_QUEUE_LEER);    
         }
