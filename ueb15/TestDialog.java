@@ -11,7 +11,8 @@ import java.util.Scanner;
 public class TestDialog {
     private int funktion;
     private Scanner input;
-    private float[] numbers;
+    private float[] numbersTopLevel;
+    private float[] numbersAnonym;
 
     AbstractNumberCruncher numberCruncherTopLevel;
     AbstractNumberCruncher numberCruncherAnonym;
@@ -97,8 +98,8 @@ public class TestDialog {
                 break;
             }
 
-            this.numberCruncherTopLevel = new NumberCruncherTopLevel(this.numbers);
-            this.numberCruncherAnonym = new NumberCruncherAnonym(this.numbers);
+            this.numberCruncherTopLevel = new NumberCruncherTopLevel(this.numbersTopLevel);
+            this.numberCruncherAnonym = new NumberCruncherAnonym(this.numbersAnonym);
 
             
             while(this.funktion != FUNKTION_ENDE) {
@@ -107,6 +108,10 @@ public class TestDialog {
                     System.out.println("Geben Sie die gewuenschten mit Komma getrennten Operations ein: (-1 = Ende)");
                     
                     String[] operations = input.nextLine().split(",");
+                    if(operations.length == 1 && operations[0].equals("-1")){
+                        break;
+                    }
+                    
                     System.out.println("Angegebene Operations: ");
 
                     for (String operation : operations) {
@@ -148,11 +153,13 @@ public class TestDialog {
         System.out.println("Geben Sie die Zahlen wie in Format im Beispiel: 1.25, 133.0, 5.489");
         String zahlen = input.nextLine();
         String[] zahlenArray = zahlen.split(",");
-        this.numbers = new float[zahlenArray.length];
+        this.numbersTopLevel = new float[zahlenArray.length];
+        this.numbersAnonym = new float[zahlenArray.length];
 
         try {
             for (int i = 0; i < zahlenArray.length; i++) {
-                this.numbers[i] = Float.parseFloat(zahlenArray[i]);
+                this.numbersTopLevel[i] = Float.parseFloat(zahlenArray[i]);
+                this.numbersAnonym[i] = Float.parseFloat(zahlenArray[i]);
             } 
         } catch (NumberFormatException e) {
             throw new DialogException("Geben Sie die Zahlen wie in Format im Beispiel: 1.25, 133.0, 5.489");
@@ -171,11 +178,16 @@ public class TestDialog {
         
         int zahlen = Integer.parseInt(input.nextLine());
         
-        this.numbers = new float[zahlen];
+        this.numbersTopLevel = new float[zahlen];
+        this.numbersAnonym = new float[zahlen];
         for (int i = 0; i < zahlen; i++) {
             float number = (float) r.nextInt(100) + r.nextFloat();
-            this.numbers[i] = number;
+            this.numbersTopLevel[i] = number;
         }
+        for (int j = 0; j < zahlen; j++) {
+            this.numbersAnonym[j] = this.numbersTopLevel[j];
+        }
+        
     }
   
 }
