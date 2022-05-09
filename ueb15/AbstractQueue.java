@@ -44,7 +44,6 @@ public abstract class AbstractQueue<Type> implements Queue<Type> {
 
         @Override
         public boolean hasNext() {
-            System.out.println("" + nextIndex + " " + anzahl);
             return nextIndex < AbstractQueue.this.anzahl;
         }
 
