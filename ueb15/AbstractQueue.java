@@ -40,7 +40,7 @@ public abstract class AbstractQueue<Type> implements Queue<Type> {
         return new AbstractIterator();
     }
 
-    private class AbstractIterator implements Iterator {
+    private class AbstractIterator implements Iterator<Type> {
         private int nextIndex = 0;
 
         @Override
@@ -63,7 +63,7 @@ public abstract class AbstractQueue<Type> implements Queue<Type> {
     }
 
     public void print() {
-        Iterator iterator = new AbstractIterator();
+        Iterator<Type> iterator = new AbstractIterator();
 
         if (!iterator.hasNext()) {
             System.err.println("Queue ist leer");
