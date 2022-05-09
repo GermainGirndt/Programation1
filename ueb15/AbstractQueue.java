@@ -12,7 +12,6 @@ public abstract class AbstractQueue<Type> implements Queue<Type> {
     private Type[] queue;
     private int anzahl = 0;
     private Class<?> arrayKomponentTyp;
-    private Iterator iterator;
 
     private final String FEHLER_FALSCHER_OBJECT_TYP = "Type muss eine Instanz von der Klasse %s sein. Erhalten: %s";
     private final String FEHLER_QUEUE_VOLL = "Schlange schon voll";
@@ -36,7 +35,7 @@ public abstract class AbstractQueue<Type> implements Queue<Type> {
         
     }
 
-    public Iterator<Type> getIterator() {
+    protected Iterator<Type> getIterator() {
         return new AbstractIterator();
     }
 
@@ -45,7 +44,6 @@ public abstract class AbstractQueue<Type> implements Queue<Type> {
 
         @Override
         public boolean hasNext() {
-            System.out.println("" + nextIndex + " " + anzahl);
             return nextIndex < AbstractQueue.this.anzahl;
         }
 
