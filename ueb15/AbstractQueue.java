@@ -65,18 +65,13 @@ public abstract class AbstractQueue<Type> implements Queue<Type> {
     public void print() {
         Iterator iterator = new AbstractIterator();
 
-        System.out.println("One");
         if (!iterator.hasNext()) {
             System.err.println("Queue ist leer");
         }
-        System.out.println("Two");
         
         while (iterator.hasNext()) {
-            System.out.println("Three");
             System.out.println(iterator.next());
-            System.out.println("Bin da");
         }
-        System.out.println("Four");
     }
 
     
