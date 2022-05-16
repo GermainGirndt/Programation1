@@ -7,7 +7,7 @@
  */
 public class Softdrink extends AlkoholfreiesGetraenk
 {
-    private int zuckergehalt;
+    private String zuckergehalt;
 
     /**
      * Konstruktor für Objekte der Klasse Softdrink
@@ -19,18 +19,17 @@ public class Softdrink extends AlkoholfreiesGetraenk
     /**
      * Konstruktor für Objekte der Klasse Softdrink
      */
-    public Softdrink(String bezeichnung, String hersteller, int zuckergehalt)
+    public Softdrink(String bezeichnung, String hersteller, String zuckergehalt)
     {
         super(bezeichnung, hersteller);
-        //Validierung hinzufuegen!!!
         this.zuckergehalt = zuckergehalt;
     }
 
-    public void setZuckergehalt(int zuckergehalt){
+    public void setZuckergehalt(String zuckergehalt){
         this.zuckergehalt = zuckergehalt;   
     }
     
-    public int getZuckergehalt(){
+    public String getZuckergehalt(){
         return zuckergehalt;
     }
     

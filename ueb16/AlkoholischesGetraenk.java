@@ -5,7 +5,7 @@
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class AlkoholischesGetraenk extends Getraenk
+public  abstract class AlkoholischesGetraenk extends Getraenk
 {
 
 
