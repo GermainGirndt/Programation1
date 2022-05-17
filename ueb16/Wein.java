@@ -7,7 +7,7 @@
  */
 public class Wein extends AlkoholischesGetraenk
 {
-   
+    private String weingut;
 
     /**
      * Konstruktor für Objekte der Klasse Wein
@@ -16,6 +16,26 @@ public class Wein extends AlkoholischesGetraenk
     {
         
     }
-
     
+    /**
+     * Konstruktor für Objekte der Klasse Wein
+     */
+    public Wein(String bezeichnung, float alkoholgehalt, String weingut)
+    {
+        super(bezeichnung, alkoholgehalt);
+        this.weingut = weingut;
+    }
+
+    public void setWeingut(String weingut){
+        this.weingut = weingut;
+    }
+    
+    public String getWeingut(){
+        return weingut;        
+    }
+    
+    @Override
+    public String toString(){
+        return super.toString() + "Weingut: " + weingut + "\n";
+    }
 }
