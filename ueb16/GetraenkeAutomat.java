@@ -59,7 +59,7 @@ public class GetraenkeAutomat<T extends Getraenk>
 
         stringBuffer.append("Getraenke Automat: \n");
         for (Flasche<T> flasche : flaschenLager) {
-            stringBuffer.append(flasche.toString());
+            stringBuffer.append(flasche.toString() + "\n");
         }
 
         return stringBuffer.toString();
