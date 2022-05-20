@@ -43,7 +43,13 @@ public class GetraenkeAutomat<T extends Getraenk>
     }
 
     private boolean istLeer() {
-        return flaschenLager.size() == 0;
+        if(flaschenLager != null){
+            return false;
+        }
+        else{
+            return true;
+        }
+        
     }
 
     private boolean istVoll() {
