@@ -2,8 +2,8 @@
 /**
  * Beschreiben Sie hier die Klasse AlkoholischesGetraenk.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina 
+ * @version 1.0
  */
 public  abstract class AlkoholischesGetraenk extends Getraenk
 {
@@ -13,10 +13,7 @@ public  abstract class AlkoholischesGetraenk extends Getraenk
     /**
      * Konstruktor für Objekte der Klasse AlkoholischesGetraenk
      */
-    public AlkoholischesGetraenk()
-    {
-       
-    }
+    public AlkoholischesGetraenk() {}
 
     
     /**
@@ -25,10 +22,14 @@ public  abstract class AlkoholischesGetraenk extends Getraenk
     public AlkoholischesGetraenk(String bezeichnung, float alkoholgehalt)
     {
         super(bezeichnung);
-        this.alkoholgehalt = alkoholgehalt;
+        this.setAlkoholGehalt(alkoholgehalt);
     }
   
     public void setAlkoholGehalt(float alkoholgehalt){
+        if (alkoholgehalt <= 0) {
+            throw new IllegalArgumentException("Alkoholgehalt muss groesser null sein");
+        }
+
         this.alkoholgehalt = alkoholgehalt;
     }
     
@@ -38,6 +39,15 @@ public  abstract class AlkoholischesGetraenk extends Getraenk
     
     @Override 
     public String toString(){
-        return super.toString() + "Alkoholgehalt: " + alkoholgehalt + "\n";
+        if (!this.istVollkommen()) {
+            throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
+        }
+        
+        return super.toString() + " Alkoholgehalt: " + alkoholgehalt;
+    }
+
+    @Override
+    public boolean istVollkommen() {
+        return super.istVollkommen() && this.alkoholgehalt != 0.0f;
     }
 }

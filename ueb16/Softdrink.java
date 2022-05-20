@@ -2,8 +2,8 @@
 /**
  * Beschreiben Sie hier die Klasse Softdrink.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina 
+ * @version 1.0
  */
 public class Softdrink extends AlkoholfreiesGetraenk
 {
@@ -12,9 +12,7 @@ public class Softdrink extends AlkoholfreiesGetraenk
     /**
      * Konstruktor für Objekte der Klasse Softdrink
      */
-    public Softdrink()
-    {
-    }
+    public Softdrink() {}
     
     /**
      * Konstruktor für Objekte der Klasse Softdrink
@@ -22,19 +20,29 @@ public class Softdrink extends AlkoholfreiesGetraenk
     public Softdrink(String bezeichnung, String hersteller, String zuckergehalt)
     {
         super(bezeichnung, hersteller);
-        this.zuckergehalt = zuckergehalt;
+        this.setZuckergehalt(zuckergehalt);
     }
 
-    public void setZuckergehalt(String zuckergehalt){
+    public void setZuckergehalt(String zuckergehalt) {
+        this.validiereGetraenkeProperty(zuckergehalt, "Zuckergehalt");
         this.zuckergehalt = zuckergehalt;   
     }
     
     public String getZuckergehalt(){
-        return zuckergehalt;
+        return this.zuckergehalt;
     }
     
     @Override
     public String toString(){
-        return super.toString() + "Zuckergehalt: " + zuckergehalt + "\n";
+        if (!this.istVollkommen()) {
+            throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
+        }
+        
+        return super.toString() + " Zuckergehalt: " + zuckergehalt;
+    }
+
+    @Override
+    public boolean istVollkommen() {
+        return super.istVollkommen() && this.zuckergehalt != null;
     }
 }

@@ -2,8 +2,8 @@
 /**
  * Beschreiben Sie hier die Klasse Bier.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina 
+ * @version 1.0
  */
 public class Bier extends AlkoholischesGetraenk
 {
@@ -12,10 +12,7 @@ public class Bier extends AlkoholischesGetraenk
     /**
      * Konstruktor für Objekte der Klasse Bier
      */
-    public Bier()
-    {
-     
-    }
+    public Bier() {}
     
     /**
      * Konstruktor für Objekte der Klasse Bier
@@ -23,19 +20,29 @@ public class Bier extends AlkoholischesGetraenk
     public Bier(String bezeichnung, float alkoholgehalt, String brauerei)
     {
         super(bezeichnung, alkoholgehalt);
-        this.brauerei = brauerei; 
+        this.setBrauerei(brauerei);
     }
     
     public void setBrauerei(String brauerei){
+        this.validiereGetraenkeProperty(brauerei, "Brauerrei");
         this.brauerei = brauerei;
     }
 
     public String getBrauerei(){
-        return brauerei;
+        return this.brauerei;
     }
     
     @Override
     public String toString(){
-        return super.toString() + "Brauerei: " + brauerei + "\n";
+        if (!this.istVollkommen()) {
+            throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
+        }
+
+        return super.toString() + " Brauerei: " + this.brauerei;
+    }
+
+    @Override
+    public boolean istVollkommen() {
+        return super.istVollkommen() && this.brauerei != null;
     }
 }

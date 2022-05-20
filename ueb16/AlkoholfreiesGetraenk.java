@@ -2,8 +2,8 @@
 /**
  * Beschreiben Sie hier die Klasse AlkoholfreiesGetraenk.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina 
+ * @version 1.0
  */
 public abstract class AlkoholfreiesGetraenk extends Getraenk
 {
@@ -19,11 +19,12 @@ public abstract class AlkoholfreiesGetraenk extends Getraenk
     
     public AlkoholfreiesGetraenk(String bezeichnung, String hersteller){
         super(bezeichnung);
-        this.hersteller = hersteller;   
+        this.setHersteller(hersteller);
        
     }
 
     public void setHersteller(String hersteller){
+        this.validiereGetraenkeProperty(hersteller, "Hersteller");
         this.hersteller = hersteller;
     }
     
@@ -33,6 +34,15 @@ public abstract class AlkoholfreiesGetraenk extends Getraenk
     
     @Override
     public String toString(){
-        return super.toString() + "Hersteller: " + hersteller + "\n";
+        if (!this.istVollkommen()) {
+            throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
+        }
+        
+        return super.toString() + "Hersteller: " + hersteller;
+    }
+
+    @Override
+    public boolean istVollkommen() {
+        return super.istVollkommen() && this.hersteller != null;
     }
 }

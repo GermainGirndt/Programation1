@@ -2,8 +2,8 @@
 /**
  * Beschreiben Sie hier die Klasse Wein.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina 
+ * @version 1.0
  */
 public class Wein extends AlkoholischesGetraenk
 {
@@ -12,10 +12,7 @@ public class Wein extends AlkoholischesGetraenk
     /**
      * Konstruktor für Objekte der Klasse Wein
      */
-    public Wein()
-    {
-        
-    }
+    public Wein() {}
     
     /**
      * Konstruktor für Objekte der Klasse Wein
@@ -23,19 +20,29 @@ public class Wein extends AlkoholischesGetraenk
     public Wein(String bezeichnung, float alkoholgehalt, String weingut)
     {
         super(bezeichnung, alkoholgehalt);
-        this.weingut = weingut;
+        this.setWeingut(weingut);
     }
 
-    public void setWeingut(String weingut){
+    public void setWeingut(String weingut) {
+        this.validiereGetraenkeProperty(weingut, "Weingut");
         this.weingut = weingut;
     }
     
     public String getWeingut(){
-        return weingut;        
+        return this.weingut;        
     }
     
     @Override
     public String toString(){
-        return super.toString() + "Weingut: " + weingut + "\n";
+        if (!this.istVollkommen()) {
+            throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
+        }
+
+        return super.toString() + " Weingut: " + weingut;
+    }
+
+    @Override
+    public boolean istVollkommen() {
+        return super.istVollkommen() && this.weingut != null;
     }
 }

@@ -2,8 +2,8 @@
 /**
  * Beschreiben Sie hier die Klasse Wasser.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina 
+ * @version 1.0
  */
 public class Wasser extends AlkoholfreiesGetraenk
 {
@@ -12,10 +12,7 @@ public class Wasser extends AlkoholfreiesGetraenk
     /**
      * Konstruktor für Objekte der Klasse Wasser
      */
-    public Wasser()
-    {
-        
-    }
+    public Wasser() {}
     
     /**
      * Konstruktor für Objekte der Klasse Wasser
@@ -23,20 +20,32 @@ public class Wasser extends AlkoholfreiesGetraenk
     public Wasser(String bezeichnung, String hersteller, String quelle)
     {
         super(bezeichnung, hersteller);
-        this.quelle = quelle;
+        this.setQuelle(quelle);
         
     }
   
     public void setQuelle(String quelle){
+        if (quelle == null) {
+            throw new IllegalArgumentException("Quelle darf nicht leer sein.");
+        }
         this.quelle = quelle;
     }
     
     public String getQuelle(){
-        return quelle;
+        return this.quelle;
     }
     
     @Override
     public String toString(){
-        return super.toString() + "Quelle: " + quelle + "\n";
+        if (!this.istVollkommen()) {
+            throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
+        }
+        
+        return super.toString() + " Quelle: " + quelle;
+    }
+
+    @Override
+    public boolean istVollkommen() {
+        return super.istVollkommen() && this.quelle != null;
     }
 }

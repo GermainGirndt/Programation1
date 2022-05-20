@@ -2,20 +2,15 @@
 /**
  * Beschreiben Sie hier die Klasse Rotwein.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina 
+ * @version 1.0
  */
 public class Rotwein extends Wein
 {
-    
-
     /**
      * Konstruktor für Objekte der Klasse Rotwein
      */
-    public Rotwein()
-    {
-        
-    }
+    public Rotwein() {}
 
     
      /**

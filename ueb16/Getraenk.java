@@ -12,32 +12,42 @@ public abstract class Getraenk
     /**
      * Konstruktor für Objekte der Klasse Getraenk
      */
-    public Getraenk()
-    {
-    }
+    public Getraenk() {}
     
     /**
      * Konstruktor für Objekte der Klasse Getraenk
      */
     public Getraenk(String bezeichnung)
     {
-        
-        this.bezeichnung = bezeichnung;    
-       
+        this.setBezeichnung(bezeichnung);
     }
     
-    public void setBezeichnung(String bezeichnung){
-      
+    public void setBezeichnung(String bezeichnung) {
+        this.validiereGetraenkeProperty(bezeichnung, "Bezeichnung");
         this.bezeichnung = bezeichnung;    
          
     }
     
     public String getBezeichnung(){
-        return bezeichnung;
+        return this.bezeichnung;
     }
     
+    protected void validiereGetraenkeProperty( String string, String variableName) {
+        if (string == null || string.trim().equals("")) {
+            throw new IllegalArgumentException(variableName + " darf nicht null sein");
+        }
+    }
+
     @Override
-    public String toString(){
-        return "Bezeichnung: " + this.bezeichnung + "\n";
+    public String toString() {
+        if (!this.istVollkommen()) {
+            throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
+        }
+        
+        return "Bezeichnung: " + this.bezeichnung;
+    }
+
+    public boolean istVollkommen() {
+        return this.bezeichnung != null;
     }
 }

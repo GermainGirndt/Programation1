@@ -2,14 +2,25 @@
 /**
  * Beschreiben Sie hier die Klasse Flasche.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina 
+ * @version 1.0
  */
 public class Flasche<T extends Getraenk>
 {
     private T inhalt;
+    private String inhaltName;
+
     public void fuellen(T inhalt) {
-         this.inhalt = inhalt; 
+        if (inhalt == null)  {
+            throw new IllegalArgumentException("Flasche kann nicht ohne Inhalt gefuellt werden");
+        }
+
+        this.inhalt = inhalt; 
+        this.inhaltName = inhalt.getClass().getName();
+    }
+    
+    public void setInhalt(T inhalt) {
+
     }
 
     public boolean isVoll() {
@@ -22,6 +33,10 @@ public class Flasche<T extends Getraenk>
   
     @Override 
     public String toString(){
+        if (inhalt == null) {
+            return "Leere Flasche von " + this.inhaltName;
+        }
+
         return "Flasche Inhalt: " + this.inhalt.toString();
     }
 }

@@ -5,8 +5,8 @@ import javax.management.RuntimeErrorException;
 /**
  * Beschreiben Sie hier die Klasse Flasche.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina 
+ * @version 1.0
  */
 public class GetraenkeAutomat<T extends Getraenk>
 {
@@ -24,14 +24,12 @@ public class GetraenkeAutomat<T extends Getraenk>
     }
 
     public void flascheEinlegen(Flasche<T> flasche) {
-        
         if (flasche.isVoll()) {
             throw new IllegalArgumentException("Flasche konnte nicht eingelegt werden. Das Getraenkeautomat nimmt nur volle Flasche auf");
         }
         if (this.istVoll()) {
             throw new IllegalArgumentException("Flasche konnte nicht eingelegt werden. Das Getraenkeautomat ist schon voll.");
         }
-        
         
         this.flaschenLager.add(flasche);
     }
