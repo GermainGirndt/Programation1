@@ -8,11 +8,16 @@
 public class Flasche<T extends Getraenk>
 {
     private T inhalt;
-    public void fuellen(T object) { this.inhalt = object; }
-    public T leeren() { return inhalt; }
+    public void fuellen(T inhalt) {
+         this.inhalt = inhalt; 
+    }
+
+    public void leeren() { 
+        this.inhalt = null;
+    }
   
     @Override 
     public String toString(){
-        return inhalt.toString();
+        return "Flasche Inhalt: " + this.inhalt.toString();
     }
 }
