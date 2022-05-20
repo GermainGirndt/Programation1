@@ -12,6 +12,10 @@ public class Flasche<T extends Getraenk>
          this.inhalt = inhalt; 
     }
 
+    public boolean isVoll() {
+        return this.inhalt != null;
+    }
+
     public void leeren() { 
         this.inhalt = null;
     }
