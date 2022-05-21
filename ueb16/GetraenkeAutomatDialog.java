@@ -15,8 +15,6 @@ public class GetraenkeAutomatDialog
     private Scanner input;
     private GetraenkeAutomat automat;
 
-   
-
     private static final int FUNKTION_NICHT_DEFINIERT        = -1;
     private static final int FUNKTION_ENDE                   = 0;
     private static final int FUNKTION_AUTOMAT_ANLEGEN        = 1;
@@ -31,6 +29,8 @@ public class GetraenkeAutomatDialog
     private static final int AUTOMAT_ALKOHOLISCH             = 5;
     private static final int AUTOMAT_BIER                    = 6;
     private static final int AUTOMAT_WEIN                    = 7;
+    private static final int AUTOMAT_WEISSWEIN               = 8;
+    private static final int AUTOMAT_ROTWEIN                 = 9;
   
 
     /**
@@ -157,6 +157,8 @@ public class GetraenkeAutomatDialog
             AUTOMAT_ALKOHOLISCH              + ": Getraenkeautomat fuer alkoholische Getraenke anlegen;\n"  + 
             AUTOMAT_BIER                     + ": Getraenkeautomat fuer Bier anlegen;\n"  + 
             AUTOMAT_WEIN                     + ": Getraenkeautomat fuer Wein anlegen;\n"  + 
+            AUTOMAT_WEISSWEIN                + ": Getraenkeautomat fuer Weisswein anlegen;\n"  + 
+            AUTOMAT_ROTWEIN                  + ": Getraenkeautomat fuer Rotwein anlegen;\n"  + 
             FUNKTION_ENDE                    + ": beenden -> \n\n"
         );
         
@@ -196,6 +198,12 @@ public class GetraenkeAutomatDialog
             case AUTOMAT_WEIN:
                 automat = new GetraenkeAutomat<Wein>(kapazitaet);
                 break; 
+            case AUTOMAT_WEISSWEIN:
+                automat = new GetraenkeAutomat<Weisswein>(kapazitaet);
+                break;
+            case AUTOMAT_ROTWEIN:
+                automat = new GetraenkeAutomat<Rotwein>(kapazitaet);
+                break;
             case FUNKTION_ENDE:  
                 System.out.println("Die Schleife ist zu Ende");
                 break;
@@ -229,7 +237,9 @@ public class GetraenkeAutomatDialog
                     "1: "    + "Softdrink" + "\n" +
                     "2: "    + "Wasser" + "\n" +
                     "3: "    + "Bier" + "\n" +
-                    "4: "    + "Wein" + "\n" 
+                    "4: "    + "Wein" + "\n" +
+                    "5: "    + "Weisswein" + "\n" +
+                    "6: "    + "Rotwein" + "\n" 
                     );
         
                     System.out.println("Ausgewählte Funktion: ");
@@ -249,7 +259,14 @@ public class GetraenkeAutomatDialog
                             getraenk = erstelleBier();
                             break;
                         case 4:
-                            getraenk = erstelleWein();  
+                            getraenk = erstelleWein(); 
+                            break;
+                        case 5:
+                            getraenk = erstelleWeissWein();
+                            break;
+                        case 6:
+                            getraenk = erstelleRotWein();
+                            break;
                             }
                        
                         Flasche<Getraenk>  fgetraenk = new Flasche<Getraenk>();
@@ -299,7 +316,9 @@ public class GetraenkeAutomatDialog
                 System.out.print(
                     "\n\n" +
                     "1: "    + "Bier" + "\n" +
-                    "2: "    + "Wein" 
+                    "2: "    + "Wein" + "\n" +
+                    "3: "    + "Weisswein" + "\n" +
+                    "4: "    + "Rotwein"   
                     );
         
                     System.out.println("Ausgewählte Funktion: ");
@@ -310,8 +329,14 @@ public class GetraenkeAutomatDialog
                         case 1:
                             getraenk = erstelleBier();
                             break;
-                        case 3:
+                        case 2:
                             getraenk = erstelleWein();   
+                            break;
+                        case 3:
+                            getraenk = erstelleWeissWein();
+                            break;
+                        case 4:
+                            getraenk = erstelleRotWein();
                             break;
                          
                     }
@@ -328,13 +353,46 @@ public class GetraenkeAutomatDialog
                     break; 
               
             case AUTOMAT_WEIN:
-                    getraenk = erstelleWein();
+                    System.out.print(
+                    "\n\n" +
+                    "1: "    + "Wein" + "\n" +
+                    "2: "    + "Weisswein" + "\n" +
+                    "3: "    + "Rotwein"   
+                    );
+        
+                    System.out.println("Ausgewählte Funktion: ");
+                    this.getraenkArt = input.nextInt();
+                    input.nextLine();
+                    System.out.println();  
+                    switch(this.getraenkArt){
+                        case 1:
+                            getraenk = erstelleWein();   
+                            break;
+                        case 2:
+                            getraenk = erstelleWeissWein();
+                            break;
+                        case 3:
+                            getraenk = erstelleRotWein();
+                            break;
+                         
+                    }
                     Flasche<Wein>  fwein = new Flasche<Wein>();
                     fwein.fuellen((Wein)getraenk);
                     automat.flascheEinlegen(fwein);
                     break; 
-            }       
-            
+            case AUTOMAT_WEISSWEIN:
+                    getraenk = erstelleWeissWein();
+                    Flasche<Weisswein>  fwwein = new Flasche<Weisswein>();
+                    fwwein.fuellen((Weisswein)getraenk);
+                    automat.flascheEinlegen(fwwein);
+                    break;
+             case AUTOMAT_ROTWEIN:
+                    getraenk = erstelleRotWein();
+                    Flasche<Rotwein>  frwein = new Flasche<Rotwein>();
+                    frwein.fuellen((Rotwein)getraenk);
+                    automat.flascheEinlegen(frwein);
+                    break;
+            }   
             
         }
     }
@@ -381,5 +439,27 @@ public class GetraenkeAutomatDialog
             System.out.println("Geben Sie das Weingut an:");
             String weingut = input.nextLine();    
             return new Wein(bezeichnung, alkoholgehalt, weingut);
+   }
+   
+   private Weisswein erstelleWeissWein(){
+        
+            System.out.println("Geben Sie die Bezeichnung an:");
+            String bezeichnung = input.nextLine();    
+            System.out.println("Geben Sie den Alkoholgehalt an:");
+            float alkoholgehalt = input.nextFloat();  
+            System.out.println("Geben Sie das Weingut an:");
+            String weingut = input.nextLine();    
+            return new Weisswein(bezeichnung, alkoholgehalt, weingut);
+   }
+   
+   private Rotwein erstelleRotWein(){
+        
+            System.out.println("Geben Sie die Bezeichnung an:");
+            String bezeichnung = input.nextLine();    
+            System.out.println("Geben Sie den Alkoholgehalt an:");
+            float alkoholgehalt = input.nextFloat();  
+            System.out.println("Geben Sie das Weingut an:");
+            String weingut = input.nextLine();    
+            return new Rotwein(bezeichnung, alkoholgehalt, weingut);
    }
 }
