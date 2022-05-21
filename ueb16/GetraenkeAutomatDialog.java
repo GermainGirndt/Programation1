@@ -22,6 +22,7 @@ public class GetraenkeAutomatDialog
     private static final int FUNKTION_AUTOMAT_ANLEGEN        = 1;
     private static final int FUNKTION_FLASCHE_EINGEBEN       = 2;
     private static final int FUNKTION_FLASCHE_AUSGEBEN       = 3;
+    private static final int FUNKTION_AUTOMAT_AUSGEBEN       = 4;
     
     private static final int AUTOMAT_GETRAENK                = 1;
     private static final int AUTOMAT_ALKOHOLFREIESGETRAENK   = 2;
@@ -81,7 +82,8 @@ public class GetraenkeAutomatDialog
             FUNKTION_AUTOMAT_ANLEGEN        + ": Getraenkeautomat anlegen;\n"  + 
             FUNKTION_FLASCHE_EINGEBEN       + ": Flasche eingeben;\n" +
             FUNKTION_FLASCHE_AUSGEBEN       + ": Flasche ausgeben;\n"  + 
-            FUNKTION_ENDE                   + ": beenden -> \n\n"
+            FUNKTION_AUTOMAT_AUSGEBEN       + ": Getraenkeautomatausgeben;\n" +
+            FUNKTION_ENDE                   + ": beenden -> \n\n" 
         );
         
         System.out.println("Ausgewählte Funktion: ");
@@ -105,6 +107,12 @@ public class GetraenkeAutomatDialog
             case FUNKTION_FLASCHE_AUSGEBEN:
                 flascheAusgeben();
                 break;  
+             case FUNKTION_AUTOMAT_AUSGEBEN:
+                 if(automat!= null){
+                     System.out.println(automat.toString());    
+                 }
+                
+                break;
             case FUNKTION_ENDE:  
                 System.out.println("Das Programm ist zu Ende");
                 break;
