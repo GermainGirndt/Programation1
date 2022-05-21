@@ -11,6 +11,7 @@ public class GetraenkeAutomatDialog
 {
     private int funktion;
     private int art;
+    private int getraenkArt;
     private Scanner input;
     private GetraenkeAutomat automat;
 
@@ -206,32 +207,171 @@ public class GetraenkeAutomatDialog
     }
     
      private void flascheEingeben(){
+        Getraenk getraenk = new Wasser();
+        
+        String bezeichnung;
+        String hersteller;
+        float alkoholgehalt;
         if(automat != null){
+            
             switch(this.art) {
-            case AUTOMAT_GETRAENK:
-                
-                break;  
+            case AUTOMAT_GETRAENK:         
+                    System.out.print(
+                    "\n\n" +
+                    "1: "    + "Softdrink" + "\n" +
+                    "2: "    + "Wasser" + "\n" +
+                    "3: "    + "Bier" + "\n" +
+                    "4: "    + "Wein" + "\n" 
+                    );
+        
+                    System.out.println("Ausgewählte Funktion: ");
+                    this.getraenkArt = input.nextInt();
+                    input.nextLine();
+                    System.out.println();  
+                    
+                    
+                    switch(this.getraenkArt){
+                        case 1:
+                            getraenk = erstelleSoftDrink();
+                            break;
+                        case 2:
+                            getraenk = erstelleWasser();
+                            break;
+                        case 3:
+                            getraenk = erstelleBier();
+                            break;
+                        case 4:
+                            getraenk = erstelleWein();  
+                            }
+                       
+                        Flasche<Getraenk>  fgetraenk = new Flasche<Getraenk>();
+                        fgetraenk.fuellen(getraenk);
+                        automat.flascheEinlegen(fgetraenk);
+                        break;  
             case AUTOMAT_ALKOHOLFREIESGETRAENK:
-               
-                break; 
+                    System.out.print(
+                    "\n\n" +
+                    "1: "    + "Softdrink" + "\n" +
+                    "2: "    + "Wasser" + "\n" 
+                    );
+        
+                    System.out.println("Ausgewählte Funktion: ");
+                    this.getraenkArt = input.nextInt();
+                    input.nextLine();
+                    System.out.println();  
+                    
+                    switch(this.getraenkArt){
+                        case 1:
+                            getraenk = erstelleSoftDrink();
+                            break;
+                        case 2:
+                            getraenk = erstelleWasser();
+                            break;
+                        
+                    }
+                    
+                     Flasche<AlkoholfreiesGetraenk>  falkfrei = new Flasche<AlkoholfreiesGetraenk>();
+                     falkfrei.fuellen((AlkoholfreiesGetraenk)getraenk);
+                     automat.flascheEinlegen(falkfrei);
+                    break; 
             case AUTOMAT_SOFTDRINK:
-               
-                break; 
+                    getraenk = erstelleSoftDrink();
+                    Flasche<Softdrink>  fsoft = new Flasche<Softdrink>();
+                    fsoft.fuellen((Softdrink)getraenk);
+                    automat.flascheEinlegen( fsoft);
+                    break; 
+              
             case AUTOMAT_WASSER:
-                
-                break; 
+                    getraenk = erstelleWasser();
+                    Flasche<Wasser>  fwasser = new Flasche<Wasser>();
+                    fwasser.fuellen((Wasser)getraenk);
+                    automat.flascheEinlegen( fwasser); 
+                    break; 
             case AUTOMAT_ALKOHOLISCH:
-               
-                break; 
+                System.out.print(
+                    "\n\n" +
+                    "1: "    + "Bier" + "\n" +
+                    "2: "    + "Wein" 
+                    );
+        
+                    System.out.println("Ausgewählte Funktion: ");
+                    this.getraenkArt = input.nextInt();
+                    input.nextLine();
+                    System.out.println();  
+                    switch(this.getraenkArt){
+                        case 1:
+                            getraenk = erstelleBier();
+                            break;
+                        case 3:
+                            getraenk = erstelleWein();   
+                            break;
+                         
+                    }
+                    Flasche<AlkoholischesGetraenk>  falk = new Flasche<AlkoholischesGetraenk>();
+                    falk.fuellen((AlkoholischesGetraenk)getraenk);
+                    automat.flascheEinlegen(falk);
+                    break; 
+             
             case AUTOMAT_BIER:
-               
-                break;   
+                    getraenk = erstelleBier();
+                    Flasche<Bier>  fbier = new Flasche<Bier>();
+                    fbier.fuellen((Bier)getraenk);
+                    automat.flascheEinlegen(fbier);
+                    break; 
+              
             case AUTOMAT_WEIN:
-          
-                break; 
-         
+                    getraenk = erstelleWein();
+                    Flasche<Wein>  fwein = new Flasche<Wein>();
+                    fwein.fuellen((Wein)getraenk);
+                    automat.flascheEinlegen(fwein);
+                    break; 
             }       
-           
+            
+            
         }
     }
+    
+   private Softdrink erstelleSoftDrink(){
+        
+            System.out.println("Geben Sie die Bezeichnung an:");
+            String bezeichnung = input.nextLine();    
+            System.out.println("Geben Sie den Hersteller an:");
+            String hersteller = input.nextLine();  
+            System.out.println("Geben Sie den Zuckergehalt an:");
+            String zuckergehalt = input.nextLine();    
+            return new Softdrink(bezeichnung, hersteller, zuckergehalt);
+   }
+   
+   private Wasser erstelleWasser(){
+        
+            System.out.println("Geben Sie die Bezeichnung an:");
+            String bezeichnung = input.nextLine();    
+            System.out.println("Geben Sie den Hersteller an:");
+            String hersteller = input.nextLine();  
+            System.out.println("Geben Sie die Quelle an:");
+            String quelle = input.nextLine();    
+            return new Wasser(bezeichnung, hersteller, quelle);
+   }
+   
+   private Bier erstelleBier(){
+        
+            System.out.println("Geben Sie die Bezeichnung an:");
+            String bezeichnung = input.nextLine();    
+            System.out.println("Geben Sie den Alkoholgehalt an:");
+            float alkoholgehalt = input.nextFloat();  
+            System.out.println("Geben Sie die Brauerei an:");
+            String brauerei = input.nextLine();    
+            return new Bier(bezeichnung, alkoholgehalt, brauerei);
+   }
+   
+   private Wein erstelleWein(){
+        
+            System.out.println("Geben Sie die Bezeichnung an:");
+            String bezeichnung = input.nextLine();    
+            System.out.println("Geben Sie den Alkoholgehalt an:");
+            float alkoholgehalt = input.nextFloat();  
+            System.out.println("Geben Sie das Weingut an:");
+            String weingut = input.nextLine();    
+            return new Wein(bezeichnung, alkoholgehalt, weingut);
+   }
 }

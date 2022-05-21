@@ -14,17 +14,18 @@ public class GetraenkeAutomat<T extends Getraenk>
     private int kapazitaet;
     private final int ERSTE_FLASCHE_INDEX = 0;
 
+    
 
     public GetraenkeAutomat(int kapazitaet) {
         if (kapazitaet <= 0) {
             throw new IllegalArgumentException("Kapazitaet muss groesser null sein.");
         }
-        
+        flaschenLager = new ArrayList<Flasche<T>>();
         this.kapazitaet = kapazitaet;
     }
 
     public void flascheEinlegen(Flasche<T> flasche) {
-        if (flasche.isVoll()) {
+        if (!flasche.isVoll()) {
             throw new IllegalArgumentException("Flasche konnte nicht eingelegt werden. Das Getraenkeautomat nimmt nur volle Flasche auf");
         }
         if (this.istVoll()) {
@@ -43,7 +44,7 @@ public class GetraenkeAutomat<T extends Getraenk>
     }
 
     private boolean istLeer() {
-        if(flaschenLager != null){
+        if(flaschenLager != null && flaschenLager.size() > 0){
             return false;
         }
         else{
