@@ -111,6 +111,9 @@ public class GetraenkeAutomatDialog
                  if(automat!= null){
                      System.out.println(automat.toString());    
                  }
+                 else{
+                    System.out.println("Es gibt keinen Automaten");
+                }
                 
                 break;
             case FUNKTION_ENDE:  
@@ -219,6 +222,9 @@ public class GetraenkeAutomatDialog
          
             System.out.println(flasche.toString());    
            
+        }
+        else{
+            System.out.println("Es gibt keinen Automaten");
         }
     }
     
