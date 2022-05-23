@@ -425,6 +425,7 @@ public class GetraenkeAutomatDialog
             String bezeichnung = input.nextLine();    
             System.out.println("Geben Sie den Alkoholgehalt an:");
             float alkoholgehalt = input.nextFloat();  
+            input.nextLine();
             System.out.println("Geben Sie die Brauerei an:");
             String brauerei = input.nextLine();    
             return new Bier(bezeichnung, alkoholgehalt, brauerei);
@@ -436,6 +437,7 @@ public class GetraenkeAutomatDialog
             String bezeichnung = input.nextLine();    
             System.out.println("Geben Sie den Alkoholgehalt an:");
             float alkoholgehalt = input.nextFloat();  
+            input.nextLine();
             System.out.println("Geben Sie das Weingut an:");
             String weingut = input.nextLine();    
             return new Wein(bezeichnung, alkoholgehalt, weingut);
@@ -447,6 +449,7 @@ public class GetraenkeAutomatDialog
             String bezeichnung = input.nextLine();    
             System.out.println("Geben Sie den Alkoholgehalt an:");
             float alkoholgehalt = input.nextFloat();  
+             input.nextLine();
             System.out.println("Geben Sie das Weingut an:");
             String weingut = input.nextLine();    
             return new Weisswein(bezeichnung, alkoholgehalt, weingut);
@@ -458,6 +461,7 @@ public class GetraenkeAutomatDialog
             String bezeichnung = input.nextLine();    
             System.out.println("Geben Sie den Alkoholgehalt an:");
             float alkoholgehalt = input.nextFloat();  
+            input.nextLine();
             System.out.println("Geben Sie das Weingut an:");
             String weingut = input.nextLine();    
             return new Rotwein(bezeichnung, alkoholgehalt, weingut);
