@@ -7,7 +7,7 @@
  */
 public class Softdrink extends AlkoholfreiesGetraenk
 {
-    private String zuckergehalt;
+    private float zuckergehalt;
 
     /**
      * Konstruktor für Objekte der Klasse Softdrink
@@ -17,18 +17,20 @@ public class Softdrink extends AlkoholfreiesGetraenk
     /**
      * Konstruktor für Objekte der Klasse Softdrink
      */
-    public Softdrink(String bezeichnung, String hersteller, String zuckergehalt)
+    public Softdrink(String bezeichnung, String hersteller, float zuckergehalt)
     {
         super(bezeichnung, hersteller);
         this.setZuckergehalt(zuckergehalt);
     }
 
-    public void setZuckergehalt(String zuckergehalt) {
-        this.validiereGetraenkeProperty(zuckergehalt, "Zuckergehalt");
+    public void setZuckergehalt(float zuckergehalt) {
+        if(zuckergehalt <0){
+            throw new IllegalArgumentException("Zuckergehalt muss positiv sein");
+        }
         this.zuckergehalt = zuckergehalt;   
     }
     
-    public String getZuckergehalt(){
+    public float getZuckergehalt(){
         return this.zuckergehalt;
     }
     
@@ -43,6 +45,6 @@ public class Softdrink extends AlkoholfreiesGetraenk
 
     @Override
     public boolean istVollkommen() {
-        return super.istVollkommen() && this.zuckergehalt != null;
+        return super.istVollkommen() ;
     }
 }

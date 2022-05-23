@@ -404,7 +404,8 @@ public class GetraenkeAutomatDialog
             System.out.println("Geben Sie den Hersteller an:");
             String hersteller = input.nextLine();  
             System.out.println("Geben Sie den Zuckergehalt an:");
-            String zuckergehalt = input.nextLine();    
+            float zuckergehalt = input.nextFloat(); 
+            input.nextLine();
             return new Softdrink(bezeichnung, hersteller, zuckergehalt);
    }
    
