@@ -1,4 +1,4 @@
-
+import java.util.function.Predicate;
 /**
  * Beschreiben Sie hier die Klasse Functions.
  * 
@@ -106,6 +106,16 @@ public class Functions
        f.applyAndPrint(0,10, f.fib);
        System.out.println("FibonacciAnonym");
        f.applyAndPrint(0,10, fibAnonym);
+       
+       //nur zum schnell testen
+       Predicate<Integer> GreaterThan5 =  x -> x > 5;
+       MyFunctionP funcp = (x) ->{return x*x; };
+       for(int i=0; i<10;i++){
+           MyFunctionP functionpinput = MyFunctionP.conditionateInput(GreaterThan5, funcp);
+           System.out.println(i + ": " + functionpinput.apply(i));
+           MyFunctionP functionpoutput = MyFunctionP.conditionateOutput(GreaterThan5, funcp);
+           System.out.println(i + ": " + functionpoutput.apply(i));
+       }
    }
     
 
