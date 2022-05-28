@@ -16,6 +16,21 @@ public class Functions
        return erg;
    };
    
+   public static MyFunction potenz = (x) -> {return (int)Math.pow(x, x+1);};
+   
+   public static MyFunction fib = (x) ->{
+        int fibonacci1 = 0;
+        int fibonacci2 = 1;
+        int fibonacci  = 1;
+
+        for(int i = 0; i < x; i++){
+        fibonacci = fibonacci1 + fibonacci2;
+        fibonacci1 = fibonacci2;
+        fibonacci2 = fibonacci;
+        }
+        return fibonacci;
+       };
+       
    
    public static class NestedFact implements MyFunction{
         @Override
@@ -46,6 +61,27 @@ public class Functions
             }
        };
        
+       MyFunction potenzAnonym = new MyFunction(){
+            public int apply(int x){
+                return (int)Math.pow(x, x+1);    
+            }
+       };
+       
+       MyFunction fibAnonym = new MyFunction(){
+           public int apply(int x){
+                int fibonacci1 = 0;
+                int fibonacci2 = 1;
+                int fibonacci  = 1;
+
+                for(int i = 0; i < x; i++){
+                    fibonacci = fibonacci1 + fibonacci2;
+                    fibonacci1 = fibonacci2;
+                    fibonacci2 = fibonacci;
+                    }
+                return fibonacci;
+           }
+       };
+       
        Functions f = new Functions();
        Fakultaet factTopLevel = new Fakultaet();
         Functions.NestedFact factNested = new  Functions.NestedFact();
@@ -62,6 +98,14 @@ public class Functions
        f.applyAndPrint(0,10, factTopLevel);
        System.out.println("FakultaetStaticNested");
        f.applyAndPrint(0,10,factNested);
+       System.out.println("PotenzLamda");
+       f.applyAndPrint(0,10, f.potenz);
+       System.out.println("PotenzAnonym");
+       f.applyAndPrint(0,10, potenzAnonym);
+       System.out.println("FibonacciLamda");
+       f.applyAndPrint(0,10, f.fib);
+       System.out.println("FibonacciAnonym");
+       f.applyAndPrint(0,10, fibAnonym);
    }
     
 
