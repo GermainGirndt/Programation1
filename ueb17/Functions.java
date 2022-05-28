@@ -109,12 +109,16 @@ public class Functions
        
        //nur zum schnell testen
        Predicate<Integer> GreaterThan5 =  x -> x > 5;
-       MyFunctionP funcp = (x) ->{return x*x; };
+       MyFunctionP functionP = (x) -> {return x*x;};
+       System.out.println("conditionateInput");
        for(int i=0; i<10;i++){
-           MyFunctionP functionpinput = MyFunctionP.conditionateInput(GreaterThan5, funcp);
-           System.out.println(i + ": " + functionpinput.apply(i));
-           MyFunctionP functionpoutput = MyFunctionP.conditionateOutput(GreaterThan5, funcp);
-           System.out.println(i + ": " + functionpoutput.apply(i));
+           
+           System.out.println(i + ": " + functionP.conditionateInput(GreaterThan5).apply(i));
+       }
+       System.out.println("conditionateOutput");
+       for(int i=0; i<10;i++){
+           
+           System.out.println(i + ": " + functionP.conditionateOutput(GreaterThan5).apply(i));
        }
    }
     
