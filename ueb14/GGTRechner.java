@@ -9,8 +9,6 @@ public class GGTRechner {
 
     private int a;
     private int b;
-
-  
    
     /**
      * Konstruktor für Objekte der Klasse GGT

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 /**
  * Beschreiben Sie hier die Klasse PalindromSpeedTest.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class PalindromSpeedTest
 {
@@ -19,19 +19,15 @@ public class PalindromSpeedTest
     private PrintWriter out;
     
     
-    public PalindromSpeedTest(){
-       
-       
-    }
+    public PalindromSpeedTest() {}
     
     public static void main(String[] args) throws Exception {
         PalindromSpeedTest tester = new PalindromSpeedTest();
         tester.start(args);
-       
     }
 
-    public void start(String[] args){
-         if(args.length < 3){
+    public void start(String[] args) {
+         if(args.length < 3) {
             throw new PalindromError("Benutzung java PalindromSpeedTester <Logfile.txt> <-s|-f> <String|Dateiname>");            
         }  
         if (args[1].equals(this.filemode)) {
@@ -55,11 +51,11 @@ public class PalindromSpeedTest
                 System.out.println("Unable to locate the fileName: " + e.getMessage());
         }
 
-        for(Palindrom p : pals)
+        for (Palindrom p : pals)
         {
                 out.print(p.toString() + "\t\n" );    
-                if(istFile){
-                    for(String zeile : zeilen){
+                if(istFile) {
+                    for(String zeile : zeilen) {
 
                         out.print(zeile.length() + "\t");
                         long start = System.nanoTime();    

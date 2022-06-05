@@ -28,12 +28,12 @@ public class Wein extends AlkoholischesGetraenk
         this.weingut = weingut;
     }
     
-    public String getWeingut(){
+    public String getWeingut() {
         return this.weingut;        
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         if (!this.istVollkommen()) {
             throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
         }

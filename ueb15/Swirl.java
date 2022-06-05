@@ -3,8 +3,8 @@ import java.util.Random;
 /**
  * Beschreiben Sie hier die Klasse Swirl.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class Swirl implements CrunchOperation 
 {
@@ -18,12 +18,12 @@ public class Swirl implements CrunchOperation
         
     }
 
-    public void crunch(float[] values){
+    public void crunch(float[] values) {
         Random r = new Random();
         int index1;
         int index2;
         float temp;
-        for(int i = 0; i < values.length; i++){
+        for(int i = 0; i < values.length; i++) {
             index1  = r.nextInt(values.length);   
             index2 = r.nextInt(values.length);
             temp = values[index1];

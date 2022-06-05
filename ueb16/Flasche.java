@@ -32,7 +32,7 @@ public class Flasche<T extends Getraenk>
     }
   
     @Override 
-    public String toString(){
+    public String toString() {
         if (inhalt == null) {
             return "Leere Flasche von " + this.inhaltName;
         }

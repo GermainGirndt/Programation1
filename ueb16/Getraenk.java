@@ -28,7 +28,7 @@ public abstract class Getraenk
          
     }
     
-    public String getBezeichnung(){
+    public String getBezeichnung() {
         return this.bezeichnung;
     }
     

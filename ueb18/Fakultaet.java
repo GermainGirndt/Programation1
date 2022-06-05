@@ -2,8 +2,8 @@
 /**
  * Beschreiben Sie hier die Klasse Fakultaet.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class Fakultaet implements MyFunction
 {
@@ -17,7 +17,7 @@ public class Fakultaet implements MyFunction
     }
 
     @Override
-    public int apply(int x){
+    public int apply(int x) {
         int erg = 1;
         for(int i = 1; i<=x; i++)
             erg *= i;

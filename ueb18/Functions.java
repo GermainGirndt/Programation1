@@ -2,8 +2,8 @@ import java.util.function.Predicate;
 /**
  * Beschreiben Sie hier die Klasse Functions.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class Functions {
    public static MyFunction quadrat = (x) -> {return x*x;};
@@ -38,7 +38,7 @@ public class Functions {
         int fibonacci2 = 1;
         int fibonacci  = 1;
 
-        for (int i = 0; i < x; i++){
+        for (int i = 0; i < x; i++) {
         fibonacci = fibonacci1 + fibonacci2;
         fibonacci1 = fibonacci2;
         fibonacci2 = fibonacci;
@@ -48,11 +48,11 @@ public class Functions {
    
    public static class NestedFact implements MyFunction{
         @Override
-        public int apply(int x){
+        public int apply(int x) {
         return applyStatic(x);
        }
        
-        public static int applyStatic(int x){
+        public static int applyStatic(int x) {
         int erg = 1;
         for(int i = 1; i<=x; i++)
             erg *= i;
@@ -61,7 +61,7 @@ public class Functions {
        
    }
    
-   public static void main(String[] args){
+   public static void main(String[] args) {
        //Anonyme Klassen
        MyFunction quadratAnonym = new MyFunction() {
             
@@ -80,19 +80,19 @@ public class Functions {
             }
        };
        
-       MyFunction potenzAnonym = new MyFunction(){
-            public int apply(int x){
+       MyFunction potenzAnonym = new MyFunction() {
+            public int apply(int x) {
                 return (int)Math.pow(x, x+1);    
             }
        };
        
-       MyFunction fibAnonym = new MyFunction(){
-           public int apply(int x){
+       MyFunction fibAnonym = new MyFunction() {
+           public int apply(int x) {
                 int fibonacci1 = 0;
                 int fibonacci2 = 1;
                 int fibonacci  = 1;
 
-                for(int i = 0; i < x; i++){
+                for(int i = 0; i < x; i++) {
                     fibonacci = fibonacci1 + fibonacci2;
                     fibonacci1 = fibonacci2;
                     fibonacci2 = fibonacci;
@@ -130,12 +130,12 @@ public class Functions {
        Predicate<Integer> GreaterThan5 =  x -> x > 5;
        MyFunctionP functionP = (x) -> {return x*x;};
        System.out.println("conditionateInput");
-       for(int i=0; i<10;i++){
+       for(int i=0; i<10;i++) {
            
            System.out.println(i + ": " + functionP.conditionateInput(GreaterThan5).apply(i));
        }
        System.out.println("conditionateOutput");
-       for(int i=0; i<10;i++){
+       for(int i=0; i<10;i++) {
            
            System.out.println(i + ": " + functionP.conditionateOutput(GreaterThan5).apply(i));
        }
@@ -162,11 +162,11 @@ public class Functions {
             throw new IllegalArgumentException("Nur naturiche Zahlen werden unterstuetzt");
         }
 
-        if(j < i){
+        if(j < i) {
             throw new IllegalArgumentException("Die zweite Zahl muss groesser oder gleich der ersten Zahl sein.");
         }
         
-        for(int k = i; k <= j ; k++){
+        for(int k = i; k <= j ; k++) {
             System.out.println(k + ": " + f.apply(k) + "\n");
         }
    }

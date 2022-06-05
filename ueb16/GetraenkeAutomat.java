@@ -44,7 +44,7 @@ public class GetraenkeAutomat<T extends Getraenk>
     }
 
     private boolean istLeer() {
-        if(flaschenLager != null && flaschenLager.size() > 0){
+        if(flaschenLager != null && flaschenLager.size() > 0) {
             return false;
         }
         else{
@@ -58,7 +58,7 @@ public class GetraenkeAutomat<T extends Getraenk>
     }
 
     @Override 
-    public String toString(){
+    public String toString() {
 
         StringBuffer stringBuffer = new StringBuffer();
 

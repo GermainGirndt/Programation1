@@ -4,8 +4,8 @@ import java.util.Arrays;
 /**
  * Beschreiben Sie hier die Klasse NumberCruncherAnonym.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class NumberCruncherAnonym extends AbstractNumberCruncher {
     
@@ -46,7 +46,7 @@ public class NumberCruncherAnonym extends AbstractNumberCruncher {
     
         CrunchOperation divide = new CrunchOperation() {
 
-             public void crunch(float[] values){
+             public void crunch(float[] values) {
                 float[] valuesCopy = Arrays.copyOf(values, values.length);
                 int[] besucht = new int[values.length];
                 int[] vorkommenMin = new int[values.length];
@@ -60,17 +60,17 @@ public class NumberCruncherAnonym extends AbstractNumberCruncher {
                     vorkommenMin = Search.search(valuesCopy[i], values);
                     vorkommenMax = Search.search(valuesCopy[values.length - i -1], values); 
                     
-                    for(int k = 0; k < vorkommenMin.length; k++){
-                        if(vorkommenMin[k] == 1){
-                            if( besucht[k] == 0){
+                    for(int k = 0; k < vorkommenMin.length; k++) {
+                        if(vorkommenMin[k] == 1) {
+                            if( besucht[k] == 0) {
                                 minIndex = k;
                             }
                         }
                     }
                     
-                    for(int k = 0; k < vorkommenMax.length; k++){
-                        if(vorkommenMax[k] == 1){
-                            if( besucht[k] == 0){
+                    for(int k = 0; k < vorkommenMax.length; k++) {
+                        if(vorkommenMax[k] == 1) {
+                            if( besucht[k] == 0) {
                                 maxIndex = k;
                             }
                         }

@@ -25,20 +25,20 @@ public  abstract class AlkoholischesGetraenk extends Getraenk
         this.setAlkoholGehalt(alkoholgehalt);
     }
   
-    public void setAlkoholGehalt(float alkoholgehalt){
-        if (alkoholgehalt <= 0) {
-            throw new IllegalArgumentException("Alkoholgehalt muss groesser null sein");
+    public void setAlkoholGehalt(float alkoholgehalt) {
+        if (alkoholgehalt <= 0f || alkoholgehalt > 100.0f ) {
+            throw new IllegalArgumentException("Alkoholgehalt muss zwischen null und 100% sein");
         }
 
         this.alkoholgehalt = alkoholgehalt;
     }
     
-    public float getAlkoholGehalt(){
+    public float getAlkoholGehalt() {
         return alkoholgehalt;    
     }
     
     @Override 
-    public String toString(){
+    public String toString() {
         if (!this.istVollkommen()) {
             throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
         }

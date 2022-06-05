@@ -60,11 +60,11 @@ public abstract class AbstractNumberCruncher {
         }
     }
     
-    public float[] getNumbers(){
+    public float[] getNumbers() {
         return this.numbers;
     }
 
-    public void setNumbers(float[] numbers){
+    public void setNumbers(float[] numbers) {
         this.numbers = numbers;
     }
 

@@ -108,7 +108,7 @@ public class TestDialog {
                     System.out.println("Geben Sie die gewuenschten mit Komma getrennten Operations ein: (-1 = Ende)");
                     
                     String[] operations = input.nextLine().split(",");
-                    if(operations.length == 1 && operations[0].equals("-1")){
+                    if(operations.length == 1 && operations[0].equals("-1")) {
                         break;
                     }
                     

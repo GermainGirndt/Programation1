@@ -1,44 +1,54 @@
+import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 /**
- * Beschreiben Sie hier die Klasse Functions.
+ * Beschreiben Sie hier die Klasse Function.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
-public class Functions {
-   public static MyFunction quadrat = (x) -> {return x*x;};
+public class Function {
 
-   public static MyFunction quadratVonGeradeZahlen = (x) -> {
-       if (ParityChecker.odd.test(x)) {
-           return Functions.quadrat.apply(x);
+   private static IntPredicate odd = new IntPredicate() {
+        public boolean test(int number) {
+            return (number % 2) == 0 ;
+        }
+    };
+
+   private static IntPredicate even = number -> (number % 2) == 1;
+
+   private static MyFunction quadrat = (x) -> {return x*x;};
+
+   private static MyFunction quadratVonGeradeZahlen = (x) -> {
+       if (Function.odd.test(x)) {
+           return Function.quadrat.apply(x);
        }
 
        return -1;
    };
   
-   public static MyFunction fact = (x) -> {
+   private static MyFunction fact = (x) -> {
        int erg = 1;
        for(int i = 1; i<=x; i++)
             erg *= i;
        return erg;
    };
 
-   public static MyFunction factVonUngerade = (x) -> {
+   private static MyFunction factVonUngerade = (x) -> {
 
-       if (ParityChecker.even.test(x)) {
-           return Functions.fact.apply(x);
+       if (Function.even.test(x)) {
+           return Function.fact.apply(x);
        }
        return 0;
    };
    
-   public static MyFunction potenz = (x) -> {return (int)Math.pow(x, x+1);};
+   private static MyFunction potenz = (x) -> {return (int)Math.pow(x, x+1);};
    
-   public static MyFunction fib = (x) ->{
+   private static MyFunction fib = (x) ->{
         int fibonacci1 = 0;
         int fibonacci2 = 1;
         int fibonacci  = 1;
 
-        for (int i = 0; i < x; i++){
+        for (int i = 0; i < x; i++) {
         fibonacci = fibonacci1 + fibonacci2;
         fibonacci1 = fibonacci2;
         fibonacci2 = fibonacci;
@@ -46,9 +56,9 @@ public class Functions {
         return fibonacci;
        };
    
-   public static class NestedFact implements MyFunction{
+   private static class NestedFact implements MyFunction{
         @Override
-        public int apply(int x){
+        public int apply(int x) {
         int erg = 1;
         for(int i = 1; i<=x; i++)
             erg *= i;
@@ -56,8 +66,8 @@ public class Functions {
     }
    }
    
-   public static void main(String[] args){
-       //Anonyme Klassen
+   public static void main(String[] args) {
+       // anonyme Klassen
        MyFunction quadratAnonym = new MyFunction() {
             
             public int apply(int x) {
@@ -75,19 +85,19 @@ public class Functions {
             }
        };
        
-       MyFunction potenzAnonym = new MyFunction(){
-            public int apply(int x){
+       MyFunction potenzAnonym = new MyFunction() {
+            public int apply(int x) {
                 return (int)Math.pow(x, x+1);    
             }
        };
        
-       MyFunction fibAnonym = new MyFunction(){
-           public int apply(int x){
+       MyFunction fibAnonym = new MyFunction() {
+           public int apply(int x) {
                 int fibonacci1 = 0;
                 int fibonacci2 = 1;
                 int fibonacci  = 1;
 
-                for(int i = 0; i < x; i++){
+                for(int i = 0; i < x; i++) {
                     fibonacci = fibonacci1 + fibonacci2;
                     fibonacci1 = fibonacci2;
                     fibonacci2 = fibonacci;
@@ -96,9 +106,9 @@ public class Functions {
            }
        };
        
-       Functions f = new Functions();
+       Function f = new Function();
        Fakultaet factTopLevel = new Fakultaet();
-       Functions.NestedFact factNested = new  Functions.NestedFact();
+       Function.NestedFact factNested = new  Function.NestedFact();
        
        System.out.println("QuadratLamda");
        f.applyAndPrint(1,10, f.quadrat);
@@ -125,12 +135,12 @@ public class Functions {
        Predicate<Integer> GreaterThan5 =  x -> x > 5;
        MyFunctionP functionP = (x) -> {return x*x;};
        System.out.println("conditionateInput");
-       for(int i=0; i<10;i++){
+       for(int i=0; i<10;i++) {
            
            System.out.println(i + ": " + functionP.conditionateInput(GreaterThan5).apply(i));
        }
        System.out.println("conditionateOutput");
-       for(int i=0; i<10;i++){
+       for(int i=0; i<10;i++) {
            
            System.out.println(i + ": " + functionP.conditionateOutput(GreaterThan5).apply(i));
        }
@@ -151,11 +161,11 @@ public class Functions {
             throw new IllegalArgumentException("Nur naturiche Zahlen werden unterstuetzt");
         }
 
-        if(j < i){
+        if(j < i) {
             throw new IllegalArgumentException("Die zweite Zahl muss groesser oder gleich der ersten Zahl sein.");
         }
         
-        for(int k = i; k <= j ; k++){
+        for (int k = i; k <= j ; k++) {
             System.out.println(k + ": " + f.apply(k) + "\n");
         }
    }
