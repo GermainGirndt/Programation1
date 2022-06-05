@@ -49,11 +49,16 @@ public class Functions {
    public static class NestedFact implements MyFunction{
         @Override
         public int apply(int x){
+        return applyStatic(x);
+       }
+       
+        public static int applyStatic(int x){
         int erg = 1;
         for(int i = 1; i<=x; i++)
             erg *= i;
         return erg;
-    }
+       }
+       
    }
    
    public static void main(String[] args){
@@ -142,6 +147,12 @@ public class Functions {
        // Aufgabe f
        System.out.println("Fakultaet von ungeraden Zahlen:");
        f.applyAndPrint(1,10, f.factVonUngerade);
+       
+       //ueb 18
+       System.out.println("FakultaetObjektMethodenReferenz:");
+       f.applyAndPrint(1,10, factTopLevel::apply);
+       System.out.println("FakultaetStatischeMethodenReferenz:");
+       f.applyAndPrint(1,10, NestedFact::applyStatic);
    }
     
 
