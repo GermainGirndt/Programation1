@@ -1,10 +1,13 @@
 import java.lang.StringBuilder;
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
+=======
+>>>>>>> 2d09867513af90283075df5ad0e136da19da3c3e
 
 /**
  * Beschreiben Sie hier die Klasse Lager.
@@ -12,9 +15,14 @@ import java.util.function.UnaryOperator;
  * @author Girndt, Germain & Krier, Katharina  
  * @version 1.0
  */
+<<<<<<< HEAD
 
  public class Lager {
 
+=======
+public class Lager
+{
+>>>>>>> 2d09867513af90283075df5ad0e136da19da3c3e
    private Artikel[] artikelLager;
    private int anzahlArtikel                            = 0;
    private final static int STANDARD_LAGER_GROESSE      = 10;
@@ -41,6 +49,7 @@ import java.util.function.UnaryOperator;
     public Lager() {
         this(STANDARD_LAGER_GROESSE);
     }
+<<<<<<< HEAD
 
 
     // Aufgabe A
@@ -149,6 +158,8 @@ import java.util.function.UnaryOperator;
 
         return array;
     }
+=======
+>>>>>>> 2d09867513af90283075df5ad0e136da19da3c3e
     
         
     /**
