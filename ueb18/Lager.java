@@ -51,6 +51,16 @@ import java.util.function.UnaryOperator;
         return sortiertesArray;
     }
 
+    // Für Aufgabe 1.c
+    public Artikel[] sortAll(BiPredicate<Artikel, Artikel>... sortierkriteria ) {
+        Artikel[] artikelLager = this.artikelLager;
+        for (BiPredicate<Artikel, Artikel> sortierkriterium : sortierkriteria) {
+            artikelLager = this.getSorted(artikelLager, sortierkriterium);
+        }
+        return artikelLager;
+    }
+
+
     // Aufgabe B
     public Artikel[] applyToArticles( UnaryOperator<Artikel> operation ) {
 
