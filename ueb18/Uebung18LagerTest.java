@@ -1,5 +1,6 @@
 import java.util.function.BiPredicate;
 import java.util.function.UnaryOperator;
+import java.util.function.Predicate;
 /**
  * Beschreiben Sie hier die Klasse Uebung18LagerTest.
  * 
@@ -13,8 +14,8 @@ public class Uebung18LagerTest
         
         Artikel buch1 = new Buch(1234, 10, 9.99, "H.P. Lovecraft", "Cthulhus Ruf", "IrgendeinVerlag");
         Artikel buch2 = new Buch(1233, 5, 8.99, "Algernon Blackwood", "Gruselige Geschichten", "IrgendeinAndererVerlag");
-        Video video1  = new Video(3333, 15, 15.99, "Star Trek der Film", 98, 1980);
-        Video video2  = new Video(2353, 13, 19.99, "Kuhfilm", 120, 2000);
+        Video video1  = new Video(3333, 2, 15.99, "Star Trek der Film", 98, 1980);
+        Video video2  = new Video(2353, 2, 19.99, "Kuhfilm", 120, 2000);
         CD cd1        = new CD(4321, 3 ,7.99, "Pinguine", "Quack", 12);
         CD cd2        = new CD(7351, 9 ,6.99, "Rinder", "Muh", 20);
         
@@ -52,56 +53,29 @@ public class Uebung18LagerTest
         (artikel) -> {String art = artikel.getArt(); 
                         artikel.setArt(art + " Sonderangebot");
                         return artikel;};
-                                
-        Artikel[] sorted = lager.getSorted(bestandAbsteigendSortieren);
+                       
+        System.out.println("Lager initial");
+        System.out.println(lager);
         
-        System.out.println("Nach Bestand absteigend sortiert: ");
-        for(int i = 0; i < lager.getArtikelAnzahl(); i++){
-             System.out.println(sorted[i] + "\n");    
-        }
+        UnaryOperator<Artikel> preis5ProzentReduzieren = 
+        (artikel) -> { artikel.aenderePreis(-5); return artikel;};
         
-        sorted = lager.getSorted(preisAufsteigendSortieren);
-        System.out.println("Nach Preis aufsteigend sortiert: ");
-        for(int i = 0; i < lager.getArtikelAnzahl(); i++){
-             System.out.println(sorted[i] + "\n");    
-        }
+        Predicate p = a ->
+        {
+            if(a instanceof Buch){
+                Buch b = (Buch)a;
+                return b.getAutor().equals("H.P. Lovecraft");  
+            }
+            else{
+                return false;    
+            }
+                
+        }; 
         
-        sorted = lager.getSorted(preisAbsteigendSortieren);
-        System.out.println("Nach Preis absteigend sortiert: ");
-        for(int i = 0; i < lager.getArtikelAnzahl(); i++){
-             System.out.println(sorted[i] + "\n");    
-        }
-
-        sorted =  lager.getSorted(preisAufsteigendSortieren);
-        System.out.println("Nach Preis aufsteigend sortiert: ");
-        for(int i = 0; i < lager.getArtikelAnzahl(); i++){
-             System.out.println(sorted[i] + "\n");    
-        }
+         lager.applyToSomeArticles( preis5ProzentReduzieren, p); 
         
-        sorted =  lager.getSorted( unterkategorieAbsteigendSortieren);
-        System.out.println("Nach Unterkategorie absteigend sortiert: ");
-        for(int i = 0; i < lager.getArtikelAnzahl(); i++){
-             System.out.println(sorted[i] + "\n");    
-        }
         
-        sorted =  lager.getSorted( unterkategorieAufsteigendSortieren);
-        System.out.println("Nach Unterkategorie aufsteigend sortiert: ");
-        for(int i = 0; i < lager.getArtikelAnzahl(); i++){
-             System.out.println(sorted[i] + "\n");    
-        }
-        
-        Artikel[] modifiziert = lager.applyToArticles(preis10ProzentReduzieren);
-        System.out.println("Preis um 10% reduziert: ");
-        for(int i = 0; i < lager.getArtikelAnzahl(); i++){
-             System.out.println(modifiziert[i] + "\n");    
-        }
-        
-        modifiziert  = lager.applyToArticles(sonderangebotArtSetzen);
-        System.out.println("Sonderangebot Art: ");
-        for(int i = 0; i < lager.getArtikelAnzahl(); i++){
-             System.out.println(modifiziert[i] + "\n");    
-        }
-        
+        System.out.println(lager);
     }
     
     

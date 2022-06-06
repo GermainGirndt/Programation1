@@ -103,8 +103,8 @@ import java.util.function.UnaryOperator;
 
         int zaehler = 0;
         List<Integer> indexList = new LinkedList<>();
-
-        for (int i = 0; i < artikel.length; i++ ) {
+    
+        for (int i = 0; i < anzahlArtikel; i++ ) {
             if (filterkriterium.test(artikel[i])) {
                 zaehler++;
                 indexList.add(i);
@@ -125,7 +125,7 @@ import java.util.function.UnaryOperator;
     // Hilfsmethode
     private Artikel[] applyToArticles( Artikel[] artikel, UnaryOperator<Artikel> operation ) {
 
-        for (int i = 0; i < anzahlArtikel; i++ ) {
+        for (int i = 0; i < artikel.length; i++ ) {
             operation.apply(artikel[i]);
         }
 

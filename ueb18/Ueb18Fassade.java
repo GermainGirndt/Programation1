@@ -131,8 +131,7 @@ public class Ueb18Fassade {
         {
             if(a instanceof Buch){
                 Buch b = (Buch)a;
-                return b.getAutor().equals(gesuchterAutor);
-            
+                return b.getAutor().equals(gesuchterAutor);  
             }
             else{
                 return false;    
