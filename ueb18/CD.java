@@ -11,7 +11,7 @@ public class CD extends Artikel
    private String titel;
    private int anzahlTitel;
 
-   private final static String ARTIKEL_ART = "Medien";
+   private final static String ARTIKEL_ART = "CD";
    
    
     /**

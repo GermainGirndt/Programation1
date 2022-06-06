@@ -11,7 +11,7 @@ public class Buch extends Artikel
     private String autor;
     private String verlag;
 
-    private final static String ARTIKEL_ART = "Medien";
+    private final static String ARTIKEL_ART = "Buch";
     
     /**
     * Konstruktor fuer Buch mit Angaben

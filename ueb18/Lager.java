@@ -64,7 +64,7 @@ import java.util.function.UnaryOperator;
     public Artikel[] filter( Predicate<Artikel> filterkriterium ) {
 
 
-        Artikel[] gefiltetesArtikellager = this.filter(this.artikelLager, filterkriterium)
+        Artikel[] gefiltetesArtikellager = this.filter(this.artikelLager, filterkriterium);
         
         return gefiltetesArtikellager;
     }
@@ -125,7 +125,7 @@ import java.util.function.UnaryOperator;
     // Hilfsmethode
     private Artikel[] applyToArticles( Artikel[] artikel, UnaryOperator<Artikel> operation ) {
 
-        for (int i = 0; i < artikel.length; i++ ) {
+        for (int i = 0; i < anzahlArtikel; i++ ) {
             operation.apply(artikel[i]);
         }
 
@@ -138,7 +138,7 @@ import java.util.function.UnaryOperator;
         Artikel[] array = Arrays.copyOf(artikel, artikel.length);
         
         for (int i=0; i < array.length; i++) {
-            for (int j=1; j < (array.length-i); j++) {
+            for (int j=1; j < anzahlArtikel; j++) {
                 if (sortierkriterium.test(array[j-1], array[j])) {
                     Artikel temp = array[j-1];
                     array[j-1] = array[j];

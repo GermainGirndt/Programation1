@@ -11,7 +11,7 @@ public class Video extends Artikel
     private int spieldauer;
     private int jahr;
 
-    private final static String ARTIKEL_ART = "Medien";
+    private final static String ARTIKEL_ART = "Video";
     
     
     /**
