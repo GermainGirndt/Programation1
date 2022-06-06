@@ -89,7 +89,7 @@ import java.util.function.UnaryOperator;
 
     // Aufgabe G
     // To do: Ersetzten Predicate<Artikel>[] durch Parameterliste
-    public Artikel[] filterAll(Predicate<Artikel>[] suchkriteria ) {
+    public Artikel[] filterAll(Predicate<Artikel>... suchkriteria ) {
         Artikel[] artikelLager = this.artikelLager;
         for (Predicate<Artikel> suchkriterium : suchkriteria) {
             artikelLager = this.filter(artikelLager, suchkriterium);
