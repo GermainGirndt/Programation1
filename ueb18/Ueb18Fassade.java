@@ -45,7 +45,7 @@ public class Ueb18Fassade {
         (artikel1, artikel2) -> {return artikel1.getPreis() > artikel2.getPreis();};
         
         //hier gewuenschtes Kriterium uebergeben
-        return  lager.getSorted(unterkategorieAufsteigendSortieren);
+        return  lager.sortAll(unterkategorieAbsteigendSortieren, bestandAbsteigendSortieren, preisAbsteigendSortieren);
     }
 
     /**
