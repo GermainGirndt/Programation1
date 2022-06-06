@@ -114,7 +114,7 @@ import java.util.function.UnaryOperator;
         int zaehler = 0;
         List<Integer> indexList = new LinkedList<>();
     
-        for (int i = 0; i < anzahlArtikel; i++ ) {
+        for (int i = 0; i < artikel.length; i++ ) {
             if (filterkriterium.test(artikel[i])) {
                 zaehler++;
                 indexList.add(i);
@@ -148,7 +148,7 @@ import java.util.function.UnaryOperator;
         Artikel[] array = Arrays.copyOf(artikel, artikel.length);
         
         for (int i=0; i < array.length; i++) {
-            for (int j=1; j < anzahlArtikel; j++) {
+            for (int j=1; j < artikel.length; j++) {
                 if (sortierkriterium.test(array[j-1], array[j])) {
                     Artikel temp = array[j-1];
                     array[j-1] = array[j];

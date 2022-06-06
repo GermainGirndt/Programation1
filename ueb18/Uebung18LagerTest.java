@@ -57,25 +57,28 @@ public class Uebung18LagerTest
         System.out.println("Lager initial");
         System.out.println(lager);
         
-        UnaryOperator<Artikel> preis5ProzentReduzieren = 
-        (artikel) -> { artikel.aenderePreis(-5); return artikel;};
         
-        Predicate p = a ->
+       Predicate p = a ->
         {
             if(a instanceof Buch){
                 Buch b = (Buch)a;
-                return b.getAutor().equals("H.P. Lovecraft");  
+                return b.getAutor().equals("H.P. Lovecraft");
+            
             }
             else{
                 return false;    
             }
                 
         }; 
+
+        //muss man da auf die 0 achten?
+        Artikel[] sorted = lager.filterAll(p, a -> a.getPreis() >= 3 , a -> a.getPreis() <= 20);
         
-         lager.applyToSomeArticles( preis5ProzentReduzieren, p); 
         
         
-        System.out.println(lager);
+        for(int i=0; i<sorted.length; i++){
+         System.out.println(sorted[i]);   
+        }
     }
     
     
