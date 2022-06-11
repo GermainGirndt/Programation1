@@ -1,11 +1,11 @@
-import java.util.Iterator;
 import java.util.ListIterator;
 
 public class DoppeltVerketteteListeIterator<T> implements ListIterator<T> {
 
     DoppeltVerketteteListe<T> list;
-    private boolean isFirst;
-    private Node<T> lastDelivered;
+    private int index;
+    private Node<T> previous;
+    private int indexOfLastElementReturned;
 
     public DoppeltVerketteteListeIterator(DoppeltVerketteteListe<T> doppeltVerketteteListe) {
         this.initialize(doppeltVerketteteListe);
@@ -16,86 +16,99 @@ public class DoppeltVerketteteListeIterator<T> implements ListIterator<T> {
             throw new IllegalArgumentException("Es gibt kein Element im gewuenschten Index");
         }
 
-        if (index == 0) {
+        if (this.isFirst(index)) {
            this.initialize(doppeltVerketteteListe);
         } else {
-            this.lastDelivered = this.list.getNodeAtIndex(index).getPrevious();
+            this.previous = this.list.getNodeAtIndex(index - 1);
+            this.index = index;
         }
     }
 
     private void initialize(DoppeltVerketteteListe<T> doppeltVerketteteListe) {
         this.list = doppeltVerketteteListe;
-        this.lastDelivered = null;
-        this.isFirst = true;
-    } 
-    
+        this.previous = null;
+        this.index = 0;
+        this.indexOfLastElementReturned = -1;
+    }
 
+    private boolean isFirst() {
+        return this.index == 0;
+    }
+
+    private boolean isFirst(int index) {
+        return index == 0;
+    }
+    
     @Override
     public boolean hasNext() {
 
-        if (this.isFirst) return this.list.hasHead();
+        if (this.isFirst()) return this.list.size() > 0;
 
-        return lastDelivered.hasNext();
+        return previous.hasNext();
     }
-    
+
     @Override
     public T next() {
         if (!this.hasNext()) {
             throw new IllegalStateException("Das naechste Element gibt es nicht");
         }
         
-        if (this.isFirst) {            
-            this.lastDelivered = this.list.getNodeAtIndex(0);
-            
-        } else {
+        Node<T> next = this.isFirst() ? this.list.getNodeAtIndex(0) : this.previous.getNext();
+        T nextItem = next.getItem();
+        this.indexOfLastElementReturned = this.index;
 
-            this.lastDelivered = this.lastDelivered.getNext();
-        }
+        this.index++;
+        this.previous = next;
 
-        return this.lastDelivered.getItem();
+        return nextItem;
     }
 
     // ListIteratorMethoden
 
     @Override
     public void set(T e) {
-        // TODO Auto-generated method stub
-        
+        this.list.set(this.indexOfLastElementReturned, e);
     }
 
     @Override
     public int previousIndex() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.index - 1;
     }
 
     @Override
     public T previous() {
-        // TODO Auto-generated method stub
-        return null;
+
+        if (!this.hasPrevious()) {
+            throw new IllegalStateException("Das letzte Element gibt es nicht");
+        }
+        
+        T previousItem = this.previous.getItem();
+        
+        this.previous = this.previous.getPrevious();
+        this.index--;
+        this.indexOfLastElementReturned = index;
+
+        return previousItem;
     }
 
     @Override
     public boolean hasPrevious() {
-        // TODO Auto-generated method stub
-        return false;
+        return previous != null;
     }
 
     @Override
     public int nextIndex() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.index;
     }
 
     @Override
     public void remove() {
-        // TODO Auto-generated method stub
+        this.list.remove(this.indexOfLastElementReturned);
         
     }
 
     @Override
     public void add(T e) {
-        // TODO Auto-generated method stub
-        
+        this.list.add(e);
     }
 }

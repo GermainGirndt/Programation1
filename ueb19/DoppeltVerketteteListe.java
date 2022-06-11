@@ -49,26 +49,96 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     public boolean contains(Object o) {
 
+        int objectIndex = this.indexOf(o);
+
+        boolean constains = objectIndex != -1;
+
+        return constains;
+
     }
 
     @Override
     public <T> T[] toArray(T[] a) {
+        // Todo
+
 
         int size = this.size();
 
     }
 
+    public E remove(int index) {
+
+        Node<E> nodeToBeRemoved = this.getNodeAtIndex(index);
+
+        // Knoten ist weder head noch tailnoten
+        if (nodeToBeRemoved.hasPrevious() && nodeToBeRemoved.hasNext()) {
+            Node<E> previous = nodeToBeRemoved.getPrevious();
+            Node<E> next = nodeToBeRemoved.getNext();
+
+            previous.setNext(next);
+            next.setPrevious(previous);
+        }
+
+        // Die Liste hat nur einen Knoten
+        if (!nodeToBeRemoved.hasPrevious() && !nodeToBeRemoved.hasNext()) {
+            this.head = null;
+            this.tail = null;
+        }
+
+        // Knoten ist der Tailknoten
+        if (nodeToBeRemoved.hasPrevious() && !nodeToBeRemoved.hasNext()) {
+            Node<E> previous = nodeToBeRemoved.getPrevious();
+           
+            previous.setNext(null);
+        }
+
+        // Knoten ist der Headknoten
+        if (!nodeToBeRemoved.hasPrevious() && nodeToBeRemoved.hasNext()) {
+            Node<E> next = nodeToBeRemoved.getNext();
+
+            next.setPrevious(null);
+        }
+
+        nodeToBeRemoved.setPrevious(null);
+        nodeToBeRemoved.setNext(null);
+
+        return nodeToBeRemoved.getItem();
+    }
+
     
     public boolean remove(Object o) {
+
+        int indexToBeRemoved = this.indexOf(o);
+
+        if (indexToBeRemoved == -1) return false;
+
+        this.remove(indexToBeRemoved);
+
+        return true;
 
     }
 
     public boolean addAll(Collection<? extends E> c) {
+        // todo
 
     }
 
     public void clear() {
+        
+        Node<E> node = this.getHead();
 
+        while(node.hasNext()) {
+            Node<E> next = node.getNext();
+
+            node.setPrevious(null);
+            node.setNext(null);
+
+            node = next;
+        }
+        node.setPrevious(null);
+
+        this.head = null;
+        this.tail = null;
     }
 
     public E get(int index) {
@@ -133,12 +203,27 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     }
 
-    public E remove(int index) {
-
-    }
-
     public int indexOf(Object o) {
 
+        if (this.isEmpty()) {
+            return -1;    
+        }
+        
+        // Validiert, ob die Klassen übereinstimmen
+        if (!this.head.getItem().getClass().equals(o.getClass())) {
+            return -1;
+        }
+
+        ListIterator<E> iterator = this.listIterator();
+
+        while (iterator.hasNext()) {
+
+            if (iterator.next() == o) {
+                return iterator.previousIndex();
+            }
+        }
+
+        return -1;
     }
 
     @Override
@@ -163,6 +248,8 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         return this.head;
     }
 
+    // Implementieren nicht nötig
+
     @Override
     public boolean retainAll(Collection<?> c) {
         // TODO Auto-generated method stub
@@ -176,8 +263,8 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     }
 
     public ListIterator<E> listIterator() {
-        // TODO Auto-generated method stub
-        return null;
+        
+        return this.listIterator(0);
     }
 
     @Override
@@ -209,8 +296,5 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         // TODO Auto-generated method stub
         return 0;
     }
-
-    
-
 
 }
