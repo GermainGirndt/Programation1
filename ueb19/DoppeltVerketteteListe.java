@@ -1,3 +1,4 @@
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -50,6 +51,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     }
 
+    @Override
     public <T> T[] toArray(T[] a) {
 
         int size = this.size();
@@ -139,6 +141,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     }
 
+    @Override
     public ListIterator<E> listIterator(int index) {
         ListIterator<E> listIterator = new DoppeltVerketteteListeIterator<E>(this, index);
 
@@ -146,6 +149,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     }
 
+    @Override
     public Iterator<E> iterator() {
         Iterator<E> iterator = new DoppeltVerketteteListeIterator<E>(this);
         return iterator;
@@ -158,6 +162,55 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     private Node<E> getHead() {
         return this.head;
     }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    public ListIterator<E> listIterator() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public Object[] toArray() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean addAll(int arg0, Collection<? extends E> arg1) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public List<E> subList(int arg0, int arg1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    
 
 
 }
