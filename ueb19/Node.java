@@ -1,6 +1,6 @@
 public class Node<E> {
 
-    E item;
+    private E item;
     private Node<E> previous;
     private Node<E> next;
 
@@ -26,5 +26,15 @@ public class Node<E> {
         return this.next;
     }
 
+    public boolean hasNext() {
+        return this.next != null;
+    }
 
+    public E getItem() {
+        return this.item;
+    }
+
+    public void setItem(E item) {
+        this.item = item;
+    }
 }
