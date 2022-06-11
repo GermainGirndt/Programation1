@@ -70,10 +70,54 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     public E get(int index) {
 
+        Node<E> node = this.getNodeAtIndex(index);
+
+        return node.getItem();
+    }
+
+    private Node<E> getNodeAtIndex(int index) {
+
+        if (index < 0) {
+            throw new IllegalArgumentException("Der Index muss groesser gleich null sein.");
+        }
+
+        if (index >= this.size()) {
+            throw new IllegalArgumentException("Das gewuenschte Element gibt es nicht");
+        }
+
+        int zaehler = 0;
+        Node<E> node = this.getHead();
+        while(zaehler != index) {
+            node.getNext();
+            zaehler++;
+        }
+
+        return node;
     }
 
     public E set(int index, E element) {
 
+        Node<E> oldNode = this.getNodeAtIndex(index);
+        Node<E> newNode = new Node<E>(element);
+        
+        if (oldNode.hasPrevious()) {
+            Node<E> previousNode = oldNode.getPrevious();
+
+            newNode.setPrevious(previousNode);
+            previousNode.setNext(newNode);
+        }
+
+        if (oldNode.hasNext()) {
+            Node<E> nextNode = oldNode.getNext();
+
+            newNode.setNext(nextNode);
+            nextNode.setPrevious(newNode);
+        }
+
+        oldNode.setNext(null);
+        oldNode.setPrevious(null);
+
+        return oldNode.getItem();
     }
 
     public void add(int index, E element) {
@@ -88,12 +132,13 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     }
 
-    public ListIterator<T> listIterator(int index) {
+    public ListIterator<E> listIterator(int index) {
 
     }
 
-    public Iterator<T> iterator() {
-
+    public Iterator<E> iterator() {
+        Iterator<E> iterator = new DoppeltVerketteteListeIterator<E>(this);
+        return iterator;
     }
 
     public boolean hasHead() {
@@ -103,4 +148,6 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     public Node<E> getHead() {
         return this.head;
     }
+
+
 }

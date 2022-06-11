@@ -10,6 +10,10 @@ public class Node<E> {
         this.next = null;
     }
 
+    public boolean hasPrevious() {
+        return this.previous != null;
+    }
+
     public void setPrevious(Node<E> item) {
         this.previous = item;
     }
