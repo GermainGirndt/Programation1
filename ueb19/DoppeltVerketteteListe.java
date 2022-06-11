@@ -9,31 +9,13 @@ import java.util.ListIterator;
 public class DoppeltVerketteteListe<E> implements List<E> {
     
     Node<E> head;
-    Node<E> tail = null;
+    Node<E> tail;
     int size;
 
     public DoppeltVerketteteListe() {
         this.head = null;
         this.tail = null;
         this.size = 0;
-    }
-
-    public int size() {
-        return this.size;
-    }
-
-    public boolean isEmpty() {
-        return this.size == 0;
-    }
-
-    public boolean contains(Object o) {
-
-    }
-
-    public <T> T[] toArray(T[] a) {
-
-        int size = this.size();
-
     }
 
     public boolean add(E e) {
@@ -56,6 +38,25 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         return true;
     }
 
+    public int size() {
+        return this.size;
+    }
+
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
+    public boolean contains(Object o) {
+
+    }
+
+    public <T> T[] toArray(T[] a) {
+
+        int size = this.size();
+
+    }
+
+    
     public boolean remove(Object o) {
 
     }
@@ -75,13 +76,9 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         return node.getItem();
     }
 
-    private Node<E> getNodeAtIndex(int index) {
+    public Node<E> getNodeAtIndex(int index) {
 
-        if (index < 0) {
-            throw new IllegalArgumentException("Der Index muss groesser gleich null sein.");
-        }
-
-        if (index >= this.size()) {
+        if (this.hasElement(index)) {
             throw new IllegalArgumentException("Das gewuenschte Element gibt es nicht");
         }
 
@@ -93,6 +90,16 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         }
 
         return node;
+    }
+
+    public boolean hasElement(int index) {
+
+        if (index >= 0) {
+            throw new IllegalArgumentException("Der Index muss groesser null sein.");
+        }
+
+        return index < this.size();
+
     }
 
     public E set(int index, E element) {
@@ -133,6 +140,9 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     }
 
     public ListIterator<E> listIterator(int index) {
+        ListIterator<E> listIterator = new DoppeltVerketteteListeIterator<E>(this, index);
+
+        return listIterator;
 
     }
 
@@ -145,7 +155,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         return this.head != null;
     }
 
-    public Node<E> getHead() {
+    private Node<E> getHead() {
         return this.head;
     }
 

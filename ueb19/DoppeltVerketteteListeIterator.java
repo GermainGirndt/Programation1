@@ -1,16 +1,33 @@
 import java.util.Iterator;
+import java.util.ListIterator;
 
-public class DoppeltVerketteteListeIterator<T> implements Iterator<T> {
+public class DoppeltVerketteteListeIterator<T> implements ListIterator<T> {
 
     DoppeltVerketteteListe<T> list;
     private boolean isFirst;
     private Node<T> lastDelivered;
 
     public DoppeltVerketteteListeIterator(DoppeltVerketteteListe<T> doppeltVerketteteListe) {
+        this.initialize(doppeltVerketteteListe);
+    }
+
+    public DoppeltVerketteteListeIterator(DoppeltVerketteteListe<T> doppeltVerketteteListe, int index) {
+        if (!this.list.hasElement(index)) {
+            throw new IllegalArgumentException("Es gibt kein Element im gewuenschten Index");
+        }
+
+        if (index == 0) {
+           this.initialize(doppeltVerketteteListe);
+        } else {
+            this.lastDelivered = this.list.getNodeAtIndex(index).getPrevious();
+        }
+    }
+
+    private void initialize(DoppeltVerketteteListe<T> doppeltVerketteteListe) {
         this.list = doppeltVerketteteListe;
         this.lastDelivered = null;
         this.isFirst = true;
-    }
+    } 
     
 
     @Override
@@ -28,8 +45,7 @@ public class DoppeltVerketteteListeIterator<T> implements Iterator<T> {
         }
         
         if (this.isFirst) {            
-            
-            this.lastDelivered = this.list.getHead();
+            this.lastDelivered = this.list.getNodeAtIndex(0);
             
         } else {
 
