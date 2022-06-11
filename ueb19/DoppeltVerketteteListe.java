@@ -64,6 +64,8 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
         int size = this.size();
 
+        return null;
+
     }
 
     public E remove(int index) {
@@ -120,6 +122,8 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     public boolean addAll(Collection<? extends E> c) {
         // todo
+
+        return false;
 
     }
 
@@ -200,6 +204,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     }
 
     public void add(int index, E element) {
+        // Todo
 
     }
 
@@ -229,9 +234,9 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     @Override
     public ListIterator<E> listIterator(int index) {
         ListIterator<E> listIterator = new DoppeltVerketteteListeIterator<E>(this, index);
-
+        
         return listIterator;
-
+        
     }
 
     @Override
@@ -247,54 +252,48 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     private Node<E> getHead() {
         return this.head;
     }
-
-    // Implementieren nicht nötig
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
+    
     public ListIterator<E> listIterator() {
-        
         return this.listIterator(0);
     }
 
+    // Implementierung nicht nötig
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+
+        throw new UnsupportedOperationException();
+    }
+    
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        throw new UnsupportedOperationException();
+    }
+    
+    
     @Override
     public boolean containsAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
+        throw new UnsupportedOperationException();
+        
     }
-
     @Override
     public Object[] toArray() {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException();
     }
-
+    
     @Override
     public boolean addAll(int arg0, Collection<? extends E> arg1) {
-        // TODO Auto-generated method stub
-        return false;
+        throw new UnsupportedOperationException();
     }
-
+    
     @Override
     public List<E> subList(int arg0, int arg1) {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException();
     }
-
+    
     @Override
     public int lastIndexOf(Object o) {
-        // TODO Auto-generated method stub
-        return 0;
+        throw new UnsupportedOperationException();
     }
-
+    
 }
