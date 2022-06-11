@@ -96,7 +96,11 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     }
 
+    public boolean hasHead() {
+        return this.head != null;
+    }
 
-
-
+    public Node<E> getHead() {
+        return this.head;
+    }
 }
