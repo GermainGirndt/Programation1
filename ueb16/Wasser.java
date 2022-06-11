@@ -24,19 +24,19 @@ public class Wasser extends AlkoholfreiesGetraenk
         
     }
   
-    public void setQuelle(String quelle){
+    public void setQuelle(String quelle) {
         if (quelle == null) {
             throw new IllegalArgumentException("Quelle darf nicht leer sein.");
         }
         this.quelle = quelle;
     }
     
-    public String getQuelle(){
+    public String getQuelle() {
         return this.quelle;
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         if (!this.istVollkommen()) {
             throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
         }

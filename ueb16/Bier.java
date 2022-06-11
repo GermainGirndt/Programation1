@@ -23,17 +23,17 @@ public class Bier extends AlkoholischesGetraenk
         this.setBrauerei(brauerei);
     }
     
-    public void setBrauerei(String brauerei){
+    public void setBrauerei(String brauerei) {
         this.validiereGetraenkeProperty(brauerei, "Brauerrei");
         this.brauerei = brauerei;
     }
 
-    public String getBrauerei(){
+    public String getBrauerei() {
         return this.brauerei;
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         if (!this.istVollkommen()) {
             throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
         }

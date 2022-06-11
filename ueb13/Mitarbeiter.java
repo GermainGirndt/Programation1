@@ -6,8 +6,7 @@
  * @author Girndt & Krier
  * @version 1.0
  */
-public class Mitarbeiter extends Person
-{
+public class Mitarbeiter extends Person {
     private String email;
     
     private String emailRegex = "^\\S+@\\S+.\\S+$";
@@ -20,8 +19,7 @@ public class Mitarbeiter extends Person
      * @param nachname ist der Nachname der Person, darf nicht leer sein
      * @param email ist die email-Adresse der person, darf nicht leer sein und muss ein @ enthalten
      */
-    public Mitarbeiter(String vorname, String nachname, String email)
-    {
+    public Mitarbeiter(String vorname, String nachname, String email) {
         super(vorname, nachname);
         
         if (email == null || !email.matches(emailRegex)) {
@@ -47,9 +45,42 @@ public class Mitarbeiter extends Person
         reservierung.setRaum(raum);
         
     }
+
+    public String getEmail() {
+        return this.email;
+    }
     
     @Override
     public String toString() {
         return String.format("%s (%s)", super.toString(), this.email); 
+    }
+
+    @Override
+    public boolean equals(Object object) {
+
+        if (object == null) {
+            return false;
+        }
+
+        if (object == this) {
+            return true;
+        }
+
+        if (!(object instanceof Mitarbeiter)) {
+            return false;
+        }
+
+        Mitarbeiter mitarbeiter = (Mitarbeiter) object;
+
+        if (this.hasSameAttributes(mitarbeiter)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    protected boolean hasSameAttributes(Mitarbeiter mitarbeiter) {
+        return super.hasSameAttributes(mitarbeiter) && this.getEmail().equals(mitarbeiter.getEmail());
     }
 }

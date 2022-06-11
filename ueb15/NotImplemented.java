@@ -1,8 +1,8 @@
 /**
  * Beschreiben Sie hier die Klasse Divide.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
  */
 public class NotImplemented implements CrunchOperation
 {
@@ -15,7 +15,7 @@ public class NotImplemented implements CrunchOperation
       
     }
 
-    public void crunch(float[] values){
+    public void crunch(float[] values) {
         throw new UnsupportedOperationException();
     }
 }

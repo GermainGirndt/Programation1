@@ -12,28 +12,25 @@ public abstract class AlkoholfreiesGetraenk extends Getraenk
     /**
      * Konstruktor für Objekte der Klasse AlkoholfreiesGetraenk
      */
-    public AlkoholfreiesGetraenk()
-    {
-       
-    }
+    public AlkoholfreiesGetraenk() {}
     
-    public AlkoholfreiesGetraenk(String bezeichnung, String hersteller){
+    public AlkoholfreiesGetraenk(String bezeichnung, String hersteller) {
         super(bezeichnung);
         this.setHersteller(hersteller);
        
     }
 
-    public void setHersteller(String hersteller){
+    public void setHersteller(String hersteller) {
         this.validiereGetraenkeProperty(hersteller, "Hersteller");
         this.hersteller = hersteller;
     }
     
-    public String getHersteller(){
+    public String getHersteller() {
         return hersteller;
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         if (!this.istVollkommen()) {
             throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
         }

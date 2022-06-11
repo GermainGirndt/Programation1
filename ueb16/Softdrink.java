@@ -24,18 +24,18 @@ public class Softdrink extends AlkoholfreiesGetraenk
     }
 
     public void setZuckergehalt(float zuckergehalt) {
-        if(zuckergehalt <0){
+        if(zuckergehalt <0) {
             throw new IllegalArgumentException("Zuckergehalt muss positiv sein");
         }
         this.zuckergehalt = zuckergehalt;   
     }
     
-    public float getZuckergehalt(){
+    public float getZuckergehalt() {
         return this.zuckergehalt;
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         if (!this.istVollkommen()) {
             throw new IllegalArgumentException("Getraenke mit fehlenden Informationen kann nicht ausgegeben werden");
         }

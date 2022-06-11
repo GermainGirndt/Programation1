@@ -6,8 +6,7 @@
  * @author Girndt & Krier 
  * @version 1.0
  */
-public class Person
-{
+public class Person {
     private String vorname;
     private String nachname;
 
@@ -47,4 +46,29 @@ public class Person
         return String.format("%s %s",  this.vorname, this.nachname); 
     }
 
+    @Override
+    public boolean equals(Object object) {
+
+        if (object == null) {
+            return false;
+        }
+
+        if (object == this) {
+            return true;
+        }
+
+        if (!(object instanceof Person)) {
+            return false;
+        }
+
+        Person person = (Person) object;
+
+        return this.hasSameAttributes(person);
+    }
+
+    @Override
+    protected boolean hasSameAttributes(Person person) {
+        return person.getVorname().equals(this.getVorname()) &&
+        person.getNachname().equals(this.getNachname());
+    }
 }

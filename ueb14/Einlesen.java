@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Einlesen
 {
-    public static void validiereFile(File file){
+    public static void validiereFile(File file) {
 
         if (!file.isFile()) {
             throw new IllegalArgumentException(file.getName());
@@ -26,19 +26,16 @@ public class Einlesen
         }    
     }
     
-    public static ArrayList<String> readLines(String s){
+    public static List<String> readLines(String dateiname) {
         ArrayList<String> list = new ArrayList<>();
-        File file         = new File(s);
+        File file         = new File(dateiname);
         String zeile;
         validiereFile(file);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 
-            while((zeile = reader.readLine()) != null)
-            {
-                
-                 list.add(zeile);
-               
+            while((zeile = reader.readLine()) != null) { 
+                list.add(zeile);
             }
              
             reader.close();
