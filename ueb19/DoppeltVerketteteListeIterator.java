@@ -1,5 +1,11 @@
 import java.util.ListIterator;
 
+/**
+ * Beschreiben Sie hier die Klasse DoppeltVerketteteListeIterator.
+ * 
+ * @author Girndt, Germain; Krier, Katharina
+ * @version 1.0
+ */
 public class DoppeltVerketteteListeIterator<T> implements ListIterator<T> {
 
     DoppeltVerketteteListe<T> list;
@@ -12,7 +18,7 @@ public class DoppeltVerketteteListeIterator<T> implements ListIterator<T> {
     }
 
     public DoppeltVerketteteListeIterator(DoppeltVerketteteListe<T> doppeltVerketteteListe, int index) {
-        if (!this.list.hasElement(index)) {
+        if (!this.list.checkElementExists(index)) {
             throw new IllegalArgumentException("Es gibt kein Element im gewuenschten Index");
         }
 

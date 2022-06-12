@@ -3,7 +3,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-/*
+/**
+ * Beschreiben Sie hier die Klasse DoppeltVerketteteListe.
+ * 
  * @author Girndt, Germain; Krier, Katharina
  * @version 1.0
  */
@@ -21,22 +23,53 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     public boolean add(E e) {
 
-        if (e == null) {
-            return false;
-        }
-
-        Node<E> nodeToAdd = new Node<E>(e);
-
-        if (this.isEmpty()) {
-            this.head = nodeToAdd;
-            this.tail = nodeToAdd;
-        } else {
-            this.tail.setNext(nodeToAdd);
-            nodeToAdd.setPrevious(this.tail);
-            this.tail = nodeToAdd;
-        }
+        this.add(this.size(), e);
 
         return true;
+    }
+    
+    public void add(int index, E element) {
+        
+        Node<E> newNode = new Node<E>(element);
+        
+        if (index > this.size()) {
+            throw new IllegalArgumentException("Index zu hoch. Es duerfen keine Luecken entstehen");
+        }
+
+        // Liste ist leer
+        if (this.isEmpty()) {
+            this.head = newNode;
+            this.tail = newNode;
+            this.size++;
+
+            return;
+        }
+
+        // Das neue Element schafft eine neue Stelle am Listenende
+        if (index == this.size()) {
+            this.tail.setNext(newNode);
+            newNode.setPrevious(this.tail);
+            this.tail = newNode;
+            this.size++;
+
+            return;
+        }
+
+        Node<E> nodeInIndex = this.getNodeAtIndex(index);
+        Node<E> previousNode = nodeInIndex.getPrevious();
+
+        // Das neue Element geht auf die Stelle 0
+        if (nodeInIndex == this.head) {
+            this.head = newNode;
+        } else {
+            previousNode.setNext(newNode);
+            newNode.setPrevious(previousNode);
+        }
+        newNode.setNext(nodeInIndex);
+        nodeInIndex.setPrevious(newNode);
+        
+
+        this.size++;
     }
 
     public int size() {
@@ -59,20 +92,29 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     @Override
     public <T> T[] toArray(T[] a) {
-        // Todo
 
+        if (a == null) {
+            throw new IllegalArgumentException("Nullreferenz wird nicht unterstuetzt");
+        }
 
-        int size = this.size();
+        if (a.length < this.size()) {
+            return (T[]) this.toArray();
+        }
 
-        return null;
+        Node<E> node = head;
+        for (int i = 0; i < this.size(); i++) {
+            a[i] = (T) node.getItem();
+            node = node.getNext();
+        }
 
+        return a;
     }
 
     public E remove(int index) {
 
         Node<E> nodeToBeRemoved = this.getNodeAtIndex(index);
 
-        // Knoten ist weder head noch tailnoten
+        // Knoten ist weder Head- noch Tailknoten
         if (nodeToBeRemoved.hasPrevious() && nodeToBeRemoved.hasNext()) {
             Node<E> previous = nodeToBeRemoved.getPrevious();
             Node<E> next = nodeToBeRemoved.getNext();
@@ -103,6 +145,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
         nodeToBeRemoved.setPrevious(null);
         nodeToBeRemoved.setNext(null);
+        this.size--;
 
         return nodeToBeRemoved.getItem();
     }
@@ -121,10 +164,11 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     }
 
     public boolean addAll(Collection<? extends E> c) {
-        // todo
+        for (E element : c) {
+            this.add(element);
+        }
 
-        return false;
-
+        return true;
     }
 
     public void clear() {
@@ -154,7 +198,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     public Node<E> getNodeAtIndex(int index) {
 
-        if (this.hasElement(index)) {
+        if (this.checkElementExists(index)) {
             throw new IllegalArgumentException("Das gewuenschte Element gibt es nicht");
         }
 
@@ -168,7 +212,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         return node;
     }
 
-    public boolean hasElement(int index) {
+    public boolean checkElementExists(int index) {
 
         if (index >= 0) {
             throw new IllegalArgumentException("Der Index muss groesser null sein.");
@@ -180,14 +224,23 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     public E set(int index, E element) {
 
-        Node<E> oldNode = this.getNodeAtIndex(index);
         Node<E> newNode = new Node<E>(element);
+        Node<E> oldNode = this.getNodeAtIndex(index);
+
+        if (oldNode == this.head) {
+            this.head = newNode;
+        }
+
+        if (oldNode == this.tail) {
+            this.tail = newNode;
+        }
         
         if (oldNode.hasPrevious()) {
             Node<E> previousNode = oldNode.getPrevious();
 
             newNode.setPrevious(previousNode);
             previousNode.setNext(newNode);
+            oldNode.setPrevious(null);
         }
 
         if (oldNode.hasNext()) {
@@ -195,20 +248,17 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
             newNode.setNext(nextNode);
             nextNode.setPrevious(newNode);
+            oldNode.setNext(null);
         }
-
-        oldNode.setNext(null);
-        oldNode.setPrevious(null);
 
         return oldNode.getItem();
     }
 
-    public void add(int index, E element) {
-        // Todo
-
-    }
-
     public int indexOf(Object o) {
+
+        if (o == null) {
+            throw new IllegalArgumentException("Nullreferenz wird nicht unterstuetzt");
+        }
 
         if (this.isEmpty()) {
             return -1;    
@@ -223,12 +273,26 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
         while (iterator.hasNext()) {
 
-            if (iterator.next() == o) {
+            if (iterator.next().equals(o)) {
                 return iterator.previousIndex();
             }
         }
 
         return -1;
+    }
+
+    @Override
+    public Object[] toArray() {
+
+        E[] array = (E[]) new Object[this.size()];
+        
+        Node<E> node = head;
+        for (int i = 0; i < size; i++) {
+            array[i] = node.getItem();
+            node = node.getNext();
+        }
+
+        return array;
     }
 
     @Override
@@ -275,10 +339,6 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     public boolean containsAll(Collection<?> c) {
         throw new UnsupportedOperationException();
         
-    }
-    @Override
-    public Object[] toArray() {
-        throw new UnsupportedOperationException();
     }
     
     @Override
