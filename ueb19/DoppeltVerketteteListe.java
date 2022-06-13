@@ -211,7 +211,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         return node;
     }
 
-    public boolean checkElementExists(int index) {
+    public boolean checkIndexExists(int index) {
 
         if (index < 0) {
             throw new IllegalArgumentException("Der Index muss groesser null sein.");
