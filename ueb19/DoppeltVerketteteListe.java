@@ -22,10 +22,9 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     }
 
     public boolean add(E e) {
+       this.add(this.size(), e);
 
-        this.add(this.size(), e);
-
-        return true;
+       return true;
     }
     
     public void add(int index, E element) {
@@ -46,7 +45,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         }
 
         // Das neue Element schafft eine neue Stelle am Listenende
-        if (index == this.size()) {
+         if (index == this.size()) {
             this.tail.setNext(newNode);
             newNode.setPrevious(this.tail);
             this.tail = newNode;
@@ -198,9 +197,9 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     public Node<E> getNodeAtIndex(int index) {
 
-        if (this.checkElementExists(index)) {
-            throw new IllegalArgumentException("Das gewuenschte Element gibt es nicht");
-        }
+        /*if (this.checkElementExists(index)) {
+           // throw new IllegalArgumentException("Das gewuenschte Element gibt es nicht");
+        }*/
 
         int zaehler = 0;
         Node<E> node = this.getHead();
@@ -214,7 +213,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     public boolean checkElementExists(int index) {
 
-        if (index >= 0) {
+        if (index < 0) {
             throw new IllegalArgumentException("Der Index muss groesser null sein.");
         }
 
@@ -357,4 +356,15 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         throw new UnsupportedOperationException();
     }
     
+    @Override
+    public String toString(){
+        String ausgabe = "Liste: \n";
+        Node<E> currentNode = this.head;
+        while(currentNode != null){
+            
+            ausgabe += currentNode.getItem() + "\n";    
+            currentNode = currentNode.getNext();
+        }
+        return ausgabe;
+    }
 }
