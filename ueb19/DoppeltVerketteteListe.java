@@ -256,9 +256,9 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     public int indexOf(Object o) {
 
-        if (o == null) {
-            throw new IllegalArgumentException("Nullreferenz wird nicht unterstuetzt");
-        }
+        // if (o == null) {
+        //     throw new IllegalArgumentException("Nullreferenz wird nicht unterstuetzt");
+        // }
 
         if (this.isEmpty()) {
             return -1;    
@@ -273,7 +273,8 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
         while (iterator.hasNext()) {
 
-            if (iterator.next().equals(o)) {
+            E element = iterator.next();
+            if ((o == element || (element != null && element.equals(o)))) {
                 return iterator.previousIndex();
             }
         }
