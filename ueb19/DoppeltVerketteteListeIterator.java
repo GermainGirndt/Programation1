@@ -48,7 +48,7 @@ public class DoppeltVerketteteListeIterator<T> implements ListIterator<T> {
     @Override
     public boolean hasNext() {
 
-        if (this.isFirst()) return this.list.size() > 0;
+        if (this.isFirst()) return !this.list.isEmpty();
 
         return previous.hasNext();
     }
@@ -58,7 +58,7 @@ public class DoppeltVerketteteListeIterator<T> implements ListIterator<T> {
         if (!this.hasNext()) {
             throw new IllegalStateException("Das naechste Element gibt es nicht");
         }
-        
+
         Node<T> next = this.isFirst() ? this.list.getNodeAtIndex(0) : this.previous.getNext();
         T nextItem = next.getItem();
         this.indexOfLastElementReturned = this.index;
