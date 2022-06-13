@@ -56,7 +56,14 @@ public class DoppeltVerkettetListeDialog
             try {
                 einlesenFunktion();
                 ausfuehrenFunktion();
-                
+                 switch(this.art){
+                    case 1:
+                    System.out.println(stringList.toString());
+                    break;
+                 case 2:
+                    System.out.println(integerList.toString());
+                    break;
+        }
             } catch(IllegalArgumentException error) {
                 System.err.println(error);
 
@@ -102,14 +109,7 @@ public class DoppeltVerkettetListeDialog
         this.funktion = input.nextInt();
         input.nextLine();
         System.out.println();
-        switch(this.art){
-            case 1:
-                System.out.println(stringList);
-                break;
-            case 2:
-                System.out.println(integerList);
-                break;
-        }
+       
     }
     
     /**
@@ -131,7 +131,7 @@ public class DoppeltVerkettetListeDialog
                 pruefeObObjectInListeIst();
                 break;
             case FUNKTION_TOARRAY:
-            
+                toArray();
                 break;
             case FUNKTION_ADD:
                 elementHinzufuegen();
@@ -140,7 +140,7 @@ public class DoppeltVerkettetListeDialog
                 elementEntfernen();
                 break; 
             case FUNKTION_ADDALL:
-            
+                addAll();
                 break;  
             case FUNKTION_CLEAR:
                 clearList();
@@ -166,6 +166,8 @@ public class DoppeltVerkettetListeDialog
             default:
                 System.out.println("Keine gueltige Eingabe");
                 break;
+                
+            
             }
         }
     
@@ -409,4 +411,62 @@ public class DoppeltVerkettetListeDialog
                 break;    
             }         
     }
+    
+    private void addAll(){
+        switch(this.art){
+             case 1:
+                System.out.println("Geben Sie die Stringwerte ein die hinzugefuegt werden sollen: (durch ; getrennt)");
+                String stringElement = input.nextLine();
+                String[] stringArray = stringElement.split(";");
+                List<String> listeString = new DoppeltVerketteteListe<String>();
+                for(String s : stringArray){
+                    listeString.add(s);    
+                }
+                stringList.addAll(listeString);
+                System.out.println("Elemente wurden hinzugefuegt.");
+                break;
+            case 2:
+                System.out.println("Geben Sie die Integerwerte ein die hinzugefuegt werden sollen: (durch ; getrennt)");
+                String integerElement = input.nextLine();
+                String[] integerArrayAsString = integerElement.split(";");
+                Integer[] integerArray = new Integer[integerArrayAsString.length];
+                for( int i = 0; i< integerArrayAsString.length; i++){
+                    integerArray[i] = Integer.parseInt(integerArrayAsString[i]);   
+                }
+                List<Integer> listeInteger = new DoppeltVerketteteListe<Integer>();
+                for(Integer in : integerArray){
+                    listeInteger.add(in);    
+                }
+                integerList.addAll(listeInteger);
+                System.out.println("Elemente wurden hinzugefuegt.");
+                break;
+            default:
+                System.out.println("Liste ist noch nicht angelegt");
+                break;    
+            }         
+    }
+    
+    public void toArray(){
+        switch(this.art){
+             case 1:
+                String[] stringArray = new String[stringList.size()];
+                stringArray = stringList.toArray(stringArray);
+                System.out.println("\nArray" + "\n");
+                for(String s : stringArray){
+                    System.out.println(s);
+                }
+                break;
+            case 2:
+                Integer[] integerArray = new Integer[integerList.size()];
+                integerArray = integerList.toArray(integerArray);
+                System.out.println("\nArray" + "\n");
+                for(Integer i : integerArray){
+                    System.out.println(i);
+                }
+                break;
+            default:
+                System.out.println("Liste ist noch nicht angelegt");
+                break;     
+    }
+}
 }
