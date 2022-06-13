@@ -18,13 +18,13 @@ public class DoppeltVerketteteListeIterator<T> implements ListIterator<T> {
     }
 
     public DoppeltVerketteteListeIterator(DoppeltVerketteteListe<T> doppeltVerketteteListe, int index) {
+        this(doppeltVerketteteListe);
+
         if (!this.list.checkElementExists(index)) {
             throw new IllegalArgumentException("Es gibt kein Element im gewuenschten Index");
         }
 
-        if (this.isFirst(index)) {
-           this.initialize(doppeltVerketteteListe);
-        } else {
+        if (!this.isFirst(index)) {
             this.previous = this.list.getNodeAtIndex(index - 1);
             this.index = index;
         }
