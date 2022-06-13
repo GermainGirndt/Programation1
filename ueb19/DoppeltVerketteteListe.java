@@ -197,9 +197,9 @@ public class DoppeltVerketteteListe<E> implements List<E> {
 
     public Node<E> getNodeAtIndex(int index) {
 
-        /*if (this.checkElementExists(index)) {
-           // throw new IllegalArgumentException("Das gewuenschte Element gibt es nicht");
-        }*/
+        if (!this.checkElementExists(index)) {
+           throw new IllegalArgumentException("Das gewuenschte Element gibt es nicht");
+        }
 
         int zaehler = 0;
         Node<E> node = this.getHead();
