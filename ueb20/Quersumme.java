@@ -53,4 +53,11 @@ public class Quersumme
     public Integer getNumber(){
         return this.number;
     }
+    
+    @Override
+    public String toString(){
+        String s ="Quersumme von: " + getNumber() + "\nErgebnis: " + getSum() + "\nZeitstempel: \n";
+        s += this.map;
+        return s;
+    }
 }

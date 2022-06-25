@@ -5,6 +5,9 @@ import java.util.Queue;
 import java.util.Map;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Collection;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Beschreiben Sie hier die Klasse Consumer.
@@ -50,10 +53,42 @@ public class Consumer
     public int numberOfOccurrences(Integer i){
         int occurences = 0;
         for(Quersumme q : queue){
-            if(q.getNumber() == i ){
+            if(q.getSum() == i ){
                 occurences++;    
             }
         }    
         return occurences;
     }
+    
+    public Collection<Integer> getCrossTotalsAscending(){
+        TreeSet<Integer> set = new TreeSet<>();    
+        for(Quersumme q : queue){
+                set.add(q.getSum());  
+            }
+        //System.out.println(set);
+        return set;
+        }    
+        
+    public Collection<Integer> getCrossTotalsDescending(){
+        TreeSet<Integer> set = new TreeSet<>();    
+        for(Quersumme q : queue){
+                set.add(q.getSum());  
+            }
+        TreeSet<Integer> descendingSet = (TreeSet<Integer>)set.descendingSet();
+        //System.out.println(descendingSet);
+        return descendingSet;
+        }  
+        
+    public Collection<Quersumme> getTimestampsForResult(Integer i){
+        Queue<Quersumme> queueTimestamps =  new LinkedList<>(); ;
+        for(Quersumme q : queue){
+            if(q.getSum() == i ){
+                queueTimestamps.add(q);
+                System.out.println(q);
+            }
+        }   
+        
+        return queueTimestamps;
+    }
+    
 }
