@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.util.Random;
+import java.util.Collection;
 
 
 /**
@@ -24,6 +25,10 @@ public class ConsumerProducerDialog
     private static final int FUNKTION_CONSUME_ALL            = 4;
     private static final int FUNKTION_PRODUCE_CONSUME_RANDOM = 5;
     private static final int FUNKTION_NUMBER_RESULTS         = 6;
+    private static final int FUNKTION_GET_QUERSUMME_ASC      = 7;
+    private static final int FUNKTION_GET_QUERSUMME_DESC     = 8;
+    private static final int FUNKTION_OCCURENCES             = 9;
+    private static final int FUNKTION_TIMESTAMPS             = 10;
     
     /**
      * Konstruktor für Objekte der Klasse ConsumerProducerDialog
@@ -77,6 +82,10 @@ public class ConsumerProducerDialog
             FUNKTION_CONSUME_ALL            + ": Consume alles;;\n" +
             FUNKTION_PRODUCE_CONSUME_RANDOM + ": Produce und Consume random;;\n" +
             FUNKTION_NUMBER_RESULTS         + ": Anzahl verschiedener Ergebnisse;;\n" +
+            FUNKTION_GET_QUERSUMME_ASC      + ": Quersummen aufsteigend sortiert ausgeben;;\n" +
+            FUNKTION_GET_QUERSUMME_DESC     + ": Quersummen absteigend sortiert ausgeben;;\n" +
+            FUNKTION_OCCURENCES             + ": Haeufigkeit einer Quersumme;;\n" + 
+            FUNKTION_TIMESTAMPS             + ": Timestamps einer Quersumme;;\n" + 
             FUNKTION_ENDE                   + ": beenden -> \n\n" 
         );
         
@@ -127,11 +136,31 @@ public class ConsumerProducerDialog
                         System.out.println("Consumer konsumiert: " + zahl + " Quersumme: " + consumer.consume(zahl) );    
                     }    
                 }
-
                 }
                 break;
             case  FUNKTION_NUMBER_RESULTS:
                 System.out.println("Anzahl verschiedener Ergebnisse: " + consumer.numberOfDifferentResults());
+                break;
+            case FUNKTION_GET_QUERSUMME_ASC:
+                System.out.println(consumer.getCrossTotalsAscending());
+                break;
+            case FUNKTION_GET_QUERSUMME_DESC:
+                System.out.println(consumer.getCrossTotalsDescending());
+                break;
+            case FUNKTION_OCCURENCES:
+                System.out.println("Welche Quersumme soll ueberprueft werden?");
+                int qocc = input.nextInt();
+                input.nextLine();
+                System.out.println("Die Quersumme " + qocc + " wurde " + consumer.numberOfOccurrences(qocc) + " berechnet");
+                break;
+            case FUNKTION_TIMESTAMPS:
+                System.out.println("Welche Quersumme soll ueberprueft werden?");
+                int qtimestamps = input.nextInt();
+                input.nextLine();
+                Collection<Quersumme> quersummen = consumer.getTimestampsForResult(qtimestamps);
+                for(Quersumme q : quersummen){
+                    System.out.println(q);
+                }
                 break;
             case FUNKTION_ENDE:  
                 System.out.println("Das Programm ist zu Ende");
