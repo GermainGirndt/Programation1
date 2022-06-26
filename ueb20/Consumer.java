@@ -27,7 +27,7 @@ public class Consumer
         queue =  new LinkedList<>();   
     }
 
-    public void consume(Integer i){
+    public Integer consume(Integer i){
         Quersumme quersumme = new Quersumme();
         quersumme.setNumber(i);
         int anzahlBerechnungen = 0;
@@ -40,6 +40,8 @@ public class Consumer
         }
         quersumme.setSum(summe);
         queue.add(quersumme);
+        
+        return summe;
     }
     
     public int numberOfDifferentResults(){

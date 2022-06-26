@@ -22,13 +22,14 @@ public class Producer
         queue = new LinkedList<>();
     }
 
-    public void produce(){
+    public Integer produce(){
         int zahl = ran.nextInt(1000);
         queue.add(zahl);
+        return zahl;
     }
     
     public Integer getFirstInteger(){
-        return queue.peek();
+        return queue.poll();
     }
    
 }
