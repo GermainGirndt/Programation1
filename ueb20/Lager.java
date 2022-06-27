@@ -1,7 +1,9 @@
 import java.lang.StringBuilder;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
@@ -15,7 +17,7 @@ import java.util.function.UnaryOperator;
 
  public class Lager {
 
-   private Artikel[] artikelLager;
+   private Map<Integer, Artikel> artikelLager;
    private int anzahlArtikel                            = 0;
    private final static int STANDARD_LAGER_GROESSE      = 10;
    private final static double STARTSUMME               = 0.0;
@@ -32,7 +34,7 @@ import java.util.function.UnaryOperator;
    */
    public Lager(int lagerplatzanzahl) {
        Validierung.validiereLagergroesse(lagerplatzanzahl);
-       this.artikelLager = new Artikel[lagerplatzanzahl];   
+       this.artikelLager = new LinkedHashMap<Integer, Artikel>();   
     }
     
     /**
