@@ -1,9 +1,13 @@
 import java.lang.StringBuilder;
+import java.security.KeyStore.Entry;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
@@ -18,7 +22,7 @@ import java.util.function.UnaryOperator;
  public class Lager {
 
    private Map<Integer, Artikel> artikelLager;
-   private int anzahlArtikel                            = 0;
+   private int lagerplatzanzahl                         = 0;
    private final static int STANDARD_LAGER_GROESSE      = 10;
    private final static double STARTSUMME               = 0.0;
    private final static double HUNDERT                  = 100.0;
@@ -27,6 +31,7 @@ import java.util.function.UnaryOperator;
    private final static int MITTLEREGRENZEBESCHREIBUNG  = 16;
    private final static int UNTEREGRENZEBESCHREIBUNG    = 7;
    private final static double GRENZETABSPREIS          = 9999999.00;
+
    
    /**
    * Konstruktor fuer Lager mit Angabe ueber die Lagerplatzanzahl
@@ -34,6 +39,7 @@ import java.util.function.UnaryOperator;
    */
    public Lager(int lagerplatzanzahl) {
        Validierung.validiereLagergroesse(lagerplatzanzahl);
+       this.lagerplatzanzahl = lagerplatzanzahl;
        this.artikelLager = new LinkedHashMap<Integer, Artikel>();   
     }
     
@@ -48,25 +54,25 @@ import java.util.function.UnaryOperator;
     // Aufgabe A
     public Artikel[] getSorted( BiPredicate<Artikel, Artikel> sortierkriterium ) {
 
-        Artikel[] sortiertesArray = this.getSorted(this.artikelLager, sortierkriterium);
+        Artikel[] sortiertesArray = (Artikel[]) this.getSorted(this.artikelLager, sortierkriterium).entrySet().toArray();
 
         return sortiertesArray;
     }
 
     // Für Aufgabe 1.c
     public Artikel[] sortAll(BiPredicate<Artikel, Artikel>... sortierkriteria ) {
-        Artikel[] artikelLager = this.artikelLager;
+        Map<Integer,Artikel> artikelLager = this.artikelLager;
         for (BiPredicate<Artikel, Artikel> sortierkriterium : sortierkriteria) {
             artikelLager = this.getSorted(artikelLager, sortierkriterium);
         }
-        return artikelLager;
+        return (Artikel[]) artikelLager.entrySet().toArray();
     }
 
 
     // Aufgabe B
     public Artikel[] applyToArticles( UnaryOperator<Artikel> operation ) {
 
-        Artikel[] artikel = this.applyToArticles(this.artikelLager, operation);
+        Artikel[] artikel = (Artikel[]) this.applyToArticles(this.artikelLager, operation).entrySet().toArray();
 
         return artikel;
 
@@ -85,8 +91,17 @@ import java.util.function.UnaryOperator;
     public Artikel[] applyToSomeArticles( UnaryOperator<Artikel> operation, Predicate<Artikel> operationkriterium ) {
 
         Artikel[] zielartikel = this.filter(operationkriterium);
-        Artikel[] bearbeiteteArtikel = this.applyToArticles(zielartikel, operation);
 
+        Map<Integer, Artikel> hmZielArtikel = new LinkedHashMap<>();
+
+        for (Artikel artikel : zielartikel) {
+            hmZielArtikel.put(artikel.hashCode(), artikel);
+        }
+
+        
+        Artikel[] bearbeiteteArtikel = (Artikel[]) this.applyToArticles(hmZielArtikel, operation).entrySet().toArray();
+
+ 
         return bearbeiteteArtikel;
     }
 
@@ -94,7 +109,15 @@ import java.util.function.UnaryOperator;
     public Artikel[] getArticles( BiPredicate<Artikel, Artikel> sortierkriterium, Predicate<Artikel> suchkriterium ) {
 
         Artikel[] gefilterteArtikel = this.filter(suchkriterium);
-        Artikel[] sortierteArtikel = this.getSorted(gefilterteArtikel, sortierkriterium);
+
+        Map<Integer, Artikel> hmGefilterteArtikel = new LinkedHashMap<>();
+
+        for (Artikel artikel : gefilterteArtikel) {
+            hmGefilterteArtikel.put(artikel.hashCode(), artikel);
+        }
+
+
+        Artikel[] sortierteArtikel = (Artikel[]) this.getSorted(hmGefilterteArtikel, sortierkriterium).entrySet().toArray();
 
         return sortierteArtikel;
     }
@@ -102,8 +125,10 @@ import java.util.function.UnaryOperator;
     // Aufgabe G
     // To do: Ersetzten Predicate<Artikel>[] durch Parameterliste
     public Artikel[] filterAll(Predicate<Artikel>... suchkriteria ) {
-        Artikel[] artikelLager = this.artikelLager;
+        Artikel[] artikelLager = (Artikel[]) this.artikelLager.entrySet().toArray();
         for (Predicate<Artikel> suchkriterium : suchkriteria) {
+
+
             artikelLager = this.filter(artikelLager, suchkriterium);
         }
         return artikelLager;
@@ -111,46 +136,49 @@ import java.util.function.UnaryOperator;
     }
     
     // Hilfsmethode
-    private Artikel[] filter( Artikel[] artikel, Predicate<Artikel> filterkriterium ) {
+    private Artikel[] filter( Map<Integer, Artikel> artikel, Predicate<Artikel> filterkriterium ) {
 
-        int zaehler = 0;
-        List<Integer> indexList = new LinkedList<>();
-    
-        for (int i = 0; i < artikel.length; i++ ) {
-            if (filterkriterium.test(artikel[i])) {
-                zaehler++;
-                indexList.add(i);
-            }
-        }
-        
-        Artikel[] gefiltetesArtikellager = new Artikel[zaehler];
-        
-        int listZaehler = 0;
-        
-        for (int index : indexList) {
-            gefiltetesArtikellager[listZaehler++] = artikel[index];
-        }
-        
-        return gefiltetesArtikellager;
+        return (Artikel[]) artikel.entrySet().stream().filter( (entry) -> {
+            
+            Artikel getesteterArtikel = entry.getValue();
+
+            return filterkriterium.test(getesteterArtikel);
+        }).toArray();
     }
 
-    // Hilfsmethode
-    private Artikel[] applyToArticles( Artikel[] artikel, UnaryOperator<Artikel> operation ) {
+        // Hilfsmethode - 2
+        private Artikel[] filter( Artikel[] artikel, Predicate<Artikel> filterkriterium ) {
 
-        for (int i = 0; i < artikel.length; i++ ) {
-            operation.apply(artikel[i]);
+            Map<Integer, Artikel> mapArtikel = new LinkedHashMap<>();
+
+            for (Artikel einzelartikel : artikel) {
+
+                mapArtikel.put(einzelartikel.hashCode(), einzelartikel);
+            }
+
+            return this.filter(mapArtikel, filterkriterium);
+        }
+
+    // Hilfsmethode
+    private Map<Integer, Artikel> applyToArticles( Map<Integer, Artikel> artikel, UnaryOperator<Artikel> operation ) {
+
+
+        for (Map.Entry<Integer, Artikel> entry : this.artikelLager.entrySet()) {
+
+            Artikel aktuellerArtikel = entry.getValue();
+            operation.apply(aktuellerArtikel);
         }
 
         return artikel;
     }
 
     // Hilfsmethode
-    private Artikel[] getSorted( Artikel[] artikel, BiPredicate<Artikel, Artikel> sortierkriterium ) {
+    private Map<Integer, Artikel> getSorted( Map<Integer, Artikel> artikel, BiPredicate<Artikel, Artikel> sortierkriterium ) {
 
-        Artikel[] array = Arrays.copyOf(artikel, artikel.length);
-        
+        Artikel[] array = (Artikel[]) artikel.entrySet().toArray();
+
         for (int i=0; i < array.length; i++) {
-            for (int j=1; j < artikel.length; j++) {
+            for (int j=1; j < array.length; j++) {
                 if (sortierkriterium.test(array[j-1], array[j])) {
                     Artikel temp = array[j-1];
                     array[j-1] = array[j];
@@ -158,8 +186,13 @@ import java.util.function.UnaryOperator;
                 }
             }
         }
+        Map<Integer, Artikel> map = new LinkedHashMap<>();
 
-        return array;
+        for (Artikel sortierterArtikel: array) {
+            map.put(artikel.hashCode(), sortierterArtikel);
+        }
+
+        return map;
     }
     
         
@@ -176,13 +209,15 @@ import java.util.function.UnaryOperator;
             throw new IllegalArgumentException(LagerKonstanten.ERROR_NULL_ARTIKEL);
         }
         
+        if (!this.artikelLager.containsValue(artikel)) {
+            throw new IllegalArgumentException(LagerKonstanten.ERROR_ARTIKEL_SCHON_IM_LAGER);
+        }
+
         if (this.getArtikelNachNummer(artikel.getArtikelNr()) != -1) {
             throw new IllegalArgumentException(LagerKonstanten.ERROR_WIEDERHOLTE_ARTIKELNUMMER);
         }
         
-        this.artikelLager[anzahlArtikel] = artikel;
-        this.anzahlArtikel++;
-        
+        this.artikelLager.put(artikel.hashCode(), artikel);
     }
     
     /**
@@ -201,6 +236,7 @@ import java.util.function.UnaryOperator;
         }
 
         loescheArtikelNachIndex(index);
+
     }
     
     /**
@@ -208,7 +244,8 @@ import java.util.function.UnaryOperator;
     * @param zugang ist die Menge neuer Artikel, die dazugebucht wird
     */
     public void bucheZugang(int artikelNr, int zugang) {
-        Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
+
+        Artikel artikel = this.getArtikelObjectNachNummer(artikelNr);
         if (artikel != null) {
             artikel.bucheZugang(zugang);   
         }
@@ -219,7 +256,7 @@ import java.util.function.UnaryOperator;
     * @param abgang ist die Menge vom Artikel, die abgebucht wird
     */
     public void bucheAbgang(int artikelNr, int abgang) {
-        Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
+        Artikel artikel = this.getArtikelObjectNachNummer(artikelNr);
         if (artikel != null) {
             artikel.bucheAbgang(abgang);    
         }
@@ -231,7 +268,7 @@ import java.util.function.UnaryOperator;
     * @param prozent ist der Prozentsatz von der Änderung
     */
     public void aenderePreisEinesArtikels(int artikelNr, double prozent) {
-        Artikel artikel = artikelLager[this.getArtikelNachNummer(artikelNr)];
+        Artikel artikel = this.getArtikelObjectNachNummer(artikelNr);
         if (artikel != null) {
             artikel.aenderePreis(prozent);  
         }
@@ -247,13 +284,11 @@ import java.util.function.UnaryOperator;
             throw new IllegalArgumentException(LagerKonstanten.ERROR_LAGER_IST_LEER);
         }
 
-        for (int index = 0; index <= this.anzahlArtikel -1; index++) {
-            Artikel artikel = this.artikelLager[index];
-            
-            if (artikel != null) {
-                artikel.aenderePreis(prozent);  
-            }
-        }   
+        for (Map.Entry<Integer, Artikel> entry : this.artikelLager.entrySet()) {
+            Artikel artikel = entry.getValue();
+            artikel.aenderePreis(prozent);  
+
+        }  
     }
     
     /**
@@ -262,7 +297,7 @@ import java.util.function.UnaryOperator;
     * @return true, wenn ja; false, wenn nein
     */
     private boolean istLagerVoll() {
-        return this.anzahlArtikel + 1 <= this.artikelLager.length;
+        return this.artikelLager.size() + 1 <= this.lagerplatzanzahl;
         
     }
     
@@ -272,7 +307,7 @@ import java.util.function.UnaryOperator;
      * @return true, wenn ja; false, wenn nein
     */
     private boolean lagerLeer() {
-        return this.anzahlArtikel == 0;
+        return this.artikelLager.size() == 0;
     }
 
     /**
@@ -283,19 +318,16 @@ import java.util.function.UnaryOperator;
     */
     private void loescheArtikelNachIndex(int indexZuLoeschen) {
         
-        if (this.anzahlArtikel - 1 < indexZuLoeschen) {
+        if (this.artikelLager.size() - 1 < indexZuLoeschen) {
             throw new IllegalArgumentException("Der gewählte Index uebertrifft die Anzahl an Artikeln.");
         }
         if (indexZuLoeschen < 0) {
             throw new IllegalArgumentException("Der gewählte Index muss positiv sein.");
         }
-        
-        int indexLeztenArtikels = this.anzahlArtikel -1;
-        for (int indexZuVerschieben = indexZuLoeschen; indexZuVerschieben < indexLeztenArtikels; indexZuVerschieben++) {            
-            artikelLager[indexZuVerschieben] = artikelLager[indexZuVerschieben + 1];
-        }
-        artikelLager[indexLeztenArtikels] = null;
-        this.anzahlArtikel--;
+
+        Artikel artikelZuLoeschen = this.getArtikelObjectNachNummer(indexZuLoeschen);
+
+        this.artikelLager.remove(artikelZuLoeschen.hashCode());
     }
 
 
@@ -305,15 +337,36 @@ import java.util.function.UnaryOperator;
     * @return der Index des Artikels, -1 falls dieser Artikel nicht im Lager ist
     */    
     public int getArtikelNachNummer(int artikelNr) {
-        for (int index = 0; index <= this.anzahlArtikel -1; index++) {
-            Artikel artikelZuChecken = this.artikelLager[index];
 
-            if (artikelZuChecken.getArtikelNr() == artikelNr) {
+        int index = 0;
+
+        for (Map.Entry<Integer, Artikel> entry : this.artikelLager.entrySet()) {
+
+            if (entry.getValue().getArtikelNr() == artikelNr) {
                 return index;
             }
-        }    
-        
+        }
+
         return -1;
+    }
+
+    /**
+    * Die Methode gibt den Index der gewunschten Artikelnummer zurueck 
+    * @param artikelNr ist die Artikelnummer vom gewuenschten Artikel
+    * @return der Index des Artikels, -1 falls dieser Artikel nicht im Lager ist
+    */    
+    private Artikel getArtikelObjectNachNummer(int artikelNr) {
+
+        for (Map.Entry<Integer, Artikel> entry : this.artikelLager.entrySet()) {
+
+            Artikel artikel = entry.getValue();
+            if (artikel.getArtikelNr() == artikelNr) {
+                return artikel;
+            }
+        }
+
+        return null;
+
     }
 
 
@@ -325,14 +378,22 @@ import java.util.function.UnaryOperator;
     */    
     public Artikel getArtikel(int index) { 
 
-        if (index > this.anzahlArtikel -1) {
+        if (index > this.artikelLager.size() -1) {
             throw new Error("Es gibt keinen Artikel im gewählten Index.");
         }
         if (index <0) {
             throw new Error("Bitte positiven Index angeben.");
         }
 
-        return this.artikelLager[index];
+        int aktuellerIndex = 0;
+        for (Map.Entry<Integer, Artikel> entry : this.artikelLager.entrySet()) {
+            if (index == aktuellerIndex) {
+                return entry.getValue();
+            }
+            aktuellerIndex++;
+        }
+
+        return null;
     }
 
 
@@ -349,8 +410,8 @@ import java.util.function.UnaryOperator;
         StringBuilder builder = new StringBuilder("Lager enthält folgende Artikel: \n");
         
  
-        for (int index = 0; index <= this.anzahlArtikel -1; index++) {
-         Artikel artikel = artikelLager[index];
+        for (int index = 0; index <= this.artikelLager.size() -1; index++) {
+         Artikel artikel = this.getArtikel(index);
          String artikelBeschreibung = artikel.toString() + "\n\n";
          builder.append(artikelBeschreibung);
         }    
@@ -363,7 +424,7 @@ import java.util.function.UnaryOperator;
     * @return die Anzahl an Artikel im Lager
     */ 
     public int getArtikelAnzahl() {
-      return this.anzahlArtikel;
+      return this.artikelLager.size();
     }
     
     /**
@@ -371,7 +432,7 @@ import java.util.function.UnaryOperator;
     * @return die Gesamtanzahl an verfuegbaren Platzen im Lager
     */ 
     public int getLagerGroesse() {
-        return this.artikelLager.length;
+        return this.lagerplatzanzahl;
     }
     
     /**
@@ -382,7 +443,9 @@ import java.util.function.UnaryOperator;
     public String ausgebenBestandsListe() {
         double gesamt = STARTSUMME;
         String ausgabe = LagerKonstanten.KOPFZEILE+ LagerKonstanten.TRENNSTRICH;
-        for(Artikel artikel: artikelLager) {
+        for(Map.Entry<Integer, Artikel> entry: artikelLager.entrySet()) {
+
+            Artikel artikel = entry.getValue();
             if (artikel != null) {
                 double gesamtartikel = artikel.getPreis() * artikel.getBestand();
                 gesamtartikel        = Math.round(gesamtartikel*HUNDERT)/ HUNDERT;
