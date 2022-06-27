@@ -23,7 +23,7 @@ public class Producer
     }
 
     public Integer produce(){
-        int zahl = ran.nextInt(1000);
+        int zahl = ran.nextInt(Integer.MAX_VALUE);
         queue.add(zahl);
         return zahl;
     }
