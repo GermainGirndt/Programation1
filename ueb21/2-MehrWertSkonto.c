@@ -1,3 +1,6 @@
+// Befehl:
+// gcc 2-MehrWertSkonto.c -o 2-MehrWertSkonto && ./2-MehrWertSkonto
+
 #include <stdio.h>
 int main (void){
     float steuerSatz = 0.2;
@@ -25,6 +28,3 @@ int main (void){
     printf("=====================================\n");
     printf("Rechnungsbetrag\t\tEuro %7.2f\n", rechnungsBetrag);
 }
-
-// Befehl:
-// gcc 2-MehrWertSkonto.c -o 2-MehrWertSkonto && ./2-MehrWertSkonto
