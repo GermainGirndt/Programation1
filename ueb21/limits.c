@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 int main(void){
-    unsigned char uch = 0; 
+    unsigned cha ruch = 0; 
     unsigned short ush = 0;
     unsigned int ui = 0;
     char ch = 0;
@@ -39,6 +39,6 @@ int main(void){
     ui = ui - 1;
     printf("Unsigned Int MaximalWert %u limits.h %u \n\n\n", ui, UINT_MAX );
 
-
+return 0;
 
 }
