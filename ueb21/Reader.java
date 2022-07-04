@@ -30,6 +30,7 @@ public class Reader
     
     public List<String> readTextFile(String file, String prefix, int minLength, int limit){
         File datei = new File(file);
+        list.clear();
         try (BufferedReader bufferedReader  = new BufferedReader(new FileReader(datei))){
             String zeile = "";
             
@@ -60,6 +61,7 @@ public class Reader
 
   public Map<Integer, String> readTextFileToMap(String file, String prefix, int minLength, int limit){
         File datei = new File(file);
+        list.clear();
         try (BufferedReader bufferedReader  = new BufferedReader(new FileReader(datei))){
             String zeile = "";
             
