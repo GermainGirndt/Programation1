@@ -3,13 +3,14 @@
 
 #include <stdio.h>
 
-int getAnzahlAnIteraktionen(void) {
+signed int getAnzahlAnIteraktionen(void) {
     int anzahlAnIteraktionen;
     printf("Geben Sie die Anzahl an Iteraktionen (Nachkommastellen werden nicht beruecksichtigt): ");
     scanf("%i", &anzahlAnIteraktionen);
 
-    while (anzahlAnIteraktionen < 0) {
-        printf("Fehler! Die Zahl muss groesser gleich null sein.\n");
+    while (anzahlAnIteraktionen < 0 || anzahlAnIteraktionen > 151) {
+        // Ueberlauf nach 151
+        printf("Fehler! Die Zahl muss zwischen 0 und 151 sein.\n");
         printf("Geben Sie die Anzahl an Iteraktionen (Nachkommastellen werden nicht beruecksichtigt): ");
         scanf("%i", &anzahlAnIteraktionen);
     }  
@@ -18,29 +19,28 @@ int getAnzahlAnIteraktionen(void) {
 
 }
 
-
-int main (void){
-    int fibonacciPrev = 0;
-    int fibonacciNext = 1;
-    int fibonacciZahl;
-    int anzahlAnIteraktionen = getAnzahlAnIteraktionen();
+long main (void){
+    signed long long int fibonacciPrev = 0;
+    signed long long int fibonacciNext = 1;
+    signed long long int fibonacciZahl;
+    signed int anzahlAnIteraktionen = getAnzahlAnIteraktionen();
 
     if (anzahlAnIteraktionen == 0) {
-        printf("Fibonacci-Zahl: %i\n", fibonacciPrev);
+        printf("Fibonacci-Zahl: %lli\n", fibonacciPrev);
         return 1;
     }
 
     if (anzahlAnIteraktionen == 1) {
-        printf("Fibonacci-Zahl: %i\n", fibonacciNext);
+        printf("Fibonacci-Zahl: %lli\n", fibonacciNext);
         return 1;
     }
 
-    for (int i = 2; i <= anzahlAnIteraktionen; i++) {
+    for (long i = 2; i <= anzahlAnIteraktionen; i++) {
         fibonacciZahl = fibonacciPrev + fibonacciNext;
         fibonacciPrev = fibonacciNext;
         fibonacciNext = fibonacciZahl;
     }
 
-    printf("Fibonacci-Zahl: %i\n", fibonacciZahl);
+    printf("Fibonacci-Zahl: %lli\n", fibonacciZahl);
 
 }
