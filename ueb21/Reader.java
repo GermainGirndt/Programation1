@@ -36,7 +36,7 @@ public class Reader
             while ((zeile = bufferedReader.readLine()) != null) {
                 String[] zeilesplit = zeile.trim().split(" ");  
                 for(String wort : zeilesplit){
-                    if(!wort.trim().isEmpty()){
+                    if(!wort.trim().isEmpty() && !list.contains(wort)){
                         list.add(wort.trim());    
                     }
                 }
@@ -66,7 +66,7 @@ public class Reader
             while ((zeile = bufferedReader.readLine()) != null) {
                 String[] zeilesplit = zeile.trim().split(" ");  
                 for(String wort : zeilesplit){
-                    if(!wort.trim().isEmpty()){
+                    if(!wort.trim().isEmpty()  && !list.contains(wort)){
                         list.add(wort.trim());    
                     }
                 }
