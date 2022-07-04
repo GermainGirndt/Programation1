@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.function.Function;
 import java.util.function.Consumer;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Beschreiben Sie hier die Klasse Reader.
@@ -28,13 +30,14 @@ public class Reader
     
     public List<String> readTextFile(String file, String prefix, int minLength, int limit){
         File datei = new File(file);
+        list.clear();
         try (BufferedReader bufferedReader  = new BufferedReader(new FileReader(datei))){
             String zeile = "";
             
             while ((zeile = bufferedReader.readLine()) != null) {
                 String[] zeilesplit = zeile.trim().split(" ");  
                 for(String wort : zeilesplit){
-                    if(!wort.trim().isEmpty()){
+                    if(!wort.trim().isEmpty() && !list.contains(wort)){
                         list.add(wort.trim());    
                     }
                 }
@@ -54,5 +57,36 @@ public class Reader
         
         
         return l;
+}
+
+  public Map<Integer, String> readTextFileToMap(String file, String prefix, int minLength, int limit){
+        File datei = new File(file);
+        list.clear();
+        try (BufferedReader bufferedReader  = new BufferedReader(new FileReader(datei))){
+            String zeile = "";
+            
+            while ((zeile = bufferedReader.readLine()) != null) {
+                String[] zeilesplit = zeile.trim().split(" ");  
+                for(String wort : zeilesplit){
+                    if(!wort.trim().isEmpty()  && !list.contains(wort)){
+                        list.add(wort.trim());    
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+       
+        
+        HashMap<Integer, String> m = new HashMap<>();
+        
+        list.stream().filter(s->s.length()>minLength)
+        .filter(s -> s.startsWith(prefix))
+        .sorted()
+        .forEach(s -> {if(m.size()<limit){m.put(m.size(), s);}});
+        
+        
+        
+        return m;
 }
 }
