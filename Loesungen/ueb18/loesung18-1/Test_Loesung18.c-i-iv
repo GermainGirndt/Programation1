@@ -1,0 +1,192 @@
+Erstelle Test-Lager                 gib ---> 50
+------------------------------------------------------
+
+
+Im Lager :         Saarbruecken sind von    25 Lagerplaetzen    25  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7904                  Buch      1    12,99 --->     Goethe    titel90        verlag59 
+	   1 	->  6933                  Buch      1    25,99 --->     Goethe    titel54        verlag18 
+	   2 	->  8197                  Buch      2    55,99 --->     Goethe    titel93         verlag9 
+	   3 	->  9705                  Buch      2    77,99 --->     Goethe    titel72        verlag93 
+	   4 	->  2053                  Buch      4    99,99 --->     Goethe    titel59        verlag48 
+	   5 	->  6190                 Video     74    65,49 --->              titel86    30  2000 
+	   6 	->  9684                 Video     27    72,98 --->              titel22   105  2000 
+	   7 	->  1307                 Video     50    82,40 --->              titel16    25  2000 
+	   8 	->  1795                    Cd     13    38,05 --->  interpret62              titel71     6 
+	   9 	->  7849                    Cd      9    30,09 --->   interpret8              titel82    19 
+	  10 	->  4472                    Cd     38    63,15 --->  interpret91              titel56    15 
+	  11 	->  5807                    Cd     29    70,65 --->  interpret23              titel57     1 
+	  12 	->  4899                    Cd      6    71,85 --->  interpret31              titel98    11 
+	  13 	->  7011                    Cd     12    99,16 --->  interpret80              titel82    16 
+	  14 	->  9294                    Cd     33    82,25 --->  interpret86              titel41    16 
+	  15 	->  8249                    Cd     10    72,29 --->  interpret42              titel86     5 
+	  16 	->  7790                  Buch      2    11,47 --->    autor37    titel20        verlag65 
+	  17 	->  2272                  Buch      1    25,50 --->    autor79    titel96        verlag51 
+	  18 	->  1980                  Buch      2    17,93 --->    autor66    titel61        verlag45 
+	  19 	->  4844                  Buch      3    71,12 --->    autor42    titel95         verlag6 
+	  20 	->  6077                  Buch      1    73,70 --->     autor8    titel22        verlag14 
+	  21 	->  5444                  Buch      4    36,37 --->     autor5    titel45        verlag29 
+	  22 	->  4650                  Buch      3    22,96 --->     autor5    titel38        verlag96 
+	  23 	->  4538                  Buch      0    26,89 --->    autor62    titel97         verlag2 
+	  24 	->  9723                  Buch      4     3,61 --->    autor52     titel7        verlag10 
+
+Test Aufgabe 18.2 d i               gib ---> 51
+------------------------------------------------------
+
+ 4538                  Buch      0    26,89 --->    autor62    titel97         verlag2 
+ 7904                  Buch      1    12,99 --->     Goethe    titel90        verlag59 
+ 2272                  Buch      1    25,50 --->    autor79    titel96        verlag51 
+ 6933                  Buch      1    25,99 --->     Goethe    titel54        verlag18 
+ 6077                  Buch      1    73,70 --->     autor8    titel22        verlag14 
+ 7790                  Buch      2    11,47 --->    autor37    titel20        verlag65 
+ 1980                  Buch      2    17,93 --->    autor66    titel61        verlag45 
+ 8197                  Buch      2    55,99 --->     Goethe    titel93         verlag9 
+ 9705                  Buch      2    77,99 --->     Goethe    titel72        verlag93 
+ 4650                  Buch      3    22,96 --->     autor5    titel38        verlag96 
+ 4844                  Buch      3    71,12 --->    autor42    titel95         verlag6 
+ 9723                  Buch      4     3,61 --->    autor52     titel7        verlag10 
+ 5444                  Buch      4    36,37 --->     autor5    titel45        verlag29 
+ 2053                  Buch      4    99,99 --->     Goethe    titel59        verlag48 
+ 4899                    Cd      6    71,85 --->  interpret31              titel98    11 
+ 7849                    Cd      9    30,09 --->   interpret8              titel82    19 
+ 8249                    Cd     10    72,29 --->  interpret42              titel86     5 
+ 7011                    Cd     12    99,16 --->  interpret80              titel82    16 
+ 1795                    Cd     13    38,05 --->  interpret62              titel71     6 
+ 5807                    Cd     29    70,65 --->  interpret23              titel57     1 
+ 9294                    Cd     33    82,25 --->  interpret86              titel41    16 
+ 4472                    Cd     38    63,15 --->  interpret91              titel56    15 
+ 9684                 Video     27    72,98 --->              titel22   105  2000 
+ 1307                 Video     50    82,40 --->              titel16    25  2000 
+ 6190                 Video     74    65,49 --->              titel86    30  2000 
+
+
+------------------------------------------------------
+
+Im Lager :         Saarbruecken sind von    25 Lagerplaetzen    25  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7904                  Buch      1    12,99 --->     Goethe    titel90        verlag59 
+	   1 	->  6933                  Buch      1    25,99 --->     Goethe    titel54        verlag18 
+	   2 	->  8197                  Buch      2    55,99 --->     Goethe    titel93         verlag9 
+	   3 	->  9705                  Buch      2    77,99 --->     Goethe    titel72        verlag93 
+	   4 	->  2053                  Buch      4    99,99 --->     Goethe    titel59        verlag48 
+	   5 	->  6190                 Video     74    65,49 --->              titel86    30  2000 
+	   6 	->  9684                 Video     27    72,98 --->              titel22   105  2000 
+	   7 	->  1307                 Video     50    82,40 --->              titel16    25  2000 
+	   8 	->  1795                    Cd     13    38,05 --->  interpret62              titel71     6 
+	   9 	->  7849                    Cd      9    30,09 --->   interpret8              titel82    19 
+	  10 	->  4472                    Cd     38    63,15 --->  interpret91              titel56    15 
+	  11 	->  5807                    Cd     29    70,65 --->  interpret23              titel57     1 
+	  12 	->  4899                    Cd      6    71,85 --->  interpret31              titel98    11 
+	  13 	->  7011                    Cd     12    99,16 --->  interpret80              titel82    16 
+	  14 	->  9294                    Cd     33    82,25 --->  interpret86              titel41    16 
+	  15 	->  8249                    Cd     10    72,29 --->  interpret42              titel86     5 
+	  16 	->  7790                  Buch      2    11,47 --->    autor37    titel20        verlag65 
+	  17 	->  2272                  Buch      1    25,50 --->    autor79    titel96        verlag51 
+	  18 	->  1980                  Buch      2    17,93 --->    autor66    titel61        verlag45 
+	  19 	->  4844                  Buch      3    71,12 --->    autor42    titel95         verlag6 
+	  20 	->  6077                  Buch      1    73,70 --->     autor8    titel22        verlag14 
+	  21 	->  5444                  Buch      4    36,37 --->     autor5    titel45        verlag29 
+	  22 	->  4650                  Buch      3    22,96 --->     autor5    titel38        verlag96 
+	  23 	->  4538                  Buch      0    26,89 --->    autor62    titel97         verlag2 
+	  24 	->  9723                  Buch      4     3,61 --->    autor52     titel7        verlag10 
+
+
+Test Aufgabe 18.2 d ii              gib ---> 52
+------------------------------------------------------
+
+Im Lager :         Saarbruecken sind von    25 Lagerplaetzen    25  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7904                  Buch      1    11,69 --->     Goethe    titel90        verlag59 
+	   1 	->  6933                  Buch      1    23,39 --->     Goethe    titel54        verlag18 
+	   2 	->  8197                  Buch      2    50,39 --->     Goethe    titel93         verlag9 
+	   3 	->  9705                  Buch      2    70,19 --->     Goethe    titel72        verlag93 
+	   4 	->  2053                  Buch      4    89,99 --->     Goethe    titel59        verlag48 
+	   5 	->  6190                 Video     74    58,94 --->              titel86    30  2000 
+	   6 	->  9684                 Video     27    65,68 --->              titel22   105  2000 
+	   7 	->  1307                 Video     50    74,16 --->              titel16    25  2000 
+	   8 	->  1795                    Cd     13    34,24 --->  interpret62              titel71     6 
+	   9 	->  7849                    Cd      9    27,09 --->   interpret8              titel82    19 
+	  10 	->  4472                    Cd     38    56,84 --->  interpret91              titel56    15 
+	  11 	->  5807                    Cd     29    63,58 --->  interpret23              titel57     1 
+	  12 	->  4899                    Cd      6    64,66 --->  interpret31              titel98    11 
+	  13 	->  7011                    Cd     12    89,24 --->  interpret80              titel82    16 
+	  14 	->  9294                    Cd     33    74,03 --->  interpret86              titel41    16 
+	  15 	->  8249                    Cd     10    65,06 --->  interpret42              titel86     5 
+	  16 	->  7790                  Buch      2    10,32 --->    autor37    titel20        verlag65 
+	  17 	->  2272                  Buch      1    22,95 --->    autor79    titel96        verlag51 
+	  18 	->  1980                  Buch      2    16,14 --->    autor66    titel61        verlag45 
+	  19 	->  4844                  Buch      3    64,00 --->    autor42    titel95         verlag6 
+	  20 	->  6077                  Buch      1    66,33 --->     autor8    titel22        verlag14 
+	  21 	->  5444                  Buch      4    32,73 --->     autor5    titel45        verlag29 
+	  22 	->  4650                  Buch      3    20,66 --->     autor5    titel38        verlag96 
+	  23 	->  4538                  Buch      0    24,20 --->    autor62    titel97         verlag2 
+	  24 	->  9723                  Buch      4     3,25 --->    autor52     titel7        verlag10 
+
+
+Test Aufgabe 18.2 d iii             gib ---> 53
+
+Im Lager :         Saarbruecken sind von    25 Lagerplaetzen    25  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7904    Buch Sonderangebot      1    11,69 --->     Goethe    titel90        verlag59 
+	   1 	->  6933    Buch Sonderangebot      1    23,39 --->     Goethe    titel54        verlag18 
+	   2 	->  8197    Buch Sonderangebot      2    50,39 --->     Goethe    titel93         verlag9 
+	   3 	->  9705    Buch Sonderangebot      2    70,19 --->     Goethe    titel72        verlag93 
+	   4 	->  2053    Buch Sonderangebot      4    89,99 --->     Goethe    titel59        verlag48 
+	   5 	->  6190   Video Sonderangebot     74    58,94 --->              titel86    30  2000 
+	   6 	->  9684   Video Sonderangebot     27    65,68 --->              titel22   105  2000 
+	   7 	->  1307   Video Sonderangebot     50    74,16 --->              titel16    25  2000 
+	   8 	->  1795      Cd Sonderangebot     13    34,24 --->  interpret62              titel71     6 
+	   9 	->  7849      Cd Sonderangebot      9    27,09 --->   interpret8              titel82    19 
+	  10 	->  4472      Cd Sonderangebot     38    56,84 --->  interpret91              titel56    15 
+	  11 	->  5807      Cd Sonderangebot     29    63,58 --->  interpret23              titel57     1 
+	  12 	->  4899      Cd Sonderangebot      6    64,66 --->  interpret31              titel98    11 
+	  13 	->  7011      Cd Sonderangebot     12    89,24 --->  interpret80              titel82    16 
+	  14 	->  9294      Cd Sonderangebot     33    74,03 --->  interpret86              titel41    16 
+	  15 	->  8249      Cd Sonderangebot     10    65,06 --->  interpret42              titel86     5 
+	  16 	->  7790    Buch Sonderangebot      2    10,32 --->    autor37    titel20        verlag65 
+	  17 	->  2272    Buch Sonderangebot      1    22,95 --->    autor79    titel96        verlag51 
+	  18 	->  1980    Buch Sonderangebot      2    16,14 --->    autor66    titel61        verlag45 
+	  19 	->  4844    Buch Sonderangebot      3    64,00 --->    autor42    titel95         verlag6 
+	  20 	->  6077    Buch Sonderangebot      1    66,33 --->     autor8    titel22        verlag14 
+	  21 	->  5444    Buch Sonderangebot      4    32,73 --->     autor5    titel45        verlag29 
+	  22 	->  4650    Buch Sonderangebot      3    20,66 --->     autor5    titel38        verlag96 
+	  23 	->  4538    Buch Sonderangebot      0    24,20 --->    autor62    titel97         verlag2 
+	  24 	->  9723    Buch Sonderangebot      4     3,25 --->    autor52     titel7        verlag10 
+
+
+Test Aufgabe 18.2 d iv              gib ---> 54
+
+Im Lager :         Saarbruecken sind von    25 Lagerplaetzen    25  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7904  Buch Sonderangebot Sonderangebot      1    10,52 --->     Goethe    titel90        verlag59 
+	   1 	->  6933  Buch Sonderangebot Sonderangebot      1    21,05 --->     Goethe    titel54        verlag18 
+	   2 	->  8197  Buch Sonderangebot Sonderangebot      2    45,35 --->     Goethe    titel93         verlag9 
+	   3 	->  9705  Buch Sonderangebot Sonderangebot      2    63,17 --->     Goethe    titel72        verlag93 
+	   4 	->  2053  Buch Sonderangebot Sonderangebot      4    80,99 --->     Goethe    titel59        verlag48 
+	   5 	->  6190  Video Sonderangebot Sonderangebot     74    53,04 --->              titel86    30  2000 
+	   6 	->  9684  Video Sonderangebot Sonderangebot     27    59,11 --->              titel22   105  2000 
+	   7 	->  1307  Video Sonderangebot Sonderangebot     50    66,74 --->              titel16    25  2000 
+	   8 	->  1795  Cd Sonderangebot Sonderangebot     13    30,82 --->  interpret62              titel71     6 
+	   9 	->  7849  Cd Sonderangebot Sonderangebot      9    24,38 --->   interpret8              titel82    19 
+	  10 	->  4472  Cd Sonderangebot Sonderangebot     38    51,15 --->  interpret91              titel56    15 
+	  11 	->  5807  Cd Sonderangebot Sonderangebot     29    57,22 --->  interpret23              titel57     1 
+	  12 	->  4899  Cd Sonderangebot Sonderangebot      6    58,20 --->  interpret31              titel98    11 
+	  13 	->  7011  Cd Sonderangebot Sonderangebot     12    80,32 --->  interpret80              titel82    16 
+	  14 	->  9294  Cd Sonderangebot Sonderangebot     33    66,62 --->  interpret86              titel41    16 
+	  15 	->  8249  Cd Sonderangebot Sonderangebot     10    58,55 --->  interpret42              titel86     5 
+	  16 	->  7790  Buch Sonderangebot Sonderangebot      2     9,29 --->    autor37    titel20        verlag65 
+	  17 	->  2272  Buch Sonderangebot Sonderangebot      1    20,65 --->    autor79    titel96        verlag51 
+	  18 	->  1980  Buch Sonderangebot Sonderangebot      2    14,53 --->    autor66    titel61        verlag45 
+	  19 	->  4844  Buch Sonderangebot Sonderangebot      3    57,60 --->    autor42    titel95         verlag6 
+	  20 	->  6077  Buch Sonderangebot Sonderangebot      1    59,70 --->     autor8    titel22        verlag14 
+	  21 	->  5444  Buch Sonderangebot Sonderangebot      4    29,46 --->     autor5    titel45        verlag29 
+	  22 	->  4650  Buch Sonderangebot Sonderangebot      3    18,60 --->     autor5    titel38        verlag96 
+	  23 	->  4538  Buch Sonderangebot Sonderangebot      0    21,78 --->    autor62    titel97         verlag2 
+	  24 	->  9723  Buch Sonderangebot Sonderangebot      4     2,92 --->    autor52     titel7        verlag10 
+
+
+Beende Test                         gib ---> 99
+
+Weiterhin viel Spass bei der Arbeit !!!
+
+

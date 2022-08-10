@@ -1,0 +1,87 @@
+	 aa == true 	bt(27290)
+	 aa == true 	bt(1228)
+	 aha == true 	bt(949)
+	 otto == true 	bt(934)
+	 abba == true 	bt(877)
+	 kajak == true 	bt(935)
+	 nafreibierfan == true 	bt(1092)
+	 einesellesenie == true 	bt(1144)
+	 derfreibierfred == true 	bt(1117)
+	 dienstmannamtsneid == true 	bt(1213)
+	 allebananenanabella == true 	bt(1232)
+	 einegueldnegutetugendleugenie == true 	bt(1480)
+
+	 Berechnungszeiten = 
+				2,27290
+				2,1228
+				3,949
+				4,934
+				4,877
+				5,935
+				13,1092
+				14,1144
+				15,1117
+				18,1213
+				19,1232
+				29,1480
+	 aa == true 	bt(8148)
+	 aa == true 	bt(1676)
+	 aha == true 	bt(1630)
+	 otto == true 	bt(2029)
+	 abba == true 	bt(1955)
+	 kajak == true 	bt(2078)
+	 nafreibierfan == true 	bt(19583)
+	 einesellesenie == true 	bt(4454)
+	 derfreibierfred == true 	bt(4624)
+	 dienstmannamtsneid == true 	bt(5435)
+	 allebananenanabella == true 	bt(26479)
+	 einegueldnegutetugendleugenie == true 	bt(16802)
+
+	 Berechnungszeiten = 
+			2,8148
+			2,1676
+			3,1630
+			4,2029
+			4,1955
+			5,2078
+			13,19583
+			14,4454
+			15,4624
+			18,5435
+			19,26479
+			29,16802
+	 aa == true 	bt(1746)
+	 aa == true 	bt(1499)
+	 aha == true 	bt(1628)
+	 otto == true 	bt(2054)
+	 abba == true 	bt(1941)
+	 kajak == true 	bt(2140)
+	 nafreibierfan == true 	bt(4340)
+	 einesellesenie == true 	bt(4590)
+	 derfreibierfred == true 	bt(4467)
+	 dienstmannamtsneid == true 	bt(6327)
+	 allebananenanabella == true 	bt(6812)
+	 einegueldnegutetugendleugenie == true 	bt(8467)
+
+	 Berechnungszeiten = 
+			2,1746
+			2,1499
+			3,1628
+			4,2054
+			4,1941
+			5,2140
+			13,4340
+			14,4590
+			15,4467
+			18,6327
+			19,6812
+			29,8467
+
+
+	 Die Dateiverarbeitung dauerte : 47436046 ns
+
+
+
+
+	 Ende 
+

@@ -1,0 +1,141 @@
+wpy@stl-vubun-75:BlueJ/PRG-SPR-I-2122/ueb20/loesung20-3> java MinHeapTest
+
+Ein MinHeap<Integer> Objekt mit der Kapazitaet 15 wurde konstruiert !
+
+
+
+Was wollen sie tun ????
+
+
+MinHeap mit Integer-Zufallswerten erzeugen -> 10
+MinHeap Inhalt Anzeigen                    -> 11
+ Ein Element in MinHeap aufnehmen          -> 12
+  Hoechstes Element von MinHeap nehmen      -> 13
+  Hoechstes Element in MinHeap zeigen       -> 14
+  Anzahl der Elemente im MinHeap            -> 20
+  ist MinHeap L E E R ?                     -> 21
+  MinHeap L O E S C H E N                   -> 22
+  Test-Programm B E E N D E N               -> 99
+
+ Gib Aktion ein :10
+
+Was wollen sie tun ????
+
+
+MinHeap mit Integer-Zufallswerten erzeugen -> 10
+MinHeap Inhalt Anzeigen                    -> 11
+ Ein Element in MinHeap aufnehmen          -> 12
+  Hoechstes Element von MinHeap nehmen      -> 13
+  Hoechstes Element in MinHeap zeigen       -> 14
+  Anzahl der Elemente im MinHeap            -> 20
+  ist MinHeap L E E R ?                     -> 21
+  MinHeap L O E S C H E N                   -> 22
+  Test-Programm B E E N D E N               -> 99
+
+ Gib Aktion ein :11
+
+Der Inhalt des MinHeap :
+------------------------------
+ | 24 | 41 | 29 | 48 | 44 | 91 | 36 | 85 | 69 | 73 |
+
+ Der Inhalt des MinHeap :
+ ------------------------------
+  | 24 | 41 | 29 | 48 | 44 | 91 | 36 | 85 | 69 | 73 |
+
+  Was wollen sie tun ????
+
+
+MinHeap mit Integer-Zufallswerten erzeugen -> 10
+MinHeap Inhalt Anzeigen                    -> 11
+ Ein Element in MinHeap aufnehmen          -> 12
+  Hoechstes Element von MinHeap nehmen      -> 13
+  Hoechstes Element in MinHeap zeigen       -> 14
+  Anzahl der Elemente im MinHeap            -> 20
+  ist MinHeap L E E R ?                     -> 21
+  MinHeap L O E S C H E N                   -> 22
+  Test-Programm B E E N D E N               -> 99
+
+ Gib Aktion ein :12
+Bitte eine Integerzahl eingeben : 77
+
+ die Zahl : 77 wurde im MinHeap aufgenommen 
+
+ Was wollen sie tun ????
+
+
+MinHeap mit Integer-Zufallswerten erzeugen -> 10
+MinHeap Inhalt Anzeigen                    -> 11
+ Ein Element in MinHeap aufnehmen          -> 12
+  Hoechstes Element von MinHeap nehmen      -> 13
+  Hoechstes Element in MinHeap zeigen       -> 14
+  Anzahl der Elemente im MinHeap            -> 20
+  ist MinHeap L E E R ?                     -> 21
+  MinHeap L O E S C H E N                   -> 22
+  Test-Programm B E E N D E N               -> 99
+
+ Gib Aktion ein :11
+
+Der Inhalt des MinHeap :
+------------------------------
+ | 24 | 41 | 29 | 48 | 44 | 91 | 36 | 85 | 69 | 73 | 77 |
+
+ Der Inhalt des MinHeap :
+ ------------------------------
+  | 24 | 41 | 29 | 48 | 44 | 91 | 36 | 85 | 69 | 73 | 77 |
+
+  Was wollen sie tun ????
+
+
+MinHeap mit Integer-Zufallswerten erzeugen -> 10
+MinHeap Inhalt Anzeigen                    -> 11
+ Ein Element in MinHeap aufnehmen          -> 12
+  Hoechstes Element von MinHeap nehmen      -> 13
+  Hoechstes Element in MinHeap zeigen       -> 14
+  Anzahl der Elemente im MinHeap            -> 20
+  ist MinHeap L E E R ?                     -> 21
+  MinHeap L O E S C H E N                   -> 22
+  Test-Programm B E E N D E N               -> 99
+
+ Gib Aktion ein :12
+Bitte eine Integerzahl eingeben : 10
+
+ die Zahl : 10 wurde im MinHeap aufgenommen 
+
+ Was wollen sie tun ????
+
+
+MinHeap mit Integer-Zufallswerten erzeugen -> 10
+MinHeap Inhalt Anzeigen                    -> 11
+ Ein Element in MinHeap aufnehmen          -> 12
+  Hoechstes Element von MinHeap nehmen      -> 13
+  Hoechstes Element in MinHeap zeigen       -> 14
+  Anzahl der Elemente im MinHeap            -> 20
+  ist MinHeap L E E R ?                     -> 21
+  MinHeap L O E S C H E N                   -> 22
+  Test-Programm B E E N D E N               -> 99
+
+ Gib Aktion ein :11
+
+Der Inhalt des MinHeap :
+------------------------------
+ | 10 | 41 | 24 | 48 | 44 | 29 | 36 | 85 | 69 | 73 | 77 | 91 |
+
+ Der Inhalt des MinHeap :
+ ------------------------------
+  | 10 | 41 | 24 | 48 | 44 | 29 | 36 | 85 | 69 | 73 | 77 | 91 |
+
+  Was wollen sie tun ????
+
+
+MinHeap mit Integer-Zufallswerten erzeugen -> 10
+MinHeap Inhalt Anzeigen                    -> 11
+ Ein Element in MinHeap aufnehmen          -> 12
+  Hoechstes Element von MinHeap nehmen      -> 13
+  Hoechstes Element in MinHeap zeigen       -> 14
+  Anzahl der Elemente im MinHeap            -> 20
+  ist MinHeap L E E R ?                     -> 21
+  MinHeap L O E S C H E N                   -> 22
+  Test-Programm B E E N D E N               -> 99
+
+ Gib Aktion ein :99
+wpy@stl-vubun-75:BlueJ/PRG-SPR-I-2122/ueb20/loesung20-3>

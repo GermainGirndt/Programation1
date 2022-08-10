@@ -1,0 +1,28 @@
+#!/usr/bin/ksh
+#
+# alles-EIN-test
+#
+#
+
+
+
+(
+
+     echo -e "ALLES-TEST - SUM - DIVIDE - SUBSTRACT - AVERAGE - SWIRL\n"
+
+     #        20 ==  Zusammenstellen des Tests
+     #            5 ==  fuenf Operationen
+     #               1, 3, 4, 5, 2 == sum divide sub average swirl 
+     #                              21 == Test durchfuehren
+     ALLES="\n20\n5\n1\n3\n4\n5\n2\n21 "
+ 
+     
+     #          11 == Feste Zahlen
+     #            6 ==  Anzahl der Zahlen im Array
+     #                       99 == Programm beenden
+     echo -e "11\n6 $ALLES \n99" |\
+             java NumberCruncherAnonymTest  |\
+             grep -e "Array-Inhalt" -e "Die Basis" -e "Das Ergebnis"
+     echo -e "\n\n"
+    
+) | tee  $0.protokoll

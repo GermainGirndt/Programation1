@@ -1,0 +1,53 @@
+pauly@stl-v-105:BlueJ/PRG-SPR-I-1819/ueb15/loesung15-1> java TesteGgt
+
+
+	 Diese Anwendung liefert einen Test-Rahmen fuer die 
+	 	 GgTRekursiv-Klasse 
+
+
+
+		 Haendischer Test für die Methode ggtRekursiv(a,b)   ---> 20
+		 Automatischer Test für die Methode ggtRekursiv(a,b) ---> 22
+		 -----------------------------------------------------------
+		 Beende Tests                                    gib ---> 99
+		 -----------------------------------------------------------
+		 				  gib --->20
+	  	  gib 1. Zahl (a) ein --->12
+	  	  gib 2. Zahl (a) ein --->18    
+		  ggt(12,18) == 6
+
+		 Haendischer Test für die Methode ggtRekursiv(a,b)   ---> 20
+		 Automatischer Test für die Methode ggtRekursiv(a,b) ---> 22
+		 -----------------------------------------------------------
+		 Beende Tests                                    gib ---> 99
+		 -----------------------------------------------------------
+						  gib --->20
+		  gib 1. Zahl (a) ein --->3528
+		  gib 2. Zahl (a) ein --->3780
+		  ggt(3528,3780) == 252
+
+		 Haendischer Test für die Methode ggtRekursiv(a,b)   ---> 20
+		 Automatischer Test für die Methode ggtRekursiv(a,b) ---> 22
+		 -----------------------------------------------------------
+		 Beende Tests                                    gib ---> 99
+		 -----------------------------------------------------------
+		  				  gib --->22
+				  12, 18 == 6
+				  18, 12 == 6
+				  90, 105 == 15
+				  105, 90 == 15
+				  3528, 3780 == 252
+				  3780, 3528 == 252
+
+		 Haendischer Test für die Methode ggtRekursiv(a,b)   ---> 20
+		 Automatischer Test für die Methode ggtRekursiv(a,b) ---> 22
+		 -----------------------------------------------------------
+		 Beende Tests                                    gib ---> 99
+		 -----------------------------------------------------------
+		  				  gib --->99
+
+
+		 Weiterhin viel Spass bei der Arbeit !!!
+
+
+	pauly@stl-v-105:BlueJ/PRG-SPR-I-1819/ueb15/loesung15-1>

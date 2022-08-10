@@ -1,0 +1,141 @@
+	 o == true 	bt(24667)
+	 aa == true 	bt(2625)
+	 ab == false 	bt(876)
+	 aha == true 	bt(858)
+	 ahx == false 	bt(823)
+	 otdo == false 	bt(950)
+	 otto == true 	bt(825)
+	 abbx == false 	bt(784)
+	 abba == true 	bt(891)
+	 kajak == true 	bt(892)
+	 kxjak == false 	bt(875)
+	 nafreibierfan == true 	bt(1068)
+	 nafreibxerfan == false 	bt(1065)
+	 einesellesenie == true 	bt(1175)
+	 einesellexenie == false 	bt(1087)
+	 derfreibierfred == true 	bt(1077)
+	 dexfreibierfred == false 	bt(939)
+	 dienstmannamtsneid == true 	bt(5168)
+	 diensxmannamtsneid == false 	bt(1129)
+	 allebananenanabella == true 	bt(1200)
+	 allebanaxenanabella == false 	bt(1267)
+
+	 Berechnungszeiten = 
+				1,24667
+				2,2625
+				2,876
+				3,858
+				3,823
+				4,950
+				4,825
+				4,784
+				4,891
+				5,892
+				5,875
+				13,1068
+				13,1065
+				14,1175
+				14,1087
+				15,1077
+				15,939
+				18,5168
+				18,1129
+				19,1200
+				19,1267
+	 o == true 	bt(14916)
+	 aa == true 	bt(6227)
+	 ab == false 	bt(512)
+	 aha == true 	bt(1458)
+	 ahx == false 	bt(553)
+	 otdo == false 	bt(13418)
+	 otto == true 	bt(1690)
+	 abbx == false 	bt(533)
+	 abba == true 	bt(1722)
+	 kajak == true 	bt(1704)
+	 kxjak == false 	bt(1371)
+	 nafreibierfan == true 	bt(3163)
+	 nafreibxerfan == false 	bt(6438)
+	 einesellesenie == true 	bt(3402)
+	 einesellexenie == false 	bt(2388)
+	 derfreibierfred == true 	bt(3364)
+	 dexfreibierfred == false 	bt(1705)
+	 dienstmannamtsneid == true 	bt(4067)
+	 diensxmannamtsneid == false 	bt(22124)
+	 allebananenanabella == true 	bt(4467)
+	 allebanaxenanabella == false 	bt(4053)
+
+	 Berechnungszeiten = 
+			1,14916
+			2,6227
+			2,512
+			3,1458
+			3,553
+			4,13418
+			4,1690
+			4,533
+			4,1722
+			5,1704
+			5,1371
+			13,3163
+			13,6438
+			14,3402
+			14,2388
+			15,3364
+			15,1705
+			18,4067
+			18,22124
+			19,4467
+			19,4053
+	 o == true 	bt(649)
+	 aa == true 	bt(6130)
+	 ab == false 	bt(601)
+	 aha == true 	bt(1043)
+	 ahx == false 	bt(555)
+	 otdo == false 	bt(1004)
+	 otto == true 	bt(1162)
+	 abbx == false 	bt(4292)
+	 abba == true 	bt(1670)
+	 kajak == true 	bt(13494)
+	 kxjak == false 	bt(995)
+	 nafreibierfan == true 	bt(2280)
+	 nafreibxerfan == false 	bt(2010)
+	 einesellesenie == true 	bt(2781)
+	 einesellexenie == false 	bt(1730)
+	 derfreibierfred == true 	bt(2439)
+	 dexfreibierfred == false 	bt(18360)
+	 dienstmannamtsneid == true 	bt(2967)
+	 diensxmannamtsneid == false 	bt(1976)
+	 allebananenanabella == true 	bt(2822)
+	 allebanaxenanabella == false 	bt(2779)
+
+	 Berechnungszeiten = 
+			1,649
+			2,6130
+			2,601
+			3,1043
+			3,555
+			4,1004
+			4,1162
+			4,4292
+			4,1670
+			5,13494
+			5,995
+			13,2280
+			13,2010
+			14,2781
+			14,1730
+			15,2439
+			15,18360
+			18,2967
+			18,1976
+			19,2822
+			19,2779
+
+
+	 Die Dateiverarbeitung dauerte : 47540064 ns
+
+
+
+
+	 Ende 
+

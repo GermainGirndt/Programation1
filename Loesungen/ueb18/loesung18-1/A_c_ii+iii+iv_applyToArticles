@@ -1,0 +1,63 @@
+  
+  //------------------ applyToArticles  --------------------------------------
+  /**
+   * wendet eine übergebene Operation auf alle Artikel im Lager an 
+   * 
+   * @param consum - ein Consumer der die auf die Artikel anzuwendende Operation implementiert
+   */
+  public void applyToArticles(Consumer<Artikel> consum)
+    {
+      for (int i=0; i<lager.length; i++)
+         {
+          consum.accept(lager[i]); 
+         }
+    }
+
+
+//AUFRUFE vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+
+
+	/**
+	 * Loest die Aufgabe (c) ii.
+	 * <br />
+	 * Der Preis aller Artikel wird um 10% reduziert.
+	 * @param lager Das Lager mit den Artikeln, deren Preise geaendert werden sollen.
+	 */
+	public void aufgabe_c_ii(Lager lager) 
+        {
+	   lager.applyToArticles(a -> a.aenderePreis(-10));
+	}
+
+
+
+
+	/**
+	 * Loest die Aufgabe (c) iii.
+	 * <br />
+	 * An alle Artikelbezeichnungen wird das Suffix (Sonderangebot) angehaengt.
+	 * @param lager Das Lager mit den Artikeln, deren Bezeichnungen geaendert werden sollen.
+	 */	
+	public void aufgabe_c_iii(Lager lager) 
+        {
+	   lager.applyToArticles(a -> a.setBezeichnung(a.getBezeichnung()+" Sonderangebot"));
+	}
+
+
+	
+
+	/**
+	 * Loest die Aufgabe (c) iv.
+	 * <br />
+	 * Die beiden Operatoren aus den Aufgabenteilen ii und iii werden konkateniert, d.h. alle Preise werden
+	 * um 10 % reduziert und alle Bezeichnungen werden um das Suffix (Sonderangebot) erweitert.
+	 * @param lager Das Lager mit den Artikeln, deren Preise und Bezeichnungen geaendert werden sollen.
+	 */
+	public void aufgabe_c_iv(Lager lager) 
+        {
+	   Consumer<Artikel> minus10Prozent =  a -> a.aenderePreis(-10);
+	   Consumer<Artikel> sonderangebot =  a -> a.setBezeichnung(a.getBezeichnung()+" Sonderangebot");
+	   lager.applyToArticles(minus10Prozent.andThen(sonderangebot));
+	}
+
+

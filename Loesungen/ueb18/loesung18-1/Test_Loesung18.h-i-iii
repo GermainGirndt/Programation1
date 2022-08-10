@@ -1,0 +1,142 @@
+				gib ---> 9
+
+Im Lager :         Saarbruecken sind von    17 Lagerplaetzen    17  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7656              buch8103      1    49,26 --->     Goethe    titel32         verlag4 
+	   1 	->  1859              buch2813      3    90,29 --->     Goethe     titel9        verlag82 
+	   2 	->  2266             video5771     96    25,45 --->              titel59      45,91  2000 
+	   3 	->  3123             video3696     22    45,71 --->              titel10      13,06  2000 
+	   4 	->  5670             video2140     79    86,12 --->              titel61      59,04  2000 
+	   5 	->  2902             video6323     75    32,00 --->              titel44      38,77  2000 
+	   6 	->  7040             video2044     18    62,15 --->              titel69      23,78  2000 
+	   7 	->  5004             video6730     20    25,69 --->              titel65      17,88  2000 
+	   8 	->  7991             video4630      1    87,82 --->              titel97      52,92  2000 
+	   9 	->  6528             video7412     60    91,01 --->              titel44      92,81  2000 
+	  10 	->  1932             video1618     88     9,25 --->              titel93      78,46  2000 
+	  11 	->  5261                cd7049     19    59,37 --->  interpret11              titel71     4 
+	  12 	->  1149                cd5559      5    83,52 --->  interpret80              titel93     7 
+	  13 	->  3775                cd5594     45     1,63 --->  interpret53              titel65    19 
+	  14 	->  2954                cd8857     24    79,88 --->  interpret15              titel83    18 
+	  15 	->  4831                cd2156     14    37,14 --->   interpret2              titel25     7 
+	  16 	->  4137              buch4751      0     1,99 --->    autor19    titel40        verlag28 
+
+				gib ---> 55
+				gib ---> 9
+
+Im Lager :         Saarbruecken sind von    17 Lagerplaetzen    17  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7656              buch8103      1    49,26 --->     Goethe    titel32         verlag4 
+	   1 	->  1859              buch2813      3    90,29 --->     Goethe     titel9        verlag82 
+	   2 	->  2266             video5771     96    25,45 --->              titel59      45,91  2000 
+	   3 	->  3123             video3696     22    45,71 --->              titel10      13,06  2000 
+	   4 	->  5670             video2140     79    86,12 --->              titel61      59,04  2000 
+	   5 	->  2902             video6323     75    32,00 --->              titel44      38,77  2000 
+	   6 	->  7040             video2044     18    62,15 --->              titel69      23,78  2000 
+	   7 	->  5004             video6730     20    25,69 --->              titel65      17,88  2000 
+	   8 	->  7991             video4630      1    87,82 --->              titel97      52,92  2000 
+	   9 	->  6528             video7412     60    91,01 --->              titel44      92,81  2000 
+	  10 	->  1932             video1618     88     9,25 --->              titel93      78,46  2000 
+	  11 	->  5261                cd7049     19    65,31 --->  interpret11              titel71     4 
+	  12 	->  1149                cd5559      5    91,87 --->  interpret80              titel93     7 
+	  13 	->  3775                cd5594     45     1,80 --->  interpret53              titel65    19 
+	  14 	->  2954                cd8857     24    87,86 --->  interpret15              titel83    18 
+	  15 	->  4831                cd2156     14    40,85 --->   interpret2              titel25     7 
+	  16 	->  4137              buch4751      0     1,99 --->    autor19    titel40        verlag28 
+
+				
+				gib ---> 9
+
+Im Lager :         Saarbruecken sind von    17 Lagerplaetzen    17  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7656              buch8103      1    49,26 --->     Goethe    titel32         verlag4 
+	   1 	->  1859              buch2813      3    90,29 --->     Goethe     titel9        verlag82 
+	   2 	->  2266             video5771     96    25,45 --->              titel59      45,91  2000 
+	   3 	->  3123             video3696     22    45,71 --->              titel10      13,06  2000 
+	   4 	->  5670             video2140     79    86,12 --->              titel61      59,04  2000 
+	   5 	->  2902             video6323     75    32,00 --->              titel44      38,77  2000 
+	   6 	->  7040             video2044     18    62,15 --->              titel69      23,78  2000 
+	   7 	->  5004             video6730     20    25,69 --->              titel65      17,88  2000 
+	   8 	->  7991             video4630      1    87,82 --->              titel97      52,92  2000 
+	   9 	->  6528             video7412     60    91,01 --->              titel44      92,81  2000 
+	  10 	->  1932             video1618     88     9,25 --->              titel93      78,46  2000 
+	  11 	->  5261                cd7049     19    65,31 --->  interpret11              titel71     4 
+	  12 	->  1149                cd5559      5    91,87 --->  interpret80              titel93     7 
+	  13 	->  3775                cd5594     45     1,80 --->  interpret53              titel65    19 
+	  14 	->  2954                cd8857     24    87,86 --->  interpret15              titel83    18 
+	  15 	->  4831                cd2156     14    40,85 --->   interpret2              titel25     7 
+	  16 	->  4137              buch4751      0     1,99 --->    autor19    titel40        verlag28 
+
+				gib ---> 56
+				gib --->  9
+
+Im Lager :         Saarbruecken sind von    17 Lagerplaetzen    17  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7656              buch8103      1    46,79 --->     Goethe    titel32         verlag4 
+	   1 	->  1859              buch2813      3    90,29 --->     Goethe     titel9        verlag82 
+	   2 	->  2266             video5771     96    25,45 --->              titel59      45,91  2000 
+	   3 	->  3123             video3696     22    45,71 --->              titel10      13,06  2000 
+	   4 	->  5670             video2140     79    86,12 --->              titel61      59,04  2000 
+	   5 	->  2902             video6323     75    32,00 --->              titel44      38,77  2000 
+	   6 	->  7040             video2044     18    62,15 --->              titel69      23,78  2000 
+	   7 	->  5004             video6730     20    25,69 --->              titel65      17,88  2000 
+	   8 	->  7991             video4630      1    83,43 --->              titel97      52,92  2000 
+	   9 	->  6528             video7412     60    91,01 --->              titel44      92,81  2000 
+	  10 	->  1932             video1618     88     9,25 --->              titel93      78,46  2000 
+	  11 	->  5261                cd7049     19    65,31 --->  interpret11              titel71     4 
+	  12 	->  1149                cd5559      5    91,87 --->  interpret80              titel93     7 
+	  13 	->  3775                cd5594     45     1,80 --->  interpret53              titel65    19 
+	  14 	->  2954                cd8857     24    87,86 --->  interpret15              titel83    18 
+	  15 	->  4831                cd2156     14    40,85 --->   interpret2              titel25     7 
+	  16 	->  4137              buch4751      0     1,89 --->    autor19    titel40        verlag28 
+
+				
+				gib --->  9
+
+Im Lager :         Saarbruecken sind von    17 Lagerplaetzen    17  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7656              buch8103      1    46,79 --->     Goethe    titel32         verlag4 
+	   1 	->  1859              buch2813      3    90,29 --->     Goethe     titel9        verlag82 
+	   2 	->  2266             video5771     96    25,45 --->              titel59      45,91  2000 
+	   3 	->  3123             video3696     22    45,71 --->              titel10      13,06  2000 
+	   4 	->  5670             video2140     79    86,12 --->              titel61      59,04  2000 
+	   5 	->  2902             video6323     75    32,00 --->              titel44      38,77  2000 
+	   6 	->  7040             video2044     18    62,15 --->              titel69      23,78  2000 
+	   7 	->  5004             video6730     20    25,69 --->              titel65      17,88  2000 
+	   8 	->  7991             video4630      1    83,43 --->              titel97      52,92  2000 
+	   9 	->  6528             video7412     60    91,01 --->              titel44      92,81  2000 
+	  10 	->  1932             video1618     88     9,25 --->              titel93      78,46  2000 
+	  11 	->  5261                cd7049     19    65,31 --->  interpret11              titel71     4 
+	  12 	->  1149                cd5559      5    91,87 --->  interpret80              titel93     7 
+	  13 	->  3775                cd5594     45     1,80 --->  interpret53              titel65    19 
+	  14 	->  2954                cd8857     24    87,86 --->  interpret15              titel83    18 
+	  15 	->  4831                cd2156     14    40,85 --->   interpret2              titel25     7 
+	  16 	->  4137              buch4751      0     1,89 --->    autor19    titel40        verlag28 
+
+				gib ---> 57
+				gib --->  9
+
+Im Lager :         Saarbruecken sind von    17 Lagerplaetzen    17  belegt, mit folgenden Artikeln : 
+
+	   0 	->  7656              buch8103      1    44,45 --->     Goethe    titel32         verlag4 
+	   1 	->  1859              buch2813      3    85,77 --->     Goethe     titel9        verlag82 
+	   2 	->  2266             video5771     96    25,45 --->              titel59      45,91  2000 
+	   3 	->  3123             video3696     22    45,71 --->              titel10      13,06  2000 
+	   4 	->  5670             video2140     79    86,12 --->              titel61      59,04  2000 
+	   5 	->  2902             video6323     75    32,00 --->              titel44      38,77  2000 
+	   6 	->  7040             video2044     18    62,15 --->              titel69      23,78  2000 
+	   7 	->  5004             video6730     20    25,69 --->              titel65      17,88  2000 
+	   8 	->  7991             video4630      1    83,43 --->              titel97      52,92  2000 
+	   9 	->  6528             video7412     60    91,01 --->              titel44      92,81  2000 
+	  10 	->  1932             video1618     88     9,25 --->              titel93      78,46  2000 
+	  11 	->  5261                cd7049     19    65,31 --->  interpret11              titel71     4 
+	  12 	->  1149                cd5559      5    91,87 --->  interpret80              titel93     7 
+	  13 	->  3775                cd5594     45     1,80 --->  interpret53              titel65    19 
+	  14 	->  2954                cd8857     24    87,86 --->  interpret15              titel83    18 
+	  15 	->  4831                cd2156     14    40,85 --->   interpret2              titel25     7 
+	  16 	->  4137              buch4751      0     1,89 --->    autor19    titel40        verlag28 
+
+				gib ---> 99
+
+Weiterhin viel Spass bei der Arbeit !!!
+
+

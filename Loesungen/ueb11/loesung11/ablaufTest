@@ -1,0 +1,60 @@
+#!/usr/bin/ksh
+#
+#
+# ablaufTest - Shellskript zum Testen des LOCAuswerungs-Programmes
+#              von Uebung 11 in PIB-PR1 ws2021/22
+#
+#
+#
+{
+  
+  DIR="/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11"
+  DATEI_1="DateiKeineNormaleDateiException.java"
+  DATEI_2="DateiNichtLesbarException.java"
+  DATEI_3="LOCAuswertung.java"
+  
+  NICHTLESBAR="nichtlesbar"
+  touch ${NICHTLESBAR}
+  chmod 000 ${NICHTLESBAR}
+  
+  KEINENORMALEDATEI="einDirectory"
+  mkdir ${KEINENORMALEDATEI}
+   
+  echo -e "--------------------------------------------------"
+  echo -e "\nTEST 1 ----> java LOCAuswertung"
+  java LOCAuswertung     
+  echo -e "\n Programm erfolgreich gelaufen ==  $?"
+  
+  
+  echo -e "--------------------------------------------------"
+  echo -e "\nTEST 2 ----> java LOCAuswertung $DIR/$DATEI_1 $DIR/$DATEI_2 $DIR/$DATEI_3"
+  java LOCAuswertung $DIR/$DATEI_1 $DIR/$DATEI_2 $DIR/$DATEI_3
+  echo -e "\n Programm erfolgreich gelaufen ==  $?"
+  
+  
+  echo -e "\nTEST 2 Ueberpruefung : Anzahl der nicht leeren Dateizeilen "
+  for DAT in  $DIR/$DATEI_1 $DIR/$DATEI_2 $DIR/$DATEI_3
+    do
+       echo -e "$DAT ---> $(grep -v "^ *$" $DAT | wc -l )"
+    done
+  echo -e "Gesamt ---> $(grep -v "^ *$" $DIR/$DATEI_1 $DIR/$DATEI_2 $DIR/$DATEI_3 | wc -l )\n\n"
+
+  
+  echo -e "\nTEST 2 Ueberpruefung : Anzahl der Kommentarzeilen "
+  for DAT in  $DIR/$DATEI_1 $DIR/$DATEI_2 $DIR/$DATEI_3
+    do
+      echo -e "$DAT ---> $( grep "^.*//.*$" $DAT | grep -v startsWith | wc -l )"
+    done
+  echo -e "Gesamt ---> $( grep "^.*//.*$" $DIR/$DATEI_1 $DIR/$DATEI_2 $DIR/$DATEI_3 | grep -v startsWith | wc -l )\n\n"
+  
+  
+  
+  echo -e "--------------------------------------------------"
+  echo -e "\nTEST 3 ----> java LOCAuswertung $NICHTLESBAR $DIR/$DATEI_1 $KEINENORMALEDATEI $DIR/$DATEI_2 $DIR/$DATEI_3"
+  java LOCAuswertung $NICHTLESBAR $DIR/$DATEI_1 $KEINENORMALEDATEI $DIR/$DATEI_2 $DIR/$DATEI_3
+  echo -e "\n Programm erfolgreich gelaufen ==  $?"
+
+  rm -f ${NICHTLESBAR} 2>/dev/null
+  rmdir -f ${KEINENORMALEDATEI} 2>/dev/null
+
+} | tee $0.protokoll
