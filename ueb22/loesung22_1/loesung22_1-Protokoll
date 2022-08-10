@@ -1,0 +1,26 @@
+
+
+
+
+
+
+
+./loesung22_1
+
+
+   Geben Sie die Distanz in Metern ein : 1000
+   Geben Sie die Zeitdauer in Sekunden ein : 10 
+   Geben Sie die Mass in Kilogramm ein : 1000
+
+   delta d: 1000.00m, delta t: 10.00s --> v: 100.00m/s
+
+   delta v: 100.00m/s, delta t: 10.00s --> a: 10.00m/sˆ2
+
+   m: 1000.00kg, v: 100.00m/s --> p: 100000.00Ns
+
+   v: 1000.00m/s, t: 10.00s, t0: 0.00s --> d: 1000.00m
+
+   v: 100.00m/s, v0: 0.00m/s, a: 10.00m/sˆs --> d: 500.00m
+
+   a: 10.00m/sˆs, t: 10.00s, t0: 0.00s, v0: 0.00m/s --> v: 100.00m/s
+   
