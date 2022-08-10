@@ -1,0 +1,179 @@
+------Start Producing and Consuming------
+I produced 62
+I consumed 62 and calculated the cross total 8.  I recorded the timestamp: 14
+I produced 597
+I consumed 597 and calculated the cross total 21.  I recorded the timestamp: 25
+I produced 966
+I produced 634
+I consumed 966 and calculated the cross total 21.  I recorded the timestamp: 25
+I produced 260
+I produced 208
+I consumed 634 and calculated the cross total 13.  I recorded the timestamp: 26
+I produced 451
+I consumed 260 and calculated the cross total 8.  I recorded the timestamp: 26
+I consumed 208 and calculated the cross total 10.  I recorded the timestamp: 26
+I produced 968
+I consumed 451 and calculated the cross total 10.  I recorded the timestamp: 26
+I produced 39
+I consumed 968 and calculated the cross total 23.  I recorded the timestamp: 26
+I consumed 39 and calculated the cross total 12.  I recorded the timestamp: 26
+I produced 90
+I consumed 90 and calculated the cross total 9.  I recorded the timestamp: 26
+I produced 823
+I produced 370
+I consumed 823 and calculated the cross total 13.  I recorded the timestamp: 27
+I consumed 370 and calculated the cross total 10.  I recorded the timestamp: 27
+I produced 535
+I consumed 535 and calculated the cross total 13.  I recorded the timestamp: 27
+I produced 834
+I consumed 834 and calculated the cross total 15.  I recorded the timestamp: 27
+I produced 472
+I produced 863
+I consumed 472 and calculated the cross total 13.  I recorded the timestamp: 27
+I produced 974
+I consumed 863 and calculated the cross total 17.  I recorded the timestamp: 27
+I consumed 974 and calculated the cross total 20.  I recorded the timestamp: 27
+I produced 992
+I consumed 992 and calculated the cross total 20.  I recorded the timestamp: 28
+I produced 520
+I consumed 520 and calculated the cross total 7.  I recorded the timestamp: 28
+I produced 252
+I produced 307
+I produced 478
+I consumed 252 and calculated the cross total 9.  I recorded the timestamp: 28
+I consumed 307 and calculated the cross total 10.  I recorded the timestamp: 28
+I produced 273
+I produced 149
+I consumed 478 and calculated the cross total 19.  I recorded the timestamp: 29
+I produced 943
+I produced 124
+I consumed 273 and calculated the cross total 12.  I recorded the timestamp: 29
+I consumed 149 and calculated the cross total 14.  I recorded the timestamp: 29
+I produced 946
+I consumed 943 and calculated the cross total 16.  I recorded the timestamp: 29
+I consumed 124 and calculated the cross total 7.  I recorded the timestamp: 29
+I consumed 946 and calculated the cross total 19.  I recorded the timestamp: 29
+I produced 650
+I produced 581
+I produced 80
+I produced 211
+I produced 138
+I consumed 650 and calculated the cross total 11.  I recorded the timestamp: 30
+I produced 170
+I consumed 581 and calculated the cross total 14.  I recorded the timestamp: 30
+I produced 567
+I produced 19
+I produced 85
+I produced 683
+I consumed 80 and calculated the cross total 8.  I recorded the timestamp: 30
+I consumed 211 and calculated the cross total 4.  I recorded the timestamp: 30
+I produced 287
+I produced 978
+I consumed 138 and calculated the cross total 12.  I recorded the timestamp: 30
+I consumed 170 and calculated the cross total 8.  I recorded the timestamp: 30
+I consumed 567 and calculated the cross total 18.  I recorded the timestamp: 30
+I produced 99
+I consumed 19 and calculated the cross total 10.  I recorded the timestamp: 31
+I consumed 85 and calculated the cross total 13.  I recorded the timestamp: 31
+I consumed 683 and calculated the cross total 17.  I recorded the timestamp: 31
+I consumed 287 and calculated the cross total 17.  I recorded the timestamp: 31
+I consumed 978 and calculated the cross total 24.  I recorded the timestamp: 31
+I consumed 99 and calculated the cross total 18.  I recorded the timestamp: 31
+I produced 96
+I produced 173
+I consumed 96 and calculated the cross total 15.  I recorded the timestamp: 31
+I consumed 173 and calculated the cross total 11.  I recorded the timestamp: 31
+I produced 701
+I produced 552
+I consumed 701 and calculated the cross total 8.  I recorded the timestamp: 31
+------Done------
+Here is the result:
+Used Basetime in Millis: 1655812504844
+Number of items that have not yet been consumed: 1
+The following items have not been consumed: 
+552, 
+
+18 different cross totals have been calculated
+
+The following cross totals have been calculated (ascending order):
+4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 
+
+The following cross totals have been calculated (descending order):
+24, 23, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 4, 
+
+Timestamps per result (ascending timestamp order):
+
+24 ==>> 31, 
+
+23 ==>> 26, 
+
+21 ==>> 25, 25, 
+
+20 ==>> 27, 28, 
+
+19 ==>> 29, 29, 
+
+18 ==>> 30, 31, 
+
+17 ==>> 27, 31, 31, 
+
+16 ==>> 29, 
+
+15 ==>> 27, 31, 
+
+14 ==>> 29, 30, 
+
+13 ==>> 26, 27, 27, 27, 31, 
+
+12 ==>> 26, 29, 30, 
+
+11 ==>> 30, 31, 
+
+10 ==>> 26, 26, 27, 28, 31, 
+
+9 ==>> 26, 28, 
+
+8 ==>> 14, 26, 30, 30, 31, 
+
+7 ==>> 28, 29, 
+
+4 ==>> 30, 
+
+Timestamps per result (descending timestamp order):
+
+24 ==>> 31, 
+
+23 ==>> 26, 
+
+21 ==>> 25, 25, 
+
+20 ==>> 28, 27, 
+
+19 ==>> 29, 29, 
+
+18 ==>> 31, 30, 
+
+17 ==>> 31, 31, 27, 
+
+16 ==>> 29, 
+
+15 ==>> 31, 27, 
+
+14 ==>> 30, 29, 
+
+13 ==>> 31, 27, 27, 27, 26, 
+
+12 ==>> 30, 29, 26, 
+
+11 ==>> 31, 30, 
+
+10 ==>> 31, 28, 27, 26, 26, 
+
+9 ==>> 28, 26, 
+
+8 ==>> 31, 30, 30, 26, 14, 
+
+7 ==>> 29, 28, 
+
+4 ==>> 30, 
+

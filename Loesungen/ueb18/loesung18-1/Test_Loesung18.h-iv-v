@@ -1,0 +1,72 @@
+				gib ---> 50
+				gib --->  9
+
+Im Lager :         Saarbruecken sind von    21 Lagerplaetzen    21  belegt, mit folgenden Artikeln : 
+
+	   0 	->  4064              buch7128      0    12,99 --->     Goethe    titel10        verlag40 
+	   1 	->  6219              buch9200      4    25,99 --->     Goethe    titel57        verlag69 
+	   2 	->  5730              buch3596      1    55,99 --->     Goethe     titel5        verlag44 
+	   3 	->  9042              buch3078      4    77,99 --->     Goethe    titel97         verlag3 
+	   4 	->  8000              buch6406      0    99,99 --->     Goethe    titel28         verlag0 
+	   5 	->  3589             video3131      7    42,50 --->              titel18      22,57  2000 
+	   6 	->  8760             video1718     31    92,25 --->              titel12      88,35  2000 
+	   7 	->  6277             video1915     77    86,22 --->               titel5      35,91  2000 
+	   8 	->  6557             video7543     53    98,80 --->              titel64      54,40  2000 
+	   9 	->  5189             video9969     64    92,33 --->              titel51      71,64  2000 
+	  10 	->  2385             video8781     28    70,81 --->              titel26      38,25  2000 
+	  11 	->  2061             video8325     23    48,97 --->               titel8      92,94  2000 
+	  12 	->  2698                cd3159     37    64,33 --->  interpret40              titel22     3 
+	  13 	->  8984                cd5704      8    84,15 --->  interpret74              titel38     8 
+	  14 	->  8466                cd2873     37    12,24 --->  interpret76              titel80     9 
+	  15 	->  3514              buch3078      3    48,59 --->    autor37    titel43        verlag42 
+	  16 	->  2851              buch9430      4    42,62 --->    autor54    titel91        verlag52 
+	  17 	->  2554              buch6183      2     8,49 --->     autor5    titel59        verlag61 
+	  18 	->  8181              buch7220      4    48,31 --->    autor68     titel1        verlag88 
+	  19 	->  7479              buch6865      1    30,24 --->    autor85     titel8        verlag50 
+	  20 	->  4378              buch9674      4    24,97 --->    autor29    titel84        verlag80 
+
+				gib ---> 58
+				gib --->  9
+
+Im Lager :         Saarbruecken sind von    21 Lagerplaetzen    21  belegt, mit folgenden Artikeln : 
+
+	   0 	->  4064              buch7128      0    12,34 --->     Goethe    titel10        verlag40 
+	   1 	->  6219              buch9200      4    25,99 --->     Goethe    titel57        verlag69 
+	   2 	->  5730              buch3596      1    53,19 --->     Goethe     titel5        verlag44 
+	   3 	->  9042              buch3078      4    77,99 --->     Goethe    titel97         verlag3 
+	   4 	->  8000              buch6406      0    94,99 --->     Goethe    titel28         verlag0 
+	   5 	->  3589             video3131      7    42,50 --->              titel18      22,57  2000 
+	   6 	->  8760             video1718     31    92,25 --->              titel12      88,35  2000 
+	   7 	->  6277             video1915     77    86,22 --->               titel5      35,91  2000 
+	   8 	->  6557             video7543     53    98,80 --->              titel64      54,40  2000 
+	   9 	->  5189             video9969     64    92,33 --->              titel51      71,64  2000 
+	  10 	->  2385             video8781     28    70,81 --->              titel26      38,25  2000 
+	  11 	->  2061             video8325     23    48,97 --->               titel8      92,94  2000 
+	  12 	->  2698                cd3159     37    70,76 --->  interpret40              titel22     3 
+	  13 	->  8984                cd5704      8    92,56 --->  interpret74              titel38     8 
+	  14 	->  8466                cd2873     37    13,47 --->  interpret76              titel80     9 
+	  15 	->  3514              buch3078      3    48,59 --->    autor37    titel43        verlag42 
+	  16 	->  2851              buch9430      4    42,62 --->    autor54    titel91        verlag52 
+	  17 	->  2554              buch6183      2     8,07 --->     autor5    titel59        verlag61 
+	  18 	->  8181              buch7220      4    48,31 --->    autor68     titel1        verlag88 
+	  19 	->  7479              buch6865      1    28,73 --->    autor85     titel8        verlag50 
+	  20 	->  4378              buch9674      4    24,97 --->    autor29    titel84        verlag80 
+
+				gib ---> 59
+ 6219              buch9200      4    25,99 --->     Goethe    titel57        verlag69 
+ 5730              buch3596      1    53,19 --->     Goethe     titel5        verlag44 
+ 9042              buch3078      4    77,99 --->     Goethe    titel97         verlag3 
+ 8000              buch6406      0    94,99 --->     Goethe    titel28         verlag0 
+ 4064              buch7128      0    12,34 --->     Goethe    titel10        verlag40 
+ 4378              buch9674      4    24,97 --->    autor29    titel84        verlag80 
+ 3514              buch3078      3    48,59 --->    autor37    titel43        verlag42 
+ 2554              buch6183      2     8,07 --->     autor5    titel59        verlag61 
+ 2851              buch9430      4    42,62 --->    autor54    titel91        verlag52 
+ 8181              buch7220      4    48,31 --->    autor68     titel1        verlag88 
+ 7479              buch6865      1    28,73 --->    autor85     titel8        verlag50 
+
+				gib ---> 99
+
+Weiterhin viel Spass bei der Arbeit !!!
+
+

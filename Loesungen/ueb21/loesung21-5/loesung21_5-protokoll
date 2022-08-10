@@ -1,0 +1,8 @@
+
+Vor  Funktionsaufruf --> Ubergabe-Parameter input = 1000
+
+	In Funktion Ubergabe-Parameter vor  Zuweisung = 1000
+	In Funktion Ubergabe-Parameter nach Zuweisung = 9999
+
+Nach Funktionsaufruf --> Ubergabe-Parameter input = 1000, Rueckgabe-Wert = 9999
+

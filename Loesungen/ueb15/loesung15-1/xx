@@ -1,0 +1,82 @@
+   /* vvvvvvvvvvvvvvvvvvvvv Erweiterungen fuer Aufgabe 16 */
+
+   interface PersonIterator extends java.util.Iterator<Person> {};
+
+   public class PersonItr implements PersonIterator 
+     {
+
+       private int nextIndex;
+       
+       public PersonItr()
+         {
+           nextIndex = 1;
+         }
+
+       public boolean hasNext() 
+         {
+           return (nextIndex  <= size() );
+         }
+   
+       public Person next() throws NoSuchElementException
+         {
+           Person nextPerson = get( nextIndex );
+           
+           nextIndex++;
+           return  nextPerson;
+         }
+     }
+
+
+   /** Die Queue auf dem Bildschirm ausgeben
+    *
+    *
+    *  @return void
+    */
+   public void print()
+     {
+       PersonIterator pIterator = this.new PersonItr();
+
+       System.out.println( "\nDer Inhalt der PersonenQueue :");
+       System.out.println( "------------------------------");
+       
+       while ( pIterator.hasNext() )
+         {
+           System.out.println( "\t" + pIterator.next() );
+         }
+      
+     }
+
+
+   /** Liefert den lexikalisch kleinsten Vornamen
+    *
+    *
+    *  @return void
+    */
+   public String smallest()
+     {
+       String kleinsterVorname, helfer;
+
+       PersonIterator pIterator = this.new PersonItr();
+       
+       if  ( pIterator.hasNext() )
+         {
+          kleinsterVorname =  pIterator.next().getVorname();
+          while ( pIterator.hasNext() )
+            {
+             helfer = pIterator.next().getVorname();
+             // hier waer auch compareToIgnoreCase() moeglich 
+             if ( helfer.compareTo( kleinsterVorname ) < 0 )
+               {
+                 kleinsterVorname = helfer;
+               }
+               System.out.println( "Kleinster = " + kleinsterVorname + "helfer = " + helfer );
+            }
+         }
+       else
+         {
+          kleinsterVorname = new String("Queue noch leer !!!");
+         }
+      return kleinsterVorname;
+     }
+
+}

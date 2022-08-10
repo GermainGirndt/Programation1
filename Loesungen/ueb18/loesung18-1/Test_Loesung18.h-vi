@@ -1,0 +1,40 @@
+				gib ---> 50
+				gib ---> 9
+
+Im Lager :         Saarbruecken sind von    21 Lagerplaetzen    21  belegt, mit folgenden Artikeln : 
+
+	   0 	->  6362              buch3044      0    12,99 --->     Goethe    titel94        verlag71 
+	   1 	->  4810               buch108      0    25,99 --->     Goethe    titel48        verlag92 
+	   2 	->  5364              buch4187      0    55,99 --->     Goethe     titel1        verlag11 
+	   3 	->  6233              buch8061      0    77,99 --->     Goethe    titel21        verlag13 
+	   4 	->  4156              buch5803      2    99,99 --->     Goethe    titel97        verlag45 
+	   5 	->  9278             video8400     97    10,27 --->              titel75      53,62  2000 
+	   6 	->  6574             video6730     41    59,94 --->              titel51      53,74  2000 
+	   7 	->  4534             video4355     17    69,69 --->              titel37      24,49  2000 
+	   8 	->  1888                cd1444      3    96,37 --->  interpret99              titel49    11 
+	   9 	->  4259                 cd152     33    88,13 --->  interpret59              titel41     8 
+	  10 	->  5605                cd5739     49    74,12 --->  interpret28              titel31     9 
+	  11 	->  3072                cd1546     28     5,95 --->  interpret21              titel91    10 
+	  12 	->  7063                cd5498     38    95,68 --->  interpret94              titel69    13 
+	  13 	->  7639                cd9962     28    12,02 --->  interpret68              titel62     5 
+	  14 	->  9335                cd9558      7    20,50 --->  interpret76              titel38     2 
+	  15 	->  8511                cd9535     41    88,51 --->  interpret46              titel12    18 
+	  16 	->  2956              buch7589      0    81,61 --->    autor26    titel58        verlag78 
+	  17 	->  2858              buch2448      3    49,39 --->    autor41    titel47         verlag0 
+	  18 	->  5720              buch7632      0    36,11 --->    autor32    titel92        verlag73 
+	  19 	->  2959              buch7042      1    54,50 --->    autor10    titel88        verlag62 
+	  20 	->  7523              buch7467      3    29,19 --->    autor34    titel37        verlag50 
+
+				gib --->60
+
+ Filterergebniss für : ist buch von Goethe Preis > 20 und < 80 
+
+ 4810               buch108      0    25,99 --->     Goethe    titel48        verlag92 
+ 5364              buch4187      0    55,99 --->     Goethe     titel1        verlag11 
+ 6233              buch8061      0    77,99 --->     Goethe    titel21        verlag13 
+
+				gib --->99
+
+Weiterhin viel Spass bei der Arbeit !!!
+
+

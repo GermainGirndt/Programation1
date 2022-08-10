@@ -1,0 +1,31 @@
+#!/usr/bin/ksh
+#
+# alles-test
+#
+#
+
+
+
+(
+
+     echo "ALLES-TEST - SUM - DIVIDE - SUBSTRACT - AVERAGE - SWIRL\n";
+
+     #      20 ==  Zusammenstellen des Tests
+     #          1 ==  Eine Operation
+     #             1,2,3,4,5 == sum swirl divide sub average
+     #                21 == Test durchfuehren
+     SUM="\n20\n1\n1\n21 "
+     SWIRL="\n20\n1\n2\n21 "
+     DIVIDE="\n20\n1\n3\n21 "
+     SUBSTRACT="\n20\n1\n4\n21 "
+     AVERAGE="\n20\n1\n5\n21 "
+ 
+     #        11 == Feste Zahlen
+     #            6 ==  Anzahl der Zahlen im Array
+     #                                                        99 == Programm beenden
+     echo -e "11\n6 $SUM $DIVIDE $SUBSTRACT $AVERAGE $SWIRL \n99" |\
+             java NumberCruncherTopLevelTest  |\
+             grep -e "Array-Inhalt" -e "Die Basis" -e "Das Ergebnis"
+     echo -e "\n\n"
+    
+) | tee  $0.protokoll

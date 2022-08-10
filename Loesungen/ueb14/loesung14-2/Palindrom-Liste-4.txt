@@ -1,0 +1,1167 @@
+	 adamritirmada == true 	bt(19712)
+	 adeheda == true 	bt(1219)
+	 adieuerfreueida == true 	bt(1115)
+	 aidanetztenadia == true 	bt(1039)
+	 alebananenanabela == true 	bt(1095)
+	 alebohnenhobela == true 	bt(1011)
+	 alenetztenela == true 	bt(994)
+	 amorbelebromamorebeleberoma == false 	bt(1008)
+	 anomarliegtgeilramona == true 	bt(1201)
+	 anderedna == true 	bt(894)
+	 anitabatina == true 	bt(981)
+	 anitabeisiebatina == true 	bt(1097)
+	 anahebehana == true 	bt(981)
+	 anahetztehana == true 	bt(985)
+	 animaglehrerhelgamina == true 	bt(1160)
+	 anirochcorina == true 	bt(1002)
+	 animeidediemina == true 	bt(1080)
+	 aveva == true 	bt(844)
+	 baselasalesab == true 	bt(1101)
+	 bauab == true 	bt(832)
+	 beiderednaredetederanderedieb == true 	bt(1406)
+	 bauduab == true 	bt(889)
+	 beiledabodobadelieb == true 	bt(1242)
+	 beilieseseilieb == true 	bt(1076)
+	 davidmliftetfilmdivad == true 	bt(1200)
+	 derfragtgarfred == true 	bt(1143)
+	 derfreibierfred == true 	bt(1134)
+	 dielidatutadileid == true 	bt(1136)
+	 dieliebeflehthelfebeileid == true 	bt(1347)
+	 dieliebegehthegebeileid == true 	bt(1287)
+	 dieliebeistsiebeileid == true 	bt(1346)
+	 dieliebeistsiegeregeistsiebeileid == true 	bt(1564)
+	 dieliebeistsiegerstetsregeistsiebeileid == true 	bt(1676)
+	 dieliebetotebeileid == true 	bt(1233)
+	 dielilatutalileid == true 	bt(1151)
+	 dieredeistsiedereid == true 	bt(1210)
+	 dirgiselamaleinadeinkajakniedanielamalesigrid == true 	bt(1835)
+	 draculasalucard == true 	bt(1111)
+	 drehmagiezetelumamuletezeigamherd == true 	bt(1536)
+	 drehmalamherd == true 	bt(1053)
+	 duerfrorfreud == true 	bt(1109)
+	 edurtrude == true 	bt(958)
+	 ehetumitelanenenaletimutehe == true 	bt(1374)
+	 eilamalie == true 	bt(1006)
+	 einagilerhitreiztsiegeistbiertrunknurtreibtsiegeistziertihreliganie == true 	bt(2366)
+	 einebereserebenie == true 	bt(1157)
+	 einebergrubrelativnahanmadamnahanvitalerburgrebenie == true 	bt(1981)
+	 einehelebenstetsnebelehenie == true 	bt(1472)
+	 eineisesesienie == true 	bt(1145)
+	 eineselesenie == true 	bt(1054)
+	 einexamenemaxenie == true 	bt(1147)
+	 eingolflognie == true 	bt(1076)
+	 einegermitfrustsurftimregenie == true 	bt(1454)
+	 einegermitgazelezagtimregenie == true 	bt(1418)
+	 einegermitregalagertimregenie == true 	bt(1451)
+	 einegermitseiliestimregenie == true 	bt(1423)
+	 einregalmitsirupuristimlagernie == true 	bt(1491)
+	 eineblasesalbenie == true 	bt(1171)
+	 einegansnagenie == true 	bt(1086)
+	 einehordebedrohenie == true 	bt(1200)
+	 einehureruhenie == true 	bt(1107)
+	 einenotebetonenie == true 	bt(1151)
+	 einesokesekosenie == true 	bt(1168)
+	 einetreuefamiliebeilimafeuertenie == true 	bt(1557)
+	 einemadamenie == true 	bt(1108)
+	 einhornrohnie == true 	bt(1065)
+	 einsnutztunsamoredieredereidadieredereideromasnutztunsnie == true 	bt(2135)
+	 einledergurtrugredelnie == true 	bt(1282)
+	 einsiameselesemaisnie == true 	bt(1340)
+	 eisfeileiwoeisfeiliefsieowieliefsie == true 	bt(1602)
+	 elietahateile == true 	bt(1044)
+	 elybisibyle == true 	bt(1032)
+	 emabehendnehebame == true 	bt(1169)
+	 emasolitilosame == true 	bt(1111)
+	 emasame == true 	bt(926)
+	 erhabenieinebahre == true 	bt(1243)
+	 erhortetrohre == true 	bt(1093)
+	 erikafeuertnuruntreuefakire == true 	bt(1425)
+	 erolrednieinderlore == true 	bt(1260)
+	 eseiltliese == true 	bt(1041)
+	 ethelflehte == true 	bt(994)
+	 geistsieg == true 	bt(947)
+	 gewebeweg == true 	bt(917)
+	 grasmitedaknieteinkadetimsarg == true 	bt(1444)
+	 grubneronieinorenburg == true 	bt(1270)
+	 hanesahasenah == true 	bt(1027)
+	 hegurugeh == true 	bt(938)
+	 heidegedieh == true 	bt(960)
+	 herminesiemagameisenimreh == true 	bt(1381)
+	 idawarimatlasabduludbasaltamirawadi == true 	bt(1574)
+	 ilonaliegtgeilanoli == true 	bt(1253)
+	 knabenienebeneinebank == true 	bt(1280)
+	 lageramtorederotmaregal == true 	bt(1280)
+	 lagerimkajakmiregal == true 	bt(1213)
+	 lambertstrebmal == true 	bt(1082)
+	 lebenknebel == true 	bt(1001)
+	 lebensiemitimeisnebel == true 	bt(1222)
+	 lebensiemitsiegreitsrunedeinezierseidiesreizeniedenurstiergeistimeisnebel == true 	bt(2454)
+	 lebohnedenhobel == true 	bt(1066)
+	 legeaneinebrandnarbenienaegel == true 	bt(1461)
+	 legineinesohelehosenienigel == true 	bt(1432)
+	 leogiblehrerhelbigoel == true 	bt(1259)
+	 leohortetrohoel == true 	bt(22705)
+	 leosparapsoel == true 	bt(1050)
+	 lesenesel == true 	bt(1010)
+	 liebnieinbeil == true 	bt(1097)
+	 liesetuguteseil == true 	bt(1159)
+	 linmiededeimnil == true 	bt(1115)
+	 markgrubneronebenorenburgkram == true 	bt(1481)
+	 murenieinerum == true 	bt(1059)
+	 nafakirpaprikafan == true 	bt(1803)
+	 nafreibierfan == true 	bt(1097)
+	 nagevegan == true 	bt(944)
+	 naivenegeregenevian == true 	bt(1216)
+	 nameneneman == true 	bt(963)
+	 nebelbeisiebleben == true 	bt(1123)
+	 nebelseidiesleben == true 	bt(1158)
+	 nebienediebeideneibenhastetsahnebienediebeideneiben == true 	bt(1996)
+	 nefenepenefen == true 	bt(1037)
+	 neinkananaknien == true 	bt(1038)
+	 netekorkroketen == true 	bt(1074)
+	 neterehereten == true 	bt(982)
+	 netereten == true 	bt(980)
+	 netereposopereten == true 	bt(1151)
+	 neuerdienstmagamtsneidreuen == true 	bt(1362)
+	 nierikafetefakirein == true 	bt(1165)
+	 niefragtsieistgefegtsieistgarfein == true 	bt(1596)
+	 niegrubramsesmarburgein == true 	bt(1617)
+	 nieknabeniegrubneronebenorenburgeinebankein == true 	bt(1795)
+	 nielegrapsnebenspargelein == true 	bt(1425)
+	 niereibtimonurbrunomitbierein == true 	bt(1426)
+	 niesetztesein == true 	bt(1098)
+	 niesolosein == true 	bt(1008)
+	 niewein == true 	bt(889)
+	 niewileliwein == true 	bt(1040)
+	 nurdieheidrun == true 	bt(997)
+	 nurdugudrun == true 	bt(972)
+	 ohcelovolecho == true 	bt(984)
+	 odurelativitalerudo == true 	bt(1172)
+	 ogeniederherehredeinego == true 	bt(1277)
+	 ogretanunatergo == true 	bt(1068)
+	 pepeintahitihatniepep == true 	bt(1179)
+	 pilsmitbiertreibtimslip == true 	bt(1412)
+	 puristsaftfastsirup == true 	bt(1177)
+	 ramonalagmatamgalanomar == true 	bt(1259)
+	 raseachcaesar == true 	bt(1009)
+	 regalmitsirupuristimlager == true 	bt(1317)
+	 reginewebeweniger == true 	bt(1142)
+	 regineweteweniger == true 	bt(1121)
+	 reibnieinbier == true 	bt(1008)
+	 reihseinieshier == true 	bt(1046)
+	 reitnieintier == true 	bt(983)
+	 reitniesoloseintier == true 	bt(1153)
+	 reitnietoteintier == true 	bt(1143)
+	 renatebitetibetaner == true 	bt(1183)
+	 retenebelrentnerlebeneter == true 	bt(1241)
+	 riafandednafair == true 	bt(1028)
+	 risotosir == true 	bt(899)
+	 risesir == true 	bt(829)
+	 saganitahatinagas == true 	bt(1086)
+	 seifeiniefies == true 	bt(1025)
+	 seifeiniemieseimeiniefies == true 	bt(1277)
+	 seifies == true 	bt(817)
+	 seifiestetseifies == true 	bt(1074)
+	 seiliebnebenbeilies == true 	bt(1112)
+	 seimeiniefieseifeiniemies == true 	bt(1270)
+	 sieseis == true 	bt(799)
+	 sienielagereregaleineis == true 	bt(1181)
+	 siereistbaldlabtsiereis == true 	bt(1231)
+	 siesototoseis == true 	bt(934)
+	 spartraps == true 	bt(840)
+	 spartstraps == true 	bt(961)
+	 siebeis == true 	bt(845)
+	 simonesahnebenelenebenhasenomis == true 	bt(1348)
+	 tarneniedeinenrat == true 	bt(1094)
+	 tarnenieinenrat == true 	bt(991)
+	 tarneniekeinenrat == true 	bt(1017)
+	 tarnenieleinenratratsherimratderleinenindustrie == false 	bt(749)
+	 tarneniemeinenrat == true 	bt(1024)
+	 tarnenieseinenrat == true 	bt(1025)
+	 tateuerknabenieinebankreuetat == true 	bt(1334)
+	 tontutnot == true 	bt(878)
+	 torlangiseinemadameniesignalrot == true 	bt(1423)
+	 trabtbart == true 	bt(922)
+	 treuarthurnieinruhtrauert == true 	bt(1233)
+	 trugtimeinesohelehoseniemitgurt == true 	bt(1403)
+	 tunknieanaeinknut == true 	bt(1022)
+	 tunknieinknieinknut == true 	bt(1104)
+	 tuerfreut == true 	bt(847)
+	 undnu == true 	bt(820)
+	 vitalernebelmitsinistimlebenrelativ == true 	bt(1506)
+	 woruhtanathurow == true 	bt(995)
+
+	 Berechnungszeiten = 
+				13,19712
+				7,1219
+				15,1115
+				15,1039
+				17,1095
+				15,1011
+				13,994
+				27,1008
+				21,1201
+				9,894
+				11,981
+				17,1097
+				11,981
+				13,985
+				21,1160
+				13,1002
+				15,1080
+				5,844
+				13,1101
+				5,832
+				29,1406
+				7,889
+				19,1242
+				15,1076
+				21,1200
+				15,1143
+				15,1134
+				17,1136
+				25,1347
+				23,1287
+				21,1346
+				33,1564
+				39,1676
+				19,1233
+				17,1151
+				19,1210
+				45,1835
+				15,1111
+				33,1536
+				13,1053
+				13,1109
+				9,958
+				27,1374
+				9,1006
+				67,2366
+				17,1157
+				51,1981
+				27,1472
+				15,1145
+				13,1054
+				17,1147
+				13,1076
+				29,1454
+				29,1418
+				29,1451
+				27,1423
+				31,1491
+				17,1171
+				15,1086
+				19,1200
+				15,1107
+				17,1151
+				17,1168
+				33,1557
+				13,1108
+				13,1065
+				57,2135
+				23,1282
+				21,1340
+				35,1602
+				13,1044
+				11,1032
+				17,1169
+				15,1111
+				7,926
+				17,1243
+				13,1093
+				27,1425
+				19,1260
+				11,1041
+				11,994
+				9,947
+				9,917
+				29,1444
+				21,1270
+				13,1027
+				9,938
+				11,960
+				25,1381
+				35,1574
+				19,1253
+				21,1280
+				23,1280
+				19,1213
+				15,1082
+				11,1001
+				21,1222
+				73,2454
+				15,1066
+				29,1461
+				27,1432
+				21,1259
+				15,22705
+				13,1050
+				9,1010
+				13,1097
+				15,1159
+				15,1115
+				29,1481
+				13,1059
+				17,1803
+				13,1097
+				9,944
+				19,1216
+				11,963
+				17,1123
+				17,1158
+				51,1996
+				13,1037
+				15,1038
+				15,1074
+				13,982
+				9,980
+				17,1151
+				27,1362
+				19,1165
+				33,1596
+				23,1617
+				43,1795
+				25,1425
+				29,1426
+				13,1098
+				11,1008
+				7,889
+				13,1040
+				13,997
+				11,972
+				13,984
+				19,1172
+				23,1277
+				15,1068
+				21,1179
+				23,1412
+				19,1177
+				23,1259
+				13,1009
+				25,1317
+				17,1142
+				17,1121
+				13,1008
+				15,1046
+				13,983
+				19,1153
+				17,1143
+				19,1183
+				25,1241
+				15,1028
+				9,899
+				7,829
+				17,1086
+				13,1025
+				25,1277
+				7,817
+				17,1074
+				19,1112
+				25,1270
+				7,799
+				23,1181
+				23,1231
+				13,934
+				9,840
+				11,961
+				7,845
+				31,1348
+				17,1094
+				15,991
+				17,1017
+				47,749
+				17,1024
+				17,1025
+				29,1334
+				9,878
+				31,1423
+				9,922
+				25,1233
+				31,1403
+				17,1022
+				19,1104
+				9,847
+				5,820
+				35,1506
+				15,995
+	 adamritirmada == true 	bt(11149)
+	 adeheda == true 	bt(2364)
+	 adieuerfreueida == true 	bt(6946)
+	 aidanetztenadia == true 	bt(3256)
+	 alebananenanabela == true 	bt(3452)
+	 alebohnenhobela == true 	bt(3252)
+	 alenetztenela == true 	bt(2596)
+	 amorbelebromamorebeleberoma == false 	bt(10229)
+	 anomarliegtgeilramona == true 	bt(19554)
+	 anderedna == true 	bt(2224)
+	 anitabatina == true 	bt(2643)
+	 anitabeisiebatina == true 	bt(3688)
+	 anahebehana == true 	bt(2363)
+	 anahetztehana == true 	bt(5663)
+	 animaglehrerhelgamina == true 	bt(4135)
+	 anirochcorina == true 	bt(2578)
+	 animeidediemina == true 	bt(3176)
+	 aveva == true 	bt(2315)
+	 baselasalesab == true 	bt(5592)
+	 bauab == true 	bt(1222)
+	 beiderednaredetederanderedieb == true 	bt(5311)
+	 bauduab == true 	bt(1950)
+	 beiledabodobadelieb == true 	bt(3732)
+	 beilieseseilieb == true 	bt(3086)
+	 davidmliftetfilmdivad == true 	bt(4055)
+	 derfragtgarfred == true 	bt(3678)
+	 derfreibierfred == true 	bt(3117)
+	 dielidatutadileid == true 	bt(4261)
+	 dieliebeflehthelfebeileid == true 	bt(4702)
+	 dieliebegehthegebeileid == true 	bt(4162)
+	 dieliebeistsiebeileid == true 	bt(11143)
+	 dieliebeistsiegeregeistsiebeileid == true 	bt(6744)
+	 dieliebeistsiegerstetsregeistsiebeileid == true 	bt(7020)
+	 dieliebetotebeileid == true 	bt(3616)
+	 dielilatutalileid == true 	bt(3427)
+	 dieredeistsiedereid == true 	bt(3463)
+	 dirgiselamaleinadeinkajakniedanielamalesigrid == true 	bt(12226)
+	 draculasalucard == true 	bt(18902)
+	 drehmagiezetelumamuletezeigamherd == true 	bt(20448)
+	 drehmalamherd == true 	bt(2926)
+	 duerfrorfreud == true 	bt(2891)
+	 edurtrude == true 	bt(2031)
+	 ehetumitelanenenaletimutehe == true 	bt(5580)
+	 eilamalie == true 	bt(2138)
+	 einagilerhitreiztsiegeistbiertrunknurtreibtsiegeistziertihreliganie == true 	bt(22998)
+	 einebereserebenie == true 	bt(3509)
+	 einebergrubrelativnahanmadamnahanvitalerburgrebenie == true 	bt(13057)
+	 einehelebenstetsnebelehenie == true 	bt(5815)
+	 eineisesesienie == true 	bt(3634)
+	 eineselesenie == true 	bt(2585)
+	 einexamenemaxenie == true 	bt(3161)
+	 eingolflognie == true 	bt(25899)
+	 einegermitfrustsurftimregenie == true 	bt(6785)
+	 einegermitgazelezagtimregenie == true 	bt(5993)
+	 einegermitregalagertimregenie == true 	bt(15795)
+	 einegermitseiliestimregenie == true 	bt(5311)
+	 einregalmitsirupuristimlagernie == true 	bt(11116)
+	 eineblasesalbenie == true 	bt(3586)
+	 einegansnagenie == true 	bt(10988)
+	 einehordebedrohenie == true 	bt(3930)
+	 einehureruhenie == true 	bt(11494)
+	 einenotebetonenie == true 	bt(4246)
+	 einesokesekosenie == true 	bt(3961)
+	 einetreuefamiliebeilimafeuertenie == true 	bt(14936)
+	 einemadamenie == true 	bt(2915)
+	 einhornrohnie == true 	bt(2866)
+	 einsnutztunsamoredieredereidadieredereideromasnutztunsnie == true 	bt(10860)
+	 einledergurtrugredelnie == true 	bt(5238)
+	 einsiameselesemaisnie == true 	bt(4186)
+	 eisfeileiwoeisfeiliefsieowieliefsie == true 	bt(9488)
+	 elietahateile == true 	bt(2857)
+	 elybisibyle == true 	bt(2440)
+	 emabehendnehebame == true 	bt(3479)
+	 emasolitilosame == true 	bt(4179)
+	 emasame == true 	bt(9931)
+	 erhabenieinebahre == true 	bt(3412)
+	 erhortetrohre == true 	bt(2722)
+	 erikafeuertnuruntreuefakire == true 	bt(16087)
+	 erolrednieinderlore == true 	bt(3786)
+	 eseiltliese == true 	bt(2538)
+	 ethelflehte == true 	bt(2205)
+	 geistsieg == true 	bt(11529)
+	 gewebeweg == true 	bt(2006)
+	 grasmitedaknieteinkadetimsarg == true 	bt(5405)
+	 grubneronieinorenburg == true 	bt(6964)
+	 hanesahasenah == true 	bt(2716)
+	 hegurugeh == true 	bt(10114)
+	 heidegedieh == true 	bt(2385)
+	 herminesiemagameisenimreh == true 	bt(9968)
+	 idawarimatlasabduludbasaltamirawadi == true 	bt(20170)
+	 ilonaliegtgeilanoli == true 	bt(12044)
+	 knabenienebeneinebank == true 	bt(4172)
+	 lageramtorederotmaregal == true 	bt(4683)
+	 lagerimkajakmiregal == true 	bt(6668)
+	 lambertstrebmal == true 	bt(4077)
+	 lebenknebel == true 	bt(2570)
+	 lebensiemitimeisnebel == true 	bt(4481)
+	 lebensiemitsiegreitsrunedeinezierseidiesreizeniedenurstiergeistimeisnebel == true 	bt(23154)
+	 lebohnedenhobel == true 	bt(3966)
+	 legeaneinebrandnarbenienaegel == true 	bt(5590)
+	 legineinesohelehosenienigel == true 	bt(6043)
+	 leogiblehrerhelbigoel == true 	bt(4172)
+	 leohortetrohoel == true 	bt(3044)
+	 leosparapsoel == true 	bt(2737)
+	 lesenesel == true 	bt(1900)
+	 liebnieinbeil == true 	bt(3350)
+	 liesetuguteseil == true 	bt(3165)
+	 linmiededeimnil == true 	bt(6254)
+	 markgrubneronebenorenburgkram == true 	bt(5594)
+	 murenieinerum == true 	bt(14352)
+	 nafakirpaprikafan == true 	bt(3430)
+	 nafreibierfan == true 	bt(2882)
+	 nagevegan == true 	bt(2658)
+	 naivenegeregenevian == true 	bt(9504)
+	 nameneneman == true 	bt(2322)
+	 nebelbeisiebleben == true 	bt(9770)
+	 nebelseidiesleben == true 	bt(3490)
+	 nebienediebeideneibenhastetsahnebienediebeideneiben == true 	bt(13516)
+	 nefenepenefen == true 	bt(3358)
+	 neinkananaknien == true 	bt(7385)
+	 netekorkroketen == true 	bt(3450)
+	 neterehereten == true 	bt(5120)
+	 netereten == true 	bt(1978)
+	 netereposopereten == true 	bt(8131)
+	 neuerdienstmagamtsneidreuen == true 	bt(5654)
+	 nierikafetefakirein == true 	bt(4599)
+	 niefragtsieistgefegtsieistgarfein == true 	bt(6445)
+	 niegrubramsesmarburgein == true 	bt(4478)
+	 nieknabeniegrubneronebenorenburgeinebankein == true 	bt(11047)
+	 nielegrapsnebenspargelein == true 	bt(5790)
+	 niereibtimonurbrunomitbierein == true 	bt(5601)
+	 niesetztesein == true 	bt(5511)
+	 niesolosein == true 	bt(2371)
+	 niewein == true 	bt(1660)
+	 niewileliwein == true 	bt(2825)
+	 nurdieheidrun == true 	bt(2660)
+	 nurdugudrun == true 	bt(2244)
+	 ohcelovolecho == true 	bt(5550)
+	 odurelativitalerudo == true 	bt(4479)
+	 ogeniederherehredeinego == true 	bt(4583)
+	 ogretanunatergo == true 	bt(3248)
+	 pepeintahitihatniepep == true 	bt(4126)
+	 pilsmitbiertreibtimslip == true 	bt(5222)
+	 puristsaftfastsirup == true 	bt(3806)
+	 ramonalagmatamgalanomar == true 	bt(7225)
+	 raseachcaesar == true 	bt(3293)
+	 regalmitsirupuristimlager == true 	bt(4889)
+	 reginewebeweniger == true 	bt(3257)
+	 regineweteweniger == true 	bt(3481)
+	 reibnieinbier == true 	bt(2696)
+	 reihseinieshier == true 	bt(2996)
+	 reitnieintier == true 	bt(3218)
+	 reitniesoloseintier == true 	bt(3639)
+	 reitnietoteintier == true 	bt(3282)
+	 renatebitetibetaner == true 	bt(3921)
+	 retenebelrentnerlebeneter == true 	bt(8571)
+	 riafandednafair == true 	bt(3113)
+	 risotosir == true 	bt(2029)
+	 risesir == true 	bt(1625)
+	 saganitahatinagas == true 	bt(4197)
+	 seifeiniefies == true 	bt(2794)
+	 seifeiniemieseimeiniefies == true 	bt(11312)
+	 seifies == true 	bt(1506)
+	 seifiestetseifies == true 	bt(3373)
+	 seiliebnebenbeilies == true 	bt(3757)
+	 seimeiniefieseifeiniemies == true 	bt(12510)
+	 sieseis == true 	bt(2365)
+	 sienielagereregaleineis == true 	bt(10226)
+	 siereistbaldlabtsiereis == true 	bt(10247)
+	 siesototoseis == true 	bt(2721)
+	 spartraps == true 	bt(2002)
+	 spartstraps == true 	bt(2358)
+	 siebeis == true 	bt(1670)
+	 simonesahnebenelenebenhasenomis == true 	bt(9447)
+	 tarneniedeinenrat == true 	bt(3333)
+	 tarnenieinenrat == true 	bt(2951)
+	 tarneniekeinenrat == true 	bt(6200)
+	 tarnenieleinenratratsherimratderleinenindustrie == false 	bt(403)
+	 tarneniemeinenrat == true 	bt(3657)
+	 tarnenieseinenrat == true 	bt(4264)
+	 tateuerknabenieinebankreuetat == true 	bt(5498)
+	 tontutnot == true 	bt(2410)
+	 torlangiseinemadameniesignalrot == true 	bt(8596)
+	 trabtbart == true 	bt(1961)
+	 treuarthurnieinruhtrauert == true 	bt(4802)
+	 trugtimeinesohelehoseniemitgurt == true 	bt(5784)
+	 tunknieanaeinknut == true 	bt(3297)
+	 tunknieinknieinknut == true 	bt(4293)
+	 tuerfreut == true 	bt(1938)
+	 undnu == true 	bt(1190)
+	 vitalernebelmitsinistimlebenrelativ == true 	bt(6581)
+	 woruhtanathurow == true 	bt(2875)
+
+	 Berechnungszeiten = 
+			13,11149
+			7,2364
+			15,6946
+			15,3256
+			17,3452
+			15,3252
+			13,2596
+			27,10229
+			21,19554
+			9,2224
+			11,2643
+			17,3688
+			11,2363
+			13,5663
+			21,4135
+			13,2578
+			15,3176
+			5,2315
+			13,5592
+			5,1222
+			29,5311
+			7,1950
+			19,3732
+			15,3086
+			21,4055
+			15,3678
+			15,3117
+			17,4261
+			25,4702
+			23,4162
+			21,11143
+			33,6744
+			39,7020
+			19,3616
+			17,3427
+			19,3463
+			45,12226
+			15,18902
+			33,20448
+			13,2926
+			13,2891
+			9,2031
+			27,5580
+			9,2138
+			67,22998
+			17,3509
+			51,13057
+			27,5815
+			15,3634
+			13,2585
+			17,3161
+			13,25899
+			29,6785
+			29,5993
+			29,15795
+			27,5311
+			31,11116
+			17,3586
+			15,10988
+			19,3930
+			15,11494
+			17,4246
+			17,3961
+			33,14936
+			13,2915
+			13,2866
+			57,10860
+			23,5238
+			21,4186
+			35,9488
+			13,2857
+			11,2440
+			17,3479
+			15,4179
+			7,9931
+			17,3412
+			13,2722
+			27,16087
+			19,3786
+			11,2538
+			11,2205
+			9,11529
+			9,2006
+			29,5405
+			21,6964
+			13,2716
+			9,10114
+			11,2385
+			25,9968
+			35,20170
+			19,12044
+			21,4172
+			23,4683
+			19,6668
+			15,4077
+			11,2570
+			21,4481
+			73,23154
+			15,3966
+			29,5590
+			27,6043
+			21,4172
+			15,3044
+			13,2737
+			9,1900
+			13,3350
+			15,3165
+			15,6254
+			29,5594
+			13,14352
+			17,3430
+			13,2882
+			9,2658
+			19,9504
+			11,2322
+			17,9770
+			17,3490
+			51,13516
+			13,3358
+			15,7385
+			15,3450
+			13,5120
+			9,1978
+			17,8131
+			27,5654
+			19,4599
+			33,6445
+			23,4478
+			43,11047
+			25,5790
+			29,5601
+			13,5511
+			11,2371
+			7,1660
+			13,2825
+			13,2660
+			11,2244
+			13,5550
+			19,4479
+			23,4583
+			15,3248
+			21,4126
+			23,5222
+			19,3806
+			23,7225
+			13,3293
+			25,4889
+			17,3257
+			17,3481
+			13,2696
+			15,2996
+			13,3218
+			19,3639
+			17,3282
+			19,3921
+			25,8571
+			15,3113
+			9,2029
+			7,1625
+			17,4197
+			13,2794
+			25,11312
+			7,1506
+			17,3373
+			19,3757
+			25,12510
+			7,2365
+			23,10226
+			23,10247
+			13,2721
+			9,2002
+			11,2358
+			7,1670
+			31,9447
+			17,3333
+			15,2951
+			17,6200
+			47,403
+			17,3657
+			17,4264
+			29,5498
+			9,2410
+			31,8596
+			9,1961
+			25,4802
+			31,5784
+			17,3297
+			19,4293
+			9,1938
+			5,1190
+			35,6581
+			15,2875
+	 adamritirmada == true 	bt(3611)
+	 adeheda == true 	bt(2486)
+	 adieuerfreueida == true 	bt(4460)
+	 aidanetztenadia == true 	bt(3540)
+	 alebananenanabela == true 	bt(3444)
+	 alebohnenhobela == true 	bt(3182)
+	 alenetztenela == true 	bt(5594)
+	 amorbelebromamorebeleberoma == false 	bt(2123)
+	 anomarliegtgeilramona == true 	bt(4303)
+	 anderedna == true 	bt(2200)
+	 anitabatina == true 	bt(2377)
+	 anitabeisiebatina == true 	bt(3918)
+	 anahebehana == true 	bt(2260)
+	 anahetztehana == true 	bt(2586)
+	 animaglehrerhelgamina == true 	bt(4044)
+	 anirochcorina == true 	bt(2868)
+	 animeidediemina == true 	bt(3133)
+	 aveva == true 	bt(1293)
+	 baselasalesab == true 	bt(2813)
+	 bauab == true 	bt(1299)
+	 beiderednaredetederanderedieb == true 	bt(6283)
+	 bauduab == true 	bt(1536)
+	 beiledabodobadelieb == true 	bt(4449)
+	 beilieseseilieb == true 	bt(3195)
+	 davidmliftetfilmdivad == true 	bt(4128)
+	 derfragtgarfred == true 	bt(3153)
+	 derfreibierfred == true 	bt(3030)
+	 dielidatutadileid == true 	bt(3334)
+	 dieliebeflehthelfebeileid == true 	bt(5391)
+	 dieliebegehthegebeileid == true 	bt(7520)
+	 dieliebeistsiebeileid == true 	bt(4799)
+	 dieliebeistsiegeregeistsiebeileid == true 	bt(6405)
+	 dieliebeistsiegerstetsregeistsiebeileid == true 	bt(12979)
+	 dieliebetotebeileid == true 	bt(3816)
+	 dielilatutalileid == true 	bt(3451)
+	 dieredeistsiedereid == true 	bt(7670)
+	 dirgiselamaleinadeinkajakniedanielamalesigrid == true 	bt(8467)
+	 draculasalucard == true 	bt(3428)
+	 drehmagiezetelumamuletezeigamherd == true 	bt(6167)
+	 drehmalamherd == true 	bt(2529)
+	 duerfrorfreud == true 	bt(2833)
+	 edurtrude == true 	bt(1976)
+	 ehetumitelanenenaletimutehe == true 	bt(5178)
+	 eilamalie == true 	bt(1932)
+	 einagilerhitreiztsiegeistbiertrunknurtreibtsiegeistziertihreliganie == true 	bt(16118)
+	 einebereserebenie == true 	bt(3319)
+	 einebergrubrelativnahanmadamnahanvitalerburgrebenie == true 	bt(10149)
+	 einehelebenstetsnebelehenie == true 	bt(6355)
+	 eineisesesienie == true 	bt(2915)
+	 eineselesenie == true 	bt(2583)
+	 einexamenemaxenie == true 	bt(3234)
+	 eingolflognie == true 	bt(4781)
+	 einegermitfrustsurftimregenie == true 	bt(5563)
+	 einegermitgazelezagtimregenie == true 	bt(6061)
+	 einegermitregalagertimregenie == true 	bt(5605)
+	 einegermitseiliestimregenie == true 	bt(5124)
+	 einregalmitsirupuristimlagernie == true 	bt(9207)
+	 eineblasesalbenie == true 	bt(3476)
+	 einegansnagenie == true 	bt(3539)
+	 einehordebedrohenie == true 	bt(3686)
+	 einehureruhenie == true 	bt(3180)
+	 einenotebetonenie == true 	bt(3451)
+	 einesokesekosenie == true 	bt(3533)
+	 einetreuefamiliebeilimafeuertenie == true 	bt(6330)
+	 einemadamenie == true 	bt(5606)
+	 einhornrohnie == true 	bt(2702)
+	 einsnutztunsamoredieredereidadieredereideromasnutztunsnie == true 	bt(10938)
+	 einledergurtrugredelnie == true 	bt(9023)
+	 einsiameselesemaisnie == true 	bt(4699)
+	 eisfeileiwoeisfeiliefsieowieliefsie == true 	bt(8925)
+	 elietahateile == true 	bt(2662)
+	 elybisibyle == true 	bt(2327)
+	 emabehendnehebame == true 	bt(3308)
+	 emasolitilosame == true 	bt(2944)
+	 emasame == true 	bt(1776)
+	 erhabenieinebahre == true 	bt(3118)
+	 erhortetrohre == true 	bt(3087)
+	 erikafeuertnuruntreuefakire == true 	bt(8344)
+	 erolrednieinderlore == true 	bt(3387)
+	 eseiltliese == true 	bt(1967)
+	 ethelflehte == true 	bt(1933)
+	 geistsieg == true 	bt(1835)
+	 gewebeweg == true 	bt(4095)
+	 grasmitedaknieteinkadetimsarg == true 	bt(5152)
+	 grubneronieinorenburg == true 	bt(3496)
+	 hanesahasenah == true 	bt(2778)
+	 hegurugeh == true 	bt(1769)
+	 heidegedieh == true 	bt(6714)
+	 herminesiemagameisenimreh == true 	bt(4208)
+	 idawarimatlasabduludbasaltamirawadi == true 	bt(8373)
+	 ilonaliegtgeilanoli == true 	bt(3795)
+	 knabenienebeneinebank == true 	bt(3588)
+	 lageramtorederotmaregal == true 	bt(3809)
+	 lagerimkajakmiregal == true 	bt(3269)
+	 lambertstrebmal == true 	bt(2597)
+	 lebenknebel == true 	bt(1955)
+	 lebensiemitimeisnebel == true 	bt(3527)
+	 lebensiemitsiegreitsrunedeinezierseidiesreizeniedenurstiergeistimeisnebel == true 	bt(14660)
+	 lebohnedenhobel == true 	bt(3140)
+	 legeaneinebrandnarbenienaegel == true 	bt(6802)
+	 legineinesohelehosenienigel == true 	bt(5024)
+	 leogiblehrerhelbigoel == true 	bt(3478)
+	 leohortetrohoel == true 	bt(2634)
+	 leosparapsoel == true 	bt(4744)
+	 lesenesel == true 	bt(1778)
+	 liebnieinbeil == true 	bt(2376)
+	 liesetuguteseil == true 	bt(2792)
+	 linmiededeimnil == true 	bt(2564)
+	 markgrubneronebenorenburgkram == true 	bt(5031)
+	 murenieinerum == true 	bt(2498)
+	 nafakirpaprikafan == true 	bt(2946)
+	 nafreibierfan == true 	bt(2443)
+	 nagevegan == true 	bt(11773)
+	 naivenegeregenevian == true 	bt(3166)
+	 nameneneman == true 	bt(10960)
+	 nebelbeisiebleben == true 	bt(3806)
+	 nebelseidiesleben == true 	bt(6404)
+	 nebienediebeideneibenhastetsahnebienediebeideneiben == true 	bt(8808)
+	 nefenepenefen == true 	bt(2661)
+	 neinkananaknien == true 	bt(2690)
+	 netekorkroketen == true 	bt(2676)
+	 neterehereten == true 	bt(2298)
+	 netereten == true 	bt(10974)
+	 netereposopereten == true 	bt(3372)
+	 neuerdienstmagamtsneidreuen == true 	bt(4771)
+	 nierikafetefakirein == true 	bt(3515)
+	 niefragtsieistgefegtsieistgarfein == true 	bt(13997)
+	 niegrubramsesmarburgein == true 	bt(7624)
+	 nieknabeniegrubneronebenorenburgeinebankein == true 	bt(23691)
+	 nielegrapsnebenspargelein == true 	bt(4238)
+	 niereibtimonurbrunomitbierein == true 	bt(16579)
+	 niesetztesein == true 	bt(2289)
+	 niesolosein == true 	bt(4599)
+	 niewein == true 	bt(1440)
+	 niewileliwein == true 	bt(2359)
+	 nurdieheidrun == true 	bt(2246)
+	 nurdugudrun == true 	bt(7028)
+	 ohcelovolecho == true 	bt(2284)
+	 odurelativitalerudo == true 	bt(5000)
+	 ogeniederherehredeinego == true 	bt(3755)
+	 ogretanunatergo == true 	bt(3516)
+	 pepeintahitihatniepep == true 	bt(4094)
+	 pilsmitbiertreibtimslip == true 	bt(3912)
+	 puristsaftfastsirup == true 	bt(3369)
+	 ramonalagmatamgalanomar == true 	bt(3811)
+	 raseachcaesar == true 	bt(2497)
+	 regalmitsirupuristimlager == true 	bt(4917)
+	 reginewebeweniger == true 	bt(2854)
+	 regineweteweniger == true 	bt(2841)
+	 reibnieinbier == true 	bt(2406)
+	 reihseinieshier == true 	bt(4571)
+	 reitnieintier == true 	bt(2296)
+	 reitniesoloseintier == true 	bt(3195)
+	 reitnietoteintier == true 	bt(2932)
+	 renatebitetibetaner == true 	bt(4099)
+	 retenebelrentnerlebeneter == true 	bt(6867)
+	 riafandednafair == true 	bt(2802)
+	 risotosir == true 	bt(1709)
+	 risesir == true 	bt(1413)
+	 saganitahatinagas == true 	bt(3227)
+	 seifeiniefies == true 	bt(2528)
+	 seifeiniemieseimeiniefies == true 	bt(16827)
+	 seifies == true 	bt(997)
+	 seifiestetseifies == true 	bt(1788)
+	 seiliebnebenbeilies == true 	bt(1941)
+	 seimeiniefieseifeiniemies == true 	bt(2455)
+	 sieseis == true 	bt(957)
+	 sienielagereregaleineis == true 	bt(2343)
+	 siereistbaldlabtsiereis == true 	bt(2744)
+	 siesototoseis == true 	bt(3810)
+	 spartraps == true 	bt(1007)
+	 spartstraps == true 	bt(1293)
+	 siebeis == true 	bt(802)
+	 simonesahnebenelenebenhasenomis == true 	bt(3560)
+	 tarneniedeinenrat == true 	bt(1793)
+	 tarnenieinenrat == true 	bt(1572)
+	 tarneniekeinenrat == true 	bt(1730)
+	 tarnenieleinenratratsherimratderleinenindustrie == false 	bt(239)
+	 tarneniemeinenrat == true 	bt(4612)
+	 tarnenieseinenrat == true 	bt(1730)
+	 tateuerknabenieinebankreuetat == true 	bt(2797)
+	 tontutnot == true 	bt(1045)
+	 torlangiseinemadameniesignalrot == true 	bt(2959)
+	 trabtbart == true 	bt(996)
+	 treuarthurnieinruhtrauert == true 	bt(2389)
+	 trugtimeinesohelehoseniemitgurt == true 	bt(5565)
+	 tunknieanaeinknut == true 	bt(1646)
+	 tunknieinknieinknut == true 	bt(1917)
+	 tuerfreut == true 	bt(3535)
+	 undnu == true 	bt(738)
+	 vitalernebelmitsinistimlebenrelativ == true 	bt(3580)
+	 woruhtanathurow == true 	bt(1537)
+
+	 Berechnungszeiten = 
+			13,3611
+			7,2486
+			15,4460
+			15,3540
+			17,3444
+			15,3182
+			13,5594
+			27,2123
+			21,4303
+			9,2200
+			11,2377
+			17,3918
+			11,2260
+			13,2586
+			21,4044
+			13,2868
+			15,3133
+			5,1293
+			13,2813
+			5,1299
+			29,6283
+			7,1536
+			19,4449
+			15,3195
+			21,4128
+			15,3153
+			15,3030
+			17,3334
+			25,5391
+			23,7520
+			21,4799
+			33,6405
+			39,12979
+			19,3816
+			17,3451
+			19,7670
+			45,8467
+			15,3428
+			33,6167
+			13,2529
+			13,2833
+			9,1976
+			27,5178
+			9,1932
+			67,16118
+			17,3319
+			51,10149
+			27,6355
+			15,2915
+			13,2583
+			17,3234
+			13,4781
+			29,5563
+			29,6061
+			29,5605
+			27,5124
+			31,9207
+			17,3476
+			15,3539
+			19,3686
+			15,3180
+			17,3451
+			17,3533
+			33,6330
+			13,5606
+			13,2702
+			57,10938
+			23,9023
+			21,4699
+			35,8925
+			13,2662
+			11,2327
+			17,3308
+			15,2944
+			7,1776
+			17,3118
+			13,3087
+			27,8344
+			19,3387
+			11,1967
+			11,1933
+			9,1835
+			9,4095
+			29,5152
+			21,3496
+			13,2778
+			9,1769
+			11,6714
+			25,4208
+			35,8373
+			19,3795
+			21,3588
+			23,3809
+			19,3269
+			15,2597
+			11,1955
+			21,3527
+			73,14660
+			15,3140
+			29,6802
+			27,5024
+			21,3478
+			15,2634
+			13,4744
+			9,1778
+			13,2376
+			15,2792
+			15,2564
+			29,5031
+			13,2498
+			17,2946
+			13,2443
+			9,11773
+			19,3166
+			11,10960
+			17,3806
+			17,6404
+			51,8808
+			13,2661
+			15,2690
+			15,2676
+			13,2298
+			9,10974
+			17,3372
+			27,4771
+			19,3515
+			33,13997
+			23,7624
+			43,23691
+			25,4238
+			29,16579
+			13,2289
+			11,4599
+			7,1440
+			13,2359
+			13,2246
+			11,7028
+			13,2284
+			19,5000
+			23,3755
+			15,3516
+			21,4094
+			23,3912
+			19,3369
+			23,3811
+			13,2497
+			25,4917
+			17,2854
+			17,2841
+			13,2406
+			15,4571
+			13,2296
+			19,3195
+			17,2932
+			19,4099
+			25,6867
+			15,2802
+			9,1709
+			7,1413
+			17,3227
+			13,2528
+			25,16827
+			7,997
+			17,1788
+			19,1941
+			25,2455
+			7,957
+			23,2343
+			23,2744
+			13,3810
+			9,1007
+			11,1293
+			7,802
+			31,3560
+			17,1793
+			15,1572
+			17,1730
+			47,239
+			17,4612
+			17,1730
+			29,2797
+			9,1045
+			31,2959
+			9,996
+			25,2389
+			31,5565
+			17,1646
+			19,1917
+			9,3535
+			5,738
+			35,3580
+			15,1537
+
+
+	 Die Dateiverarbeitung dauerte : 55572016 ns
+
+
+
+
+	 Ende 
+

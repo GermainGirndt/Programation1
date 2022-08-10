@@ -1,0 +1,9 @@
+// so realisiert:
+//                 public class FakultaetTopLevel implements MyFunction
+//                 {
+//                    public int apply(int x)
+//                  ....
+//
+// nun OHNE implements und Methoden-Name apply möglich !!!!!!!!
+// applyAndPrint-Aufruf mit einer Objekt-Methoden-Referenz möglich
+//

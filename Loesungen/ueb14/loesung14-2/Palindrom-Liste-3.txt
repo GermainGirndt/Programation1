@@ -1,0 +1,147 @@
+	 beilieseseilieb == true 	bt(20089)
+	 derfragtgarfred == true 	bt(1572)
+	 woruhtanathurow == true 	bt(1157)
+	 derfreibierfred == true 	bt(1099)
+	 dielidatutadileid == true 	bt(1193)
+	 davidmliftetfilmdivad == true 	bt(1297)
+	 dieliebeistsiebeileid == true 	bt(1216)
+	 dieliebegehthegebeileid == true 	bt(1268)
+	 dieliebeflehthelfebeileid == true 	bt(1346)
+	 markgrubneronebenorenburgkram == true 	bt(1506)
+	 niefragtsieistgefegtsieistgarfein == true 	bt(1591)
+	 simonesahnebenelenebenhasenomis == true 	bt(1555)
+	 tateuerknabenieinebankreuetat == true 	bt(1590)
+	 torlangiseinemadameniesignalrot == true 	bt(1524)
+	 vitalernebelmitsinistimlebenrelativ == true 	bt(1668)
+	 dieliebeistsiegeregeistsiebeileid == true 	bt(1592)
+	 dieliebeistsiegerstetsregeistsiebeileid == true 	bt(1714)
+	 nieknabeniegrubneronebenorenburgeinebankein == true 	bt(1811)
+	 nebienediebeideneibenhastetsahnebienediebeideneiben == true 	bt(2048)
+	 einebergrubrelativnahanmadamnahanvitalerburgrebenie == true 	bt(2043)
+	 einagilerhitreiztsiegeistbiertrunknurtreibtsiegeistziertihreliganie == true 	bt(2768)
+	 lebensiemitsiegreitsrunedeinezierseidiesreizeniedenurstiergeistimeisnebel == true 	bt(2528)
+
+	 Berechnungszeiten = 
+				15,20089
+				15,1572
+				15,1157
+				15,1099
+				17,1193
+				21,1297
+				21,1216
+				23,1268
+				25,1346
+				29,1506
+				33,1591
+				31,1555
+				29,1590
+				31,1524
+				35,1668
+				33,1592
+				39,1714
+				43,1811
+				51,2048
+				51,2043
+				67,2768
+				73,2528
+	 beilieseseilieb == true 	bt(51474)
+	 derfragtgarfred == true 	bt(2891)
+	 woruhtanathurow == true 	bt(7269)
+	 derfreibierfred == true 	bt(350599)
+	 dielidatutadileid == true 	bt(13337)
+	 davidmliftetfilmdivad == true 	bt(3178)
+	 dieliebeistsiebeileid == true 	bt(3044)
+	 dieliebegehthegebeileid == true 	bt(3343)
+	 dieliebeflehthelfebeileid == true 	bt(9387)
+	 markgrubneronebenorenburgkram == true 	bt(4048)
+	 niefragtsieistgefegtsieistgarfein == true 	bt(4954)
+	 simonesahnebenelenebenhasenomis == true 	bt(9683)
+	 tateuerknabenieinebankreuetat == true 	bt(4275)
+	 torlangiseinemadameniesignalrot == true 	bt(4556)
+	 vitalernebelmitsinistimlebenrelativ == true 	bt(13258)
+	 dieliebeistsiegeregeistsiebeileid == true 	bt(4621)
+	 dieliebeistsiegerstetsregeistsiebeileid == true 	bt(5450)
+	 nieknabeniegrubneronebenorenburgeinebankein == true 	bt(24607)
+	 nebienediebeideneibenhastetsahnebienediebeideneiben == true 	bt(15093)
+	 einebergrubrelativnahanmadamnahanvitalerburgrebenie == true 	bt(22892)
+	 einagilerhitreiztsiegeistbiertrunknurtreibtsiegeistziertihreliganie == true 	bt(20423)
+	 lebensiemitsiegreitsrunedeinezierseidiesreizeniedenurstiergeistimeisnebel == true 	bt(17001)
+
+	 Berechnungszeiten = 
+			15,51474
+			15,2891
+			15,7269
+			15,350599
+			17,13337
+			21,3178
+			21,3044
+			23,3343
+			25,9387
+			29,4048
+			33,4954
+			31,9683
+			29,4275
+			31,4556
+			35,13258
+			33,4621
+			39,5450
+			43,24607
+			51,15093
+			51,22892
+			67,20423
+			73,17001
+	 beilieseseilieb == true 	bt(3022)
+	 derfragtgarfred == true 	bt(10130)
+	 woruhtanathurow == true 	bt(935)
+	 derfreibierfred == true 	bt(842)
+	 dielidatutadileid == true 	bt(895)
+	 davidmliftetfilmdivad == true 	bt(5374)
+	 dieliebeistsiebeileid == true 	bt(4855)
+	 dieliebegehthegebeileid == true 	bt(11134)
+	 dieliebeflehthelfebeileid == true 	bt(1676)
+	 markgrubneronebenorenburgkram == true 	bt(1350)
+	 niefragtsieistgefegtsieistgarfein == true 	bt(5579)
+	 simonesahnebenelenebenhasenomis == true 	bt(1331)
+	 tateuerknabenieinebankreuetat == true 	bt(1284)
+	 torlangiseinemadameniesignalrot == true 	bt(1344)
+	 vitalernebelmitsinistimlebenrelativ == true 	bt(1526)
+	 dieliebeistsiegeregeistsiebeileid == true 	bt(1535)
+	 dieliebeistsiegerstetsregeistsiebeileid == true 	bt(15281)
+	 nieknabeniegrubneronebenorenburgeinebankein == true 	bt(1928)
+	 nebienediebeideneibenhastetsahnebienediebeideneiben == true 	bt(10325)
+	 einebergrubrelativnahanmadamnahanvitalerburgrebenie == true 	bt(2268)
+	 einagilerhitreiztsiegeistbiertrunknurtreibtsiegeistziertihreliganie == true 	bt(8790)
+	 lebensiemitsiegreitsrunedeinezierseidiesreizeniedenurstiergeistimeisnebel == true 	bt(8814)
+
+	 Berechnungszeiten = 
+			15,3022
+			15,10130
+			15,935
+			15,842
+			17,895
+			21,5374
+			21,4855
+			23,11134
+			25,1676
+			29,1350
+			33,5579
+			31,1331
+			29,1284
+			31,1344
+			35,1526
+			33,1535
+			39,15281
+			43,1928
+			51,10325
+			51,2268
+			67,8790
+			73,8814
+
+
+	 Die Dateiverarbeitung dauerte : 43665369 ns
+
+
+
+
+	 Ende 
+

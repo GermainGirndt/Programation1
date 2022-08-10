@@ -1,0 +1,114 @@
+<limits.h>(0P)                          POSIX Programmer's Manual                          <limits.h>(0P)
+
+
+
+NAME
+       limits.h - implementation-defined constants
+
+SYNOPSIS
+       #include <limits.h>
+
+DESCRIPTION
+......
+
+   Numerical Limits
+       The values in the following lists shall be defined in  <limits.h>  and  are  constant  expressions
+       suitable  for  use  in  #if  preprocessing directives. Moreover, except for {CHAR_BIT}, {DBL_DIG},
+       {DBL_MAX}, {FLT_DIG}, {FLT_MAX}, {LONG_BIT}, {WORD_BIT},  and {MB_LEN_MAX}, the symbolic names are
+       defined as expressions of the correct type.
+
+       If  the value of an object of type char is treated as a signed integer when used in an expression,
+       the value of {CHAR_MIN} is the same as that of {SCHAR_MIN} and the value of {CHAR_MAX} is the same
+       as that of {SCHAR_MAX}. Otherwise, the value of {CHAR_MIN} is 0 and the value of {CHAR_MAX} is the
+       same as that of {UCHAR_MAX}.
+
+       {CHAR_BIT}
+              Number of bits in a type char.
+              Value: 8
+
+       {CHAR_MAX}
+              Maximum value of type char.
+              Value: {UCHAR_MAX} or {SCHAR_MAX}
+
+       {CHAR_MIN}
+              Minimum value of type char.
+              Value: {SCHAR_MIN} or 0
+
+       {INT_MAX}
+              Maximum value of an int.
+              Minimum Acceptable Value: 2 147 483 647
+
+       {LONG_BIT}
+
+              Number of bits in a long.
+              Minimum Acceptable Value: 32
+
+       {LONG_MAX}
+              Maximum value of a long.
+              Minimum Acceptable Value: +2 147 483 647
+
+       {MB_LEN_MAX}
+              Maximum number of bytes in a character, for any supported locale.
+              Minimum Acceptable Value: 1
+
+       {SCHAR_MAX}
+              Maximum value of type signed char.
+              Value: +127
+
+       {SHRT_MAX}
+              Maximum value of type short.
+              Minimum Acceptable Value: +32 767
+
+       {SSIZE_MAX}
+              Maximum value of an object of type ssize_t.
+              Minimum Acceptable Value: {_POSIX_SSIZE_MAX}
+
+       {UCHAR_MAX}
+              Maximum value of type unsigned char.
+              Value: 255
+
+       {UINT_MAX}
+              Maximum value of type unsigned.
+              Minimum Acceptable Value: 4 294 967 295
+
+       {ULONG_MAX}
+              Maximum value of type unsigned long.
+              Minimum Acceptable Value: 4 294 967 295
+
+       {USHRT_MAX}
+              Maximum value for a type unsigned short.
+              Minimum Acceptable Value: 65 535
+
+       {WORD_BIT}
+
+              Number of bits in a word or type int.
+              Minimum Acceptable Value: 16
+
+       {INT_MIN}
+              Minimum value of type int.
+              Maximum Acceptable Value: -2 147 483 647
+
+       {LONG_MIN}
+              Minimum value of type long.
+              Maximum Acceptable Value: -2 147 483 647
+
+       {SCHAR_MIN}
+              Minimum value of type signed char.
+              Value: -128
+
+       {SHRT_MIN}
+              Minimum value of type short.
+              Maximum Acceptable Value: -32 767
+
+       {LLONG_MIN}
+              Minimum value of type long long.
+              Maximum Acceptable Value: -9223372036854775807
+
+       {LLONG_MAX}
+              Maximum value of type long long.
+              Minimum Acceptable Value: +9223372036854775807
+
+       {ULLONG_MAX}
+              Maximum value of type unsigned long long.
+              Minimum Acceptable Value: 18446744073709551615
+

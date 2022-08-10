@@ -1,0 +1,35 @@
+#!/usr/bin/ksh
+#
+# einzeln-test
+#
+#
+
+       # 11 == Feste Zahlen
+       #     6 ==  Anzahl der Zahlen im Array
+       #        20 ==  Zusammenstellen des Tests
+       #            1 ==  Eine Operation
+       #               1,2,3,4,5 == sum swirl divide sub average
+       #                  21 == Test durchfuehren
+       #                      99 == Programm beenden
+TEST[1]="SUM"
+TEST[2]="11\n6\n20\n1\n1\n21\n99"
+TEST[3]="SWIRL"
+TEST[4]="11\n6\n20\n1\n2\n21\n99"
+TEST[5]="DIVIDE"
+TEST[6]="11\n6\n20\n1\n3\n21\n99"
+TEST[7]="SUBSTRACT"
+TEST[8]="11\n6\n20\n1\n4\n21\n99"
+TEST[9]="AVERAGE"
+TEST[10]="11\n6\n20\n1\n5\n21\n99"
+
+LAUF=1
+while (( LAUF < 11 ))
+   do
+     echo -e "${TEST[$LAUF]}\n";
+     (( LAUF+=1 ))
+     echo -e "${TEST[$LAUF]}" | \
+           java NumberCruncherAnonymTest  |\
+           grep "Array-Inhalt";
+     echo -e "\n\n";
+     (( LAUF+=1 ))
+  done | tee  $0.protokoll

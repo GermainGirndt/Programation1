@@ -1,0 +1,101 @@
+
+
+  //------------------ applyToSomeArticles  --------------------------------------
+  /**
+   * wendet eine übergebene Operation auf alle Artikel, welche ein Filterkriterium erfüllen an
+   *
+   * @param f - ein Prädikat-Objekt, welches das Filterkriterium implementiert
+   * @param c - ein Consumer der die auf die Artikel anzuwendende Operation implementiert
+   */
+  public void applyToSomeArticles(Predicate<Artikel> f, Consumer<Artikel> c)
+    {
+      for ( Artikel a : filter(f) )
+        {
+          c.accept(a);
+        }
+    }
+
+
+  //------------------ filter  --------------------------------------
+  /**
+   * Filtert die Artikel im Lager nach einem an die Methode übergebenen Filterkriterium. 
+   * 
+   * @param filterKrit - ein Prädikat-Objekt, welches das Filterkriterium implementiert
+   * @return eine Liste alle Artikel im Lager, die das Filterkriterium erfüllen. 
+   */
+  public List<Artikel> filter(Predicate<Artikel> filterKrit)
+    {
+      List<Artikel> result = new ArrayList<Artikel>();
+
+      for (int i=0; i<lager.length; i++)
+         {
+           if ( filterKrit.test(lager[i]) )
+	     {
+               result.add(lager[i]);
+	     }
+         }
+      return result; 
+    }
+
+
+
+//AUFRUFE vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+
+
+	/**
+	 * Loest die Aufgabe (h) i.
+	 * <br />
+	 * Der Preis aller CD wird um 10 % erhoeht.
+	 * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
+	 */
+	public void aufgabe_h_i(Lager lager) 
+        {
+           lager.applyToSomeArticles(
+                 a -> a instanceof CD, 
+                 a -> a.aenderePreis(10)
+           );
+	}
+
+
+
+	/**
+	 * Loest die Aufgabe (h) ii.
+	 * <br />
+	 * Der Preis aller Artikel, von denen der Bestand hoechstes zwei ist, wird um 5 % reduziert.
+	 * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
+	 */
+	public void aufgabe_h_ii(Lager lager) 
+        {
+           lager.applyToSomeArticles(
+                 a -> a.getBestand() <= 2, 
+                 a -> a.aenderePreis(-5)
+           );
+	}
+
+
+
+	/**
+	 * Loest die Aufgabe (h) iii.
+	 * <br />
+	 * Der Preis der Buecher eines bestimmten Autors wird um 5 % reduziert.
+	 * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
+	 * @param gesuchterAutor Der Autor, dessen Buecher guenstiger werden sollen.
+	 */
+	public void aufgabe_h_iii(Lager lager, String gesuchterAutor) 
+        {
+           Predicate<Artikel> filterAuthor = 
+                                    a -> {
+                                            if (a instanceof Buch)
+                                              {
+                                               if( ((Buch) a).getAutor().equals(gesuchterAutor) )
+                                                  return true;
+                                              }
+                                            return false;
+                                         };
+
+           lager.applyToSomeArticles(
+                            filterAuthor, 
+                            a -> a.aenderePreis(-5)
+           );
+	}

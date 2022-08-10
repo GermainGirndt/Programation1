@@ -1,0 +1,13 @@
+
+
+Geben Sie den Nettopreis der Rechung ein :  100
+
+
+	Nettopreis		Euro   100.00
+	+ 20% MwSt		Euro    20.00
+	=======================================
+	Bruttopreis		Euro   120.00
+	- 2% Skonto		Euro     2.40
+	=======================================
+	Rechnungsbetrag		Euro   117.60
+

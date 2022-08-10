@@ -1,0 +1,60 @@
+  
+  //------------------ applyToArticles  --------------------------------------
+  /**
+   * wendet eine übergebene Operation auf alle Artikel im Lager an 
+   * 
+   * @param consum - ein Consumer der die auf die Artikel anzuwendende Operation implementiert
+   */
+  public void applyToArticles(Consumer<Artikel> consum)
+    {
+      for (int i=0; i<lager.length; i++)
+         {
+          consum.accept(lager[i]); 
+         }
+    }
+
+
+//AUFRUFE vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+
+
+	/**
+	 * Loest die Aufgabe (h) iv.
+	 * <br />
+	 * Der Preis aller CD wird um 10 % erhoeht und der Preis aller Artikel, von denen der Bestand hoechstes zwei ist, wird um 5 % reduziert.
+	 * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
+	 */
+	public void aufgabe_h_iv(Lager lager) 
+        {
+           lager.applyToArticles(
+                            a -> {
+                                   if ( a instanceof CD)
+                                     {
+                                       a.aenderePreis(10);
+                                     }
+
+                                   if ( a.getBestand() <= 2 )
+                                     {
+                                       a.aenderePreis(-5);
+                                     }
+                                 }
+           );
+
+         //18_h_iv Alternative
+         /*
+           Consumer<Artikel> l1 = a -> {
+                                         if (a.instanceof CD)
+                                           {
+                                             a.aenderePreis(10);
+                                           }
+                                       };
+           Consumer<Artikel> l2 = a -> {
+                                         if (filterAuthor.test(a))
+                                           {
+                                             a.aenderePreis(-5);
+                                           }
+                                       };
+
+           lager.applyToArticles(l1.andThen(l2));
+         */
+	}

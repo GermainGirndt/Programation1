@@ -1,0 +1,42 @@
+
+  //------------------ getArticles  --------------------------------------
+  /**
+   * liefert eine sortierte Liste der Artikel, die ein gegebenes Filterkriterium erfüllen
+   *
+   * @param f - ein Prädikat-Objekt, welches das Filterkriterium implementiert
+   * @param c - ein Prädikat-Objekt, welches das Sortierkriterium implementiert
+   * @return eine sortierte Liste der gefilterten Artikel
+   */
+  public Artikel[] getArticles(Predicate<Artikel> f, BiPredicate<Artikel, Artikel> c)
+    {
+      List<Artikel> filtered = filter(f);
+
+      Artikel[] result = filtered.toArray(new Artikel[filtered.size()]);
+
+      sort(c, result);
+
+      return result;
+    }
+
+
+
+//AUFRUFE vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+
+
+
+	/**
+	 * Loest die Aufgabe (h) v.
+	 * <br />
+	 * @param lager Das Lager mit den Artikeln. 
+	 * @return Eine Liste mit allen Buechern, sortiert nach den Namen der Autoren. 
+	 */
+	public Artikel[] aufgabe_h_v(Lager lager) 
+        {
+           Artikel[] result = 
+                     lager.getArticles(
+                           a      -> a instanceof Buch,
+                           (a, b) -> ((Buch)a).getAutor().compareTo(((Buch)b).getAutor()) >= 0 ? true: false
+                     );
+           return result;
+	}

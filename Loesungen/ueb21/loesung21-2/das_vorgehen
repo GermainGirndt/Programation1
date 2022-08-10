@@ -1,0 +1,66 @@
+#
+#
+#  das_vorgehen
+#
+#  wenn die c/c++ Programm - Entwicklung
+#  
+#  UNIX_LIKE   mit den einfachsten
+#
+#  Entwickler-Werkzeugen betrieben wird.
+#
+
+
+
+----> das Quell-Programm     : erstes.c
+
+      ( Quell-Programm-Name mit .c am Ende sind c-Quellprogramme,
+        Quell-Programm-Name mit .cc; .cpp an Ende sind c++-Quellprogramme
+      )
+
+
+----> der Editor, zu starten :  gedit& oder auf stl-s-stud auch nedit&
+
+      Programmbeschreibung   : man gedit / nedit
+
+      hier wird das Quell-Programm, d.h. c- oder c++-Code
+      geschrieben, veraendert, abgespeichert.
+
+
+
+----> Steuern der uebersetzung ( == Compilierung ) 
+              ueber
+              das  make - Programm.
+
+
+      ---> das Standard-Makefile fuer den Entwickler :
+
+
+		#   Makefile ---> persoenliches Makefile
+		#
+		#
+		#
+		
+		
+		# Voreinstellungen fuer den gcc und g++
+		#vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+		
+		include /export/home_pm/bin/gnu-make.rules
+		
+		
+		# Eigene Make-Regeln
+		#vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+		
+
+
+      ---> das eingebundene systemweite Makefile : gnu-make.rules
+               kann man sich mit einem Editor anschauen.
+		
+		
+		
+      ---> die Anwendung des make - Programmes :
+
+
+           ---> die Compilierung  : make erstes
+
+           ---> der Programmstart : ./erstes
+

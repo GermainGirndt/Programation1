@@ -1,0 +1,51 @@
+--------------------------------------------------
+
+TEST 1 ----> java LOCAuswertung
+
+ Programm erfolgreich gelaufen ==  1
+--------------------------------------------------
+
+TEST 2 ----> java LOCAuswertung /export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiKeineNormaleDateiException.java /export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiNichtLesbarException.java /export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/LOCAuswertung.java
+Auswertung Lines Of Code (LOC)
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiKeineNormaleDateiException.java:	38 LOC
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiNichtLesbarException.java:	37 LOC
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/LOCAuswertung.java:	119 LOC
+
+Gesamt:
+3 Dateien	194 LOC
+
+ Programm erfolgreich gelaufen ==  0
+
+TEST 2 Ueberpruefung : Anzahl der nicht leeren Dateizeilen 
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiKeineNormaleDateiException.java ---> 40
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiNichtLesbarException.java ---> 39
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/LOCAuswertung.java ---> 130
+Gesamt ---> 209
+
+
+
+TEST 2 Ueberpruefung : Anzahl der Kommentarzeilen 
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiKeineNormaleDateiException.java ---> 2
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiNichtLesbarException.java ---> 2
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/LOCAuswertung.java ---> 14
+Gesamt ---> 18
+
+
+--------------------------------------------------
+
+TEST 3 ----> java LOCAuswertung nichtlesbar /export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiKeineNormaleDateiException.java einDirectory /export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiNichtLesbarException.java /export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/LOCAuswertung.java
+Auswertung Lines Of Code (LOC)
+DateiNichtLesbarException: Die Datei mit dem Namen --> nichtlesbar<-- existiert ist aber nicht lesbar !!!
+
+
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiKeineNormaleDateiException.java:	38 LOC
+DateiKeineNormaleDateiException: Die Datei mit dem Namen --> einDirectory<-- existiert ist aber keine normale Datei !!!
+
+
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/DateiNichtLesbarException.java:	37 LOC
+/export/home_pm/pauly/PRG-SPR-ws2122/ueb11/loesung11/LOCAuswertung.java:	119 LOC
+
+Gesamt:
+3 Dateien	194 LOC
+
+ Programm erfolgreich gelaufen ==  0

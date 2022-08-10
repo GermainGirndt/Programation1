@@ -1,0 +1,59 @@
+
+  //------------------ filterAll  --------------------------------------
+  /**
+   * Filtert die Artikel im Lager nach den an die Methode übergebenen Filterkriterien. 
+   * 
+   * @param fKriterien - Prädikat-Objekte, welche die Filterkriterien implementieren
+   * @return eine Liste alle Artikel im Lager, die alle Filterkriterien erfüllen. 
+   */
+  public Artikel[]  filterAll(Predicate<Artikel>... fKriterien)
+    {
+      List<Artikel> zuFiltern = Arrays.asList(lager);
+      ArrayList<Artikel> geFiltert = new ArrayList<Artikel>();
+
+      for (int k = 0; k < fKriterien.length; k++)
+         {
+          for ( Artikel a : zuFiltern )
+             {
+               if ( fKriterien[k].test(a) )
+	         {
+                   geFiltert.add(a);
+	         }
+             }
+
+          zuFiltern = new ArrayList<Artikel>(geFiltert);
+
+          if ( k < fKriterien.length -1 )
+            {
+              geFiltert = new ArrayList<Artikel>();
+            }
+         }
+      return geFiltert.toArray(new Artikel[geFiltert.size()]); 
+    }
+
+
+
+
+
+
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvO
+
+
+	/**
+	 * Loest die Aufgabe (h) vi.
+	 * <br />
+	 * @param lager Das Lager, dessen Artikel gefiltert werden sollen.
+	 * @param gesuchterAutor Der Autor, nach dem gefiltert werden soll.
+	 * @param minPreis Der kleinste Preis, den die zu filternden Buecher haben sollen.
+	 * @param maxPreis Der hoechste Preis, den die zu filternden Buecher haben sollen.
+	 * @return Alle Buecher vom Autor autor und mit einem Preis, der zwischen minPreis und maxPreis liegt.
+	 */
+	public Artikel[] aufgabe_h_vi(Lager lager, String gesuchterAutor, double minPreis, double maxPreis) 
+        {
+           Predicate<Artikel> filterBuch   = a -> a instanceof Buch;
+           Predicate<Artikel> filterAutor = a -> ((Buch) a).getAutor().equals(gesuchterAutor);
+           Predicate<Artikel> filterPreis  = a -> ( (((Buch) a).getPreis() > minPreis) && (((Buch) a).getPreis() < maxPreis ) );
+           
+           Artikel[] result = lager.filterAll( filterBuch, filterAutor, filterPreis );
+           return result;
+	}
